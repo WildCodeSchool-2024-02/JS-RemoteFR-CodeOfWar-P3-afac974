@@ -1,31 +1,31 @@
-.chemin {
+.artworkPage_navigate {
   display: flex;
   margin: 1rem 0;
   font-size: 0.6rem;
 }
 
-.chemin_img {
+.artworkPage_chemin_img {
   width: 20px;
   margin: 0 1rem;
 }
 
-.tag {
+.artworkPage_tag {
   font-size: 2rem;
   display: flex;
   flex-direction: column;
 }
 
-.tag p {
+.artworkPage_tag p {
   color: rgb(210, 107, 69);
   margin-left: 1rem;
 }
 
-.tags {
+.artworkPage_tags {
   display: flex;
   justify-content: center;
 }
 
-.tags li {
+.artworkPage_tags li {
   margin: 0.6rem 1rem;
   padding: 0 1rem;
   background-color: rgb(210, 107, 69);
@@ -34,23 +34,23 @@
   font-size: 1.4rem;
 }
 
-.one_oeuvre {
+.artworkPage_one_oeuvre {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
 }
 
-.one_oeuvre_pic {
+.artworkPage_one_oeuvre_pic {
   height: 350px;
 }
 
-.name_oeuvre {
+.artworkPage_name_oeuvre {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.fav_com {
+.artworkPage_fav_com {
   margin: 1rem 1rem;
   padding: 0.4rem;
   display: flex;
@@ -60,20 +60,20 @@
   border-radius: 10px;
 }
 
-.tech_oeuvre {
+.artworkPage_tech_oeuvre {
   margin: 0 1rem;
   padding: 1rem 0;
 }
 
-.divers_tech {
+.artworkPage_divers_tech {
   background-color: rgb(223, 221, 221);
   border-radius: 10px;
 }
 
-.divers_tech li {
+.artworkPage_divers_tech li {
   margin: 1rem;
 }
 
-.divers_tech li span {
+.artworkPage_divers_tech li span {
   color: rgb(210, 107, 69);
 }
