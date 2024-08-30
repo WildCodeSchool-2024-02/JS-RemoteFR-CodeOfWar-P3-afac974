@@ -3,7 +3,6 @@ INSERT INTO
         title,
         image_url,
         description,
-        technique,
         measurement,
         date,
         artist_id,
@@ -16,7 +15,6 @@ VALUES
         './assets/images/PicturesTest/ImageTest1.png',
         'Une peinture abstraite représentant une explosion de couleurs vives.',
         NULL,
-        NULL,
         '2023-02-15',
         1,
         1
@@ -26,7 +24,6 @@ VALUES
         './assets/images/PicturesTest/ImageTest2.png',
         'Un jeu de lumières et de contrastes dans une scène mystérieuse.',
         NULL,
-        NULL,
         '2023-05-10',
         1,
         1
@@ -35,7 +32,6 @@ VALUES
         'Odyssée',
         './assets/images/PicturesTest/ImageTest3.png',
         'Une interprétation colorée de l\'Odyssée d\'Homère.',
-        NULL,
         NULL,
         '2023-07-22',
         1,
@@ -47,7 +43,6 @@ VALUES
         './assets/images/PicturesTest/ImageTest1.png',
         'Une sculpture en métal représentant la transformation d\'une chenille en papillon.',
         NULL,
-        NULL,
         '2022-11-03',
         2,
         2
@@ -57,7 +52,6 @@ VALUES
         './assets/images/PicturesTest/ImageTest2.png',
         'Deux formes métalliques fusionnant pour n\'en former qu\'une.',
         NULL,
-        NULL,
         '2023-03-17',
         2,
         2
@@ -66,7 +60,6 @@ VALUES
         'Équilibre',
         './assets/images/PicturesTest/ImageTest3.png',
         'Une sculpture explorant le concept de l\'équilibre dans la nature.',
-        NULL,
         NULL,
         '2023-06-25',
         2,
@@ -78,7 +71,6 @@ VALUES
         './assets/images/PicturesTest/ImageTest1.png',
         'Un instantané de la vie urbaine à Milan.',
         NULL,
-        NULL,
         '2022-12-01',
         3,
         3
@@ -88,7 +80,6 @@ VALUES
         './assets/images/PicturesTest/ImageTest2.png',
         'Une série de photographies capturant des passants dans les rues de Rome.',
         NULL,
-        NULL,
         '2023-04-15',
         3,
         3
@@ -97,7 +88,6 @@ VALUES
         'Reflets',
         './assets/images/PicturesTest/ImageTest3.png',
         'Des reflets de la ville sur des surfaces vitrées.',
-        NULL,
         NULL,
         '2023-08-10',
         3,
@@ -109,7 +99,6 @@ VALUES
         './assets/images/PicturesTest/ImageTest1.png',
         'Une œuvre générée par un algorithme représentant des motifs en constante évolution.',
         NULL,
-        NULL,
         '2023-01-20',
         4,
         4
@@ -119,7 +108,6 @@ VALUES
         './assets/images/PicturesTest/ImageTest2.png',
         'Une série d\'images fractales aux couleurs vibrantes.',
         NULL,
-        NULL,
         '2023-04-30',
         4,
         4
@@ -128,7 +116,6 @@ VALUES
         'Chaos Organisé',
         './assets/images/PicturesTest/ImageTest3.png',
         'Une représentation visuelle du chaos ordonné.',
-        NULL,
         NULL,
         '2023-07-14',
         4,

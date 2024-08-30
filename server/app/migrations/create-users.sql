@@ -3,11 +3,11 @@ CREATE TABLE IF NOT EXISTS users (
     pseudo VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    pseudo VARCHAR(100),
     firstname VARCHAR(100) NOT NULL,
     lastname VARCHAR(100) NOT NULL,
     birthday DATE,
-    deathday DATE nationality VARCHAR(100),
+    deathday DATE,
+    nationality VARCHAR(100),
     role ENUM(
         'visitor',
         'user',
