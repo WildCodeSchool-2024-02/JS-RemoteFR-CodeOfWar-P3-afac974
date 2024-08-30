@@ -9,15 +9,16 @@ import App from "./App";
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: <App />,
-  },
-  {
-    path: "artworks",
-    element: <Homepage />,
-    loader: async ({ params }) => ({
-      artworks: await getArtworks(params),
-    }),
+    children: [
+      {
+        path: "/",
+        element: <Homepage />,
+        loader: async ({ params }) => ({
+          artworks: await getArtworks(params),
+        }),
+      },
+    ],
   },
 ]);
 
