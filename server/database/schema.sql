@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 -- SQLBook: Code
 
 create table artist (
@@ -69,4 +67,3 @@ VALUES
 ('Regards Perdus', '../public/assets/images/PicturesTest/ImageTest1.png' , 'Un portrait capturant un regard pensif et perdu.', NULL, NULL, '2023-01-14', 10),
 ('Douce Mélancolie','../public/assets/images/PicturesTest/ImageTest2.png'  , 'Un portrait exprimant une douce mélancolie.', NULL, NULL, '2023-04-20', 10),
 ('Joie Éphémère', '../public/assets/images/PicturesTest/ImageTest3.png' , 'Un portrait où la joie est capturée dans un instant fugace.', NULL, NULL, '2023-07-19', 10);
->>>>>>> dev
