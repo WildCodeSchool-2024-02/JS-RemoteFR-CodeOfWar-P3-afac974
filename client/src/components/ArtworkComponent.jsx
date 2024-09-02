@@ -6,7 +6,7 @@ function ArtworkComponent() {
   return (
     <>
       {artworks.map((artwork) => (
-        <section key="{artwork.id}" className="expo_img">
+        <section key={artwork.id} className="expo_img">
           <div className="scroll_img">
             <h2>{artwork.title}</h2>
             <figcaption>{artwork.description}</figcaption>
