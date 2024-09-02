@@ -1,10 +1,10 @@
-.artworkPage_navigate {
+.artworkPage_pagePosition {
   display: flex;
   margin: 1rem 0;
   font-size: 0.6rem;
 }
 
-.artworkPage_chemin_img {
+.artworkPage_logoPagePosition {
   width: 20px;
   margin: 0 1rem;
 }
@@ -34,17 +34,17 @@
   font-size: 1.4rem;
 }
 
-.artworkPage_one_oeuvre {
+.artworkPage_oneOeuvre {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
 }
 
-.artworkPage_one_oeuvre_pic {
+.artworkPage_oneOeuvrePic {
   height: 350px;
 }
 
-.artworkPage_name_oeuvre {
+.artworkPage_nameOeuvre {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,15 +65,15 @@
   padding: 1rem 0;
 }
 
-.artworkPage_divers_tech {
+.artworkPage_diversTech {
   background-color: rgb(223, 221, 221);
   border-radius: 10px;
 }
 
-.artworkPage_divers_tech li {
+.artworkPage_diversTech li {
   margin: 1rem;
 }
 
-.artworkPage_divers_tech li span {
+.artworkPage_diversTech li span {
   color: rgb(210, 107, 69);
 }

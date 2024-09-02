@@ -6,13 +6,13 @@ function ArtworkPage() {
   const { artwork } = useLoaderData();
   return (
     <>
-      <div className="artworkPage_navigate">
+      <div className="artworkPage_pagePosition">
         <img
-          className="artworkPage_chemin_img"
-          src="../src/assets/images/maison.png"
-          alt="maison"
+          className="artworkPage_logoPagePosition"
+          src="./server/public/assets/images/logo_house.png"
+          alt="logo_house"
         />
-        <h1 className="artworkPage_suivi_page">
+        <h1 className="artworkPage_namePagePosition">
           {" "}
           {"> Les oeuvres > Nom de l'oeuvre"}
         </h1>
@@ -26,14 +26,14 @@ function ArtworkPage() {
           <li>tag 3</li>
         </ul>
       </div>
-      <div className="artworkPage_one_oeuvre">
+      <div className="artworkPage_oneOeuvre">
         <img
-          className="artworkPage_one_oeuvre_pic"
+          className="artworkPage_oneOeuvrePic"
           src={artwork.image_url}
           alt="chaton"
         />
       </div>
-      <div className="artworkPage_name_oeuvre">
+      <div className="artworkPage_nameOeuvre">
         <p>Léo DUMONT</p>
         <p>{artwork.title}</p>
         <p>{artwork.date}</p>
@@ -46,7 +46,7 @@ function ArtworkPage() {
 
       <div className="artworkPage_tech_oeuvre">
         <p>A propos de l'oeuvre</p>
-        <ul className="artworkPage_divers_tech">
+        <ul className="artworkPage_diversTech">
           <li>
             <span>Technique :</span> non renseigné
           </li>
