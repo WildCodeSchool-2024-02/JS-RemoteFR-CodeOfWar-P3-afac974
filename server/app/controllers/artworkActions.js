@@ -22,4 +22,13 @@ const read = async (req, res, next) => {
   }
 };
 
-module.exports = { browse, read };
+const add = async (req, res, next) => {
+  try {
+    const result = await tables.artwork.create(req.body);
+    res.status(201).send(`Oeuvre ajoutée avec succès. ID : ${result.insertId}`);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { browse, read, add };
