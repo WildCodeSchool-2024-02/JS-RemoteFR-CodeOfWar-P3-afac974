@@ -18,6 +18,23 @@ class ArtistRepository extends AbstractRepository {
     );
     return rows[0];
   }
+
+  async create(artist) {
+    const [result] = await this.database.query(
+      `INSERT INTO artist (biography, pseudo, firstname, lastname, birthday, nationality, deathday) VALUES(?, ?, ?, ?, ?, ?, ?)`,
+      [
+        artist.biography,
+        artist.pseudo,
+        artist.firstname,
+        artist.lastname,
+        artist.birthday,
+        artist.nationality,
+        artist.deathday,
+      ]
+    );
+
+    return result;
+  }
 }
 
 module.exports = ArtistRepository;

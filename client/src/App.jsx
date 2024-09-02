@@ -1,15 +1,16 @@
 import { Outlet } from "react-router-dom";
 import "./App.css";
-
 import "./assets/styles/artworkpage.css";
 
 function App() {
   return (
-    <body>
+    <>
+      <h1>Hello World</h1>
       <main>
         <Outlet />
       </main>
-    </body>
+    </>
   );
 }
+
 export default App;
