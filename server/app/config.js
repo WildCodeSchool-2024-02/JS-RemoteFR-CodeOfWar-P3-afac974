@@ -3,7 +3,6 @@
 const express = require("express");
 
 const app = express();
-const path = require("path");
 
 // Configure it
 
@@ -106,25 +105,26 @@ app.use("/api", router);
 // 1. Uncomment the lines related to serving static files and redirecting unhandled requests.
 // 2. Ensure that the `reactBuildPath` points to the correct directory where your client's build artifacts are located.
 
+/*
+const path = require("path");
 
-
-
-// const reactBuildPath = path.join(__dirname, "/../../client/dist");
+const reactBuildPath = path.join(__dirname, "/../../client/dist");
 const publicFolderPath = path.join(__dirname, "/../public");
 
-// Serve react resources
+// // Serve react resources
 
 // app.use(express.static(reactBuildPath));
 
-// Serve server resources
+// // Serve server resources
 
 app.get("*.*", express.static(publicFolderPath, { maxAge: "1y" }));
 
-// Redirect unhandled requests to the react index file
+// // Redirect unhandled requests to the react index file
 
-/* app.get("*", (_, res) => {
+app.get("*", (_, res) => {
   res.sendFile(path.join(reactBuildPath, "/index.html"));
-}); */
+});
+*/
 
 /* ************************************************************************* */
 
