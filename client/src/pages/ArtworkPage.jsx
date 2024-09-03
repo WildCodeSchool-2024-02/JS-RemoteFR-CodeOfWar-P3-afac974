@@ -9,7 +9,7 @@ function ArtworkPage() {
       <div className="artworkPage_pagePosition">
         <img
           className="artworkPage_logoPagePosition"
-          src="./server/public/assets/images/logo_house.png"
+          src={`${import.meta.env.VITE_API_URL}/assets/images/logo_house.png`}
           alt="logo_house"
         />
         <h1 className="artworkPage_namePagePosition">
