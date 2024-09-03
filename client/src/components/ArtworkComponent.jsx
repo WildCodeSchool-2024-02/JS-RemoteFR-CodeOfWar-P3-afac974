@@ -1,20 +1,18 @@
-import { useLoaderData } from "react-router-dom";
+import PropTypes from "prop-types";
 
-function ArtworkComponent() {
-  const { artworks } = useLoaderData();
-  console.info(artworks);
+function ArtworkComponent({ artwork }) {
   return (
-    <>
-      {artworks.map((artwork) => (
-        <section key={artwork.id} className="expo_img">
-          <div className="scroll_img">
-            <h2>{artwork.title}</h2>
-            <figcaption>{artwork.description}</figcaption>
-          </div>
-        </section>
-      ))}
-    </>
+    <section key={artwork.id} className="expo_img">
+      <h2>{artwork.title}</h2>
+      <figcaption>{artwork.description}</figcaption>
+    </section>
   );
 }
+
+ArtworkComponent.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+}.isRequired;
 
 export default ArtworkComponent;

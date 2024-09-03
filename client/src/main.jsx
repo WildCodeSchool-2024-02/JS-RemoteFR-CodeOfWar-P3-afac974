@@ -17,8 +17,8 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Homepage />,
-        loader: async ({ params }) => ({
-          artworks: await getArtworks(params),
+        loader: async () => ({
+          artworks: await getArtworks(),
         }),
       },
     ],

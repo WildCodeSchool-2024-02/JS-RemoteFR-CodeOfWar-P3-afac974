@@ -1,8 +1,10 @@
+import { useLoaderData } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "../assets/styles/homepage.css";
 import ArtworkComponent from "../components/ArtworkComponent";
 
 function Homepage() {
+  const { artworks } = useLoaderData();
   return (
     <>
       <Navbar />
@@ -13,7 +15,9 @@ function Homepage() {
       </div>
 
       <div className="artwork_container">
-        <ArtworkComponent />
+        {artworks.map((artwork) => (
+          <ArtworkComponent artwork={artwork} key={artwork.id} />
+        ))}
       </div>
     </>
   );

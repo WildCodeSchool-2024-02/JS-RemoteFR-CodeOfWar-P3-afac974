@@ -1,4 +1,4 @@
-.logo_nav {
+nav {
   padding: 1rem;
   background-color: #966060;
   display: flex;
@@ -16,9 +16,9 @@
   display: flex;
 }
 
-.nav_list > li {
+.nav_list li img {
   margin-right: 1rem;
-  font-size: 2rem;
+  width: 30px;
 }
 
 .favorite_icon {
@@ -51,14 +51,14 @@
 }
 
 .artwork_container {
-  max-width: 90svw;
   padding: 1rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  align-content: center;
   gap: 1rem;
 }
 
-.expo_img div {
+.expo_img {
   border: 2px solid rgb(33, 34, 34);
   min-height: 20ch;
   text-align: center;
