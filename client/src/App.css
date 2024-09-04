@@ -1,3 +1,12 @@
+:root {
+  --primary-color: #f8e6cb;
+  --secondary-color: #e0c1a8;
+  --text-color: #090a09;
+  --background-color: #f5f5f5;
+  --accent-color: #d8b192;
+  --font-family-primary: Montserrat-Regular;
+}
+
 *,
 *::before,
 *::after {
