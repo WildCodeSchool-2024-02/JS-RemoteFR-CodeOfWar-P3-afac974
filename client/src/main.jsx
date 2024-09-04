@@ -2,30 +2,39 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { getArtistList, getArtwork } from "./services/request";
+import { getArtistList, getArtworks, getArtwork } from "./services/request";
 
 import App from "./App";
+import Homepage from "./pages/Homepage";
 import ArtworkPage from "./pages/ArtworkPage";
 import ArtistList from "./pages/ArtistList";
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: <App />,
-  },
-  {
-    path: "/artwork/:id",
-    element: <ArtworkPage />,
-    loader: async ({ params }) => ({
-      artwork: await getArtwork(params.id),
-    }),
-  },
-  {
-    path: "/artists",
-    element: <ArtistList />,
-    loader: async () => ({
-      artists: await getArtistList(),
-    }),
+    children: [
+      {
+        path: "/",
+        element: <Homepage />,
+        loader: async () => ({
+          artworks: await getArtworks(),
+        }),
+      },
+      {
+        path: "/artwork/:id",
+        element: <ArtworkPage />,
+        loader: async ({ params }) => ({
+          artwork: await getArtwork(params.id),
+        }),
+      },
+      {
+        path: "/artists",
+        element: <ArtistList />,
+        loader: async () => ({
+          artists: await getArtistList(),
+        }),
+      },
+    ],
   },
 ]);
 
