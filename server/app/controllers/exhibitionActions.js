@@ -2,8 +2,8 @@ const tables = require("../../database/tables");
 
 const browse = async (req, res, next) => {
   try {
-    const expo = await tables.expo.readAll();
-    res.json(expo);
+    const exhibition = await tables.exhibition.readAll();
+    res.json(exhibition);
   } catch (error) {
     next(error);
   }
@@ -11,11 +11,11 @@ const browse = async (req, res, next) => {
 
 const read = async (req, res, next) => {
   try {
-    const expo = await tables.expo.read(req.params.id);
-    if (expo == null) {
+    const exhibition = await tables.exhibition.read(req.params.id);
+    if (exhibition == null) {
       res.sendStatus(404);
     } else {
-      res.status(200).json(expo);
+      res.status(200).json(exhibition);
     }
   } catch (error) {
     next(error);
@@ -23,9 +23,9 @@ const read = async (req, res, next) => {
 };
 
 const edit = async (req, res, next) => {
-  const expo = { ...req.body, id: req.params.id };
+  const exhibition = { ...req.body, id: req.params.id };
   try {
-    await tables.expo.update(expo);
+    await tables.exhibition.update(exhibition);
     res.sendStatus(204);
   } catch (error) {
     next(error);
@@ -33,9 +33,9 @@ const edit = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
-  const expo = req.body;
+  const exhibition = req.body;
   try {
-    const insertId = await tables.expo.create(expo);
+    const insertId = await tables.exhibition.create(exhibition);
     res.status(201).json({ insertId });
   } catch (error) {
     next(error);
@@ -44,7 +44,7 @@ const add = async (req, res, next) => {
 
 const destroy = async (req, res, next) => {
   try {
-    await tables.expo.delete(req.params.id);
+    await tables.exhibition.delete(req.params.id);
     res.sendStatus(204);
   } catch (error) {
     next(error);

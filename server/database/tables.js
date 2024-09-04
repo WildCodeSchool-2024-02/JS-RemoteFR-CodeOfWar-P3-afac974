@@ -1,7 +1,7 @@
 // Import the repository modules responsible for handling data operations on the tables
 const ArtistRepository = require("./models/ArtistRepository");
 const ArtworkRepository = require("./models/ArtworkRepository");
-const ExpoRepository = require("./models/ExpoRepository");
+const ExhibitionRepository = require("./models/ExhibitionRepository");
 
 // Create an empty object to hold data repositories for different tables
 const tables = {};
@@ -13,13 +13,13 @@ const tables = {};
 // Register each repository as data access point for its table
 tables.artist = new ArtistRepository();
 tables.artwork = new ArtworkRepository();
-tables.expo = new ExpoRepository();
+tables.exhibition = new ExhibitionRepository();
 
 /* ************************************************************************* */
 
 // Use a Proxy to customize error messages when trying to access a non-existing table
 
-// Export the Proxy instance with custom error handling
+// exports the Proxy instance with custom error handling
 module.exports = new Proxy(tables, {
   get(obj, prop) {
     // Check if the property (table) exists in the tables object

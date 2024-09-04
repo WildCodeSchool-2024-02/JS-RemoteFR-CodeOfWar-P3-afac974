@@ -1,8 +1,8 @@
 const AbstractRepository = require("./AbstractRepository");
 
-class ExpoRepository extends AbstractRepository {
+class ExhibitionRepository extends AbstractRepository {
   constructor() {
-    super({ table: "expo" });
+    super({ table: "exhibition" });
   }
 
   async readAll() {
@@ -18,24 +18,30 @@ class ExpoRepository extends AbstractRepository {
     return rows[0];
   }
 
-  async create(expo) {
+  async create(exhibition) {
     const [result] = await this.database.query(
       `insert into ${this.table} (name, description, type, date_begin, date_end) values (?, ?, ?, ?, ?)`,
-      [expo.name, expo.description, expo.type, expo.date_begin, expo.date_end]
+      [
+        exhibition.name,
+        exhibition.description,
+        exhibition.type,
+        exhibition.date_begin,
+        exhibition.date_end,
+      ]
     );
     return result.insertId;
   }
 
-  async update(expo) {
+  async update(exhibition) {
     const [result] = await this.database.query(
       `update ${this.table} SET name = ?, description = ?, type = ?,date_begin = ?, date_end = ? WHERE id = ?`,
       [
-        expo.name,
-        expo.description,
-        expo.type,
-        expo.date_begin,
-        expo.date_end,
-        expo.id,
+        exhibition.name,
+        exhibition.description,
+        exhibition.type,
+        exhibition.date_begin,
+        exhibition.date_end,
+        exhibition.id,
       ]
     );
     return result.affectedRows;
@@ -50,4 +56,4 @@ class ExpoRepository extends AbstractRepository {
   }
 }
 
-module.exports = ExpoRepository;
+module.exports = ExhibitionRepository;
