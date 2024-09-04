@@ -6,6 +6,7 @@ const router = express.Router();
 /* ************************************************************************* */
 const artists = require("./controllers/artistActions");
 const artworks = require("./controllers/artworkActions");
+const exhibition = require("./controllers/exhibitionActions");
 
 // ARTIST
 router.get("/artists", artists.browse);
@@ -20,5 +21,11 @@ router.get("/artworks/:id", artworks.read);
 router.post("/artworks", artworks.add);
 router.delete("/artworks/:id", artworks.destroy);
 router.put("/artworks/:id", artworks.edit);
+
+router.get("/exhibition", exhibition.browse);
+router.get("/exhibition/:id", exhibition.read);
+router.put("/exhibition/:id", exhibition.edit);
+router.post("/exhibition", exhibition.add);
+router.delete("/exhibition/:id", exhibition.destroy);
 
 module.exports = router;

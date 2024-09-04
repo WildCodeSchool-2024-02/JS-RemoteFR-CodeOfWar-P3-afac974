@@ -67,3 +67,16 @@ VALUES
 ('Regards Perdus', ' /assets/images/PicturesTest/ImageTest1.png' , 'Un portrait capturant un regard pensif et perdu.', NULL, NULL, '2023-01-14', 10),
 ('Douce Mélancolie',' /assets/images/PicturesTest/ImageTest2.png'  , 'Un portrait exprimant une douce mélancolie.', NULL, NULL, '2023-04-20', 10),
 ('Joie Éphémère', ' /assets/images/PicturesTest/ImageTest3.png' , 'Un portrait où la joie est capturée dans un instant fugace.', NULL, NULL, '2023-07-19', 10);
+
+create table exhibition (
+  id INT unsigned primary key auto_increment not null,
+  name VARCHAR(100) NOT NULL,
+  description TEXT,
+  type ENUM('PERMANENT', 'TEMPORARY'),
+  date_begin DATE NOT NULL,
+  date_end DATE NOT NULL
+);
+
+INSERT INTO exhibition (name, description, type, date_begin, date_end) 
+VALUES
+('VirtuArt', ' LOREM ', 'PERMANENT', '2024-09-04', '2025-09-04');
