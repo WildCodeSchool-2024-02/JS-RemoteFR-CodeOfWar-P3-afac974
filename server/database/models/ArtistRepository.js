@@ -35,6 +35,31 @@ class ArtistRepository extends AbstractRepository {
 
     return result;
   }
+
+  async update(artist) {
+    const [result] = await this.database.query(
+      `UPDATE ${this.table} SET biography = ?, pseudo = ?, firstname = ?, lastname = ?, birthday = ?, nationality = ?, deathday = ? WHERE id = ?`,
+      [
+        artist.biography,
+        artist.pseudo,
+        artist.firstname,
+        artist.lastname,
+        artist.birthday,
+        artist.nationality,
+        artist.deathday,
+        artist.id,
+      ]
+    );
+    return result.affectedRows;
+  }
+
+  async delete(id) {
+    const [result] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id = ?`,
+      [id]
+    );
+    return result.affectedRows;
+  }
 }
 
 module.exports = ArtistRepository;

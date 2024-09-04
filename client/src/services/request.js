@@ -14,12 +14,18 @@ export function getArtworks() {
   return axios
     .get(`${import.meta.env.VITE_API_URL}/api/artworks`)
     .then((reponse) => reponse.data)
-    .catch((error) => console.error(error));
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
 }
 
 export function getArtwork(id) {
   return axios
     .get(`${import.meta.env.VITE_API_URL}/api/artworks/${id}`)
     .then((reponse) => reponse.data)
-    .catch((error) => console.error(error));
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
 }

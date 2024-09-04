@@ -6,7 +6,9 @@ class ArtworkRepository extends AbstractRepository {
   }
 
   async readAll() {
-    const [rows] = await this.database.query(`select artwork.*, artist.pseudo artiste from ${this.table} INNER JOIN artist on artwork.artist_id = artist.id`);
+    const [rows] = await this.database.query(
+      `select artwork.*, artist.pseudo artiste from ${this.table} INNER JOIN artist on artwork.artist_id = artist.id`
+    );
     return rows;
   }
 
@@ -33,6 +35,30 @@ class ArtworkRepository extends AbstractRepository {
     );
 
     return result;
+  }
+
+  async update(artwork) {
+    const [result] = await this.database.query(
+      `UPDATE ${this.table} SET title = ?, image_url = ?, description = ?, technique = ?, measurement = ?, date = ? WHERE id = ?`,
+      [
+        artwork.title,
+        artwork.image_url,
+        artwork.description,
+        artwork.technique,
+        artwork.measurement,
+        artwork.date,
+        artwork.id,
+      ]
+    );
+    return result.affectedRows;
+  }
+
+  async delete(id) {
+    const [result] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id = ?`,
+      [id]
+    );
+    return result.affectedRows;
   }
 }
 
