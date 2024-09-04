@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Montserrat-Regular";
+  src: url("./assets/font/Montserrat-Regular.ttf");
+}
+
 :root {
   --primary-color: #f8e6cb;
   --secondary-color: #e0c1a8;
@@ -13,6 +18,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: var(--font-family-primary);
 }
 
 html {

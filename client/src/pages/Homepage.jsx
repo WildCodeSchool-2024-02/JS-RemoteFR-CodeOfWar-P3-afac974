@@ -8,13 +8,19 @@ function Homepage() {
   return (
     <>
       <Navbar />
-      <div className="btn-carousel">
-        <button type="button">Ouvres</button>
-        <button type="button">Artistes</button>
-        <button type="button">Expositions</button>
+      <div className="homePage_nav">
+        <button className="homePage_navButtons" type="button">
+          Oeuvres
+        </button>
+        <button className="homePage_navButtons" type="button">
+          Artistes
+        </button>
+        <button className="homePage_navButtons" type="button">
+          Expositions
+        </button>
       </div>
 
-      <div className="artwork_container">
+      <div className="homePage_artwork_container">
         {artworks.map((artwork) => (
           <ArtworkComponent artwork={artwork} key={artwork.id} />
         ))}

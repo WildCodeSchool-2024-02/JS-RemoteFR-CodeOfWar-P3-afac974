@@ -1,56 +1,55 @@
-nav {
+.navbarcomponent_navArea {
+  height: 8rem;
   padding: 1rem;
-  background-color: #966060;
+  background-color: var(--primary-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.logo_img {
-  background-color: rgb(33, 34, 34);
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
+.navbarcomponent_logo_img {
+  max-width: 12rem;
 }
 
-.nav_list {
+.navbarcomponent_list {
   display: flex;
 }
 
-.nav_list li img {
+.navbarcomponent_list > li > img {
   margin-right: 1rem;
   width: 30px;
 }
 
-.favorite_icon {
-  color: rgb(215, 58, 58);
+.navbarcomponent_favorite_icon,
+.navbarcomponent_user_icon,
+.navbarcomponent_menu_icon {
+  color: var(--text-color);
 }
 
-.user_icon {
-  color: rgb(33, 34, 34);
-}
-
-.menu_icon {
-  color: rgb(33, 34, 34);
-}
-
-.btn-carousel {
+.homePage_nav {
   padding: 1rem;
   display: flex;
   justify-content: center;
   gap: 0.5rem;
 }
 
-.btn-carousel button {
+.homePage_navButtons {
   min-width: 13ch;
   padding: 0.5rem;
   font-size: 1rem;
   font-weight: 600;
-  color: white;
-  background-color: brown;
+  color: var(--background-color);
+  background-color: var(--text-color);
   border-radius: 10px;
+  border: none;
 }
 
-.artwork_container {
+.homePage_navButtons:hover {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+.homePage_artwork_container {
   padding: 1rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -58,8 +57,7 @@ nav {
   gap: 1rem;
 }
 
-.expo_img {
-  border: 2px solid rgb(33, 34, 34);
+.artworkcomponent_expo_img {
   min-height: 20ch;
   text-align: center;
   display: flex;

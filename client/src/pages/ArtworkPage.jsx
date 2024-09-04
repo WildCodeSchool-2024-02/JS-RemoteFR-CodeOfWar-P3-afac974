@@ -29,8 +29,8 @@ function ArtworkPage() {
       <div className="artworkPage_oneOeuvre">
         <img
           className="artworkPage_oneOeuvrePic"
-          src={artwork.image_url}
-          alt="chaton"
+          src={`${import.meta.env.VITE_API_URL}${artwork.image_url}`}
+          alt={artwork.title}
         />
       </div>
       <div className="artworkPage_nameOeuvre">
