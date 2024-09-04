@@ -111,15 +111,15 @@ app.use("/api", router);
 // const reactBuildPath = path.join(__dirname, "/../../client/dist");
  const publicFolderPath = path.join(__dirname, "/../public");
 
-// // // Serve react resources
+//  Serve react resources
 
-// // app.use(express.static(reactBuildPath));
+//  app.use(express.static(reactBuildPath));
 
-// // // Serve server resources
+// Serve server resources
 
  app.get("*.*", express.static(publicFolderPath, { maxAge: "1y" }));
 
-// // // Redirect unhandled requests to the react index file
+// Redirect unhandled requests to the react index file
 
 // app.get("*", (_, res) => {
 //   res.sendFile(path.join(reactBuildPath, "/index.html"));
