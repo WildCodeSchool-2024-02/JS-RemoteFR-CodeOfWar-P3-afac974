@@ -40,14 +40,18 @@
   margin-top: 1rem;
 }
 
-.artworkPage_artworklist {
-  height: 350px;
+.artworkPage_oneOeuvre > img {
+  height: 16rem;
 }
 
 .artworkPage_nameOeuvre {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.artworkPage_artworklist {
+  height: 8rem;
 }
 
 .artworkPage_fav_com {

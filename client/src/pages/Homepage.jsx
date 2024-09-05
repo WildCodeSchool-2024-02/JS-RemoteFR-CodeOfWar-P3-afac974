@@ -1,46 +1,23 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
-import "../assets/styles/homepage.css";
+import { useLoaderData, Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import "../assets/styles/homepage.css";
 import ArtworkComponent from "../components/ArtworkComponent";
 
 function Homepage() {
-  const navigate = useNavigate();
-  const goToArtworksPage = () => {
-    navigate("/ArtworksPage");
-  };
-  const goToArtistsPage = () => {
-    navigate("/ArtistsPage");
-  };
-  const goToExhibitionPage = () => {
-    navigate("/ExhibitionPage");
-  };
-
   const { artworks } = useLoaderData();
   return (
     <>
       <Navbar />
       <div className="homePage_nav">
-        <button
-          className="homePage_navButtons"
-          type="button"
-          onClick={goToArtworksPage}
-        >
+        <Link to="/ArtworksPage" className="homePage_navButtons">
           Oeuvres
-        </button>
-        <button
-          className="homePage_navButtons"
-          type="button"
-          onClick={goToArtistsPage}
-        >
+        </Link>
+        <Link to="/ArtistsPage" className="homePage_navButtons">
           Artistes
-        </button>
-        <button
-          className="homePage_navButtons"
-          type="button"
-          onClick={goToExhibitionPage}
-        >
+        </Link>
+        <Link to="/ExhibitionPage" className="homePage_navButtons">
           Expositions
-        </button>
+        </Link>
       </div>
 
       <div className="homePage_artwork_container">

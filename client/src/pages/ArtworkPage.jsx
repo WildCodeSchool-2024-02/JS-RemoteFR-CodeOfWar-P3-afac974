@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 
 import "../assets/styles/artworkpage.css";
 
@@ -57,6 +57,9 @@ function ArtworkPage() {
             <span>Description :</span> {artwork.description}
           </li>
         </ul>
+        <Link to="/" className="homePage_navButtons">
+          HomePage
+        </Link>
       </div>
     </>
   );
