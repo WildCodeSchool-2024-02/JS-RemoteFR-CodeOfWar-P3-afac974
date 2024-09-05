@@ -41,7 +41,7 @@
   color: var(--background-color);
   background-color: var(--text-color);
   border-radius: 10px;
-  border: none;
+  border: 1px solid red;
 }
 
 .homePage_navButtons:hover {
