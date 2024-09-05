@@ -34,7 +34,7 @@ function ArtworkPage() {
         />
       </div>
       <div className="artworkPage_nameOeuvre">
-        <p>Léo DUMONT</p>
+        <p>{artwork.artist_name}</p>
         <p>{artwork.title}</p>
         <p>{artwork.date}</p>
       </div>
