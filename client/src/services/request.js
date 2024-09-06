@@ -9,6 +9,15 @@ export function getArtistList() {
       return [];
     });
 }
+export function getArtist(id) {
+  return axios
+    .get(`${import.meta.env.VITE_API_URL}/api/artists/${id}`)
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}
 
 export function getArtworks() {
   return axios

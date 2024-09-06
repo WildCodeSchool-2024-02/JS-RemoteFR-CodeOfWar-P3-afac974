@@ -1,6 +1,6 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import ArtistComponent from "../components/ArtistComponent";
-
+import Navbar from "../components/Navbar";
 import "../assets/styles/artistlist.css";
 
 function ArtistList() {
@@ -8,10 +8,13 @@ function ArtistList() {
 
   return (
     <>
-      <h1>Nos artistes</h1>
+      <Navbar />;<h1>Nos artistes</h1>
       {artists.map((artist) => (
         <ArtistComponent artist={artist} key={artist.id} />
       ))}
+      <Link to="/" className="homePage_navButtons">
+        HomePage
+      </Link>
     </>
   );
 }

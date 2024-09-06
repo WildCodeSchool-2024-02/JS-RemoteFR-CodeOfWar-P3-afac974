@@ -52,6 +52,11 @@
   background-color: var(--primary-color);
   color: var(--text-color);
 }
+.homePage_temporaryEvent,
+.homePage_discorverArtworks {
+  display: flex;
+  justify-content: center;
+}
 
 .homePage_artwork_container {
   width: 100%;
