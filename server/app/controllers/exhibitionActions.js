@@ -36,7 +36,7 @@ const add = async (req, res, next) => {
   const exhibition = req.body;
   try {
     const result = await tables.exhibition.create(exhibition);
-    res.status(201).send(`Exposition ajouté avec succès. ID : ${result.insertId}`);
+    res.status(201).send(`Exposition ajoutée avec succès. ID : ${result.insertId}`);
   } catch (error) {
     next(error);
   }
@@ -68,7 +68,7 @@ const readArtwork = async (req, res, next) => {
     const artworkExhibition = req.body;
     try {
       const result = await tables.exhibition.createExhibitionArtwork(artworkExhibition);
-      res.status(201).send(`Exposition ajouté avec succès. ID : ${result.insertId}`);
+      res.status(201).send(`Exposition ajoutée avec succès. ID : ${result.insertId}`);
     } catch (error) {
       next(error);
     }
