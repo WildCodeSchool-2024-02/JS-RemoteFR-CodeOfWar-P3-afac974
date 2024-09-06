@@ -28,4 +28,9 @@ router.put("/exhibition/:id", exhibition.edit);
 router.post("/exhibition", exhibition.add);
 router.delete("/exhibition/:id", exhibition.destroy);
 
+router.get("/exhibition/:id/artworks", exhibition.readArtwork);
+router.post("/exhibition/artworks", exhibition.addArtwork);
+router.delete("/exhibition/:exhibitionId/artworks/:artworkId", exhibition.destroyArtwork);
+
+
 module.exports = router;
