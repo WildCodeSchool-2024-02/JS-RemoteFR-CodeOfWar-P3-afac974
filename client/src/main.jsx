@@ -7,7 +7,10 @@ import { getArtistList, getArtworks, getArtwork } from "./services/request";
 import App from "./App";
 import Homepage from "./pages/Homepage";
 import ArtworkPage from "./pages/ArtworkPage";
+import ArtworksPage from "./pages/ArtworksPage";
 import ArtistList from "./pages/ArtistList";
+import ArtistsPage from "./pages/ArtistsPage";
+import ExhibitionPage from "./pages/ExhibitionPage";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +36,18 @@ const router = createBrowserRouter([
         loader: async () => ({
           artists: await getArtistList(),
         }),
+      },
+      {
+        path: "/artworksPage",
+        element: <ArtworksPage />,
+      },
+      {
+        path: "/artistsPage",
+        element: <ArtistsPage />,
+      },
+      {
+        path: "/exhibitionPage",
+        element: <ExhibitionPage />,
       },
     ],
   },
