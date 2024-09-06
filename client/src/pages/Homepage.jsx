@@ -9,13 +9,13 @@ function Homepage() {
     <>
       <Navbar />
       <div className="homePage_nav">
-        <Link to="/ArtworksPage" className="homePage_navButtons">
+        <Link to="/artworksPage" className="homePage_navButtons">
           Oeuvres
         </Link>
-        <Link to="/ArtistsPage" className="homePage_navButtons">
+        <Link to="/artistsPage" className="homePage_navButtons">
           Artistes
         </Link>
-        <Link to="/ExhibitionPage" className="homePage_navButtons">
+        <Link to="/exhibitionPage" className="homePage_navButtons">
           Expositions
         </Link>
       </div>

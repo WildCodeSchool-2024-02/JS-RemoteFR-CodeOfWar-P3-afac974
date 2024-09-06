@@ -38,15 +38,15 @@ const router = createBrowserRouter([
         }),
       },
       {
-        path: "/ArtworksPage",
+        path: "/artworksPage",
         element: <ArtworksPage />,
       },
       {
-        path: "/ArtistsPage",
+        path: "/artistsPage",
         element: <ArtistsPage />,
       },
       {
-        path: "/ExhibitionPage",
+        path: "/exhibitionPage",
         element: <ExhibitionPage />,
       },
     ],
