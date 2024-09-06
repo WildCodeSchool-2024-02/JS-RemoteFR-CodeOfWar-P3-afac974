@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 
 import "../assets/styles/artworkpage.css";
 
@@ -29,12 +29,12 @@ function ArtworkPage() {
       <div className="artworkPage_oneOeuvre">
         <img
           className="artworkPage_oneOeuvrePic"
-          src={artwork.image_url}
-          alt="chaton"
+          src={`${import.meta.env.VITE_API_URL}${artwork.image_url}`}
+          alt={artwork.title}
         />
       </div>
       <div className="artworkPage_nameOeuvre">
-        <p>Léo DUMONT</p>
+        <p>{artwork.artist_name}</p>
         <p>{artwork.title}</p>
         <p>{artwork.date}</p>
       </div>
@@ -57,6 +57,9 @@ function ArtworkPage() {
             <span>Description :</span> {artwork.description}
           </li>
         </ul>
+        <Link to="/" className="homePage_navButtons">
+          HomePage
+        </Link>
       </div>
     </>
   );
