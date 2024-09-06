@@ -29,3 +29,13 @@ export function getArtwork(id) {
       return [];
     });
 }
+
+export function getExhibitions() {
+  return axios
+    .get(`${import.meta.env.VITE_API_URL}/api/exhibition`)
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}

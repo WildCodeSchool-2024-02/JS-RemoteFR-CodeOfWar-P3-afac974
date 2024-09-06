@@ -1,0 +1,83 @@
+.artworkPage_pagePosition {
+  display: flex;
+  margin: 1rem 0;
+  font-size: 0.6rem;
+}
+
+.artworkPage_logoPagePosition {
+  width: 20px;
+  margin: 0 1rem;
+}
+
+.artworkPage_tag {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.artworkPage_tag p {
+  color: var(--text-color);
+  margin-left: 1rem;
+}
+
+.artworkPage_tags {
+  display: flex;
+  justify-content: center;
+}
+
+.artworkPage_tags li {
+  margin: 0.6rem 1rem;
+  padding: 0 1rem;
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  color: var(--background-color);
+  font-size: 1.4rem;
+}
+
+.artworkPage_oneOeuvre {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.artworkPage_oneOeuvre > img {
+  height: 16rem;
+}
+
+.artworkPage_nameOeuvre {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.artworkPage_artworklist {
+  height: 8rem;
+}
+
+.artworkPage_fav_com {
+  margin: 1rem 1rem;
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--background-color);
+  border-radius: 10px;
+}
+
+.artworkPage_tech_oeuvre {
+  margin: 0 1rem;
+  padding: 1rem 0;
+}
+
+.artworkPage_diversTech {
+  background-color: var(--background-color);
+  border-radius: 10px;
+}
+
+.artworkPage_diversTech li {
+  margin: 1rem;
+}
+
+.artworkPage_diversTech li span {
+  color: var(--accent-color);
+}

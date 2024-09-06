@@ -2,7 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { getArtistList, getArtworks, getArtwork } from "./services/request";
+import {
+  getArtistList,
+  getArtworks,
+  getArtwork,
+  getExhibitions,
+} from "./services/request";
 
 import App from "./App";
 import Homepage from "./pages/Homepage";
@@ -48,6 +53,9 @@ const router = createBrowserRouter([
       {
         path: "/exhibitionPage",
         element: <ExhibitionPage />,
+        loader: async () => ({
+          exhibitions: await getExhibitions(),
+        }),
       },
     ],
   },
