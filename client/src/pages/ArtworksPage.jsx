@@ -4,7 +4,6 @@ import "../assets/styles/homepage.css";
 
 function ArtworksPage() {
   const { artworks } = useLoaderData();
-  console.info(artworks);
   return (
     <div>
       <h1>ArtworksPage</h1>
