@@ -38,3 +38,12 @@ export function getArtwork(id) {
       return [];
     });
 }
+export function getArtworksByArtist(artistId) {
+  return axios
+    .get(`${import.meta.env.VITE_API_URL}/api/artists/${artistId}/artworks`)
+    .then((response) => response.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}

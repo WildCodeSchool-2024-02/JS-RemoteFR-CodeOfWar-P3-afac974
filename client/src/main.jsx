@@ -7,6 +7,7 @@ import {
   getArtist,
   getArtworks,
   getArtwork,
+  getArtworksByArtist,
 } from "./services/request";
 
 import App from "./App";
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
         path: "/artistpage/:id",
         element: <ArtistPage />,
         loader: async ({ params }) => ({
-          artwork: await getArtwork(params.id),
+          artworksbyartist: await getArtworksByArtist(params.id),
           artist: await getArtist(params.id),
         }),
       },
