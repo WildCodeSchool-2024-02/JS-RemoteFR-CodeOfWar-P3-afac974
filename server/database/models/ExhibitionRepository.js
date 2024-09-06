@@ -10,9 +10,10 @@ class ExhibitionRepository extends AbstractRepository {
     return rows;
   }
 
+ 
   async read(id) {
     const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
+      `select * from ${this.table} WHERE artwork.id = ? `,
       [id]
     );
     return rows[0];
@@ -51,6 +52,42 @@ class ExhibitionRepository extends AbstractRepository {
     const [result] = await this.database.query(
       `delete from ${this.table} where id = ?`,
       [id]
+    );
+    return result.affectedRows;
+  }
+
+  async readExhibitionArtwork(id) {
+    const [rows] = await this.database.query(
+      `SELECT 
+      artwork.title AS nom_de_l_oeuvre,
+      artwork.image_url AS pictures,
+      artwork.description AS description,
+      artist.pseudo AS artiste
+    FROM exhibition
+    JOIN artwork_exhibition ON exhibition.id = artwork_exhibition.exhibition_id
+    JOIN artwork ON artwork_exhibition.artwork_id = artwork.id
+    JOIN artist ON artwork.artist_id = artist.id
+    WHERE exhibition.id = ?`,
+      [id]
+    );
+    return rows;
+  }
+
+  async createExhibitionArtwork(artworkExhibition) {
+    const [result] = await this.database.query(
+      `insert into artwork_exhibition (artwork_id, exhibition_id) values (?, ?)`,
+      [
+        artworkExhibition.artwork_id,
+        artworkExhibition.exhibition_id
+      ]
+    );
+    return result.insertId;
+  }
+
+  async deleteExhibitionArtwork(exhibitionId, artworkId) {
+    const [result] = await this.database.query(
+      `DELETE FROM artwork_exhibition WHERE exhibition_id = ? AND artwork_id = ?`,
+      [exhibitionId, artworkId]
     );
     return result.affectedRows;
   }
