@@ -15,7 +15,7 @@ function Navbar() {
       />
       <ul className="navbarcomponent_list">
         <li>
-          <Link to="/authpage/userpage" className="navBar_userButton">
+          <Link to="/authentification" className="navBar_userButton">
             <img
               className="navbarcomponent_user_icon"
               alt="user icon"

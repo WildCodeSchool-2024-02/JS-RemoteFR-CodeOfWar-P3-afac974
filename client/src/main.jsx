@@ -55,23 +55,21 @@ const router = createBrowserRouter([
         element: <ExhibitionPage />,
       },
       {
-        path: "/authpage",
+        path: "/authentification",
         element: <AuthPage />,
-        children: [
-          {
-            path: "userpage",
-            element: <UserPage />,
-            loader: () => fetch(`${import.meta.env.VITE_API_URL}/items`),
-          },
-          {
-            path: "login",
-            element: <LoginPage />,
-          },
-          {
-            path: "registerpage",
-            element: <RegisterPage />,
-          },
-        ],
+      },
+      {
+        path: "user",
+        element: <UserPage />,
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/items`),
+      },
+      {
+        path: "login",
+        element: <LoginPage />,
+      },
+      {
+        path: "register",
+        element: <RegisterPage />,
       },
     ],
   },

@@ -7,16 +7,11 @@ import {
 
 function UserPage() {
   const items = useLoaderData();
-
   const titleRef = useRef();
-
   const { user } = useOutletContext();
-
   const revalidator = useRevalidator();
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/items`, {
         method: "POST",
@@ -26,7 +21,6 @@ function UserPage() {
           userId: user.id,
         }),
       });
-
       if (response.status === 201) {
         revalidator.revalidate();
       } else {
@@ -36,7 +30,6 @@ function UserPage() {
       console.error(err);
     }
   };
-
   return (
     <>
       {user != null && (

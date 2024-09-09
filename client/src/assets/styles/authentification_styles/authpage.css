@@ -27,7 +27,6 @@
   background-color: var(--text-color);
   border-radius: 8px;
   border: none;
-  text-decoration: none;
   display: flex;
   justify-content: center;
 }
@@ -47,7 +46,6 @@
   background-color: var(--background-color);
   border-radius: 8px;
   border: 1px solid var(--text-color);
-  text-decoration: none;
   display: flex;
   justify-content: center;
 }

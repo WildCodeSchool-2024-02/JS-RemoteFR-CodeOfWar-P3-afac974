@@ -43,7 +43,6 @@
   background-color: var(--text-color);
   border-radius: 10px;
   border: none;
-  text-decoration: none;
   display: flex;
   justify-content: center;
 }
@@ -72,6 +71,5 @@
 }
 
 .artworkcomponent_expo_img > * {
-  text-decoration: none;
   color: var(--text-color);
 }

@@ -1,13 +1,11 @@
 import { Link, Outlet } from "react-router-dom";
-
 import { useState } from "react";
 
 import Navbar from "../../components/Navbar";
-import "../../assets/styles/authpage.css";
+import "../../assets/styles/authentification_styles/authpage.css";
 
 function AuthPage() {
   const [user, setUser] = useState();
-
   return (
     <>
       <Navbar />
@@ -17,12 +15,12 @@ function AuthPage() {
         {user == null ? (
           <>
             <li className="auth_nav">
-              <Link to="/authpage/login" className="auth_navLinks">
+              <Link to="/login" className="auth_navLinks">
                 Connexion
               </Link>
             </li>
             <li className="auth_nav">
-              <Link to="/authpage/registerpage" className="auth_navLinks">
+              <Link to="/register" className="auth_navLinks">
                 Inscription
               </Link>
             </li>
@@ -45,8 +43,7 @@ function AuthPage() {
           </Link>
         </li>
       </ul>
-
-      {user && <p>Hello {user.name}</p>}
+      {user && <p>Bienvenue {user.name}</p>}
       <main>
         <Outlet context={{ user, setUser }} />
       </main>

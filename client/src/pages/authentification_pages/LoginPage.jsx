@@ -1,17 +1,21 @@
-import { useRef } from "react";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useRef, useState } from "react";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
+
+import "../../assets/styles/authentification_styles/loginpage.css";
+
+import eyeHide from "../../assets/icons/eye-password-hide.svg";
+import eyeShow from "../../assets/icons/eye-password-show.svg";
+import leftArrow from "../../assets/icons/chevron-left-arrow.svg";
 
 function LoginPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
-
-  const { setUser } = useOutletContext();
-
+  const [showPassword, setShowPassword] = useState(false);
+  const { setUser } = useOutletContext() || {};
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
         method: "POST",
@@ -24,12 +28,8 @@ function LoginPage() {
 
       if (response.status === 200) {
         const user = await response.json();
-
         setUser(user);
-
-        navigate("/authpage");
-      } else {
-        console.info(response);
+        navigate("/user");
       }
     } catch (err) {
       console.error(err);
@@ -38,17 +38,58 @@ function LoginPage() {
 
   return (
     <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>{" "}
-          <input ref={emailRef} type="email" id="email" required />
+      <h2 className="loginpage_title">Connexion</h2>
+      <form className="loginpage_form" onSubmit={handleSubmit}>
+        <div className="loginpage_inputsIcon">
+          <input
+            className="loginpage_input"
+            ref={emailRef}
+            type="email"
+            placeholder="Email"
+            required
+          />
+          <div className="loginpage_passwordContainer">
+            <input
+              className="loginpage_input"
+              ref={passwordRef}
+              type={showPassword ? "text" : "password"}
+              placeholder="Mot de passe"
+              required
+            />
+            <span
+              className="loginpage_showPassword"
+              onClick={() => setShowPassword(!showPassword)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(event) =>
+                event.key === " " && setShowPassword(!showPassword)
+              }
+            >
+              <img
+                src={showPassword ? eyeHide : eyeShow}
+                alt={
+                  showPassword
+                    ? "Cacher le mot de passe"
+                    : "Afficher le mot de passe"
+                }
+              />
+            </span>
+          </div>
         </div>
-        <div>
-          <label htmlFor="password">Mot de passe</label>{" "}
-          <input ref={passwordRef} type="password" id="password" required />
-        </div>
-        <button type="submit">Connexion</button>
+        <button className="loginpage_submitButton" type="submit">
+          Se connecter
+        </button>
+        <li>
+          <Link to="/authentification" className="loginpage_backButton">
+            {" "}
+            <img
+              className="loginpage_backButtonIcon"
+              src={leftArrow}
+              alt="Flèche gauche"
+            />
+            <span className="loginpage_backButtonText">Précédent</span>
+          </Link>
+        </li>
       </form>
     </div>
   );

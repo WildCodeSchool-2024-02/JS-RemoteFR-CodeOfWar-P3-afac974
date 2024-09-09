@@ -1,80 +1,66 @@
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import "../../assets/styles/authentification_styles/registerpage.css";
 
 function RegisterPage() {
   const nameRef = useRef();
   const emailRef = useRef();
-
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
   const navigate = useNavigate();
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleConfirmPasswordChange = (event) => {
-    setConfirmPassword(event.target.value);
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (password === confirmPassword) {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/users`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: nameRef.current.value,
+            email: emailRef.current.value,
+            password,
+          }),
+        });
 
-    try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/users`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: nameRef.current.value,
-          email: emailRef.current.value,
-          password,
-        }),
-      });
-
-      if (response.status === 201) {
-        navigate("/authpage/login");
-      } else {
-        console.info(response);
+        if (response.status === 201) {
+          navigate("/login");
+        }
+      } catch (err) {
+        console.error(err);
       }
-    } catch (err) {
-      console.error(err);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="name">Nom</label>{" "}
-        <input ref={nameRef} type="name" id="name" />
-      </div>
-      <div>
-        <label htmlFor="email">Email</label>{" "}
-        <input ref={emailRef} type="email" id="email" />
-      </div>
-      <div>
-        <label htmlFor="password">Mot de passe</label>{" "}
+    <div>
+      <h2>Inscription</h2>
+      <form onSubmit={handleSubmit}>
+        <input ref={nameRef} type="text" placeholder="Nom" required />
+        <input ref={emailRef} type="email" placeholder="Email" required />
         <input
           type="password"
-          id="password"
+          placeholder="Mot de passe"
           value={password}
-          onChange={handlePasswordChange}
-        />{" "}
-        {password.length >= 16 ? "✅" : "❌"}{" "}
-        {`longueur: ${password.length} >= 16`}
-      </div>
-      <div>
-        <label htmlFor="confirm-password">Comfirmer le mot de passe</label>{" "}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
         <input
           type="password"
-          id="confirm-password"
+          placeholder="Confirmer mot de passe"
           value={confirmPassword}
-          onChange={handleConfirmPasswordChange}
-        />{" "}
-        {password === confirmPassword ? "✅" : "❌"}
-      </div>
-      <button type="submit">Confirmer</button>
-    </form>
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+        />
+        <button type="submit">S'inscrire</button>
+      </form>
+      <li className="auth_nav">
+        <Link to="/authentification" className="auth_backHome">
+          ⬅️ Retour
+        </Link>
+      </li>
+    </div>
   );
 }
 
