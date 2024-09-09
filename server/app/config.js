@@ -83,8 +83,8 @@ app.use(express.json());
 // Import the API router
 const router = require("./router");
 
-// Mount the API router under the "/api" endpoint
-app.use("/api", router);
+// Mount the API router under the "" endpoint
+app.use("", router);
 
 /* ************************************************************************* */
 

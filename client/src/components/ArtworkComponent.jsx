@@ -10,9 +10,9 @@ function ArtworkComponent({ artwork }) {
           src={`${import.meta.env.VITE_API_URL}${artwork.image_url}`}
           alt={artwork.title}
         />
-        <h3>{artwork.artist_name}</h3>
+        {/* <h3>{artwork.artist_name}</h3>
         <h2>{artwork.title}</h2>
-        <figcaption>{artwork.description}</figcaption>
+        <figcaption>{artwork.description}</figcaption> */}
       </Link>
     </section>
   );

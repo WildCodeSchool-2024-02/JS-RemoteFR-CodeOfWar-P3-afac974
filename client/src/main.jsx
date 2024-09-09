@@ -11,6 +11,11 @@ import ArtworksPage from "./pages/ArtworksPage";
 import ArtistList from "./pages/ArtistList";
 import ArtistsPage from "./pages/ArtistsPage";
 import ExhibitionPage from "./pages/ExhibitionPage";
+// AuthentificationPages
+import AuthPage from "./pages/authentification_pages/AuthPage";
+import UserPage from "./pages/authentification_pages/UserPage";
+import LoginPage from "./pages/authentification_pages/LoginPage";
+import RegisterPage from "./pages/authentification_pages/RegisterPage";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +53,25 @@ const router = createBrowserRouter([
       {
         path: "/exhibitionPage",
         element: <ExhibitionPage />,
+      },
+      {
+        path: "/authpage",
+        element: <AuthPage />,
+        children: [
+          {
+            path: "userpage",
+            element: <UserPage />,
+            loader: () => fetch(`${import.meta.env.VITE_API_URL}/items`),
+          },
+          {
+            path: "login",
+            element: <LoginPage />,
+          },
+          {
+            path: "registerpage",
+            element: <RegisterPage />,
+          },
+        ],
       },
     ],
   },

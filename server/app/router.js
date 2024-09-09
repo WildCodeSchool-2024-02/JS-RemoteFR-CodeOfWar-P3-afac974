@@ -30,7 +30,26 @@ router.delete("/exhibition/:id", exhibition.destroy);
 
 router.get("/exhibition/:id/artworks", exhibition.readArtwork);
 router.post("/exhibition/artworks", exhibition.addArtwork);
-router.delete("/exhibition/:exhibitionId/artworks/:artworkId", exhibition.destroyArtwork);
+router.delete(
+  "/exhibition/:exhibitionId/artworks/:artworkId",
+  exhibition.destroyArtwork
+);
 
+// AUTH
+const itemActions = require("./controllers/itemActions");
+const userActions = require("./controllers/userActions");
+const authActions = require("./controllers/authActions");
+
+const { hashPassword } = require("./services/auth");
+
+router.get("/items", itemActions.browse);
+router.get("/items/:id", itemActions.read);
+router.post("/items", itemActions.add);
+
+router.get("/users", userActions.browse);
+router.get("/users/:id", userActions.read);
+router.post("/users", hashPassword, userActions.add);
+
+router.post("/login", authActions.login);
 
 module.exports = router;
