@@ -1,15 +1,34 @@
-import { Link } from "react-router-dom";
+// import { useState } from "react";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import "../assets/styles/userpage.css";
 import uploadIcon from "../assets/images/add_image30px.png";
 
 function UserPage() {
-  return (
-    <div>
-      <h2>Bienvenue a ton space sur FuturArt</h2>
-      <div>
-        <img src={uploadIcon} alt="upload your images" />
-      </div>
+  const location = useLocation();
 
-      <Link to="/">Retour</Link>
+  return (
+    <div className="userpage_container">
+      {location.pathname === "/dashboard" && (
+        <>
+          <div className="title_userpage">
+            <h2>BIENVENUE USERNAME!</h2>
+            <Link to="/dashboard/add">
+              <img src={uploadIcon} alt="upload icon" />
+            </Link>
+          </div>
+          <div className="user_options">
+            <p>Mes publication</p>
+            <p>Mes Ouvres</p>
+            <p>Mes Activités</p>
+            <p>Informations Personnel</p>
+            <p>Deconexion</p>
+          </div>
+          <Link to="/" className="link_home">
+            Retour
+          </Link>
+        </>
+      )}
+      <Outlet />
     </div>
   );
 }

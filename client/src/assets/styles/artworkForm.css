@@ -1,0 +1,53 @@
+.artwork_form {
+  min-width: 80vw;
+  display: flex;
+  flex-direction: column;
+  margin: 4rem auto;
+  padding: 20px;
+  border: 1px solid var(--accent-color);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.artwork_form input,
+textarea {
+  margin-bottom: 15px;
+  padding: 5px;
+  border: 1px solid var(--accent-color);
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.artwork_form > *:focus {
+  border-color: green;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.confirm_artwork {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--text-color);
+  color: var(--background-color);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirm_artwork:hover {
+  background-color: var(--accent-color);
+  color: var(--background-color);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
