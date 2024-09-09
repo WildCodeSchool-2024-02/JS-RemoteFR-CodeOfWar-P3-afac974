@@ -5,8 +5,8 @@ export default function ExhibitionComponent({ exhibition }) {
     <div>
       <h2>{exhibition.name}</h2>
       <p>{exhibition.description}</p>
-      <p>Date de début de l'exposition : {exhibition.date_begin}</p>
-      <p>Date de fin de l'exposition : {exhibition.date_end}</p>
+      <p>Date de début : {exhibition.date_begin}</p>
+      <p>Date de fin : {exhibition.date_end}</p>
     </div>
   );
 }
