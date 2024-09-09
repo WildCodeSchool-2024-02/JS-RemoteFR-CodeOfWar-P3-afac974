@@ -8,7 +8,8 @@ function ArtistList() {
 
   return (
     <>
-      <Navbar />;<h1>Nos artistes</h1>
+      <Navbar />
+      <h1>Nos artistes</h1>
       {artists.map((artist) => (
         <ArtistComponent artist={artist} key={artist.id} />
       ))}
