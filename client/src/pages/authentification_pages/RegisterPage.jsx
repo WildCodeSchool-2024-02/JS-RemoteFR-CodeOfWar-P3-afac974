@@ -45,25 +45,26 @@ function RegisterPage() {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="name">Name</label>{" "}
+        <label htmlFor="name">Nom</label>{" "}
         <input ref={nameRef} type="name" id="name" />
       </div>
       <div>
-        <label htmlFor="email">email</label>{" "}
+        <label htmlFor="email">Email</label>{" "}
         <input ref={emailRef} type="email" id="email" />
       </div>
       <div>
-        <label htmlFor="password">password</label>{" "}
+        <label htmlFor="password">Mot de passe</label>{" "}
         <input
           type="password"
           id="password"
           value={password}
           onChange={handlePasswordChange}
         />{" "}
-        {password.length >= 8 ? "✅" : "❌"} {`length: ${password.length} >= 8`}
+        {password.length >= 16 ? "✅" : "❌"}{" "}
+        {`longueur: ${password.length} >= 16`}
       </div>
       <div>
-        <label htmlFor="confirm-password">confirm password</label>{" "}
+        <label htmlFor="confirm-password">Comfirmer le mot de passe</label>{" "}
         <input
           type="password"
           id="confirm-password"
@@ -72,7 +73,7 @@ function RegisterPage() {
         />{" "}
         {password === confirmPassword ? "✅" : "❌"}
       </div>
-      <button type="submit">Send</button>
+      <button type="submit">Confirmer</button>
     </form>
   );
 }
