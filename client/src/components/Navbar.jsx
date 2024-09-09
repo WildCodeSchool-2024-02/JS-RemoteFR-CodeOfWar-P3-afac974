@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import userIcon from "../assets/images/user50px.png";
 import heartIcon from "../assets/images/hear50px.png";
 import menuBurger from "../assets/images/burger-bar50px.png";
@@ -13,11 +14,13 @@ function Navbar() {
       />
       <ul className="navbarcomponent_list">
         <li>
-          <img
-            className="navbarcomponent_user_icon"
-            alt="user icon"
-            src={userIcon}
-          />
+          <Link to="/user">
+            <img
+              className="navbarcomponent_user_icon"
+              alt="user icon"
+              src={userIcon}
+            />
+          </Link>
         </li>
         <li>
           <img
