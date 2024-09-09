@@ -23,9 +23,6 @@ function UserPage() {
             <p>Informations Personnel</p>
             <p>Deconexion</p>
           </div>
-          <Link to="/" className="link_home">
-            Retour
-          </Link>
         </>
       )}
       <Outlet />
