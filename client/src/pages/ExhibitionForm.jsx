@@ -6,7 +6,6 @@ import AddArtworkComponent from "../components/exhibitionForm/AddArtworkComponen
 
 function ExhibitionForm() {
   const { exhibitions } = useLoaderData();
-  console.info(exhibitions);
 
   const [selectedExhibitionId, setSelectedExhibitionId] = useState(null);
 
