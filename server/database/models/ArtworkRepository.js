@@ -60,6 +60,14 @@ class ArtworkRepository extends AbstractRepository {
     );
     return result.affectedRows;
   }
+
+  async artworksByArtist(id) {
+    const [rows] = await this.database.query(
+      `SELECT artwork.* FROM artwork JOIN artist ON artwork.artist_id = artist.id WHERE artwork.artist_id = ?`,
+      [id]
+    );
+    return rows;
+  }
 }
 
 module.exports = ArtworkRepository;

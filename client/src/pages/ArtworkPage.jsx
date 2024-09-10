@@ -1,5 +1,4 @@
 import { useLoaderData, Link } from "react-router-dom";
-
 import "../assets/styles/artworkpage.css";
 
 function ArtworkPage() {
@@ -34,7 +33,12 @@ function ArtworkPage() {
         />
       </div>
       <div className="artworkPage_nameOeuvre">
-        <p>{artwork.artist_name}</p>
+        <Link
+          to={`/artistpage/${artwork.artist_id}`}
+          className="artworkPage_goToartistpage"
+        >
+          <p>{artwork.artist_name}</p>
+        </Link>
         <p>{artwork.title}</p>
         <p>{artwork.date}</p>
       </div>
