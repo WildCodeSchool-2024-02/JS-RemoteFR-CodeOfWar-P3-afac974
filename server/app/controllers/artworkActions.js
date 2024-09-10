@@ -26,6 +26,7 @@ const add = async (req, res, next) => {
   try {
     const result = await tables.artwork.create(req.body);
     res.status(201).send(`Oeuvre ajoutée avec succès. ID : ${result.insertId}`);
+    console.info("test du body", req.body);
   } catch (error) {
     next(error);
   }

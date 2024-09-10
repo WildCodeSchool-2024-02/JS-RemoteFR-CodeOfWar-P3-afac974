@@ -120,7 +120,7 @@ create table artwork (
     technique VARCHAR(100),
     measurement VARCHAR(100),
     date DATE,
-    artist_id INT unsigned NOT NULL,
+    artist_id INT unsigned,
     FOREIGN KEY (artist_id) REFERENCES artist (id)
 );
 
