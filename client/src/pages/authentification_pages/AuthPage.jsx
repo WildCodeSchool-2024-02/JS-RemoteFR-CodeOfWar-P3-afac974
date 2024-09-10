@@ -1,20 +1,21 @@
 import { Link, Outlet } from "react-router-dom";
-import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 
 import Navbar from "../../components/Navbar";
-import "../../assets/styles/authentification_styles/authpage.css";
 
 import leftArrow from "../../assets/icons/chevron-left-arrow.svg";
 
 function AuthPage() {
-  const [user, setUser] = useState();
+  const { auth, setAuth } = useAuth();
   return (
     <>
       <Navbar />
-      <h1 className="auth_welcome">Bienvenue</h1>
+      <h1 className="auth_welcome">
+        Bienvenue{auth ? ` ${auth.user.name}` : ""}
+      </h1>
       <p className="auth_tagline">L'art en ligne, pour tous, partout.</p>
       <ul>
-        {user == null ? (
+        {auth == null ? (
           <>
             <li className="auth_nav">
               <Link to="/login" className="auth_navLinks">
@@ -27,34 +28,33 @@ function AuthPage() {
               </Link>
             </li>
           </>
-        ) : (
-          <li className="auth_nav">
-            <button
-              className="auth_disconnect"
-              type="button"
-              onClick={() => {
-                setUser(null);
-              }}
-            >
-              Déconnexion
-            </button>
-          </li>
-        )}
-        <li className="auth_nav">
-          <Link to="/" className="auth_backHome">
-            {" "}
-            <img
-              className="auth_backButtonIcon"
-              src={leftArrow}
-              alt="Flèche gauche"
-            />
-            <span className="auth_backButtonText">Précédent</span>
-          </Link>
-        </li>
+        ) : null}
       </ul>
-      {user && <p>Bienvenue {user.name}</p>}
+      {auth && (
+        <li className="auth_nav">
+          <button
+            className="auth_disconnect"
+            type="button"
+            onClick={() => {
+              setAuth(null);
+            }}
+          >
+            Déconnexion
+          </button>
+        </li>
+      )}
+      <li className="auth_nav">
+        <Link to="/" className="auth_backHome">
+          <img
+            className="auth_backButtonIcon"
+            src={leftArrow}
+            alt="Flèche gauche"
+          />
+          <span className="auth_backButtonText">Précédent</span>
+        </Link>
+      </li>
       <main>
-        <Outlet context={{ user, setUser }} />
+        <Outlet context={{ auth, setAuth }} />
       </main>
     </>
   );

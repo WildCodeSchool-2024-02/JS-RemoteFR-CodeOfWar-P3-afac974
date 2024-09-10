@@ -25,14 +25,13 @@ const read = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
-  if (req.body.userId == null) {
-    res.sendStatus(401);
+  if (!req.auth.isAdmin) {
+    res.sendStatus(403);
     return;
   }
 
   try {
-    const item = { ...req.body, user_id: req.body.userId };
-
+    const item = { ...req.body, user_id: req.auth.sub };
     const insertId = await tables.item.create(item);
 
     res.status(201).json({ insertId });

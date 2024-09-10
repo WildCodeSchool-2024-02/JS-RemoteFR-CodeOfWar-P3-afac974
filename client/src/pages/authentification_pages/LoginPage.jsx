@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
-import { Link, useNavigate, useOutletContext } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import "../../assets/styles/authentification_styles/loginpage.css";
+import { useAuth } from "../../context/AuthContext";
 
 import eyeHide from "../../assets/icons/eye-password-hide.svg";
 import eyeShow from "../../assets/icons/eye-password-show.svg";
@@ -11,7 +11,7 @@ function LoginPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const [showPassword, setShowPassword] = useState(false);
-  const { setUser } = useOutletContext() || {};
+  const { setAuth } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -27,9 +27,11 @@ function LoginPage() {
       });
 
       if (response.status === 200) {
-        const user = await response.json();
-        setUser(user);
+        const auth = await response.json();
+        setAuth(auth);
         navigate("/user");
+      } else {
+        console.info(response);
       }
     } catch (err) {
       console.error(err);

@@ -1,8 +1,6 @@
 import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import "../../assets/styles/authentification_styles/registerpage.css";
-
 import eyeHide from "../../assets/icons/eye-password-hide.svg";
 import eyeShow from "../../assets/icons/eye-password-show.svg";
 import leftArrow from "../../assets/icons/chevron-left-arrow.svg";
@@ -15,6 +13,12 @@ function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+  const handleConfirmPasswordChange = (event) => {
+    setConfirmPassword(event.target.value);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -26,12 +30,14 @@ function RegisterPage() {
           body: JSON.stringify({
             name: nameRef.current.value,
             email: emailRef.current.value,
-            password: passwordRef.current.value,
+            password,
           }),
         });
 
         if (response.status === 201) {
           navigate("/login");
+        } else {
+          console.info(response);
         }
       } catch (err) {
         console.error(err);
@@ -68,7 +74,7 @@ function RegisterPage() {
             type={showPassword ? "text" : "password"}
             placeholder="Mot de passe"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handlePasswordChange}
             required
           />
           <span
@@ -100,7 +106,7 @@ function RegisterPage() {
             type="password"
             placeholder="Confirmer mot de passe"
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={handleConfirmPasswordChange}
             required
           />{" "}
           <span

@@ -1,32 +1,3 @@
-.navbarcomponent_navArea {
-  width: 100%;
-  height: 8rem;
-  padding: 1rem;
-  background-color: var(--primary-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.navbarcomponent_logo_img {
-  max-width: 8rem;
-}
-
-.navbarcomponent_list {
-  display: flex;
-}
-
-.navbarcomponent_list > li > img {
-  margin-right: 1rem;
-  width: 30px;
-}
-
-.navbarcomponent_favorite_icon,
-.navbarcomponent_user_icon,
-.navbarcomponent_menu_icon {
-  color: var(--text-color);
-}
-
 .homePage_nav {
   padding: 1rem;
   display: flex;

@@ -35,12 +35,12 @@ router.delete(
   exhibition.destroyArtwork
 );
 
-// AUTH
+// Authentification routes
 const itemActions = require("./controllers/itemActions");
 const userActions = require("./controllers/userActions");
 const authActions = require("./controllers/authActions");
 
-const { hashPassword } = require("./services/auth");
+const { hashPassword, verifyToken } = require("./services/auth");
 
 router.get("/items", itemActions.browse);
 router.get("/items/:id", itemActions.read);
@@ -51,5 +51,8 @@ router.get("/users/:id", userActions.read);
 router.post("/users", hashPassword, userActions.add);
 
 router.post("/login", authActions.login);
+
+// Authentication wall
+router.use(verifyToken);
 
 module.exports = router;

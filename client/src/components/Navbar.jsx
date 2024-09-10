@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import userIcon from "../assets/images/user50px.png";
+import userIcon from "../assets/icons/user.svg";
 import heartIcon from "../assets/images/hear50px.png";
 import menuBurger from "../assets/images/burger-bar50px.png";
 import logo from "../assets/images/VirtuArtLogo.svg";

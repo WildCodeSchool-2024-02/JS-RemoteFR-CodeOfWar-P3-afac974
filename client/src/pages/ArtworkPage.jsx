@@ -1,7 +1,5 @@
 import { useLoaderData, Link } from "react-router-dom";
 
-import "../assets/styles/artworkpage.css";
-
 function ArtworkPage() {
   const { artwork } = useLoaderData();
   return (
