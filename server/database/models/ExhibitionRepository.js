@@ -10,7 +10,6 @@ class ExhibitionRepository extends AbstractRepository {
     return rows;
   }
 
- 
   async read(id) {
     const [rows] = await this.database.query(
       `select * from ${this.table} WHERE artwork.id = ? `,
@@ -77,10 +76,7 @@ class ExhibitionRepository extends AbstractRepository {
   async createExhibitionArtwork(artworkExhibition) {
     const [result] = await this.database.query(
       `insert into artwork_exhibition (artwork_id, exhibition_id) values (?, ?)`,
-      [
-        artworkExhibition.artwork_id,
-        artworkExhibition.exhibition_id
-      ]
+      [artworkExhibition.artwork_id, artworkExhibition.exhibition_id]
     );
     return result.insertId;
   }

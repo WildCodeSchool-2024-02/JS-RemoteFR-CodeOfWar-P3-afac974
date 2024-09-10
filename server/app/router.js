@@ -30,7 +30,11 @@ router.delete("/exhibition/:id", exhibition.destroy);
 
 router.get("/exhibition/:id/artworks", exhibition.readArtwork);
 router.post("/exhibition/artworks", exhibition.addArtwork);
-router.delete("/exhibition/:exhibitionId/artworks/:artworkId", exhibition.destroyArtwork);
+router.delete(
+  "/exhibition/:exhibitionId/artworks/:artworkId",
+  exhibition.destroyArtwork
+);
 
+router.get("/artists/:id/artworks", artworks.readArtworksByArtist);
 
 module.exports = router;

@@ -50,4 +50,17 @@ const destroy = async (req, res, next) => {
   }
 };
 
-module.exports = { browse, read, add, edit, destroy };
+const readArtworksByArtist = async (req, res, next) => {
+  try {
+    const artwork = await tables.artwork.artworksByArtist(req.params.id);
+    if (artwork === null) {
+      res.sendStatus(404);
+    } else {
+      res.status(200).json(artwork);
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { browse, read, add, edit, destroy, readArtworksByArtist };
