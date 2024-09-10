@@ -7,6 +7,7 @@ import {
   getArtist,
   getArtworks,
   getArtwork,
+  getExhibitions,
   getArtworksByArtist,
 } from "./services/request";
 
@@ -16,7 +17,7 @@ import ArtworkPage from "./pages/ArtworkPage";
 import ArtworksPage from "./pages/ArtworksPage";
 import ArtistList from "./pages/ArtistList";
 import ArtistPage from "./pages/ArtistPage";
-import ExhibitionPage from "./pages/ExhibitionPage";
+import Exhibition from "./pages/Exhibition";
 import UserPage from "./pages/UserPage";
 import ArtworkForm from "./components/ArtworkForm";
 
@@ -61,8 +62,15 @@ const router = createBrowserRouter([
         }),
       },
       {
-        path: "/exhibitionpage",
-        element: <ExhibitionPage />,
+        path: "/exhibition",
+        element: <Exhibition />,
+        loader: async () => ({
+          exhibitions: await getExhibitions(),
+        }),
+      },
+      {
+        path: "/user",
+        element: <UserPage />,
       },
       {
         path: "/dashboard",

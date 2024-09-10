@@ -14,7 +14,7 @@ function Homepage() {
         <Link to="/artists" className="homePage_navButtons">
           Artistes
         </Link>
-        <Link to="/exhibitionPage" className="homePage_navButtons">
+        <Link to="/exhibition" className="homePage_navButtons">
           Expositions
         </Link>
       </div>
