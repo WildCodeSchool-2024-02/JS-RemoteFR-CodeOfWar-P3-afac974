@@ -1,12 +1,10 @@
 import { useLoaderData, Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import "../assets/styles/artworkpage.css";
 
 function ArtworkPage() {
   const { artwork } = useLoaderData();
   return (
     <>
-      <Navbar />
       <div className="artworkPage_pagePosition">
         <img
           className="artworkPage_logoPagePosition"

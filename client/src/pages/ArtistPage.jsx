@@ -1,5 +1,4 @@
 import { useLoaderData, Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import "../assets/styles/artistprofile.css";
 
 function ArtistPage() {
@@ -7,7 +6,6 @@ function ArtistPage() {
 
   return (
     <>
-      <Navbar />
       <h1 className="artistPage_name">{artist.pseudo}</h1>
       <p className="artistPage_nationality">
         Nationnalité: {artist.nationality}
