@@ -1,5 +1,9 @@
 import { useLoaderData, Link } from "react-router-dom";
+
 import Navbar from "../components/Navbar";
+
+import "../assets/styles/homepage.css";
+
 import ArtworkComponent from "../components/ArtworkComponent";
 import "../assets/styles/homepage.css";
 
@@ -7,7 +11,6 @@ function Homepage() {
   const { artworks } = useLoaderData();
   return (
     <>
-      <Navbar />
       <div className="homePage_nav">
         <Link to="/artworksPage" className="homePage_navButtons">
           Oeuvres

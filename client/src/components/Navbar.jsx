@@ -17,11 +17,13 @@ function Navbar() {
       </Link>
       <ul className="navbarcomponent_list">
         <li>
-          <img
-            className="navbarcomponent_user_icon"
-            alt="user icon"
-            src={userIcon}
-          />
+          <Link to="/user">
+            <img
+              className="navbarcomponent_user_icon"
+              alt="user icon"
+              src={userIcon}
+            />
+          </Link>
         </li>
         <li>
           <img

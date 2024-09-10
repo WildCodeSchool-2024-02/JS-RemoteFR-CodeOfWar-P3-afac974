@@ -17,6 +17,7 @@ import ArtworksPage from "./pages/ArtworksPage";
 import ArtistList from "./pages/ArtistList";
 import ArtistPage from "./pages/ArtistPage";
 import ExhibitionPage from "./pages/ExhibitionPage";
+import UserPage from "./pages/UserPage";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: "/exhibitionpage",
         element: <ExhibitionPage />,
+      },
+      {
+        path: "/user",
+        element: <UserPage />,
       },
     ],
   },

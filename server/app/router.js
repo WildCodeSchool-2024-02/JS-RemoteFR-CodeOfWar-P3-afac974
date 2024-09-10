@@ -35,6 +35,7 @@ router.delete(
   exhibition.destroyArtwork
 );
 
+
 router.get("/artists/:id/artworks", artworks.readArtworksByArtist);
 
 module.exports = router;

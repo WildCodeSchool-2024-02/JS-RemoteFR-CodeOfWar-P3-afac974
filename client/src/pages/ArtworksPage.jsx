@@ -1,5 +1,7 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+
 import Navbar from "../components/Navbar";
+
 import ArtworkComponent from "../components/ArtworkComponent";
 import "../assets/styles/homepage.css";
 
