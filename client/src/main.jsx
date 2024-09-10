@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { getArtistList, getArtworks, getArtwork } from "./services/request";
+import { getArtistList, getArtworks, getArtwork, getExhibitions} from "./services/request";
 
 import App from "./App";
 import Homepage from "./pages/Homepage";
@@ -11,6 +11,7 @@ import ArtworksPage from "./pages/ArtworksPage";
 import ArtistList from "./pages/ArtistList";
 import ArtistsPage from "./pages/ArtistsPage";
 import ExhibitionPage from "./pages/ExhibitionPage";
+import ExhibitionForm from "./pages/ExhibitionForm";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,13 @@ const router = createBrowserRouter([
       {
         path: "/exhibitionPage",
         element: <ExhibitionPage />,
+      },
+      {
+        path: "/exhibitionForm",
+        element: <ExhibitionForm />,
+        loader: async () => ({
+          exhibitions : await getExhibitions(),
+        }),
       },
     ],
   },

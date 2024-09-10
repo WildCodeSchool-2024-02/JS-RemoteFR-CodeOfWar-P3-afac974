@@ -59,14 +59,15 @@ class ExhibitionRepository extends AbstractRepository {
   async readExhibitionArtwork(id) {
     const [rows] = await this.database.query(
       `SELECT 
+      artwork.id,
       artwork.title AS nom_de_l_oeuvre,
       artwork.image_url AS pictures,
       artwork.description AS description,
       artist.pseudo AS artiste
     FROM exhibition
-    JOIN artwork_exhibition ON exhibition.id = artwork_exhibition.exhibition_id
-    JOIN artwork ON artwork_exhibition.artwork_id = artwork.id
-    JOIN artist ON artwork.artist_id = artist.id
+    JOIN artwork_exhibition ON artwork_exhibition.exhibition_id = exhibition.id 
+    JOIN artwork ON artwork.id = artwork_exhibition.artwork_id 
+    JOIN artist ON artist.id = artwork.artist_id
     WHERE exhibition.id = ?`,
       [id]
     );
