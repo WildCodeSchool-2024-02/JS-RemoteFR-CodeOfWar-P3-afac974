@@ -38,20 +38,21 @@ export function getArtwork(id) {
       return [];
     });
 }
-export function getArtworksByArtist(artistId) {
+
+export function getExhibitions() {
   return axios
-    .get(`${import.meta.env.VITE_API_URL}/api/artists/${artistId}/artworks`)
-    .then((response) => response.data)
+    .get(`${import.meta.env.VITE_API_URL}/api/exhibition`)
+    .then((reponse) => reponse.data)
     .catch((error) => {
       console.error(error);
       return [];
     });
 }
 
-export function getExhibitions() {
+export function getArtworksByArtist(artistId) {
   return axios
-    .get(`${import.meta.env.VITE_API_URL}/api/exhibition`)
-    .then((reponse) => reponse.data)
+    .get(`${import.meta.env.VITE_API_URL}/api/artists/${artistId}/artworks`)
+    .then((response) => response.data)
     .catch((error) => {
       console.error(error);
       return [];

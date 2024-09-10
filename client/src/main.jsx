@@ -2,7 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { getArtistList, getArtworks, getArtwork, getArtist, getArtworksByArtist, getExhibitions } from "./services/request";
+import {
+  getArtistList,
+  getArtist,
+  getArtworks,
+  getArtwork,
+  getExhibitions,
+  getArtworksByArtist,
+} from "./services/request";
 
 import App from "./App";
 import Homepage from "./pages/Homepage";
@@ -10,8 +17,7 @@ import ArtworkPage from "./pages/ArtworkPage";
 import ArtworksPage from "./pages/ArtworksPage";
 import ArtistList from "./pages/ArtistList";
 import ArtistPage from "./pages/ArtistPage";
-import ExhibitionPage from "./pages/ExhibitionPage";
-import ExhibitionForm from "./pages/ExhibitionForm";
+import Exhibition from "./pages/Exhibition";
 import UserPage from "./pages/UserPage";
 import ArtworkForm from "./components/ArtworkForm";
 
@@ -56,15 +62,15 @@ const router = createBrowserRouter([
         }),
       },
       {
-        path: "/exhibitionpage",
-        element: <ExhibitionPage />,
-      },
-      {
-        path: "/exhibitionForm",
-        element: <ExhibitionForm />,
+        path: "/exhibition",
+        element: <Exhibition />,
         loader: async () => ({
           exhibitions: await getExhibitions(),
         }),
+      },
+      {
+        path: "/user",
+        element: <UserPage />,
       },
       {
         path: "/dashboard",

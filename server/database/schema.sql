@@ -414,21 +414,10 @@ create table exhibition (
     date_end DATE NOT NULL
 );
 
-INSERT INTO
-    exhibition (
-        name,
-        description,
-        type,
-        date_begin,
-        date_end
-    )
-VALUES (
-        'VirtuArt',
-        ' LOREM ',
-        'PERMANENT',
-        '2024-09-04',
-        '2025-09-04'
-    );
+INSERT INTO exhibition (name, description, type, date_begin, date_end) 
+VALUES
+('VirtuArt', ' Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor laboriosam quae sapiente delectus tempora dignissimos molestias ipsam! Recusandae enim velit, ducimus aliquid ut voluptates nemo repudiandae, deleniti sequi harum eius! ', 'PERMANENT', '2024-09-04', '2025-09-04'),
+('VirtuArt salon temporaire', ' Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor laborum eius! ', 'PERMANENT', '2011-11-11', '2011-12-12');
 
 CREATE Table artwork_exhibition (
     id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT null,
