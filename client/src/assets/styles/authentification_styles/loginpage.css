@@ -68,7 +68,6 @@
   border: 1px solid var(--accent-color);
   border-bottom: 4px solid var(--accent-color);
 }
-
 .loginpage_submitButton,
 .loginpage_backButton {
   width: 16rem;
@@ -80,7 +79,6 @@
   align-items: center;
   justify-content: center;
 }
-
 .loginpage_backButton {
   color: var(--text-color);
   background-color: var(--background-color);

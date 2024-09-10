@@ -79,17 +79,15 @@ function LoginPage() {
         <button className="loginpage_submitButton" type="submit">
           Se connecter
         </button>
-        <li>
-          <Link to="/authentification" className="loginpage_backButton">
-            {" "}
-            <img
-              className="loginpage_backButtonIcon"
-              src={leftArrow}
-              alt="Flèche gauche"
-            />
-            <span className="loginpage_backButtonText">Précédent</span>
-          </Link>
-        </li>
+        <Link to="/authentification" className="loginpage_backButton">
+          {" "}
+          <img
+            className="loginpage_backButtonIcon"
+            src={leftArrow}
+            alt="Flèche gauche"
+          />
+          <span className="loginpage_backButtonText">Précédent</span>
+        </Link>
       </form>
     </div>
   );

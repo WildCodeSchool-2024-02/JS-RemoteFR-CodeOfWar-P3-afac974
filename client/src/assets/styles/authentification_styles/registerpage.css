@@ -1,0 +1,114 @@
+.registerpage_title {
+  width: 100%;
+  height: 8rem;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+}
+
+.registerpage_form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.registerpage_inputIcon {
+  position: relative;
+  width: 100%;
+}
+
+.registerpage_input {
+  width: 100%;
+  height: 4rem;
+  padding: 1rem;
+  padding-left: 6rem;
+  border-radius: 8px;
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+  background-repeat: no-repeat;
+  background-position: 1rem center;
+  background-size: 2rem;
+}
+
+.registerpage_name {
+  background-image: url("../../icons/tag.svg");
+}
+
+.registerpage_email {
+  background-image: url("../../icons/mail.svg");
+}
+
+.registerpage_password,
+.registerpage_passwordConfirm {
+  background-image: url("../../icons/password-key.svg");
+}
+
+.registerpage_passwordContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.registerpage_showPassword {
+  margin-left: -3rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 1rem;
+  top: 15%;
+  cursor: pointer;
+}
+.registerpage_inputId,
+.registerpage_passwordCondition {
+  margin-bottom: 2rem;
+}
+
+.registerpage_submitButton {
+  color: var(--background-color);
+  background-color: var(--text-color);
+  border: none;
+  margin-bottom: 2rem;
+}
+
+.registerpage_submitButton:hover {
+  color: var(--text-color);
+  background-color: var(--background-color);
+  border: 1px solid var(--accent-color);
+  border-bottom: 4px solid var(--accent-color);
+}
+
+.registerpage_submitButton,
+.registerpage_backButton {
+  width: 16rem;
+  height: 4rem;
+  padding: 2rem;
+  font-size: 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.registerpage_backButton {
+  color: var(--text-color);
+  background-color: var(--background-color);
+  border: 1px solid var(--text-color);
+}
+
+.registerpage_showPassword > img,
+.registerpage_backButton > img {
+  width: 2rem;
+}
+
+.registerpage_backButton:hover {
+  color: var(--text-color);
+  background-color: var(--accent-color);
+  border: 1px solid var(--text-color);
+  border-bottom: 4px solid var(--text-color);
+}

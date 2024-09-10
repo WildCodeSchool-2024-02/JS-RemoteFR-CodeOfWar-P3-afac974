@@ -4,6 +4,8 @@ import { useState } from "react";
 import Navbar from "../../components/Navbar";
 import "../../assets/styles/authentification_styles/authpage.css";
 
+import leftArrow from "../../assets/icons/chevron-left-arrow.svg";
+
 function AuthPage() {
   const [user, setUser] = useState();
   return (
@@ -28,6 +30,7 @@ function AuthPage() {
         ) : (
           <li className="auth_nav">
             <button
+              className="auth_disconnect"
               type="button"
               onClick={() => {
                 setUser(null);
@@ -39,7 +42,13 @@ function AuthPage() {
         )}
         <li className="auth_nav">
           <Link to="/" className="auth_backHome">
-            ⬅️ Retour
+            {" "}
+            <img
+              className="auth_backButtonIcon"
+              src={leftArrow}
+              alt="Flèche gauche"
+            />
+            <span className="auth_backButtonText">Précédent</span>
           </Link>
         </li>
       </ul>
