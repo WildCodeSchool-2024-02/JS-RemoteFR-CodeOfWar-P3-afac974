@@ -1,4 +1,6 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
+
+import Navbar from "./components/Navbar";
 
 import "./App.css";
 import "./assets/styles/homepage.css";
@@ -10,9 +12,12 @@ import "./assets/styles/authentification_styles/loginpage.css";
 import "./assets/styles/authentification_styles/registerpage.css";
 
 function App() {
+  const location = useLocation();
+  const hideNavbar =
+    location.pathname === "/login" || location.pathname === "/register";
   return (
     <main>
-      <Outlet />
+      {!hideNavbar && <Navbar />} <Outlet />
     </main>
   );
 }

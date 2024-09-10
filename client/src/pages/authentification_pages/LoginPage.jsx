@@ -29,7 +29,7 @@ function LoginPage() {
       if (response.status === 200) {
         const auth = await response.json();
         setAuth(auth);
-        navigate("/user");
+        navigate("/authentification");
       } else {
         console.info(response);
       }

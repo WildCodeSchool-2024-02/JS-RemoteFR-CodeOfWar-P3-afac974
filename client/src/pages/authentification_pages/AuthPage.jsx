@@ -1,15 +1,37 @@
+import { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
-import Navbar from "../../components/Navbar";
-
 import leftArrow from "../../assets/icons/chevron-left-arrow.svg";
+import lock from "../../assets/icons/lock.svg";
 
 function AuthPage() {
   const { auth, setAuth } = useAuth();
+  const [showPopover, setShowPopover] = useState(false);
+  const [popoverMessage, setPopoverMessage] = useState("");
+  useEffect(() => {
+    if (showPopover) {
+      const timer = setTimeout(() => setShowPopover(false), 2000);
+      return () => clearTimeout(timer);
+    }
+    return undefined;
+  }, [showPopover]);
+  const handleDisconnected = () => {
+    setAuth(null);
+    setPopoverMessage("Déconnexion réussie !");
+    setShowPopover(true);
+  };
+
   return (
     <>
-      <Navbar />
+      {showPopover && (
+        <div className="auth_popoverDisconnect">
+          <div className="auth_popoverDisconnected">
+            <img src={lock} alt="Déconnexion" />
+            {popoverMessage}
+          </div>
+        </div>
+      )}
       <h1 className="auth_welcome">
         Bienvenue{auth ? ` ${auth.user.name}` : ""}
       </h1>
@@ -35,9 +57,7 @@ function AuthPage() {
           <button
             className="auth_disconnect"
             type="button"
-            onClick={() => {
-              setAuth(null);
-            }}
+            onClick={handleDisconnected}
           >
             Déconnexion
           </button>

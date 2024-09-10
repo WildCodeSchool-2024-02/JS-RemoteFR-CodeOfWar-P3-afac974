@@ -11,6 +11,30 @@
   margin-bottom: 2rem;
   margin-left: 1rem;
 }
+.auth_popoverDisconnect {
+  display: flex;
+  justify-content: center;
+  top: 15%;
+}
+
+.auth_popoverDisconnected {
+  position: fixed;
+  padding: 4rem 8rem;
+  background-color: var(--important-background-color);
+  color: var(--important-color);
+  border-radius: 8px;
+  z-index: 1000;
+
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+}
+
+.auth_popoverDisconnected > img {
+  width: 2rem;
+  margin-right: 1rem;
+}
 
 .auth_nav {
   display: flex;
