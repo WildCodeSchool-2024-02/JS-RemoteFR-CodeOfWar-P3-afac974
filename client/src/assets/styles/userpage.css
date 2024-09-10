@@ -1,0 +1,28 @@
+.userpage_container {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.title_userpage {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.user_options {
+  width: 100%;
+  padding-inline: 2rem;
+}
+
+.user_options > p {
+  margin-top: 2rem;
+  text-align: end;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1.5rem 0;
+  border-bottom: 2px solid var(--text-color);
+}

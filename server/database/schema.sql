@@ -115,11 +115,11 @@ VALUES (
 create table artwork (
     id INT unsigned primary key auto_increment not null,
     title VARCHAR(100) NOT NULL,
-    image_url VARCHAR(255) NOT NULL,
+    image_url VARCHAR(255),
     description TEXT,
     technique VARCHAR(100),
     measurement VARCHAR(100),
-    date DATE NOT NULL,
+    date DATE,
     artist_id INT unsigned NOT NULL,
     FOREIGN KEY (artist_id) REFERENCES artist (id)
 );
@@ -406,12 +406,12 @@ VALUES (
     );
 
 create table exhibition (
-  id INT unsigned primary key auto_increment not null,
-  name VARCHAR(100) NOT NULL,
-  description TEXT,
-  type ENUM('PERMANENT', 'TEMPORARY'),
-  date_begin DATE NOT NULL,
-  date_end DATE NOT NULL
+    id INT unsigned primary key auto_increment not null,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    type ENUM('PERMANENT', 'TEMPORARY'),
+    date_begin DATE NOT NULL,
+    date_end DATE NOT NULL
 );
 
 INSERT INTO exhibition (name, description, type, date_begin, date_end) 
@@ -420,13 +420,15 @@ VALUES
 ('VirtuArt salon temporaire', ' Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor laborum eius! ', 'PERMANENT', '2011-11-11', '2011-12-12');
 
 CREATE Table artwork_exhibition (
-  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT null,
-  artwork_id INT unsigned NOT NULL,
-  FOREIGN KEY (artwork_id) REFERENCES artwork(id),
-  exhibition_id INT unsigned NOT NULL,
-  FOREIGN KEY (exhibition_id) REFERENCES exhibition(id)
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT null,
+    artwork_id INT unsigned NOT NULL,
+    FOREIGN KEY (artwork_id) REFERENCES artwork (id),
+    exhibition_id INT unsigned NOT NULL,
+    FOREIGN KEY (exhibition_id) REFERENCES exhibition (id)
 );
 
-INSERT INTO artwork_exhibition (artwork_id, exhibition_id) 
-VALUES
-("1","1"),("2","1"),("3","1");
+INSERT INTO
+    artwork_exhibition (artwork_id, exhibition_id)
+VALUES ("1", "1"),
+    ("2", "1"),
+    ("3", "1");
