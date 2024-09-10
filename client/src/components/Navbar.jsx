@@ -17,7 +17,7 @@ function Navbar() {
       </Link>
       <ul className="navbarcomponent_list">
         <li>
-          <Link to="/user">
+          <Link to="/dashboard">
             <img
               className="navbarcomponent_user_icon"
               alt="user icon"

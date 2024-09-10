@@ -13,6 +13,7 @@ import ArtistPage from "./pages/ArtistPage";
 import ExhibitionPage from "./pages/ExhibitionPage";
 import ExhibitionForm from "./pages/ExhibitionForm";
 import UserPage from "./pages/UserPage";
+import ArtworkForm from "./components/ArtworkForm";
 
 const router = createBrowserRouter([
   {
@@ -66,8 +67,14 @@ const router = createBrowserRouter([
         }),
       },
       {
-        path: "/user",
+        path: "/dashboard",
         element: <UserPage />,
+        children: [
+          {
+            path: "/dashboard/add",
+            element: <ArtworkForm />,
+          },
+        ],
       },
     ],
   },
