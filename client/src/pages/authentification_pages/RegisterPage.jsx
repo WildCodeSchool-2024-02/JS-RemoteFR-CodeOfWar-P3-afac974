@@ -1,35 +1,23 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import IconsComponent from "../../components/IconsComponent";
+import PasswordInputComponent from "../../components/PasswordInputComponent";
+import ConfirmPasswordInputComponent from "../../components/ConfirmPasswordInputComponent";
 import BackButtonComponent from "../../components/BackButtonComponent";
 
 function RegisterPage() {
   const nameRef = useRef();
   const emailRef = useRef();
-  const [password, setPassword] = useState("");
   const passwordRef = useRef();
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-  const handleConfirmPasswordChange = (event) => {
+
+  const handlePasswordChange = (event) => setPassword(event.target.value);
+  const handleConfirmPasswordChange = (event) =>
     setConfirmPassword(event.target.value);
-  };
-
-  const getIconSrc = () => {
-    if (confirmPassword === "") return null;
-    return password === confirmPassword ? "check" : "cross";
-  };
-
-  const getAltText = () => {
-    if (confirmPassword === "") return "";
-    return password === confirmPassword
-      ? "Mots de passe identiques"
-      : "Mots de passe différents";
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -68,7 +56,7 @@ function RegisterPage() {
             placeholder="Nom"
             required
           />
-        </div>{" "}
+        </div>
         <div className="registerpage_inputIcon registerpage_inputId">
           <input
             className="registerpage_input registerpage_email"
@@ -77,78 +65,21 @@ function RegisterPage() {
             placeholder="Email"
             required
           />
-        </div>{" "}
-        <div className="registerpage_inputIcon">
-          <input
-            className="registerpage_input registerpage_password"
-            ref={passwordRef}
-            type={showPassword ? "text" : "password"}
-            placeholder="Mot de passe"
-            value={password}
-            onChange={handlePasswordChange}
-            required
-          />
-          <span
-            className="registerpage_showPassword"
-            onClick={() => setShowPassword(!showPassword)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(event) =>
-              event.key === " " && setShowPassword(!showPassword)
-            }
-          >
-            <IconsComponent
-              src={showPassword ? "eyeHide" : "eyeShow"}
-              alt={
-                showPassword
-                  ? "Cacher le mot de passe"
-                  : "Afficher le mot de passe"
-              }
-            />
-          </span>
-          <div className="registerpage_passwordCondition">
-            <IconsComponent
-              className="registerpage_passwordConditionIcons"
-              src={password.length >= 8 ? "check" : "cross"}
-            />{" "}
-            {`Longueur du mot de passe: ${password.length} >= 8`}
-          </div>
         </div>
-        <div className="registerpage_inputIcon">
-          <input
-            className="registerpage_input registerpage_passwordConfirm"
-            type="password"
-            placeholder="Confirmer mot de passe"
-            value={confirmPassword}
-            onChange={handleConfirmPasswordChange}
-            required
-          />{" "}
-          <span
-            className="registerpage_showPassword"
-            onClick={() => setShowPassword(!showPassword)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(event) =>
-              event.key === " " && setShowPassword(!showPassword)
-            }
-          >
-            <IconsComponent
-              src={showPassword ? "eyeHide" : "eyeShow"}
-              alt={
-                showPassword
-                  ? "Cacher le mot de passe"
-                  : "Afficher le mot de passe"
-              }
-            />
-          </span>
-          <div className="registerpage_passwordCondition">
-            <IconsComponent
-              className="registerpage_passwordConditionIcons"
-              src={getIconSrc()}
-              alt={getAltText()}
-            />{" "}
-          </div>
-        </div>
+        <PasswordInputComponent
+          ref={passwordRef}
+          password={password}
+          showPassword={showPassword}
+          handlePasswordChange={handlePasswordChange}
+          setShowPassword={setShowPassword}
+        />
+        <ConfirmPasswordInputComponent
+          confirmPassword={confirmPassword}
+          password={password}
+          showConfirmPassword={showConfirmPassword}
+          handleConfirmPasswordChange={handleConfirmPasswordChange}
+          setShowConfirmPassword={setShowConfirmPassword}
+        />
         <button className="registerpage_submitButton" type="submit">
           S'inscrire
         </button>

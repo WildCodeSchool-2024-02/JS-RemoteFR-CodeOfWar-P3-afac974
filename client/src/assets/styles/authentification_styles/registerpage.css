@@ -55,27 +55,29 @@
 
 .registerpage_showPassword {
   margin-left: -3rem;
+  position: absolute;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
   right: 1rem;
   top: 15%;
-  cursor: pointer;
 }
 .registerpage_inputId,
 .registerpage_passwordCondition {
   margin-bottom: 2rem;
   align-items: center;
 }
-
+.registerpage_passwordConfirmCondition,
 .registerpage_passwordCondition {
   display: flex;
   align-items: center;
-  .registerpage_passwordConditionIcons {
-    height: 2rem;
-  }
+  margin-bottom: 0;
+  transition: opacity 0.3s ease; /* Transition fluide pour la visibilité */
+  height: 2rem;
+}
+.registerpage_passwordConditionIcons {
+  height: 2rem;
 }
 
 .registerpage_submitButton {
@@ -83,6 +85,7 @@
   background-color: var(--text-color);
   border: none;
   margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .registerpage_submitButton:hover {
