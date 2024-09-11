@@ -15,7 +15,7 @@ function Navbar() {
             <IconsComponent
               className="navbarcomponent_user_icon"
               alt="user icon"
-              src="user"
+              src="userIcon"
             />
           </Link>
         </li>

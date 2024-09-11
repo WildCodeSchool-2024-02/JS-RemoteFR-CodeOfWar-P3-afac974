@@ -10,6 +10,7 @@ import "./assets/styles/artistlist.css";
 import "./assets/styles/authentification_styles/authpage.css";
 import "./assets/styles/authentification_styles/loginpage.css";
 import "./assets/styles/authentification_styles/registerpage.css";
+import "./assets/styles/backbuttoncomponent.css";
 
 function App() {
   const location = useLocation();

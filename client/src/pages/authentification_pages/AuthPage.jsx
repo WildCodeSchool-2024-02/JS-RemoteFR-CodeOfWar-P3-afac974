@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import IconsComponent from "../../components/IconsComponent";
+import BackButtonComponent from "../../components/BackButtonComponent";
 
 function AuthPage() {
   const { auth, setAuth } = useAuth();
@@ -62,14 +63,7 @@ function AuthPage() {
         </li>
       )}
       <li className="auth_nav">
-        <Link to="/" className="auth_backButton">
-          <IconsComponent
-            className="auth_backButtonIcon"
-            src="leftArrow"
-            alt="Flèche gauche"
-          />
-          <span className="auth_backButtonText">Précédent</span>
-        </Link>
+        <BackButtonComponent to="/" />
       </li>
       <main>
         <Outlet context={{ auth, setAuth }} />

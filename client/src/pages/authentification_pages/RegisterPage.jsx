@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import IconsComponent from "../../components/IconsComponent";
+import BackButtonComponent from "../../components/BackButtonComponent";
 
 function RegisterPage() {
   const nameRef = useRef();
@@ -16,6 +17,18 @@ function RegisterPage() {
   };
   const handleConfirmPasswordChange = (event) => {
     setConfirmPassword(event.target.value);
+  };
+
+  const getIconSrc = () => {
+    if (confirmPassword === "") return null;
+    return password === confirmPassword ? "check" : "cross";
+  };
+
+  const getAltText = () => {
+    if (confirmPassword === "") return "";
+    return password === confirmPassword
+      ? "Mots de passe identiques"
+      : "Mots de passe différents";
   };
 
   const handleSubmit = async (event) => {
@@ -94,8 +107,11 @@ function RegisterPage() {
             />
           </span>
           <div className="registerpage_passwordCondition">
-            {password.length >= 8 ? "✅" : "❌"}{" "}
-            {`length: ${password.length} >= 8`}
+            <IconsComponent
+              className="registerpage_passwordConditionIcons"
+              src={password.length >= 8 ? "check" : "cross"}
+            />{" "}
+            {`Longueur du mot de passe: ${password.length} >= 8`}
           </div>
         </div>
         <div className="registerpage_inputIcon">
@@ -126,21 +142,17 @@ function RegisterPage() {
             />
           </span>
           <div className="registerpage_passwordCondition">
-            {password === confirmPassword ? "✅" : "❌"}{" "}
+            <IconsComponent
+              className="registerpage_passwordConditionIcons"
+              src={getIconSrc()}
+              alt={getAltText()}
+            />{" "}
           </div>
         </div>
         <button className="registerpage_submitButton" type="submit">
           S'inscrire
         </button>
-        <Link to="/authentification" className="loginpage_backButton">
-          {" "}
-          <IconsComponent
-            className="registerpage_backButtonIcon"
-            src="leftArrow"
-            alt="Flèche gauche"
-          />
-          <span className="registerpage_backButtonText">Précédent</span>
-        </Link>
+        <BackButtonComponent to="/authentification" />
       </form>
     </div>
   );

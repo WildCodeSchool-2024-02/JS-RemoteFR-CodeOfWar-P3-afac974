@@ -1,9 +1,10 @@
 import { useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../context/AuthContext";
 
 import IconsComponent from "../../components/IconsComponent";
+import BackButtonComponent from "../../components/BackButtonComponent";
 
 function LoginPage() {
   const emailRef = useRef();
@@ -66,7 +67,7 @@ function LoginPage() {
               }
             >
               <IconsComponent
-                src={showPassword ? "eye-hide" : "eye-show"}
+                src={showPassword ? "eyeHide" : "eyeShow"}
                 alt={
                   showPassword
                     ? "Cacher le mot de passe"
@@ -79,15 +80,13 @@ function LoginPage() {
         <button className="loginpage_submitButton" type="submit">
           Se connecter
         </button>
-        <Link to="/authentification" className="loginpage_backButton">
-          {" "}
-          <IconsComponent
-            className="loginpage_backButtonIcon"
-            src="leftArrow"
-            alt="Flèche gauche"
-          />
-          <span className="loginpage_backButtonText">Précédent</span>
-        </Link>
+        <BackButtonComponent
+          to="/authentification"
+          classNameLink="loginpage_backButton"
+          classNameIcon="registerpage_backButtonIcon"
+          src="leftArrow"
+          alt="Flèche gauche"
+        />
       </form>
     </div>
   );

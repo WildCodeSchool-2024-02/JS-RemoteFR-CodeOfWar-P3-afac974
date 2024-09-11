@@ -68,8 +68,7 @@
   border: 1px solid var(--accent-color);
   border-bottom: 4px solid var(--accent-color);
 }
-.loginpage_submitButton,
-.loginpage_backButton {
+.loginpage_submitButton {
   width: 16rem;
   height: 4rem;
   padding: 2rem;
@@ -79,20 +78,7 @@
   align-items: center;
   justify-content: center;
 }
-.loginpage_backButton {
-  color: var(--text-color);
-  background-color: var(--background-color);
-  border: 1px solid var(--text-color);
-}
 
-.loginpage_showPassword > img,
-.loginpage_backButton > img {
+.loginpage_showPassword > img {
   width: 2rem;
-}
-
-.loginpage_backButton:hover {
-  color: var(--text-color);
-  background-color: var(--accent-color);
-  border: 1px solid var(--text-color);
-  border-bottom: 4px solid var(--text-color);
 }
