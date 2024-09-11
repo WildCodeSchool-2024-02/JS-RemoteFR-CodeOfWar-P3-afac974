@@ -1,7 +1,7 @@
 import axios from "axios";
-import "../assets/styles/artworkForm.css";
-
 import { useState } from "react";
+
+import "../assets/styles/artworkForm.css";
 
 function ArtworkForm() {
   const [formData, setFormData] = useState({
@@ -20,14 +20,8 @@ function ArtworkForm() {
       [e.target.name]: e.target.value,
     });
   };
-
-  const sendGuitar = (event) => {
+  const sendArtwork = (event) => {
     event.preventDefault();
-
-    if (!formData.date) {
-      alert("Date field cannot be empty");
-      return;
-    }
 
     axios
       .post("http://localhost:3310/api/artworks", formData)
@@ -38,7 +32,18 @@ function ArtworkForm() {
   };
 
   return (
-    <form className="artwork_form" onSubmit={sendGuitar} method="post">
+    <form className="artwork_form" onSubmit={sendArtwork} method="post">
+      <label htmlFor="date" className="visually-hidden">
+        Date:
+      </label>
+      <input
+        type="text"
+        id="date"
+        name="date"
+        placeholder="date"
+        value={formData.date}
+        onChange={handleChange}
+      />
       <label htmlFor="title" className="visually-hidden">
         Title:
       </label>
@@ -73,6 +78,7 @@ function ArtworkForm() {
         value={formData.image}
         onChange={handleChange}
       />
+
       <label htmlFor="technique" className="visually-hidden">
         Technique:
       </label>
@@ -95,17 +101,7 @@ function ArtworkForm() {
         value={formData.measurement}
         onChange={handleChange}
       />
-      <label htmlFor="date" className="visually-hidden">
-        Date:
-      </label>
-      <input
-        type="text"
-        id="date"
-        name="date"
-        placeholder="date"
-        value={formData.date}
-        onChange={handleChange}
-      />
+
       <label htmlFor="artist_id" className="visually-hidden">
         Artist ID:
       </label>
