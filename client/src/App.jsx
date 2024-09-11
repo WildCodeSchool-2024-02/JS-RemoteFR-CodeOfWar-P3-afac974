@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
+import Navbar from "./components/NavbarComponent";
 
 import "./App.css";
 import "./assets/styles/homepage.css";

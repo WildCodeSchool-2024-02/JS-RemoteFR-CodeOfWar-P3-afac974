@@ -34,3 +34,6 @@ html {
 li {
   list-style: none;
 }
+.App_sizePage {
+  height: 100vh;
+}

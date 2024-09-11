@@ -1,9 +1,7 @@
 import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import eyeHide from "../../assets/icons/eye-password-hide.svg";
-import eyeShow from "../../assets/icons/eye-password-show.svg";
-import leftArrow from "../../assets/icons/chevron-left-arrow.svg";
+import IconsComponent from "../../components/IconsComponent";
 
 function RegisterPage() {
   const nameRef = useRef();
@@ -46,7 +44,7 @@ function RegisterPage() {
   };
 
   return (
-    <div>
+    <div className="App_sizePage">
       <h2 className="registerpage_title">Inscription</h2>
       <form className="registerpage_form" onSubmit={handleSubmit}>
         <div className="registerpage_inputIcon registerpage_inputId">
@@ -86,8 +84,8 @@ function RegisterPage() {
               event.key === " " && setShowPassword(!showPassword)
             }
           >
-            <img
-              src={showPassword ? eyeHide : eyeShow}
+            <IconsComponent
+              src={showPassword ? "eyeHide" : "eyeShow"}
               alt={
                 showPassword
                   ? "Cacher le mot de passe"
@@ -118,8 +116,8 @@ function RegisterPage() {
               event.key === " " && setShowPassword(!showPassword)
             }
           >
-            <img
-              src={showPassword ? eyeHide : eyeShow}
+            <IconsComponent
+              src={showPassword ? "eyeHide" : "eyeShow"}
               alt={
                 showPassword
                   ? "Cacher le mot de passe"
@@ -136,9 +134,9 @@ function RegisterPage() {
         </button>
         <Link to="/authentification" className="loginpage_backButton">
           {" "}
-          <img
+          <IconsComponent
             className="registerpage_backButtonIcon"
-            src={leftArrow}
+            src="leftArrow"
             alt="Flèche gauche"
           />
           <span className="registerpage_backButtonText">Précédent</span>

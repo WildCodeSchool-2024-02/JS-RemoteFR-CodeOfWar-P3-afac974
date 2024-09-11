@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-
-import leftArrow from "../../assets/icons/chevron-left-arrow.svg";
-import lock from "../../assets/icons/lock.svg";
+import IconsComponent from "../../components/IconsComponent";
 
 function AuthPage() {
   const { auth, setAuth } = useAuth();
@@ -23,11 +21,11 @@ function AuthPage() {
   };
 
   return (
-    <>
+    <div className="App_sizePage">
       {showPopover && (
         <div className="auth_popoverDisconnect">
           <div className="auth_popoverDisconnected">
-            <img src={lock} alt="Déconnexion" />
+            <IconsComponent src="lock" alt="Déconnexion" />
             {popoverMessage}
           </div>
         </div>
@@ -64,10 +62,10 @@ function AuthPage() {
         </li>
       )}
       <li className="auth_nav">
-        <Link to="/" className="auth_backHome">
-          <img
+        <Link to="/" className="auth_backButton">
+          <IconsComponent
             className="auth_backButtonIcon"
-            src={leftArrow}
+            src="leftArrow"
             alt="Flèche gauche"
           />
           <span className="auth_backButtonText">Précédent</span>
@@ -76,7 +74,7 @@ function AuthPage() {
       <main>
         <Outlet context={{ auth, setAuth }} />
       </main>
-    </>
+    </div>
   );
 }
 

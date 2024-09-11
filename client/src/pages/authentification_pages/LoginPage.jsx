@@ -3,9 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../context/AuthContext";
 
-import eyeHide from "../../assets/icons/eye-password-hide.svg";
-import eyeShow from "../../assets/icons/eye-password-show.svg";
-import leftArrow from "../../assets/icons/chevron-left-arrow.svg";
+import IconsComponent from "../../components/IconsComponent";
 
 function LoginPage() {
   const emailRef = useRef();
@@ -39,7 +37,7 @@ function LoginPage() {
   };
 
   return (
-    <div>
+    <div className="App_sizePage">
       <h2 className="loginpage_title">Connexion</h2>
       <form className="loginpage_form" onSubmit={handleSubmit}>
         <div className="loginpage_inputsIcon">
@@ -67,8 +65,8 @@ function LoginPage() {
                 event.key === " " && setShowPassword(!showPassword)
               }
             >
-              <img
-                src={showPassword ? eyeHide : eyeShow}
+              <IconsComponent
+                src={showPassword ? "eye-hide" : "eye-show"}
                 alt={
                   showPassword
                     ? "Cacher le mot de passe"
@@ -83,9 +81,9 @@ function LoginPage() {
         </button>
         <Link to="/authentification" className="loginpage_backButton">
           {" "}
-          <img
+          <IconsComponent
             className="loginpage_backButtonIcon"
-            src={leftArrow}
+            src="leftArrow"
             alt="Flèche gauche"
           />
           <span className="loginpage_backButtonText">Précédent</span>
