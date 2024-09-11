@@ -5,7 +5,7 @@ import ExhibitionComponent from "../components/exhibitionForm/ExhibitionComponen
 import AddArtworkComponent from "../components/exhibitionForm/AddArtworkComponent";
 
 function ExhibitionForm() {
-  const { exhibitions } = useLoaderData();
+  const { exhibitions, artworks } = useLoaderData();
 
   const [selectedExhibitionId, setSelectedExhibitionId] = useState(null);
 
@@ -29,7 +29,9 @@ function ExhibitionForm() {
       )}
 
       {selectedExhibitionId != null && (
-        <AddArtworkComponent id={selectedExhibitionId} />
+        <AddArtworkComponent 
+        id={selectedExhibitionId}
+        artworks={artworks} />
       )}
     </div>
   );

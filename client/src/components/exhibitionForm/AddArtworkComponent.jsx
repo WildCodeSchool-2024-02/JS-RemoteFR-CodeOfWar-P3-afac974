@@ -1,33 +1,27 @@
 import { PropTypes } from "prop-types";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import { getArtworks, postExhibitionArtwork } from "../../services/request";
+import { postExhibitionArtwork } from "../../services/request";
 
-function AddArtworkComponent({ id }) {
-  const [artworks, setArtworks] = useState([]);
+function AddArtworkComponent({id,artworks} ) {
 
   const [selectedArtworkId, setSelectedArtworkID] = useState(null);
   const handleSelectChange = async (event) => {
     const exhibitionId = event.target.value;
     setSelectedArtworkID(exhibitionId);
   };
-  useEffect(() => {
-    getArtworks().then(setArtworks);
-  }, []);
+
   const handleAdd = async () => {
     if (selectedArtworkId) {
       try {
         await postExhibitionArtwork(id, selectedArtworkId);
-        setArtworks((prevArtworks) =>
-          prevArtworks.filter((artwork) => artwork.id !== selectedArtworkId)
-        );
+
         setSelectedArtworkID(null);
       } catch (error) {
-        console.error("Erreur lors de l'ajout de l'œuvre:", error);
+        console.error("Erreur lors de l'ajout de l'œuvre à l'exposition:", error);
       }
     }
   };
-
   return (
     <>
       <select value={selectedArtworkId} onChange={handleSelectChange}>

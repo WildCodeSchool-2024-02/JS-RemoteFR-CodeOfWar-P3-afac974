@@ -77,7 +77,8 @@ const router = createBrowserRouter([
         path: "/exhibitionForm",
         element: <ExhibitionForm />,
         loader: async () => ({
-          exhibitions : await getExhibitions()
+          exhibitions : await getExhibitions(),
+          artworks : await getArtworks()
         })
       },
       {
