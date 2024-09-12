@@ -432,3 +432,11 @@ INSERT INTO
 VALUES ("1", "1"),
     ("2", "1"),
     ("3", "1");
+
+    CREATE TABLE favorite (
+    id INT unsigned primary key auto_increment not null,
+    artwork_id INT unsigned NOT NULL,
+    FOREIGN KEY (artwork_id) REFERENCES artwork (id),
+    user_id INT unsigned NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user (id)
+);

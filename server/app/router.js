@@ -7,6 +7,7 @@ const router = express.Router();
 const artists = require("./controllers/artistActions");
 const artworks = require("./controllers/artworkActions");
 const exhibition = require("./controllers/exhibitionActions");
+const favorite = require("./controllers/favoriteActions");
 
 // ARTIST
 router.get("/artists", artists.browse);
@@ -35,7 +36,11 @@ router.delete(
   exhibition.destroyArtwork
 );
 
-
 router.get("/artists/:id/artworks", artworks.readArtworksByArtist);
+
+// FAVORITES
+router.get("/favorite", favorite.browse);
+router.post("/favorite", favorite.add);
+router.delete("/favorite/:id", favorite.destroy);
 
 module.exports = router;
