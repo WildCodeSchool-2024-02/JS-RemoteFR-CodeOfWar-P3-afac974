@@ -20,6 +20,7 @@ import ArtistPage from "./pages/ArtistPage";
 import Exhibition from "./pages/Exhibition";
 import UserPage from "./pages/UserPage";
 import ArtworkForm from "./components/ArtworkForm";
+import ExhibitionForm from "./pages/ExhibitionForm";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,14 @@ const router = createBrowserRouter([
       {
         path: "/user",
         element: <UserPage />,
+      },
+      {
+        path: "/exhibitionForm",
+        element: <ExhibitionForm />,
+        loader: async () => ({
+          exhibitions : await getExhibitions(),
+          artworks : await getArtworks()
+        })
       },
       {
         path: "/dashboard",
