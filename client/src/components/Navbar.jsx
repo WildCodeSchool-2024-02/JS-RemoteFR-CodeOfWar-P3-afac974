@@ -14,13 +14,14 @@ function Navbar() {
       />
       <ul className="navbarcomponent_list">
         <li>
-          <Link to="/dashboard">
-            <img
-              className="navbarcomponent_user_icon"
-              alt="user icon"
-              src={userIcon}
-            />
-          </Link>
+          <Link to="/dashboard">Dasboard</Link>
+        </li>
+        <li>
+          <img
+            className="navbarcomponent_user_icon"
+            alt="user icon"
+            src={userIcon}
+          />
         </li>
         <li>
           <img
