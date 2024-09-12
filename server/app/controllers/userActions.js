@@ -9,7 +9,6 @@ const browse = async (req, res, next) => {
     } else {
       res.json({ message: "Aucun utilisateur", result: users });
     }
-    console.info(users);
   } catch (error) {
     next(error);
   }
