@@ -1,7 +1,5 @@
--- SQLBook: Code
-
 create table artist (
-    id int unsigned primary key auto_increment not null,
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
     biography TEXT,
     pseudo VARCHAR(100),
     firstname VARCHAR(100) NOT NULL,
@@ -113,14 +111,14 @@ VALUES (
     );
 
 create table artwork (
-    id INT unsigned primary key auto_increment not null,
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
     title VARCHAR(100) NOT NULL,
     image_url VARCHAR(255) NOT NULL,
     description TEXT,
     technique VARCHAR(100),
     measurement VARCHAR(100),
     date DATE NOT NULL,
-    artist_id INT unsigned NOT NULL,
+    artist_id INT UNSIGNED NOT NULL,
     FOREIGN KEY (artist_id) REFERENCES artist (id)
 );
 
@@ -405,8 +403,8 @@ VALUES (
         10
     );
 
-create table exhibition (
-    id INT unsigned primary key auto_increment not null,
+CREATE TABLE exhibition (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
     name VARCHAR(100) NOT NULL,
     description TEXT,
     type ENUM('PERMANENT', 'TEMPORARY'),
@@ -423,18 +421,25 @@ INSERT INTO
         date_end
     )
 VALUES (
-        'VirtuArt',
+        'VirtuArt PERMANENT',
         ' LOREM ',
         'PERMANENT',
         '2024-09-04',
         '2025-09-04'
+    ),
+    (
+        'VirtuArt TEMPORARY',
+        ' LOREM ',
+        'TEMPORARY',
+        '2023-12-08',
+        '2024-10-02'
     );
 
 CREATE Table artwork_exhibition (
-    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT null,
-    artwork_id INT unsigned NOT NULL,
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    artwork_id INT UNSIGNED NOT NULL,
     FOREIGN KEY (artwork_id) REFERENCES artwork (id),
-    exhibition_id INT unsigned NOT NULL,
+    exhibition_id INT UNSIGNED NOT NULL,
     FOREIGN KEY (exhibition_id) REFERENCES exhibition (id)
 );
 

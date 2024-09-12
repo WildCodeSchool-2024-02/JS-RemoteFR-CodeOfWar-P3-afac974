@@ -35,6 +35,8 @@ router.delete(
   exhibition.destroyArtwork
 );
 
+router.get("/artists/:id/artworks", artworks.readArtworksByArtist);
+
 // Authentification routes
 const itemActions = require("./controllers/itemActions");
 const userActions = require("./controllers/userActions");

@@ -11,6 +11,7 @@ import cross from "../assets/icons/cross.svg";
 import lock from "../assets/icons/lock.svg";
 // PICTURES
 import menuBurger from "../assets/images/burger-bar50px.png";
+import uploadIcon from "../assets/images/add_image30px.png";
 import logo from "../assets/images/VirtuArtLogo.svg";
 
 const Icons = {
@@ -24,6 +25,7 @@ const Icons = {
   cross: { src: cross, alt: "Cross icon" },
   lock: { src: lock, alt: "Lock icon" },
   "menu-burger": { src: menuBurger, alt: "Menu burger icon" },
+  uploadIcon: { src: uploadIcon, alt: "upload icon" },
   logo: { src: logo, alt: "VirtuArt logo" },
 };
 

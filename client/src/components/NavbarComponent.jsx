@@ -4,11 +4,14 @@ import IconsComponent from "./IconsComponent";
 function Navbar() {
   return (
     <nav className="navbarcomponent_navArea">
-      <IconsComponent
-        className="navbarcomponent_logo_img"
-        alt="VirtuArt logo"
-        src="logo"
-      />
+      <Link to="/" className="navBar_userButton">
+        <IconsComponent
+          className="navbarcomponent_logo_img"
+          alt="VirtuArt logo"
+          src="logo"
+        />
+      </Link>
+
       <ul className="navbarcomponent_list">
         <li>
           <Link to="/authentification" className="navBar_userButton">

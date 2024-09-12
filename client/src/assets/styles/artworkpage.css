@@ -81,3 +81,8 @@
 .artworkPage_diversTech li span {
   color: var(--accent-color);
 }
+
+.artworkPage_goToartistpage {
+  text-decoration: none;
+  color: var(--text-color);
+}
