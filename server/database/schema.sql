@@ -433,10 +433,58 @@ VALUES ("1", "1"),
     ("2", "1"),
     ("3", "1");
 
-    CREATE TABLE favorite (
+CREATE TABLE user (
     id INT unsigned primary key auto_increment not null,
+    pseudo VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    firstname VARCHAR(100) NOT NULL,
+    lastname VARCHAR(100) NOT NULL,
+    birthday DATE,
+    deathday DATE,
+    nationality VARCHAR(100),
+    biography TEXT,
+    website VARCHAR(255),
+    instagram VARCHAR(255),
+    twitter VARCHAR(255),
+    facebook VARCHAR(255),
+    linkedin VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    is_artist BOOLEAN DEFAULT FALSE
+);
+
+INSERT INTO user (
+    pseudo, email, password, firstname, lastname, birthday, deathday, nationality, biography, website, instagram, twitter, facebook, linkedin, created_at, is_artist
+)
+VALUES
+    (
+        'Master_toto', 
+        'toto@gmail.com', 
+        'toto', 
+        'Scarlett', 
+        'Johansson', 
+        '1980-01-01', 
+        '2000-01-01', 
+        'Américaine', 
+        'aussi belle que : Angelina Jolie', 
+        'https://master_toto.fr', 
+        'https://instagram.com', 
+        'https://twitter.com', 
+        'https://facebook.com', 
+        'https://linkedin.com', 
+        CURRENT_TIMESTAMP, 
+        1
+    );
+
+    CREATE TABLE favorite (
     artwork_id INT unsigned NOT NULL,
     FOREIGN KEY (artwork_id) REFERENCES artwork (id),
     user_id INT unsigned NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user (id)
 );
+
+INSERT INTO favorite (artwork_id, user_id)
+VALUES ("1", "1"),
+    ("2", "1"),
+    ("3", "1");
+

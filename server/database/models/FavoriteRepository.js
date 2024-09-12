@@ -20,16 +20,16 @@ class FavoriteRepository extends AbstractRepository {
 
   async createFavorite(artworkFavorite) {
     const [result] = await this.database.query(
-      `INSERT INTO favorite (artwork_id) VALUES(?)`,
-      [artworkFavorite.artwork_id]
+      `INSERT INTO favorite (artwork_id, user_id) VALUES(?, ?)`,
+      [artworkFavorite.artwork_id, artworkFavorite.user_id]
     );
     return result.insertId;
   }
 
-  async deleteFavorite(artworkId) {
+  async deleteFavorite(artworkId, userId) {
     const [result] = await this.database.query(
-      `DELETE FROM favorite WHERE artwork_id = ?`,
-      [artworkId]
+      `DELETE FROM favorite WHERE artwork_id = ? AND user_id = ?`,
+      [artworkId, userId]
     );
     return result.affectedRows;
   }
