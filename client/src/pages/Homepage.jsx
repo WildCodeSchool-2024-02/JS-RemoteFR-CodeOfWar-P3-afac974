@@ -2,9 +2,13 @@ import { useLoaderData, Link } from "react-router-dom";
 
 import ArtworkComponent from "../components/ArtworkComponent";
 import "../assets/styles/homepage.css";
+import CarouselHomepage from "../components/CarouselHomepage";
 
 function Homepage() {
   const { artworks } = useLoaderData();
+  const carouselImg1 = artworks[1];
+  const carouselImg2 = artworks[2];
+  const carouselImg3 = artworks[3];
   return (
     <>
       <div className="homePage_nav">
@@ -18,6 +22,9 @@ function Homepage() {
           Expositions
         </Link>
       </div>
+      <CarouselHomepage
+        carouselArtwork={[carouselImg1, carouselImg2, carouselImg3]}
+      />
       <h1 className="homePage_temporaryEvent">Evénnements temporaire</h1>
       <p className="homePage_temporaryEvent">Temporairement indisponible</p>
       <h2 className="homePage_discorverArtworks">
