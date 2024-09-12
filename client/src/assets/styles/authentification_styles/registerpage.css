@@ -79,6 +79,28 @@
   height: 2rem;
 }
 
+.registerPage_toggleSwitch {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+.registerPage_toggleSwitch_respectAll,
+.registerPage_toggleSwitch_isArtist,
+.registerPage_toggleSwitch_legalAge,
+.registerPage_toggleSwitch_respectCondition {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 1.5rem;
+}
+.registerPage_toggleSwitch_respectAll > p,
+.registerPage_toggleSwitch_isArtist > p,
+.registerPage_toggleSwitch_legalAge > p,
+.registerPage_toggleSwitch_respectCondition > p {
+  padding-left: 2rem;
+}
+
 .registerpage_submitButton {
   color: var(--background-color);
   background-color: var(--text-color);

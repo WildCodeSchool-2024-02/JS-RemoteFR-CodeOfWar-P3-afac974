@@ -16,7 +16,7 @@ class UserRepository extends AbstractRepository {
 
   async read(id) {
     const [rows] = await this.database.query(
-      `select id, name, email, is_admin from ${this.table} where id = ?`,
+      `select id, name, email, is_admin, is_artist from ${this.table} where id = ?`,
       [id]
     );
 
@@ -25,7 +25,7 @@ class UserRepository extends AbstractRepository {
 
   async readAll() {
     const [rows] = await this.database.query(
-      `select id, name, email, is_admin from ${this.table}`
+      `select id, name, email, is_admin, is_artist from ${this.table}`
     );
 
     return rows;

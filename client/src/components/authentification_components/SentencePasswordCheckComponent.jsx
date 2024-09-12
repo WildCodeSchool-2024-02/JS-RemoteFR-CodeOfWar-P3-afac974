@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import IconsComponent from "./IconsComponent";
+import IconsComponent from "../IconsComponent";
 
 function SentencePasswordCheckComponent({ password, confirmPassword }) {
   const getSrcConfirmPassword = () => {

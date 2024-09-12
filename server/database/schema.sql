@@ -451,7 +451,8 @@ CREATE TABLE user (
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     hashed_password VARCHAR(255) NOT NULL,
-    is_admin BOOLEAN NOT NULL DEFAULT FALSE
+    is_admin BOOLEAN NOT NULL DEFAULT FALSE,
+    is_artist BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 INSERT INTO
@@ -459,19 +460,29 @@ INSERT INTO
         name,
         email,
         hashed_password,
-        is_admin
+        is_admin,
+        is_artist
     )
 VALUES (
         'Toto',
         'toto@toto.com',
         '$argon2id$v=19$m=19456,t=2,p=1$3r0iBd7F1mxXKywG0CBIiA$FZrP4iI3yc9NTMHckUPrBBlIIsMKFLB0e5JLBk0mlBA',
+        '0',
         '0'
+    ),
+    (
+        'artist-toto',
+        'artist-toto@toto.com',
+        '$argon2id$v=19$m=19456,t=2,p=1$QsrQxPa92oJU4DqsVYQ/BQ$aWTxcIrsvcLHQoCwYn33rwTvdOh0LOHnapORDAt4fI8',
+        '0',
+        '1'
     ),
     (
         'AdminToto',
         'admintoto@toto.com',
         '$argon2id$v=19$m=19456,t=2,p=1$c28oEDU32RPXw0OvW+3dxA$zZM+sPdQQ13bIHwsGFjevWiqnOLizGYq0EHcb4skByw',
-        '1'
+        '1',
+        '0'
     );
 
 CREATE TABLE item (

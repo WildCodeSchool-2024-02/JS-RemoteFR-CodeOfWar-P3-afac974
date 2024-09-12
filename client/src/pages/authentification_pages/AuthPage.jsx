@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import IconsComponent from "../../components/IconsComponent";
-import BackButtonComponent from "../../components/BackButtonComponent";
+import BackButtonComponent from "../../components/authentification_components/BackButtonComponent";
 
 function AuthPage() {
   const { auth, setAuth } = useAuth();

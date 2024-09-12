@@ -27,7 +27,7 @@ const Icons = {
   logo: { src: logo, alt: "VirtuArt logo" },
 };
 
-function IconsComponent({ src, alt, className }) {
+function IconsComponent({ src, alt = "", className = "" }) {
   const IconComponent = Icons[src];
   if (!IconComponent) {
     return null;
@@ -42,13 +42,9 @@ function IconsComponent({ src, alt, className }) {
 }
 
 IconsComponent.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   src: PropTypes.string.isRequired,
   alt: PropTypes.string,
-};
-
-IconsComponent.defaultProps = {
-  alt: "",
-};
+}.isRequired;
 
 export default IconsComponent;

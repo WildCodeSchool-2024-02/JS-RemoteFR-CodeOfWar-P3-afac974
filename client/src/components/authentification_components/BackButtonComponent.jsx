@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import IconsComponent from "./IconsComponent";
+import IconsComponent from "../IconsComponent";
 
 function BackButtonComponent({
   to,
-  classNameLink,
-  classNameIcon,
-  classNameText,
-  src,
-  alt,
+  classNameLink = "backButton_Link",
+  classNameIcon = "backButton_Icon",
+  classNameText = "backButton_Text",
+  src = "leftArrow",
+  alt = "Flèche gauche",
 }) {
   return (
     <Link to={to} className={classNameLink}>
@@ -25,14 +25,6 @@ BackButtonComponent.propTypes = {
   classNameText: PropTypes.string,
   src: PropTypes.string,
   alt: PropTypes.string,
-};
-
-BackButtonComponent.defaultProps = {
-  classNameLink: "backButton_Link",
-  classNameIcon: "backButton_Icon",
-  classNameText: "backButton_Text",
-  src: "leftArrow",
-  alt: "Flèche gauche",
-};
+}.isRequired;
 
 export default BackButtonComponent;

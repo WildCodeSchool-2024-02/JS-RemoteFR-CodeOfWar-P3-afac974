@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 import IconsComponent from "../../components/IconsComponent";
-import BackButtonComponent from "../../components/BackButtonComponent";
+import BackButtonComponent from "../../components/authentification_components/BackButtonComponent";
 
 function LoginPage() {
   const emailRef = useRef();
@@ -80,13 +80,7 @@ function LoginPage() {
         <button className="loginpage_submitButton" type="submit">
           Se connecter
         </button>
-        <BackButtonComponent
-          to="/authentification"
-          classNameLink="loginpage_backButton"
-          classNameIcon="registerpage_backButtonIcon"
-          src="leftArrow"
-          alt="Flèche gauche"
-        />
+        <BackButtonComponent to="/authentification" />
       </form>
     </div>
   );
