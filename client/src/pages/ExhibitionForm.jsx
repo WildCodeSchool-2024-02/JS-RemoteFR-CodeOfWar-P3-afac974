@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData} from "react-router-dom";
 import { useState } from "react";
 
 import ExhibitionComponent from "../components/exhibitionForm/ExhibitionComponent";
@@ -6,8 +6,8 @@ import AddArtworkComponent from "../components/exhibitionForm/AddArtworkComponen
 
 function ExhibitionForm() {
   const { exhibitions, artworks } = useLoaderData();
-
-  const [selectedExhibitionId, setSelectedExhibitionId] = useState(null);
+  const [selectedExhibitionId, setSelectedExhibitionId] = useState("");
+  const [exhibitionArtworks, setExhibitionArtworks] = useState([]);
 
   const handleSelectChange = async (event) => {
     const exhibitionId = event.target.value;
@@ -24,14 +24,22 @@ function ExhibitionForm() {
           </option>
         ))}
       </select>
-      {selectedExhibitionId != null && (
-        <ExhibitionComponent id={selectedExhibitionId} />
+      {selectedExhibitionId && (
+        <ExhibitionComponent 
+        id={selectedExhibitionId}
+        exhibitionArtworks = {exhibitionArtworks}
+        setExhibitionArtworks = {setExhibitionArtworks}
+
+         />
       )}
 
-      {selectedExhibitionId != null && (
+      {selectedExhibitionId && (
         <AddArtworkComponent 
         id={selectedExhibitionId}
-        artworks={artworks} />
+        artworks={artworks}
+        exhibitionArtworks = {exhibitionArtworks}
+        setExhibitionArtworks = {setExhibitionArtworks}
+        />
       )}
     </div>
   );
