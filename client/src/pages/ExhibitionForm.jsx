@@ -29,9 +29,7 @@ function ExhibitionForm() {
       )}
 
       {selectedExhibitionId != null && (
-        <AddArtworkComponent 
-        id={selectedExhibitionId}
-        artworks={artworks} />
+        <AddArtworkComponent id={selectedExhibitionId} artworks={artworks} />
       )}
     </div>
   );

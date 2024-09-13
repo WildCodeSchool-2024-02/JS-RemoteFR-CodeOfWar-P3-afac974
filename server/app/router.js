@@ -43,4 +43,19 @@ router.get("/favorite", favorite.browse);
 router.post("/favorite", favorite.addFavorite);
 router.delete("/favorite/:artworkId/:userId", favorite.destroyFavorite);
 
+// AUTHENTIFICATION
+const userActions = require("./controllers/userActions");
+const authActions = require("./controllers/authActions");
+
+const { hashPassword, verifyToken } = require("./services/auth");
+
+router.get("/users", userActions.browse);
+router.get("/users/:id", userActions.read);
+router.post("/users", hashPassword, userActions.add);
+
+router.post("/login", authActions.login);
+
+// Authentication wall
+router.use(verifyToken);
+
 module.exports = router;
