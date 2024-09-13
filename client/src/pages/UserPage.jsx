@@ -1,6 +1,6 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import "../assets/styles/userpage.css";
-import uploadIcon from "../assets/images/add_image30px.png";
+import IconsComponent from "../components/IconsComponent";
 
 function UserPage() {
   const location = useLocation();
@@ -12,7 +12,11 @@ function UserPage() {
           <div className="title_userpage">
             <h2>BIENVENUE USERNAME!</h2>
             <Link to="/dashboard/add">
-              <img src={uploadIcon} alt="upload icon" />
+              <IconsComponent
+                className="userpage_icon"
+                src="importicon"
+                alt="upload icon"
+              />
             </Link>
           </div>
           <div className="user_options">

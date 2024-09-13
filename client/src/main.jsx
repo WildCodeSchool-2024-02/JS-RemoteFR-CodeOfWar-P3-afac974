@@ -2,17 +2,25 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { getArtistList, getArtworks, getArtwork } from "./services/request";
+import {
+  getArtistList,
+  getArtist,
+  getArtworks,
+  getArtwork,
+  getExhibitions,
+  getArtworksByArtist,
+} from "./services/request";
 
 import App from "./App";
 import Homepage from "./pages/Homepage";
 import ArtworkPage from "./pages/ArtworkPage";
 import ArtworksPage from "./pages/ArtworksPage";
 import ArtistList from "./pages/ArtistList";
-import ArtistsPage from "./pages/ArtistsPage";
-import ExhibitionPage from "./pages/ExhibitionPage";
+import ArtistPage from "./pages/ArtistPage";
+import Exhibition from "./pages/Exhibition";
 import UserPage from "./pages/UserPage";
 import ArtworkForm from "./components/ArtworkForm";
+import ExhibitionForm from "./pages/ExhibitionForm";
 
 const router = createBrowserRouter([
   {
@@ -40,19 +48,38 @@ const router = createBrowserRouter([
         }),
       },
       {
-        path: "/artworksPage",
+        path: "/artworkspage",
         element: <ArtworksPage />,
         loader: async () => ({
           artworks: await getArtworks(),
         }),
       },
       {
-        path: "/artistsPage",
-        element: <ArtistsPage />,
+        path: "/artistpage/:id",
+        element: <ArtistPage />,
+        loader: async ({ params }) => ({
+          artworksbyartist: await getArtworksByArtist(params.id),
+          artist: await getArtist(params.id),
+        }),
       },
       {
-        path: "/exhibitionPage",
-        element: <ExhibitionPage />,
+        path: "/exhibition",
+        element: <Exhibition />,
+        loader: async () => ({
+          exhibitions: await getExhibitions(),
+        }),
+      },
+      {
+        path: "/user",
+        element: <UserPage />,
+      },
+      {
+        path: "/exhibitionForm",
+        element: <ExhibitionForm />,
+        loader: async () => ({
+          exhibitions: await getExhibitions(),
+          artworks: await getArtworks(),
+        }),
       },
       {
         path: "/dashboard",
