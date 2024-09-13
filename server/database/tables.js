@@ -2,7 +2,6 @@
 const ArtistRepository = require("./models/ArtistRepository");
 const ArtworkRepository = require("./models/ArtworkRepository");
 const ExhibitionRepository = require("./models/ExhibitionRepository");
-const ItemRepository = require("./models/ItemRepository");
 const UserRepository = require("./models/UserRepository");
 
 // Create an empty object to hold data repositories for different tables
@@ -16,7 +15,6 @@ const tables = {};
 tables.artist = new ArtistRepository();
 tables.artwork = new ArtworkRepository();
 tables.exhibition = new ExhibitionRepository();
-tables.item = new ItemRepository();
 tables.user = new UserRepository();
 
 /* ************************************************************************* */

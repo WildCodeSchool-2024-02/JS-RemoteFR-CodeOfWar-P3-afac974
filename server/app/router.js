@@ -38,15 +38,10 @@ router.delete(
 router.get("/artists/:id/artworks", artworks.readArtworksByArtist);
 
 // AUTHENTIFICATION
-const itemActions = require("./controllers/itemActions");
 const userActions = require("./controllers/userActions");
 const authActions = require("./controllers/authActions");
 
 const { hashPassword, verifyToken } = require("./services/auth");
-
-router.get("/items", itemActions.browse);
-router.get("/items/:id", itemActions.read);
-router.post("/items", itemActions.add);
 
 router.get("/users", userActions.browse);
 router.get("/users/:id", userActions.read);

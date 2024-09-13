@@ -489,10 +489,3 @@ VALUES (
         '1',
         '0'
     );
-
-CREATE TABLE item (
-    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    title VARCHAR(255) NOT NULL,
-    user_id INT UNSIGNED NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user (id)
-);
