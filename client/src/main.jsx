@@ -70,10 +70,6 @@ const router = createBrowserRouter([
         }),
       },
       {
-        path: "/user",
-        element: <UserPage />,
-      },
-      {
         path: "/exhibitionForm",
         element: <ExhibitionForm />,
         loader: async () => ({
