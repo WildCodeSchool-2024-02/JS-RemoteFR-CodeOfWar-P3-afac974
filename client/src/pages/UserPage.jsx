@@ -1,5 +1,4 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
-import "../assets/styles/userpage.css";
 import uploadIcon from "../assets/images/add_image30px.png";
 
 function UserPage() {
