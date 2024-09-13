@@ -24,6 +24,10 @@ function AddArtworkComponent({id,artworks, setExhibitionArtworks, exhibitionArtw
           "Erreur lors de l'ajout de l'œuvre à l'exposition:",
           error
         );
+        console.error(
+          "Erreur lors de l'ajout de l'œuvre à l'exposition:",
+          error
+        );
       }
     }
   };
