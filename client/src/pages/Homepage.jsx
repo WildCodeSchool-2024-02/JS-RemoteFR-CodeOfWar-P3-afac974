@@ -6,13 +6,14 @@ import CarouselHomepage from "../components/CarouselHomepage";
 
 function Homepage() {
   const { artworks } = useLoaderData();
-  const carouselImg1 = artworks[1];
-  const carouselImg2 = artworks[2];
-  const carouselImg3 = artworks[3];
+  const { exhibitions } = useLoaderData();
+  const { artists } = useLoaderData();
+  console.info(artists);
+
   return (
     <>
       <div className="homePage_nav">
-        <Link to="/artworksPage" className="homePage_navButtons">
+        <Link to="/artworks" className="homePage_navButtons">
           Oeuvres
         </Link>
         <Link to="/artists" className="homePage_navButtons">
@@ -23,7 +24,9 @@ function Homepage() {
         </Link>
       </div>
       <CarouselHomepage
-        carouselArtwork={[carouselImg1, carouselImg2, carouselImg3]}
+        carouselArtwork={artworks}
+        exhibition={exhibitions}
+        artist={artists}
       />
       <h1 className="homePage_temporaryEvent">Evénnements temporaire</h1>
       <p className="homePage_temporaryEvent">Temporairement indisponible</p>
