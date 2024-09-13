@@ -18,14 +18,9 @@ import ArtworksPage from "./pages/ArtworksPage";
 import ArtistList from "./pages/ArtistList";
 import ArtistPage from "./pages/ArtistPage";
 import Exhibition from "./pages/Exhibition";
+import ExhibitionForm from "./pages/ExhibitionForm";
 import UserPage from "./pages/UserPage";
 import ArtworkForm from "./components/ArtworkForm";
-
-// import AuthPage from "./pages/authentification_pages/AuthPage";
-// import LoginPage from "./pages/authentification_pages/LoginPage";
-// import RegisterPage from "./pages/authentification_pages/RegisterPage";
-
-// import { AuthProvider } from "./context/AuthContext";
 
 const router = createBrowserRouter([
   {
@@ -75,8 +70,12 @@ const router = createBrowserRouter([
         }),
       },
       {
-        path: "/user",
-        element: <UserPage />,
+        path: "/exhibitionForm",
+        element: <ExhibitionForm />,
+        loader: async () => ({
+          exhibitions: await getExhibitions(),
+          artworks: await getArtworks(),
+        }),
       },
       {
         path: "/dashboard",
@@ -88,19 +87,6 @@ const router = createBrowserRouter([
           },
         ],
       },
-      // {
-      //   path: "/authentification",
-      //   element: <AuthPage />,
-      //   loader: () => fetch(`${import.meta.env.VITE_API_URL}/items`),
-      // },
-      // {
-      //   path: "login",
-      //   element: <LoginPage />,
-      // },
-      // {
-      //   path: "register",
-      //   element: <RegisterPage />,
-      // },
     ],
   },
 ]);
@@ -108,9 +94,7 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  // <AuthProvider>
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>
-  // </AuthProvider>
 );

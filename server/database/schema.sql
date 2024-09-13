@@ -1,7 +1,5 @@
--- SQLBook: Code
-
 create table artist (
-    id int unsigned primary key auto_increment not null,
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
     biography TEXT,
     pseudo VARCHAR(100),
     firstname VARCHAR(100) NOT NULL,
@@ -113,14 +111,14 @@ VALUES (
     );
 
 create table artwork (
-    id INT unsigned primary key auto_increment not null,
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
     title VARCHAR(100) NOT NULL,
-    image_url VARCHAR(255),
+    image_url VARCHAR(255) NOT NULL,
     description TEXT,
     technique VARCHAR(100),
     measurement VARCHAR(100),
-    date DATE,
-    artist_id INT unsigned NOT NULL,
+    date DATE NOT NULL,
+    artist_id INT UNSIGNED NOT NULL,
     FOREIGN KEY (artist_id) REFERENCES artist (id)
 );
 
@@ -405,8 +403,8 @@ VALUES (
         10
     );
 
-create table exhibition (
-    id INT unsigned primary key auto_increment not null,
+CREATE TABLE exhibition (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
     name VARCHAR(100) NOT NULL,
     description TEXT,
     type ENUM('PERMANENT', 'TEMPORARY'),
@@ -414,16 +412,34 @@ create table exhibition (
     date_end DATE NOT NULL
 );
 
-INSERT INTO exhibition (name, description, type, date_begin, date_end) 
-VALUES
-('VirtuArt', ' Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor laboriosam quae sapiente delectus tempora dignissimos molestias ipsam! Recusandae enim velit, ducimus aliquid ut voluptates nemo repudiandae, deleniti sequi harum eius! ', 'PERMANENT', '2024-09-04', '2025-09-04'),
-('VirtuArt salon temporaire', ' Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor laborum eius! ', 'PERMANENT', '2011-11-11', '2011-12-12');
+INSERT INTO
+    exhibition (
+        name,
+        description,
+        type,
+        date_begin,
+        date_end
+    )
+VALUES (
+        'VirtuArt PERMANENT',
+        ' LOREM ',
+        'PERMANENT',
+        '2024-09-04',
+        '2025-09-04'
+    ),
+    (
+        'VirtuArt TEMPORARY',
+        ' LOREM ',
+        'TEMPORARY',
+        '2023-12-08',
+        '2024-10-02'
+    );
 
 CREATE Table artwork_exhibition (
-    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT null,
-    artwork_id INT unsigned NOT NULL,
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    artwork_id INT UNSIGNED NOT NULL,
     FOREIGN KEY (artwork_id) REFERENCES artwork (id),
-    exhibition_id INT unsigned NOT NULL,
+    exhibition_id INT UNSIGNED NOT NULL,
     FOREIGN KEY (exhibition_id) REFERENCES exhibition (id)
 );
 
@@ -432,3 +448,44 @@ INSERT INTO
 VALUES ("1", "1"),
     ("2", "1"),
     ("3", "1");
+
+-- AUTHENTICATION --
+
+CREATE TABLE user (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    hashed_password VARCHAR(255) NOT NULL,
+    is_admin BOOLEAN NOT NULL DEFAULT FALSE,
+    is_artist BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+INSERT INTO
+    user (
+        name,
+        email,
+        hashed_password,
+        is_admin,
+        is_artist
+    )
+VALUES (
+        'Toto',
+        'toto@toto.com',
+        '$argon2id$v=19$m=19456,t=2,p=1$3r0iBd7F1mxXKywG0CBIiA$FZrP4iI3yc9NTMHckUPrBBlIIsMKFLB0e5JLBk0mlBA',
+        '0',
+        '0'
+    ),
+    (
+        'artist-toto',
+        'artist-toto@toto.com',
+        '$argon2id$v=19$m=19456,t=2,p=1$QsrQxPa92oJU4DqsVYQ/BQ$aWTxcIrsvcLHQoCwYn33rwTvdOh0LOHnapORDAt4fI8',
+        '0',
+        '1'
+    ),
+    (
+        'AdminToto',
+        'admintoto@toto.com',
+        '$argon2id$v=19$m=19456,t=2,p=1$c28oEDU32RPXw0OvW+3dxA$zZM+sPdQQ13bIHwsGFjevWiqnOLizGYq0EHcb4skByw',
+        '1',
+        '0'
+    );
