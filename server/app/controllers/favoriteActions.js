@@ -59,9 +59,9 @@ const readFavorite = async (req, res, next) => {
 };
 
 const addFavorite = async (req, res, next) => {
-  const artworkFavorite = req.body;
+  const { artworkId, userId } = req.body;
   try {
-    const result = await tables.favorite.createFavoriteArtwork(artworkFavorite);
+    const result = await tables.favorite.createFavorite(artworkId, userId);
     res
       .status(201)
       .send(
@@ -75,7 +75,7 @@ const addFavorite = async (req, res, next) => {
 const destroyFavorite = async (req, res, next) => {
   const { artworkId, userId } = req.params;
   try {
-    const affectedRows = await tables.favorite.deleteFavoriteArtwork(
+    const affectedRows = await tables.favorite.deleteFavorite(
       artworkId,
       userId
     );

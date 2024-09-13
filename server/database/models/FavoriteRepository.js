@@ -12,16 +12,16 @@ class FavoriteRepository extends AbstractRepository {
 
   async read(id) {
     const [rows] = await this.database.query(
-      `select * from ${this.table} WHERE artwork.id = ? `,
+      `select * from ${this.table} INNER JOIN artwork ON favorite.artwork_id = artwork.id INNER JOIN user ON favorite.user_id = user.id WHERE user.id = ? `,
       [id]
     );
     return rows;
   }
 
-  async createFavorite(artworkFavorite) {
+  async createFavorite(artworkId, userId) {
     const [result] = await this.database.query(
       `INSERT INTO favorite (artwork_id, user_id) VALUES(?, ?)`,
-      [artworkFavorite.artwork_id, artworkFavorite.user_id]
+      [artworkId, userId]
     );
     return result.insertId;
   }

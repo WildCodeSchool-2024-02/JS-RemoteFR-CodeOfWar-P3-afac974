@@ -40,7 +40,7 @@ router.get("/artists/:id/artworks", artworks.readArtworksByArtist);
 
 // FAVORITES
 router.get("/favorite", favorite.browse);
-router.post("/favorite", favorite.add);
-router.delete("/favorite/:id", favorite.destroy);
+router.post("/favorite", favorite.addFavorite);
+router.delete("/favorite/:artworkId/:userId", favorite.destroyFavorite);
 
 module.exports = router;

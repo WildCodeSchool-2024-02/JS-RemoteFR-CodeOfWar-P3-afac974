@@ -20,7 +20,7 @@ import ArtistPage from "./pages/ArtistPage";
 import Exhibition from "./pages/Exhibition";
 import UserPage from "./pages/UserPage";
 import ArtworkForm from "./components/ArtworkForm";
-import Favorites from "./pages/Favorites";
+import Favorite from "./pages/Favorite";
 
 const router = createBrowserRouter([
   {
@@ -85,7 +85,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/favoris",
-        element: <Favorites />,
+        element: <Favorite />,
         loader: async ({ params }) => ({
           artwork: await getArtwork(params.id),
         }),

@@ -1,7 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 import "../assets/styles/favorites.css";
 
-function Favorites() {
+function Favorite() {
   const { artwork } = useLoaderData();
   return (
     <>
@@ -25,4 +25,4 @@ function Favorites() {
     </>
   );
 }
-export default Favorites;
+export default Favorite;
