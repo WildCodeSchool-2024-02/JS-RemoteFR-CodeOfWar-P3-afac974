@@ -1,4 +1,4 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 import ArtworkComponent from "../components/ArtworkComponent";
 import "../assets/styles/homepage.css";
@@ -8,21 +8,9 @@ function Homepage() {
   const { artworks } = useLoaderData();
   const { exhibitions } = useLoaderData();
   const { artists } = useLoaderData();
-  console.info(artists);
 
   return (
     <>
-      <div className="homePage_nav">
-        <Link to="/artworks" className="homePage_navButtons">
-          Oeuvres
-        </Link>
-        <Link to="/artists" className="homePage_navButtons">
-          Artistes
-        </Link>
-        <Link to="/exhibition" className="homePage_navButtons">
-          Expositions
-        </Link>
-      </div>
       <CarouselHomepage
         carouselArtwork={artworks}
         exhibition={exhibitions}

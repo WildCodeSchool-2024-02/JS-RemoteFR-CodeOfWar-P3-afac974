@@ -1,25 +1,29 @@
-/* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "../assets/styles/homepage.css";
 
 function CarouselHomepage({ carouselArtwork, exhibition, artist }) {
   const artistLength = Object.keys(artist).length;
+  const artworkLength = Object.keys(carouselArtwork).length;
+  const exhibitionLength = Object.keys(exhibition).length;
 
   const randomArtist = Math.ceil(Math.random() * artistLength - 1);
-  console.info(randomArtist);
+  const randomArtwork = Math.ceil(Math.random() * artworkLength - 1);
+  const randomExhibition = Math.ceil(Math.random() * exhibitionLength - 1);
 
   return (
     <div className="horizontal_scroll_carousel">
       <figure>
-        <img
-          src={`${import.meta.env.VITE_API_URL}${carouselArtwork[0].image_url}`}
-          alt={carouselArtwork[0].title}
-        />
+        <Link to="/exhibition">
+          <img
+            src={`${import.meta.env.VITE_API_URL}${carouselArtwork[0].image_url}`}
+            alt={carouselArtwork[0].title}
+          />
+        </Link>
 
         <figcaption>
-          <h2>{exhibition[0].name}</h2>
+          <h2>{exhibition[randomExhibition].name}</h2>
           <p>
             {exhibition[0].date_begin.substring(0, 7)} /{" "}
             {exhibition[0].date_end.substring(0, 7)}
@@ -29,10 +33,12 @@ function CarouselHomepage({ carouselArtwork, exhibition, artist }) {
       </figure>
 
       <figure>
-        <img
-          src={`${import.meta.env.VITE_API_URL}${carouselArtwork[1].image_url}`}
-          alt={carouselArtwork[1].title}
-        />
+        <Link to="/artists">
+          <img
+            src={`${import.meta.env.VITE_API_URL}${carouselArtwork[1].image_url}`}
+            alt={carouselArtwork[1].title}
+          />
+        </Link>
 
         <figcaption>
           <h2>{artist[randomArtist].pseudo}</h2>
@@ -41,13 +47,15 @@ function CarouselHomepage({ carouselArtwork, exhibition, artist }) {
       </figure>
 
       <figure>
-        <img
-          src={`${import.meta.env.VITE_API_URL}${carouselArtwork[2].image_url}`}
-          alt={carouselArtwork[2].title}
-        />
+        <Link to="/artworks">
+          <img
+            src={`${import.meta.env.VITE_API_URL}${carouselArtwork[2].image_url}`}
+            alt={carouselArtwork[2].title}
+          />
+        </Link>
 
         <figcaption>
-          <h2>{carouselArtwork[2].title}</h2>
+          <h2>{carouselArtwork[randomArtwork].title}</h2>
           <p>Savoir Plus...</p>
         </figcaption>
       </figure>
@@ -56,10 +64,24 @@ function CarouselHomepage({ carouselArtwork, exhibition, artist }) {
 }
 
 CarouselHomepage.propTypes = {
-  carouselArtwork: PropTypes.shape({
-    title: PropTypes.string,
-    image_url: PropTypes.string,
-  }).isRequired,
+  carouselArtwork: PropTypes.arrayOf(
+    PropTypes.shape({
+      image_url: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  exhibition: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      date_begin: PropTypes.string.isRequired,
+      date_end: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  artist: PropTypes.arrayOf(
+    PropTypes.shape({
+      pseudo: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default CarouselHomepage;

@@ -91,6 +91,7 @@ img {
 
 .horizontal_scroll_carousel {
   display: grid;
+  max-height: max-content;
   gap: 0.5rem;
   grid-auto-flow: column;
   grid-auto-columns: 80vw;
@@ -106,7 +107,7 @@ img {
 
   > :nth-child(odd) {
     background: hsl(0 0% 100% / 0.15);
-    padding: 2rem;
+    padding: 3rem;
   }
 }
 
@@ -123,7 +124,7 @@ img {
 .horizontal_scroll_carousel > figure {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 70% 30%;
+  grid-template-rows: 33.33% 33.33% 33.33%;
 }
 
 .horizontal_scroll_carousel > figure > figcaption {
