@@ -1,22 +1,29 @@
 import { PropTypes } from "prop-types";
 import { useState } from "react";
 
-import { postExhibitionArtwork } from "../../services/request";
+import { postExhibitionArtwork, getExhibitionArtwork } from "../../services/request";
 
-function AddArtworkComponent({ id, artworks }) {
-  const [selectedArtworkId, setSelectedArtworkID] = useState(null);
+function AddArtworkComponent({id,artworks, setExhibitionArtworks, exhibitionArtworks} ) {
+  const [selectedArtworkId, setSelectedArtworkID] = useState("");
   const handleSelectChange = async (event) => {
-    const exhibitionId = event.target.value;
-    setSelectedArtworkID(exhibitionId);
+    const artworkId = event.target.value;
+    setSelectedArtworkID(artworkId);
   };
 
   const handleAdd = async () => {
     if (selectedArtworkId) {
       try {
         await postExhibitionArtwork(id, selectedArtworkId);
-
-        setSelectedArtworkID(null);
+  
+        const updatedArtworks = await getExhibitionArtwork(id);
+        setExhibitionArtworks(updatedArtworks);
+  
+        setSelectedArtworkID("");
       } catch (error) {
+        console.error(
+          "Erreur lors de l'ajout de l'œuvre à l'exposition:",
+          error
+        );
         console.error(
           "Erreur lors de l'ajout de l'œuvre à l'exposition:",
           error
@@ -24,25 +31,29 @@ function AddArtworkComponent({ id, artworks }) {
       }
     }
   };
+  const availableArtworks = artworks.filter(
+    (artwork) => !exhibitionArtworks.some(
+      (exhibitionArtwork) => exhibitionArtwork.id === artwork.id
+    )
+  );
   return (
     <>
       <select value={selectedArtworkId} onChange={handleSelectChange}>
         <option value="">Sélectionner une oeuvres</option>
-        {artworks.map((artwork) => (
+        {availableArtworks.map((artwork) => (
           <option key={artwork.id} value={artwork.id}>
             {artwork.title}
           </option>
         ))}
       </select>
       <button type="button" onClick={handleAdd} disabled={!selectedArtworkId}>
-        {" "}
-        Ajouter{" "}
+        Ajouter
       </button>
     </>
   );
 }
 
 AddArtworkComponent.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number
 }.isRequired;
 export default AddArtworkComponent;

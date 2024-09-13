@@ -72,7 +72,7 @@ export function getExhibitionArtwork(id) {
 export function deleteExhibitionArtwork(exhibitionId, artworkId) {
   return axios
     .delete(
-      `${import.meta.env.VITE_API_URL}/api//exhibition/${exhibitionId}/artworks/${artworkId}`
+      `${import.meta.env.VITE_API_URL}/api/exhibition/${exhibitionId}/artworks/${artworkId}`
     )
     .then((reponse) => reponse.data)
     .catch((error) => {
