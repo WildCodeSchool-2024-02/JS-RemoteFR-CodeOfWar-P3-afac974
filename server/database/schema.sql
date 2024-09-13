@@ -136,7 +136,7 @@ INSERT INTO
     )
 VALUES (
         'Éclosion',
-        '/assets/images/PicturesTest/ImageTest1.jpg',
+        '/assets/images/PicturesTest/Eclosion.webp',
         'Une peinture abstraite représentant une explosion de couleurs vives.',
         NULL,
         NULL,
@@ -145,7 +145,7 @@ VALUES (
     ),
     (
         'Lumière dans l\'obscurité',
-        '/assets/images/PicturesTest/ImageTest2.jpg',
+        '/assets/images/PicturesTest/Lumière_dans_Obscurité.webp',
         'Un jeu de lumières et de contrastes dans une scène mystérieuse.',
         NULL,
         NULL,
@@ -154,7 +154,7 @@ VALUES (
     ),
     (
         'Odyssée',
-        '/assets/images/PicturesTest/ImageTest3.jpg',
+        '/assets/images/PicturesTest/Odyssée.webp',
         'Une interprétation colorée de l\'Odyssée d\'Homère.',
         NULL,
         NULL,
@@ -163,7 +163,7 @@ VALUES (
     ),
     (
         'Métamorphose',
-        '/assets/images/PicturesTest/ImageTest1.jpg',
+        '/assets/images/PicturesTest/Métamorphose.webp',
         'Une sculpture en métal représentant la transformation d\'une chenille en papillon.',
         NULL,
         NULL,
@@ -172,7 +172,7 @@ VALUES (
     ),
     (
         'Fusion',
-        '/assets/images/PicturesTest/ImageTest2.jpg',
+        '/assets/images/PicturesTest/Fusion.webp',
         'Deux formes métalliques fusionnant pour n\'en former qu\'une.',
         NULL,
         NULL,
@@ -181,7 +181,7 @@ VALUES (
     ),
     (
         'Équilibre',
-        '/assets/images/PicturesTest/ImageTest3.jpg',
+        '/assets/images/PicturesTest/Equilibre.webp',
         'Une sculpture explorant le concept de l\'équilibre dans la nature.',
         NULL,
         NULL,
@@ -190,7 +190,7 @@ VALUES (
     ),
     (
         'Vie Urbaine',
-        '/assets/images/PicturesTest/ImageTest1.jpg',
+        '/assets/images/PicturesTest/Vie_Urbaine.webp',
         'Un instantané de la vie urbaine à Milan.',
         NULL,
         NULL,
@@ -199,7 +199,7 @@ VALUES (
     ),
     (
         'Passages',
-        '/assets/images/PicturesTest/ImageTest2.jpg',
+        '/assets/images/PicturesTest/Passages.webp',
         'Une série de photographies capturant des passants dans les rues de Rome.',
         NULL,
         NULL,
@@ -208,7 +208,7 @@ VALUES (
     ),
     (
         'Reflets',
-        '/assets/images/PicturesTest/ImageTest3.jpg',
+        '/assets/images/PicturesTest/Reflets.webp',
         'Des reflets de la ville sur des surfaces vitrées.',
         NULL,
         NULL,
@@ -217,7 +217,7 @@ VALUES (
     ),
     (
         'Algorithme de Vie',
-        '/assets/images/PicturesTest/ImageTest1.jpg',
+        '/assets/images/PicturesTest/Algorithme.webp',
         'Une œuvre générée par un algorithme représentant des motifs en constante évolution.',
         NULL,
         NULL,
@@ -226,7 +226,7 @@ VALUES (
     ),
     (
         'Fractale',
-        '/assets/images/PicturesTest/ImageTest2.jpg',
+        '/assets/images/PicturesTest/Fractale.webp',
         'Une série d\'images fractales aux couleurs vibrantes.',
         NULL,
         NULL,
@@ -235,7 +235,7 @@ VALUES (
     ),
     (
         'Chaos Organisé',
-        '/assets/images/PicturesTest/ImageTest1.jpg',
+        '/assets/images/PicturesTest/Chaos_Organisé.webp',
         'Une représentation visuelle du chaos ordonné.',
         NULL,
         NULL,
@@ -244,7 +244,7 @@ VALUES (
     ),
     (
         'Vase Organique',
-        '/assets/images/PicturesTest/ImageTest2.jpg',
+        '/assets/images/PicturesTest/Vase_Organique.webp',
         'Un vase céramique aux formes organiques et naturelles.',
         NULL,
         NULL,
@@ -253,7 +253,7 @@ VALUES (
     ),
     (
         'Terre et Mer',
-        '/assets/images/PicturesTest/ImageTest3.jpg',
+        '/assets/images/PicturesTest/Terre_et_Mer.webp',
         'Une sculpture céramique inspirée des éléments naturels.',
         NULL,
         NULL,
@@ -262,7 +262,7 @@ VALUES (
     ),
     (
         'Fusion Minérale',
-        '/assets/images/PicturesTest/ImageTest1.jpg',
+        '/assets/images/PicturesTest/Fusion_Minérale.webp',
         'Un assemblage céramique rappelant les formations minérales.',
         NULL,
         NULL,
@@ -271,7 +271,7 @@ VALUES (
     ),
     (
         'Lumières Réactives',
-        '/assets/images/PicturesTest/ImageTest2.jpg',
+        '/assets/images/PicturesTest/Lumières_Réactives.webp',
         'Installation où la lumière réagit aux mouvements des spectateurs.',
         NULL,
         NULL,
@@ -280,7 +280,7 @@ VALUES (
     ),
     (
         'Écho de Lumière',
-        '/assets/images/PicturesTest/ImageTest1.jpg',
+        '/assets/images/PicturesTest/Douce_Mélancolie.webp',
         'Une installation jouant avec les reflets lumineux en réponse aux sons.',
         NULL,
         NULL,
@@ -289,7 +289,7 @@ VALUES (
     ),
     (
         'Connexion',
-        '/assets/images/PicturesTest/ImageTest2.jpg',
+        '/assets/images/PicturesTest/Connexion.webp',
         'Installation interactive représentant la connexion entre humains et machines.',
         NULL,
         NULL,
@@ -298,7 +298,7 @@ VALUES (
     ),
     (
         'Harmonie',
-        '/assets/images/PicturesTest/ImageTest3.jpg',
+        '/assets/images/PicturesTest/Harmonie.webp',
         'Une œuvre numérique capturant l\'harmonie dans la nature et la culture.',
         NULL,
         NULL,
@@ -307,7 +307,7 @@ VALUES (
     ),
     (
         'Esprit Ancien',
-        '/assets/images/PicturesTest/ImageTest1.jpg',
+        '/assets/images/PicturesTest/Esprit_Ancien.webp',
         'Une représentation moderne des anciens esprits de la nature.',
         NULL,
         NULL,
@@ -316,7 +316,7 @@ VALUES (
     ),
     (
         'Nouveau Souffle',
-        '/assets/images/PicturesTest/ImageTest2.jpg',
+        '/assets/images/PicturesTest/Nouveau_Souffle.webp',
         'Une œuvre représentant une nouvelle interprétation des motifs traditionnels.',
         NULL,
         NULL,
@@ -325,7 +325,7 @@ VALUES (
     ),
     (
         'Révolution Numérique',
-        '/assets/images/PicturesTest/ImageTest3.jpg',
+        '/assets/images/PicturesTest/Révolution_Numérique.webp',
         'Un collage numérique explorant le thème de la révolution technologique.',
         NULL,
         NULL,
@@ -334,7 +334,7 @@ VALUES (
     ),
     (
         'Fragments Urbains',
-        '/assets/images/PicturesTest/ImageTest1.jpg',
+        '/assets/images/PicturesTest/Fragments_Urbains.webp',
         'Un assemblage de fragments visuels de la vie urbaine moderne.',
         NULL,
         NULL,
@@ -343,7 +343,7 @@ VALUES (
     ),
     (
         'Mémoire Digitale',
-        '/assets/images/PicturesTest/ImageTest2.jpg',
+        '/assets/images/PicturesTest/Mémoire_Digitale.webp',
         'Un collage explorant la notion de mémoire à l\'ère numérique.',
         NULL,
         NULL,
@@ -352,7 +352,7 @@ VALUES (
     ),
     (
         'Fleurs de Soie',
-        '/assets/images/PicturesTest/ImageTest3.jpg',
+        '/assets/images/PicturesTest/Fleurs_de_Soie.webp',
         'Un assemblage de fleurs en soie délicates et colorées.',
         NULL,
         NULL,
@@ -361,7 +361,7 @@ VALUES (
     ),
     (
         'Forêt de Tissus',
-        '/assets/images/PicturesTest/ImageTest1.jpg',
+        '/assets/images/PicturesTest/Forêt_de_Tissus.webp',
         'Une œuvre textile représentant une forêt enchantée.',
         NULL,
         NULL,
@@ -370,7 +370,7 @@ VALUES (
     ),
     (
         'Ondulations',
-        '/assets/images/PicturesTest/ImageTest2.jpg',
+        '/assets/images/PicturesTest/Ondulations.webp',
         'Des vagues de tissu créant une sensation de mouvement.',
         NULL,
         NULL,
@@ -379,7 +379,7 @@ VALUES (
     ),
     (
         'Regards Perdus',
-        '/assets/images/PicturesTest/ImageTest1.jpg',
+        '/assets/images/PicturesTest/Regards_Perdus.webp',
         'Un portrait capturant un regard pensif et perdu.',
         NULL,
         NULL,
@@ -388,7 +388,7 @@ VALUES (
     ),
     (
         'Douce Mélancolie',
-        '/assets/images/PicturesTest/ImageTest2.jpg',
+        '/assets/images/PicturesTest/Douce_Mélancolie.webp',
         'Un portrait exprimant une douce mélancolie.',
         NULL,
         NULL,
@@ -397,7 +397,7 @@ VALUES (
     ),
     (
         'Joie Éphémère',
-        '/assets/images/PicturesTest/ImageTest3.jpg',
+        '/assets/images/PicturesTest/Joie_Ephémère.webp',
         'Un portrait où la joie est capturée dans un instant fugace.',
         NULL,
         NULL,
