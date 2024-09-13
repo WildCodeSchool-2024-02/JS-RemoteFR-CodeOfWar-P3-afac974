@@ -3,8 +3,7 @@ import { useState } from "react";
 
 import { postExhibitionArtwork } from "../../services/request";
 
-function AddArtworkComponent({id,artworks} ) {
-
+function AddArtworkComponent({ id, artworks }) {
   const [selectedArtworkId, setSelectedArtworkID] = useState(null);
   const handleSelectChange = async (event) => {
     const exhibitionId = event.target.value;
@@ -18,7 +17,10 @@ function AddArtworkComponent({id,artworks} ) {
 
         setSelectedArtworkID(null);
       } catch (error) {
-        console.error("Erreur lors de l'ajout de l'œuvre à l'exposition:", error);
+        console.error(
+          "Erreur lors de l'ajout de l'œuvre à l'exposition:",
+          error
+        );
       }
     }
   };
