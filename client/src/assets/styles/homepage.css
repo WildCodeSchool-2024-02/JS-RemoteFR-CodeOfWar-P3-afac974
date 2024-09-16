@@ -63,11 +63,6 @@
   justify-content: center;
 }
 
-img {
-  display: block;
-  max-width: 100%;
-}
-
 .homePage_artwork_container {
   padding-inline: 1rem;
   display: grid;
@@ -91,7 +86,6 @@ img {
 
 .horizontal_scroll_carousel {
   display: grid;
-  max-height: max-content;
   gap: 0.5rem;
   grid-auto-flow: column;
   grid-auto-columns: 80vw;
@@ -112,10 +106,12 @@ img {
 }
 
 .horizontal_scroll_carousel img {
+  max-width: 100%;
   display: block;
-  margin-left: auto;
+  margin: 0 auto;
+  /* margin-left: auto;
   margin-right: auto;
-  height: auto;
+  height: auto; */
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -129,6 +125,7 @@ img {
 
 .horizontal_scroll_carousel > figure > figcaption {
   background-color: black;
+  padding-inline: 1rem;
   color: rgb(245, 245, 245);
   text-align: center;
   align-content: center;
