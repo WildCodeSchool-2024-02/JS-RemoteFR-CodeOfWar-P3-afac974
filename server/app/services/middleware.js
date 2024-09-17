@@ -20,4 +20,4 @@ const uploadImg = (req, res, next) => {
   return upload.single("image")(req, res, next);
 };
 
-export default uploadImg;
+module.exports = { uploadImg };
