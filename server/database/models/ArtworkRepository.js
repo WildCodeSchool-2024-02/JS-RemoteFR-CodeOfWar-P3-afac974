@@ -22,14 +22,13 @@ class ArtworkRepository extends AbstractRepository {
 
   async create(artwork) {
     const [result] = await this.database.query(
-      `INSERT INTO artwork (title,image_url, description, technique, measurement, date, artist_id) VALUES(?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO artwork (title,image_url, description, technique, measurement, date, artist_id) VALUES(?, ?, ?, ?, ?, CURDATE(), ?)`,
       [
         artwork.title,
         artwork.image_url,
         artwork.description,
         artwork.technique,
         artwork.measurement,
-        artwork.date,
         artwork.artist_id,
       ]
     );

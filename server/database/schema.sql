@@ -113,12 +113,12 @@ VALUES (
 create table artwork (
     id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
     title VARCHAR(100) NOT NULL,
-    image_url VARCHAR(255) NOT NULL,
+    image_url VARCHAR(255) DEFAULT "/default.png",
     description TEXT,
     technique VARCHAR(100),
     measurement VARCHAR(100),
-    date DATE NOT NULL,
-    artist_id INT UNSIGNED NOT NULL,
+    date DATE,
+    artist_id INT unsigned,
     FOREIGN KEY (artist_id) REFERENCES artist (id)
 );
 
