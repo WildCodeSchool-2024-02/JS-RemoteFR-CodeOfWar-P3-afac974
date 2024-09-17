@@ -215,7 +215,7 @@ VALUES (
     ),
     (
         'Algorithme de Vie',
-        '/assets/images/PicturesTest/Algorithme.webp',
+        '/assets/images/PicturesTest/Algorithme_de_Vie.webp',
         'Une œuvre générée par un algorithme représentant des motifs en constante évolution.',
         NULL,
         NULL,
