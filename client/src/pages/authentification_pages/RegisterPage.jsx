@@ -1,11 +1,10 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-// import PasswordInputComponent from "../../components/authentification_components/PasswordInputComponent";
-// import ConfirmPasswordInputComponent from "../../components/authentification_components/ConfirmPasswordInputComponent";
-import BackButtonComponent from "../../components/authentification_components/BackButtonComponent";
-import ToggleSwitchComponent from "../../components/authentification_components/ToggleSwitchComponent";
 import IconsComponent from "../../components/IconsComponent";
+import BackButtonComponent from "../../components/authentification_components/BackButtonComponent";
+// import ToggleSwitchComponent from "../../components/authentification_components/ToggleSwitchComponent";
+import SentencePasswordCheckComponent from "../../components/authentification_components/SentencePasswordCheckComponent";
 
 function RegisterPage() {
   const nameRef = useRef();
@@ -14,7 +13,7 @@ function RegisterPage() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
-  // const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
 
   const handlePasswordChange = (event) => setPassword(event.target.value);
@@ -25,15 +24,18 @@ function RegisterPage() {
     event.preventDefault();
     if (password === confirmPassword) {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/users`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: nameRef.current.value,
-            email: emailRef.current.value,
-            password,
-          }),
-        });
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/users`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: nameRef.current.value,
+              email: emailRef.current.value,
+              password,
+            }),
+          }
+        );
 
         if (response.status === 201) {
           navigate("/login");
@@ -68,6 +70,7 @@ function RegisterPage() {
             required
           />
         </div>
+
         <div className="registerpage_inputIcon">
           <input
             className="registerpage_input registerpage_password"
@@ -104,44 +107,45 @@ function RegisterPage() {
             {`Longueur du mot de passe: ${password.length} >= 8`}
           </div>
         </div>
+
         <div className="registerpage_inputIcon">
           <input
             className="registerpage_input registerpage_passwordConfirm"
-            type="password"
+            type={showConfirmPassword ? "text" : "password"}
             placeholder="Confirmer mot de passe"
             value={confirmPassword}
             onChange={handleConfirmPasswordChange}
             required
-          />{" "}
+          />
           <span
             className="registerpage_showPassword"
-            onClick={() => setShowPassword(!showPassword)}
+            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             role="button"
             tabIndex={0}
             onKeyDown={(event) =>
-              event.key === " " && setShowPassword(!showPassword)
+              event.key === " " && setShowConfirmPassword(!showConfirmPassword)
             }
           >
             <IconsComponent
-              className="registerpage_showPasswordIcon"
-              src={showPassword ? "eyeHide" : "eyeShow"}
+              className="registerpage_showPasswordConfirmIcon"
+              src={showConfirmPassword ? "eyeHide" : "eyeShow"}
               alt={
-                showPassword
+                showConfirmPassword
                   ? "Cacher le mot de passe"
                   : "Afficher le mot de passe"
               }
             />
           </span>
-          <div className="registerpage_passwordCondition">
-            <IconsComponent
+          <div className="registerpage_passwordConfirmCondition ">
+            <SentencePasswordCheckComponent
               className="registerpage_passwordConditionIcons"
-              src={password.length >= 8 ? "check" : "cross"}
-              alt={`Longueur du mot de passe: ${password.length} >= 8`}
-            />{" "}
+              password={password}
+              confirmPassword={confirmPassword}
+            />
           </div>
         </div>
         <div className="registerPage_toggleSwitch">
-          <div className="registerPage_toggleSwitch_respectAll">
+          {/* <div className="registerPage_toggleSwitch_respectAll">
             <ToggleSwitchComponent idRef="1" />
             <p>
               Veuillez respecter les conditions du site, les règles de bonne
@@ -163,7 +167,7 @@ function RegisterPage() {
               Veuillez confirmer que vous acceptez les conditions de publication
               et que vous respectez la politique du site.
             </p>
-          </div>
+          </div> */}
         </div>
         <button className="registerpage_submitButton" type="submit">
           S'inscrire

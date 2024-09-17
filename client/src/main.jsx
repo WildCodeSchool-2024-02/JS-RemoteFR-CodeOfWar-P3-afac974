@@ -20,9 +20,9 @@ import ArtworksPage from "./pages/ArtworksPage";
 import ArtistList from "./pages/ArtistList";
 import ArtistPage from "./pages/ArtistPage";
 import Exhibition from "./pages/Exhibition";
+import ExhibitionForm from "./pages/ExhibitionForm";
 import UserPage from "./pages/UserPage";
 import ArtworkForm from "./components/ArtworkForm";
-import ExhibitionForm from "./pages/ExhibitionForm";
 import AuthPage from "./pages/authentification_pages/AuthPage";
 import LoginPage from "./pages/authentification_pages/LoginPage";
 import RegisterPage from "./pages/authentification_pages/RegisterPage";
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
       {
         path: "/authentification",
         element: <AuthPage />,
-        loader: () => fetch(`${import.meta.env.VITE_API_URL}/items`),
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/users`),
       },
       {
         path: "login",
