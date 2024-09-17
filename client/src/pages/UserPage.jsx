@@ -1,5 +1,4 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
-import "../assets/styles/userpage.css";
 import IconsComponent from "../components/IconsComponent";
 
 function UserPage() {

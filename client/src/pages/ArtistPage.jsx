@@ -1,8 +1,7 @@
 import { useLoaderData, Link } from "react-router-dom";
-import "../assets/styles/artistprofile.css";
 
 function ArtistPage() {
-  const { artist, artworksbyartist } = useLoaderData(); // Récupérer l'artiste et les œuvres associées
+  const { artist, artworksbyartist } = useLoaderData();
 
   return (
     <>

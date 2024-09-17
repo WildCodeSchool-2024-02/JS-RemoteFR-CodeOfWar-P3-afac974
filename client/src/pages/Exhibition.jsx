@@ -1,6 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
 import ExhibitionComponent from "../components/ExhibitionComponent";
-import "../assets/styles/exhibition.css";
 
 function Exhibition() {
   const exhibitions = useLoaderData();
