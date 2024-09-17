@@ -26,6 +26,8 @@ import ArtworkForm from "./components/ArtworkForm";
 import AuthPage from "./pages/authentification_pages/AuthPage";
 import LoginPage from "./pages/authentification_pages/LoginPage";
 import RegisterPage from "./pages/authentification_pages/RegisterPage";
+import Favorite from "./pages/Favorite";
+
 
 const router = createBrowserRouter([
   {
@@ -108,6 +110,13 @@ const router = createBrowserRouter([
             element: <ArtworkForm />,
           },
         ],
+      },
+      {
+        path: "/favoris",
+        element: <Favorite />,
+        loader: async ({ params }) => ({
+          artwork: await getArtwork(params.id),
+        }),
       },
     ],
   },
