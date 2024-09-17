@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { postloginUser } from "../../services/request";
 import { useAuth } from "../../context/AuthContext";
 
 import IconsComponent from "../../components/IconsComponent";
@@ -8,7 +8,7 @@ import BackButtonComponent from "../../components/authentification_components/Ba
 
 function LoginPage() {
   const emailRef = useRef();
-  const passwordRef = useRef();
+  const hashedPasswordRef = useRef();
   const [showPassword, setShowPassword] = useState(false);
   const { setAuth } = useAuth();
   const navigate = useNavigate();
@@ -16,24 +16,16 @@ function LoginPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/login`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email: emailRef.current.value,
-            password: passwordRef.current.value,
-          }),
-        }
-      );
+      const res = await postloginUser({
+        email: emailRef.current.value,
+        password: hashedPasswordRef.current.value,
+      });
 
-      if (response.status === 200) {
-        const auth = await response.json();
-        setAuth(auth);
+      if (res.status === 200) {
+        setAuth(res.data);
         navigate("/authentification");
       } else {
-        console.info(response);
+        console.info(res);
       }
     } catch (err) {
       console.error(err);
@@ -55,7 +47,7 @@ function LoginPage() {
           <div className="loginpage_passwordContainer">
             <input
               className="loginpage_input"
-              ref={passwordRef}
+              ref={hashedPasswordRef}
               type={showPassword ? "text" : "password"}
               placeholder="Mot de passe"
               required

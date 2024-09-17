@@ -32,7 +32,7 @@ function AuthPage() {
         </div>
       )}
       <h1 className="auth_welcome">
-        Bienvenue{auth ? ` ${auth.user.name}` : ""}
+        Bienvenue{auth ? ` ${auth.user.pseudo}` : ""}
       </h1>
       <p className="auth_tagline">L'art en ligne, pour tous, partout.</p>
       <ul>

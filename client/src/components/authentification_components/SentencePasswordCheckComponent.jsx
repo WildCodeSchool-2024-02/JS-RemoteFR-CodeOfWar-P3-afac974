@@ -1,22 +1,22 @@
 import PropTypes from "prop-types";
 import IconsComponent from "../IconsComponent";
 
-function SentencePasswordCheckComponent({ password, confirmPassword }) {
+function SentencePasswordCheckComponent({ hashedPassword, confirmPassword }) {
   const getSrcConfirmPassword = () => {
     if (confirmPassword === "") return "";
-    return password === confirmPassword ? "check" : "cross";
+    return hashedPassword === confirmPassword ? "check" : "cross";
   };
 
   const getAltConfirmPassword = () => {
     if (confirmPassword === "") return "";
-    return password === confirmPassword
+    return hashedPassword === confirmPassword
       ? "Mots de passe identiques"
       : "Mots de passe différents";
   };
 
   const getTextConfirmPassword = () => {
     if (confirmPassword === "") return "";
-    return password === confirmPassword
+    return hashedPassword === confirmPassword
       ? "Le mot de passe est identique."
       : "Le mot de passe n'est pas identique.";
   };
@@ -35,7 +35,7 @@ function SentencePasswordCheckComponent({ password, confirmPassword }) {
 }
 
 SentencePasswordCheckComponent.propTypes = {
-  password: PropTypes.string.isRequired,
+  hashedPassword: PropTypes.string.isRequired,
   confirmPassword: PropTypes.string.isRequired,
 };
 

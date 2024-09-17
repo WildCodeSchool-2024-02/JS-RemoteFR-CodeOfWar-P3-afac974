@@ -93,3 +93,28 @@ export function postExhibitionArtwork(exhibitionID, artworkID) {
       return [];
     });
 }
+
+export function postloginUser(userData) {
+  return axios
+    .post(`${import.meta.env.VITE_API_URL}/api/login`, userData)
+    .then((reponse) => reponse)
+    .catch((error) => {
+      console.error(
+        "Erreur lors de la requête de connexion:",
+        error.response.data
+      );
+      return [];
+    });
+}
+export function postRegisterUser(userData) {
+  return axios
+    .post(`${import.meta.env.VITE_API_URL}/api/users`, userData)
+    .then((reponse) => reponse)
+    .catch((error) => {
+      console.error(
+        "Erreur lors de la requête de connexion:",
+        error.response.data
+      );
+      return [];
+    });
+}

@@ -1,45 +1,38 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { postRegisterUser } from "../../services/request";
 
 import IconsComponent from "../../components/IconsComponent";
 import BackButtonComponent from "../../components/authentification_components/BackButtonComponent";
 import SentencePasswordCheckComponent from "../../components/authentification_components/SentencePasswordCheckComponent";
 
 function RegisterPage() {
-  const nameRef = useRef();
+  const pseudoRef = useRef();
   const emailRef = useRef();
-  const passwordRef = useRef();
-  const [password, setPassword] = useState("");
+  const hashedPasswordRef = useRef();
+  const [hashedPassword, sethashedPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
 
-  const handlePasswordChange = (event) => setPassword(event.target.value);
+  const handlePasswordChange = (event) => sethashedPassword(event.target.value);
   const handleConfirmPasswordChange = (event) =>
     setConfirmPassword(event.target.value);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (password === confirmPassword) {
+    if (hashedPassword === confirmPassword) {
       try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/users`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              name: nameRef.current.value,
-              email: emailRef.current.value,
-              password,
-            }),
-          }
-        );
-
-        if (response.status === 201) {
+        const res = await postRegisterUser({
+          pseudo: pseudoRef.current.value,
+          email: emailRef.current.value,
+          password: hashedPassword,
+        });
+        if (res && res.status === 201) {
           navigate("/login");
         } else {
-          console.info(response);
+          console.info(res);
         }
       } catch (err) {
         console.error(err);
@@ -54,7 +47,7 @@ function RegisterPage() {
         <div className="registerpage_inputIcon registerpage_inputId">
           <input
             className="registerpage_input registerpage_name"
-            ref={nameRef}
+            ref={pseudoRef}
             type="text"
             placeholder="Nom"
             required
@@ -73,10 +66,10 @@ function RegisterPage() {
         <div className="registerpage_inputIcon">
           <input
             className="registerpage_input registerpage_password"
-            ref={passwordRef}
+            ref={hashedPasswordRef}
             type={showPassword ? "text" : "password"}
             placeholder="Mot de passe"
-            value={password}
+            value={hashedPassword}
             onChange={handlePasswordChange}
             required
           />
@@ -101,9 +94,9 @@ function RegisterPage() {
           <div className="registerpage_passwordCondition">
             <IconsComponent
               className="registerpage_passwordConditionIcons"
-              src={password.length >= 8 ? "check" : "cross"}
+              src={hashedPassword.length >= 8 ? "check" : "cross"}
             />{" "}
-            {`Longueur du mot de passe: ${password.length} >= 8`}
+            {`Longueur du mot de passe: ${hashedPassword.length} >= 8`}
           </div>
         </div>
 
@@ -138,7 +131,7 @@ function RegisterPage() {
           <div className="registerpage_passwordConfirmCondition ">
             <SentencePasswordCheckComponent
               className="registerpage_passwordConditionIcons"
-              password={password}
+              hashedPassword={hashedPassword}
               confirmPassword={confirmPassword}
             />
           </div>
@@ -147,6 +140,7 @@ function RegisterPage() {
           S'inscrire
         </button>
         <BackButtonComponent to="/authentification" />
+        <BackButtonComponent to="/login" />
       </form>
     </div>
   );

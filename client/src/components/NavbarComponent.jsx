@@ -28,12 +28,12 @@ function Navbar() {
         </li>
         <li>
           <Link to="/favoris">
-          <IconsComponent
-            className="navbarcomponent_favorite_icon"
-            alt="heart icon for favourites artworks"
-            src="emptyHeart"
-          />
-      </Link>
+            <IconsComponent
+              className="navbarcomponent_favorite_icon"
+              alt="heart icon for favourites artworks"
+              src="emptyHeart"
+            />
+          </Link>
         </li>
         <li>
           <IconsComponent

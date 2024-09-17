@@ -454,8 +454,8 @@ CREATE TABLE user (
     pseudo VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     hashed_password VARCHAR(255) NOT NULL,
-    firstname VARCHAR(100) NOT NULL,
-    lastname VARCHAR(100) NOT NULL,
+    firstname VARCHAR(100),
+    lastname VARCHAR(100),
     birthday DATE,
     deathday DATE,
     nationality VARCHAR(100),
@@ -467,29 +467,45 @@ CREATE TABLE user (
     linkedin VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     is_artist BOOLEAN DEFAULT FALSE,
-    is_admin BOOLEAN NOT NULL DEFAULT FALSE
+    is_admin BOOLEAN DEFAULT FALSE
 );
 
-INSERT INTO user (
-    pseudo, email, hashed_password, firstname, lastname, birthday, deathday, nationality, biography, website, instagram, twitter, facebook, linkedin, created_at, is_artist, is_admin
-)
-VALUES
-    (
-        'Master_toto', 
-        'toto@gmail.com', 
-        'toto', 
-        'Scarlett', 
-        'Johansson', 
-        '1980-01-01', 
-        '2000-01-01', 
-        'Américaine', 
-        'aussi belle que : Angelina Jolie', 
-        'https://master_toto.fr', 
-        'https://instagram.com', 
-        'https://twitter.com', 
-        'https://facebook.com', 
-        'https://linkedin.com', 
-        CURRENT_TIMESTAMP, 
+INSERT INTO
+    user (
+        pseudo,
+        email,
+        hashed_password,
+        firstname,
+        lastname,
+        birthday,
+        deathday,
+        nationality,
+        biography,
+        website,
+        instagram,
+        twitter,
+        facebook,
+        linkedin,
+        created_at,
+        is_artist,
+        is_admin
+    )
+VALUES (
+        'Master_toto',
+        'toto@gmail.com',
+        'toto',
+        'Scarlett',
+        'Johansson',
+        '1980-01-01',
+        '2000-01-01',
+        'Américaine',
+        'aussi belle que : Angelina Jolie',
+        'https://master_toto.fr',
+        'https://instagram.com',
+        'https://twitter.com',
+        'https://facebook.com',
+        'https://linkedin.com',
+        CURRENT_TIMESTAMP,
         '1',
         '0'
     ),
@@ -497,18 +513,18 @@ VALUES
         'Toto',
         'toto@toto.com',
         '$argon2id$v=19$m=19456,t=2,p=1$3r0iBd7F1mxXKywG0CBIiA$FZrP4iI3yc9NTMHckUPrBBlIIsMKFLB0e5JLBk0mlBA',
-        'Scarlett', 
-        'Johansson', 
-        '1980-01-01', 
-        '2000-01-01', 
-        'Américaine', 
-        'aussi belle que : Angelina Jolie', 
-        'https://master_toto.fr', 
-        'https://instagram.com', 
-        'https://twitter.com', 
-        'https://facebook.com', 
-        'https://linkedin.com', 
-        CURRENT_TIMESTAMP, 
+        'Scarlett',
+        'Johansson',
+        '1980-01-01',
+        '2000-01-01',
+        'Américaine',
+        'aussi belle que : Angelina Jolie',
+        'https://master_toto.fr',
+        'https://instagram.com',
+        'https://twitter.com',
+        'https://facebook.com',
+        'https://linkedin.com',
+        CURRENT_TIMESTAMP,
         '0',
         '0'
     ),
@@ -516,18 +532,18 @@ VALUES
         'artist-toto',
         'artist-toto@toto.com',
         '$argon2id$v=19$m=19456,t=2,p=1$QsrQxPa92oJU4DqsVYQ/BQ$aWTxcIrsvcLHQoCwYn33rwTvdOh0LOHnapORDAt4fI8',
-        'Scarlett', 
-        'Johansson', 
-        '1980-01-01', 
-        '2000-01-01', 
-        'Américaine', 
-        'aussi belle que : Angelina Jolie', 
-        'https://master_toto.fr', 
-        'https://instagram.com', 
-        'https://twitter.com', 
-        'https://facebook.com', 
-        'https://linkedin.com', 
-        CURRENT_TIMESTAMP, 
+        'Scarlett',
+        'Johansson',
+        '1980-01-01',
+        '2000-01-01',
+        'Américaine',
+        'aussi belle que : Angelina Jolie',
+        'https://master_toto.fr',
+        'https://instagram.com',
+        'https://twitter.com',
+        'https://facebook.com',
+        'https://linkedin.com',
+        CURRENT_TIMESTAMP,
         '0',
         '1'
     ),
@@ -535,23 +551,23 @@ VALUES
         'AdminToto',
         'admintoto@toto.com',
         '$argon2id$v=19$m=19456,t=2,p=1$c28oEDU32RPXw0OvW+3dxA$zZM+sPdQQ13bIHwsGFjevWiqnOLizGYq0EHcb4skByw',
-        'Scarlett', 
-        'Johansson', 
-        '1980-01-01', 
-        '2000-01-01', 
-        'Américaine', 
-        'aussi belle que : Angelina Jolie', 
-        'https://master_toto.fr', 
-        'https://instagram.com', 
-        'https://twitter.com', 
-        'https://facebook.com', 
-        'https://linkedin.com', 
-        CURRENT_TIMESTAMP, 
+        'Scarlett',
+        'Johansson',
+        '1980-01-01',
+        '2000-01-01',
+        'Américaine',
+        'aussi belle que : Angelina Jolie',
+        'https://master_toto.fr',
+        'https://instagram.com',
+        'https://twitter.com',
+        'https://facebook.com',
+        'https://linkedin.com',
+        CURRENT_TIMESTAMP,
         '1',
         '0'
     );
 
-    CREATE TABLE favorite (
+CREATE TABLE favorite (
     artwork_id INT unsigned NOT NULL,
     FOREIGN KEY (artwork_id) REFERENCES artwork (id),
     user_id INT unsigned NOT NULL,
@@ -560,11 +576,13 @@ VALUES
 
 SELECT favorite.user_id, favorite.artwork_id, artwork.image_url
 FROM favorite
-INNER JOIN artwork ON favorite.artwork_id = artwork.id
-INNER JOIN user ON favorite.user_id = user.id
-WHERE user.id = 1;
+    INNER JOIN artwork ON favorite.artwork_id = artwork.id
+    INNER JOIN user ON favorite.user_id = user.id
+WHERE
+    user.id = 1;
 
-INSERT INTO favorite (artwork_id, user_id)
+INSERT INTO
+    favorite (artwork_id, user_id)
 VALUES ("1", "1"),
     ("2", "1"),
     ("3", "1");

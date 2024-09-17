@@ -28,7 +28,6 @@ import LoginPage from "./pages/authentification_pages/LoginPage";
 import RegisterPage from "./pages/authentification_pages/RegisterPage";
 import Favorite from "./pages/Favorite";
 
-
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -79,7 +78,6 @@ const router = createBrowserRouter([
       {
         path: "/authentification",
         element: <AuthPage />,
-        loader: () => fetch(`${import.meta.env.VITE_API_URL}/api/users`),
       },
       {
         path: "login",
