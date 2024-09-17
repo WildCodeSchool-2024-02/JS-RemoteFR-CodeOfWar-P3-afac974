@@ -11,6 +11,8 @@ import {
   getArtworksByArtist,
 } from "./services/request";
 
+import { AuthProvider } from "./context/AuthContext";
+
 import App from "./App";
 import Homepage from "./pages/Homepage";
 import ArtworkPage from "./pages/ArtworkPage";
@@ -21,6 +23,9 @@ import Exhibition from "./pages/Exhibition";
 import UserPage from "./pages/UserPage";
 import ArtworkForm from "./components/ArtworkForm";
 import ExhibitionForm from "./pages/ExhibitionForm";
+import AuthPage from "./pages/authentification_pages/AuthPage";
+import LoginPage from "./pages/authentification_pages/LoginPage";
+import RegisterPage from "./pages/authentification_pages/RegisterPage";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +75,19 @@ const router = createBrowserRouter([
         }),
       },
       {
+        path: "/authentification",
+        element: <AuthPage />,
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/items`),
+      },
+      {
+        path: "login",
+        element: <LoginPage />,
+      },
+      {
+        path: "register",
+        element: <RegisterPage />,
+      },
+      {
         path: "/user",
         element: <UserPage />,
       },
@@ -98,7 +116,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <AuthProvider>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  </AuthProvider>
 );

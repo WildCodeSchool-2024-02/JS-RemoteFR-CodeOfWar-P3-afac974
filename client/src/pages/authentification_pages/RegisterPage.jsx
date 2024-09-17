@@ -1,10 +1,11 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import PasswordInputComponent from "../../components/authentification_components/PasswordInputComponent";
-import ConfirmPasswordInputComponent from "../../components/authentification_components/ConfirmPasswordInputComponent";
+// import PasswordInputComponent from "../../components/authentification_components/PasswordInputComponent";
+// import ConfirmPasswordInputComponent from "../../components/authentification_components/ConfirmPasswordInputComponent";
 import BackButtonComponent from "../../components/authentification_components/BackButtonComponent";
 import ToggleSwitchComponent from "../../components/authentification_components/ToggleSwitchComponent";
+import IconsComponent from "../../components/IconsComponent";
 
 function RegisterPage() {
   const nameRef = useRef();
@@ -13,7 +14,7 @@ function RegisterPage() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  // const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
 
   const handlePasswordChange = (event) => setPassword(event.target.value);
@@ -67,20 +68,78 @@ function RegisterPage() {
             required
           />
         </div>
-        <PasswordInputComponent
-          passwordRef={passwordRef}
-          password={password}
-          showPassword={showPassword}
-          handlePasswordChange={handlePasswordChange}
-          setShowPassword={setShowPassword}
-        />
-        <ConfirmPasswordInputComponent
-          confirmPassword={confirmPassword}
-          password={password}
-          showConfirmPassword={showConfirmPassword}
-          handleConfirmPasswordChange={handleConfirmPasswordChange}
-          setShowConfirmPassword={setShowConfirmPassword}
-        />
+        <div className="registerpage_inputIcon">
+          <input
+            className="registerpage_input registerpage_password"
+            ref={passwordRef}
+            type={showPassword ? "text" : "password"}
+            placeholder="Mot de passe"
+            value={password}
+            onChange={handlePasswordChange}
+            required
+          />
+          <span
+            className="registerpage_showPassword"
+            onClick={() => setShowPassword(!showPassword)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(event) =>
+              event.key === " " && setShowPassword(!showPassword)
+            }
+          >
+            <IconsComponent
+              src={showPassword ? "eyeHide" : "eyeShow"}
+              alt={
+                showPassword
+                  ? "Cacher le mot de passe"
+                  : "Afficher le mot de passe"
+              }
+            />
+          </span>
+          <div className="registerpage_passwordCondition">
+            <IconsComponent
+              className="registerpage_passwordConditionIcons"
+              src={password.length >= 8 ? "check" : "cross"}
+            />{" "}
+            {`Longueur du mot de passe: ${password.length} >= 8`}
+          </div>
+        </div>
+        <div className="registerpage_inputIcon">
+          <input
+            className="registerpage_input registerpage_passwordConfirm"
+            type="password"
+            placeholder="Confirmer mot de passe"
+            value={confirmPassword}
+            onChange={handleConfirmPasswordChange}
+            required
+          />{" "}
+          <span
+            className="registerpage_showPassword"
+            onClick={() => setShowPassword(!showPassword)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(event) =>
+              event.key === " " && setShowPassword(!showPassword)
+            }
+          >
+            <IconsComponent
+              className="registerpage_showPasswordIcon"
+              src={showPassword ? "eyeHide" : "eyeShow"}
+              alt={
+                showPassword
+                  ? "Cacher le mot de passe"
+                  : "Afficher le mot de passe"
+              }
+            />
+          </span>
+          <div className="registerpage_passwordCondition">
+            <IconsComponent
+              className="registerpage_passwordConditionIcons"
+              src={password.length >= 8 ? "check" : "cross"}
+              alt={`Longueur du mot de passe: ${password.length} >= 8`}
+            />{" "}
+          </div>
+        </div>
         <div className="registerPage_toggleSwitch">
           <div className="registerPage_toggleSwitch_respectAll">
             <ToggleSwitchComponent idRef="1" />
