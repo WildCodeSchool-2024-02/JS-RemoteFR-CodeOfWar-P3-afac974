@@ -10,7 +10,7 @@ function ArtworkForm() {
     image: "",
     technique: "",
     measurement: "",
-    date: " ", // new Date().toISOString().split("T")[0],
+    date: " ",
     artistId: "",
   });
 
@@ -34,18 +34,6 @@ function ArtworkForm() {
 
   return (
     <form className="artwork_form" onSubmit={sendArtwork} method="post">
-      {/* <label htmlFor="date" className="visually-hidden">
-        Date:
-      </label>
-
-      <input
-        type="text"
-        id="date"
-        name="date"
-        placeholder="date"
-        value={formData.date}
-        readOnly
-      /> */}
       <label htmlFor="title" className="visually-hidden">
         Title:
       </label>
