@@ -1,9 +1,17 @@
 import { PropTypes } from "prop-types";
 import { useState } from "react";
 
-import { postExhibitionArtwork, getExhibitionArtwork } from "../../services/request";
+import {
+  postExhibitionArtwork,
+  getExhibitionArtwork,
+} from "../../services/request";
 
-function AddArtworkComponent({id,artworks, setExhibitionArtworks, exhibitionArtworks} ) {
+function AddArtworkComponent({
+  id,
+  artworks,
+  setExhibitionArtworks,
+  exhibitionArtworks,
+}) {
   const [selectedArtworkId, setSelectedArtworkID] = useState("");
   const handleSelectChange = async (event) => {
     const artworkId = event.target.value;
@@ -14,10 +22,10 @@ function AddArtworkComponent({id,artworks, setExhibitionArtworks, exhibitionArtw
     if (selectedArtworkId) {
       try {
         await postExhibitionArtwork(id, selectedArtworkId);
-  
+
         const updatedArtworks = await getExhibitionArtwork(id);
         setExhibitionArtworks(updatedArtworks);
-  
+
         setSelectedArtworkID("");
       } catch (error) {
         console.error(
@@ -32,9 +40,10 @@ function AddArtworkComponent({id,artworks, setExhibitionArtworks, exhibitionArtw
     }
   };
   const availableArtworks = artworks.filter(
-    (artwork) => !exhibitionArtworks.some(
-      (exhibitionArtwork) => exhibitionArtwork.id === artwork.id
-    )
+    (artwork) =>
+      !exhibitionArtworks.some(
+        (exhibitionArtwork) => exhibitionArtwork.id === artwork.id
+      )
   );
   return (
     <>
@@ -54,6 +63,6 @@ function AddArtworkComponent({id,artworks, setExhibitionArtworks, exhibitionArtw
 }
 
 AddArtworkComponent.propTypes = {
-  id: PropTypes.number
+  id: PropTypes.number,
 }.isRequired;
 export default AddArtworkComponent;

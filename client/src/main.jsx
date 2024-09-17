@@ -77,7 +77,7 @@ const router = createBrowserRouter([
       {
         path: "/authentification",
         element: <AuthPage />,
-        loader: () => fetch(`${import.meta.env.VITE_API_URL}/users`),
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/api/users`),
       },
       {
         path: "login",
