@@ -51,3 +51,7 @@
   text-decoration: none;
   color: var(--text-color);
 }
+
+.navbarcomponent_favorite_icon {
+  width: 30px;
+}
