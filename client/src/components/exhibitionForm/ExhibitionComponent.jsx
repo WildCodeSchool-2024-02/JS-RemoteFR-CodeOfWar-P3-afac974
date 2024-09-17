@@ -1,10 +1,16 @@
 import { PropTypes } from "prop-types";
 import { useEffect } from "react";
 
-import { getExhibitionArtwork, deleteExhibitionArtwork } from "../../services/request";
+import {
+  getExhibitionArtwork,
+  deleteExhibitionArtwork,
+} from "../../services/request";
 
-function ExhibitionComponent({ id, setExhibitionArtworks, exhibitionArtworks }) {
-
+function ExhibitionComponent({
+  id,
+  setExhibitionArtworks,
+  exhibitionArtworks,
+}) {
   useEffect(() => {
     getExhibitionArtwork(id).then(setExhibitionArtworks);
   }, [id, setExhibitionArtworks]);
@@ -30,10 +36,7 @@ function ExhibitionComponent({ id, setExhibitionArtworks, exhibitionArtworks }) 
             src={`${import.meta.env.VITE_API_URL}${artwork.pictures}`}
             alt={artwork.nom_de_l_oeuvre}
           />
-          <button
-            type="button"
-            onClick={() => handleDelete(artwork.id)}
-          >
+          <button type="button" onClick={() => handleDelete(artwork.id)}>
             Retirer
           </button>
         </div>

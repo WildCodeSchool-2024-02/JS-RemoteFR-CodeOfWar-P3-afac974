@@ -1,4 +1,4 @@
-import { useLoaderData} from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
 
 import ExhibitionComponent from "../components/exhibitionForm/ExhibitionComponent";
@@ -25,20 +25,19 @@ function ExhibitionForm() {
         ))}
       </select>
       {selectedExhibitionId && (
-        <ExhibitionComponent 
-        id={selectedExhibitionId}
-        exhibitionArtworks = {exhibitionArtworks}
-        setExhibitionArtworks = {setExhibitionArtworks}
-
-         />
+        <ExhibitionComponent
+          id={selectedExhibitionId}
+          exhibitionArtworks={exhibitionArtworks}
+          setExhibitionArtworks={setExhibitionArtworks}
+        />
       )}
 
       {selectedExhibitionId && (
-        <AddArtworkComponent 
-        id={selectedExhibitionId}
-        artworks={artworks}
-        exhibitionArtworks = {exhibitionArtworks}
-        setExhibitionArtworks = {setExhibitionArtworks}
+        <AddArtworkComponent
+          id={selectedExhibitionId}
+          artworks={artworks}
+          exhibitionArtworks={exhibitionArtworks}
+          setExhibitionArtworks={setExhibitionArtworks}
         />
       )}
     </div>
