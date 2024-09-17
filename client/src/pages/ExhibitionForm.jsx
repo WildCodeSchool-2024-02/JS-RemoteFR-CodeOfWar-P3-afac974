@@ -6,8 +6,8 @@ import AddArtworkComponent from "../components/exhibitionForm/AddArtworkComponen
 
 function ExhibitionForm() {
   const { exhibitions, artworks } = useLoaderData();
-
-  const [selectedExhibitionId, setSelectedExhibitionId] = useState(null);
+  const [selectedExhibitionId, setSelectedExhibitionId] = useState("");
+  const [exhibitionArtworks, setExhibitionArtworks] = useState([]);
 
   const handleSelectChange = async (event) => {
     const exhibitionId = event.target.value;
@@ -24,12 +24,21 @@ function ExhibitionForm() {
           </option>
         ))}
       </select>
-      {selectedExhibitionId != null && (
-        <ExhibitionComponent id={selectedExhibitionId} />
+      {selectedExhibitionId && (
+        <ExhibitionComponent
+          id={selectedExhibitionId}
+          exhibitionArtworks={exhibitionArtworks}
+          setExhibitionArtworks={setExhibitionArtworks}
+        />
       )}
 
-      {selectedExhibitionId != null && (
-        <AddArtworkComponent id={selectedExhibitionId} artworks={artworks} />
+      {selectedExhibitionId && (
+        <AddArtworkComponent
+          id={selectedExhibitionId}
+          artworks={artworks}
+          exhibitionArtworks={exhibitionArtworks}
+          setExhibitionArtworks={setExhibitionArtworks}
+        />
       )}
     </div>
   );

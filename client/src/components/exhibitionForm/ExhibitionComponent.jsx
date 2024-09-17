@@ -1,30 +1,27 @@
 import { PropTypes } from "prop-types";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+
 import {
   getExhibitionArtwork,
   deleteExhibitionArtwork,
 } from "../../services/request";
 
-function ExhibitionComponent({ id }) {
-  const [artworks, setArtworks] = useState([]);
+function ExhibitionComponent({
+  id,
+  setExhibitionArtworks,
+  exhibitionArtworks,
+}) {
   useEffect(() => {
-    getExhibitionArtwork(id).then(setArtworks);
-  }, [id]);
+    getExhibitionArtwork(id).then(setExhibitionArtworks);
+  }, [id, setExhibitionArtworks]);
 
-  const [selectedArtworkId, setSelectedArtworkID] = useState(null);
-  const handleSelectChange = async (event) => {
-    const exhibitionId = event.target.value;
-    setSelectedArtworkID(exhibitionId);
-  };
-
-  const handleDelete = async () => {
-    if (selectedArtworkId) {
+  const handleDelete = async (artworkId) => {
+    if (artworkId) {
       try {
-        await deleteExhibitionArtwork(id, selectedArtworkId);
-        setArtworks((prevArtworks) =>
-          prevArtworks.filter((artwork) => artwork.id !== selectedArtworkId)
+        await deleteExhibitionArtwork(id, artworkId);
+        setExhibitionArtworks((prevArtworks) =>
+          prevArtworks.filter((artwork) => artwork.id !== artworkId)
         );
-        setSelectedArtworkID(null);
       } catch (error) {
         console.error("Erreur lors de la suppression de l'œuvre:", error);
       }
@@ -33,25 +30,21 @@ function ExhibitionComponent({ id }) {
 
   return (
     <>
-      <select value={selectedArtworkId} onChange={handleSelectChange}>
-        <option value="">Sélectionner une oeuvres</option>
-        {artworks.map((artwork) => (
-          <option key={artwork.id} value={artwork.id}>
-            {artwork.nom_de_l_oeuvre}
-          </option>
-        ))}
-      </select>
-      <button
-        type="button"
-        onClick={handleDelete}
-        disabled={!selectedArtworkId}
-      >
-        {" "}
-        Retirer{" "}
-      </button>
+      {exhibitionArtworks.map((artwork) => (
+        <div key={artwork.id}>
+          <img
+            src={`${import.meta.env.VITE_API_URL}${artwork.pictures}`}
+            alt={artwork.nom_de_l_oeuvre}
+          />
+          <button type="button" onClick={() => handleDelete(artwork.id)}>
+            Retirer
+          </button>
+        </div>
+      ))}
     </>
   );
 }
+
 ExhibitionComponent.propTypes = {
   id: PropTypes.number.isRequired,
 }.isRequired;

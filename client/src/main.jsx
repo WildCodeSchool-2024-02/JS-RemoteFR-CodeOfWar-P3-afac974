@@ -18,9 +18,10 @@ import ArtworksPage from "./pages/ArtworksPage";
 import ArtistList from "./pages/ArtistList";
 import ArtistPage from "./pages/ArtistPage";
 import Exhibition from "./pages/Exhibition";
+import ExhibitionForm from "./pages/ExhibitionForm";
 import UserPage from "./pages/UserPage";
 import ArtworkForm from "./components/ArtworkForm";
-import ExhibitionForm from "./pages/ExhibitionForm";
+import Favorite from "./pages/Favorite";
 
 const router = createBrowserRouter([
   {
@@ -86,6 +87,13 @@ const router = createBrowserRouter([
             element: <ArtworkForm />,
           },
         ],
+      },
+      {
+        path: "/favoris",
+        element: <Favorite />,
+        loader: async ({ params }) => ({
+          artwork: await getArtwork(params.id),
+        }),
       },
     ],
   },
