@@ -1,6 +1,5 @@
 import { useLoaderData, Link } from "react-router-dom";
 import ArtistComponent from "../components/ArtistComponent";
-import "../assets/styles/artistlist.css";
 
 function ArtistList() {
   const { artists } = useLoaderData();

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../assets/styles/artworkForm.css";
 
 function ArtworkForm() {
   const [title, setTitle] = useState("");
