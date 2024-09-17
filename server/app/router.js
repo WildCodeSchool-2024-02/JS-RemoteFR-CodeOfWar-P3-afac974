@@ -8,6 +8,7 @@ const artists = require("./controllers/artistActions");
 const artworks = require("./controllers/artworkActions");
 const exhibition = require("./controllers/exhibitionActions");
 const favorite = require("./controllers/favoriteActions");
+const middleware = require("./services/middleware");
 
 // ARTIST
 router.get("/artists", artists.browse);
@@ -19,7 +20,7 @@ router.put("/artists/:id", artists.edit);
 // ARTWORK
 router.get("/artworks", artworks.browse);
 router.get("/artworks/:id", artworks.read);
-router.post("/artworks", artworks.add);
+router.post("/artworks", middleware.uploadImg, artworks.add);
 router.delete("/artworks/:id", artworks.destroy);
 router.put("/artworks/:id", artworks.edit);
 
