@@ -18,6 +18,7 @@ import ArtworksPage from "./pages/ArtworksPage";
 import ArtistList from "./pages/ArtistList";
 import ArtistPage from "./pages/ArtistPage";
 import Exhibition from "./pages/Exhibition";
+import ExhibitionForm from "./pages/ExhibitionForm";
 import UserPage from "./pages/UserPage";
 import ArtworkForm from "./components/ArtworkForm";
 
@@ -73,8 +74,13 @@ const router = createBrowserRouter([
         }),
       },
       {
-        path: "/user",
-        element: <UserPage />,
+        path: "/exhibitionForm",
+        element: <ExhibitionForm />,
+        loader: async () => ({
+      
+          exhibitions : await getExhibitions(),
+          artworks : await getArtworks(),
+          })
       },
       {
         path: "/dashboard",
