@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postRegisterUser } from "../../services/request";
 
@@ -7,9 +7,8 @@ import BackButtonComponent from "../../components/authentification_components/Ba
 import SentencePasswordCheckComponent from "../../components/authentification_components/SentencePasswordCheckComponent";
 
 function RegisterPage() {
-  const pseudoRef = useRef();
-  const emailRef = useRef();
-  const hashedPasswordRef = useRef();
+  const [pseudo, setPseudo] = useState("");
+  const [email, setEmail] = useState("");
   const [hashedPassword, sethashedPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -25,8 +24,8 @@ function RegisterPage() {
     if (hashedPassword === confirmPassword) {
       try {
         const res = await postRegisterUser({
-          pseudo: pseudoRef.current.value,
-          email: emailRef.current.value,
+          pseudo,
+          email,
           password: hashedPassword,
         });
         if (res && res.status === 201) {
@@ -47,7 +46,8 @@ function RegisterPage() {
         <div className="registerpage_inputIcon registerpage_inputId">
           <input
             className="registerpage_input registerpage_name"
-            ref={pseudoRef}
+            value={pseudo}
+            onChange={(event) => setPseudo(event.target.value)}
             type="text"
             placeholder="Nom"
             required
@@ -56,7 +56,8 @@ function RegisterPage() {
         <div className="registerpage_inputIcon registerpage_inputId">
           <input
             className="registerpage_input registerpage_email"
-            ref={emailRef}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
             type="email"
             placeholder="Email"
             required
@@ -66,10 +67,9 @@ function RegisterPage() {
         <div className="registerpage_inputIcon">
           <input
             className="registerpage_input registerpage_password"
-            ref={hashedPasswordRef}
+            value={hashedPassword}
             type={showPassword ? "text" : "password"}
             placeholder="Mot de passe"
-            value={hashedPassword}
             onChange={handlePasswordChange}
             required
           />

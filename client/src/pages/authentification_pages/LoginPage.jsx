@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postloginUser } from "../../services/request";
 import { useAuth } from "../../context/AuthContext";
@@ -7,8 +7,8 @@ import IconsComponent from "../../components/IconsComponent";
 import BackButtonComponent from "../../components/authentification_components/BackButtonComponent";
 
 function LoginPage() {
-  const emailRef = useRef();
-  const hashedPasswordRef = useRef();
+  const [email, setEmail] = useState("");
+  const [hashedPassword, setHashedPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const { setAuth } = useAuth();
   const navigate = useNavigate();
@@ -17,8 +17,8 @@ function LoginPage() {
     event.preventDefault();
     try {
       const res = await postloginUser({
-        email: emailRef.current.value,
-        password: hashedPasswordRef.current.value,
+        email,
+        password: hashedPassword,
       });
 
       if (res.status === 200) {
@@ -39,7 +39,8 @@ function LoginPage() {
         <div className="loginpage_inputsIcon">
           <input
             className="loginpage_input"
-            ref={emailRef}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
             type="email"
             placeholder="Email"
             required
@@ -47,7 +48,8 @@ function LoginPage() {
           <div className="loginpage_passwordContainer">
             <input
               className="loginpage_input"
-              ref={hashedPasswordRef}
+              value={hashedPassword}
+              onChange={(event) => setHashedPassword(event.target.value)}
               type={showPassword ? "text" : "password"}
               placeholder="Mot de passe"
               required
