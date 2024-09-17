@@ -449,29 +449,66 @@ VALUES ("1", "1"),
     ("2", "1"),
     ("3", "1");
 
--- AUTHENTICATION --
-
 CREATE TABLE user (
-    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    name VARCHAR(255) NOT NULL,
+    id INT unsigned primary key auto_increment not null,
+    pseudo VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     hashed_password VARCHAR(255) NOT NULL,
-    is_admin BOOLEAN NOT NULL DEFAULT FALSE,
-    is_artist BOOLEAN NOT NULL DEFAULT FALSE
+    firstname VARCHAR(100) NOT NULL,
+    lastname VARCHAR(100) NOT NULL,
+    birthday DATE,
+    deathday DATE,
+    nationality VARCHAR(100),
+    biography TEXT,
+    website VARCHAR(255),
+    instagram VARCHAR(255),
+    twitter VARCHAR(255),
+    facebook VARCHAR(255),
+    linkedin VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    is_artist BOOLEAN DEFAULT FALSE,
+    is_admin BOOLEAN NOT NULL DEFAULT FALSE
 );
 
-INSERT INTO
-    user (
-        name,
-        email,
-        hashed_password,
-        is_admin,
-        is_artist
-    )
-VALUES (
+INSERT INTO user (
+    pseudo, email, hashed_password, firstname, lastname, birthday, deathday, nationality, biography, website, instagram, twitter, facebook, linkedin, created_at, is_artist, is_admin
+)
+VALUES
+    (
+        'Master_toto', 
+        'toto@gmail.com', 
+        'toto', 
+        'Scarlett', 
+        'Johansson', 
+        '1980-01-01', 
+        '2000-01-01', 
+        'Américaine', 
+        'aussi belle que : Angelina Jolie', 
+        'https://master_toto.fr', 
+        'https://instagram.com', 
+        'https://twitter.com', 
+        'https://facebook.com', 
+        'https://linkedin.com', 
+        CURRENT_TIMESTAMP, 
+        '1',
+        '0'
+    ),
+    (
         'Toto',
         'toto@toto.com',
         '$argon2id$v=19$m=19456,t=2,p=1$3r0iBd7F1mxXKywG0CBIiA$FZrP4iI3yc9NTMHckUPrBBlIIsMKFLB0e5JLBk0mlBA',
+        'Scarlett', 
+        'Johansson', 
+        '1980-01-01', 
+        '2000-01-01', 
+        'Américaine', 
+        'aussi belle que : Angelina Jolie', 
+        'https://master_toto.fr', 
+        'https://instagram.com', 
+        'https://twitter.com', 
+        'https://facebook.com', 
+        'https://linkedin.com', 
+        CURRENT_TIMESTAMP, 
         '0',
         '0'
     ),
@@ -479,6 +516,18 @@ VALUES (
         'artist-toto',
         'artist-toto@toto.com',
         '$argon2id$v=19$m=19456,t=2,p=1$QsrQxPa92oJU4DqsVYQ/BQ$aWTxcIrsvcLHQoCwYn33rwTvdOh0LOHnapORDAt4fI8',
+        'Scarlett', 
+        'Johansson', 
+        '1980-01-01', 
+        '2000-01-01', 
+        'Américaine', 
+        'aussi belle que : Angelina Jolie', 
+        'https://master_toto.fr', 
+        'https://instagram.com', 
+        'https://twitter.com', 
+        'https://facebook.com', 
+        'https://linkedin.com', 
+        CURRENT_TIMESTAMP, 
         '0',
         '1'
     ),
@@ -486,6 +535,36 @@ VALUES (
         'AdminToto',
         'admintoto@toto.com',
         '$argon2id$v=19$m=19456,t=2,p=1$c28oEDU32RPXw0OvW+3dxA$zZM+sPdQQ13bIHwsGFjevWiqnOLizGYq0EHcb4skByw',
+        'Scarlett', 
+        'Johansson', 
+        '1980-01-01', 
+        '2000-01-01', 
+        'Américaine', 
+        'aussi belle que : Angelina Jolie', 
+        'https://master_toto.fr', 
+        'https://instagram.com', 
+        'https://twitter.com', 
+        'https://facebook.com', 
+        'https://linkedin.com', 
+        CURRENT_TIMESTAMP, 
         '1',
         '0'
     );
+
+    CREATE TABLE favorite (
+    artwork_id INT unsigned NOT NULL,
+    FOREIGN KEY (artwork_id) REFERENCES artwork (id),
+    user_id INT unsigned NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user (id)
+);
+
+SELECT favorite.user_id, favorite.artwork_id, artwork.image_url
+FROM favorite
+INNER JOIN artwork ON favorite.artwork_id = artwork.id
+INNER JOIN user ON favorite.user_id = user.id
+WHERE user.id = 1;
+
+INSERT INTO favorite (artwork_id, user_id)
+VALUES ("1", "1"),
+    ("2", "1"),
+    ("3", "1");
