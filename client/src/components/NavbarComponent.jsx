@@ -13,6 +13,9 @@ function Navbar() {
       </Link>
 
       <ul className="navbarcomponent_list">
+        <Link to="/dashboard">
+          <p>Dashboard</p>
+        </Link>
         <li>
           <Link to="/authentification" className="navBar_userButton">
             <IconsComponent
@@ -23,18 +26,13 @@ function Navbar() {
           </Link>
         </li>
         <li>
-          <IconsComponent
-            className="navbarcomponent_favorite_icon"
-            alt="heart icon for favourites artworks"
-            src="emptyHeart"
-          />
-        </li>
-        <li>
-          <IconsComponent
-            className="navbarcomponent_menu_icon"
-            alt="burger menu icon"
-            src="menu-burger"
-          />
+          <Link to="/favoris">
+            <IconsComponent
+              className="navbarcomponent_menu_icon"
+              alt="burger menu icon"
+              src="menu-burger"
+            />
+          </Link>
         </li>
       </ul>
     </nav>
