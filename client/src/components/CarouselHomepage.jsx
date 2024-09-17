@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 import "../assets/styles/homepage.css";
 
-function CarouselHomepage({ carouselArtwork, exhibition, artist }) {
+function CarouselHomepage({ artwork, exhibition, artist }) {
   const artistLength = Object.keys(artist).length;
-  const artworkLength = Object.keys(carouselArtwork).length;
+  const artworkLength = Object.keys(artwork).length;
   const exhibitionLength = Object.keys(exhibition).length;
 
   const randomArtist = Math.ceil(Math.random() * artistLength - 1);
@@ -17,8 +17,8 @@ function CarouselHomepage({ carouselArtwork, exhibition, artist }) {
       <figure>
         <Link to="/exhibition">
           <img
-            src={`${import.meta.env.VITE_API_URL}${carouselArtwork[0].image_url}`}
-            alt={carouselArtwork[0].title}
+            src={`${import.meta.env.VITE_API_URL}${artwork[0].image_url}`}
+            alt={artwork[0].title}
           />
         </Link>
 
@@ -35,8 +35,8 @@ function CarouselHomepage({ carouselArtwork, exhibition, artist }) {
       <figure>
         <Link to="/artists">
           <img
-            src={`${import.meta.env.VITE_API_URL}${carouselArtwork[1].image_url}`}
-            alt={carouselArtwork[1].title}
+            src={`${import.meta.env.VITE_API_URL}${artwork[1].image_url}`}
+            alt={artwork[1].title}
           />
         </Link>
 
@@ -49,13 +49,13 @@ function CarouselHomepage({ carouselArtwork, exhibition, artist }) {
       <figure>
         <Link to="/artworks">
           <img
-            src={`${import.meta.env.VITE_API_URL}${carouselArtwork[2].image_url}`}
-            alt={carouselArtwork[2].title}
+            src={`${import.meta.env.VITE_API_URL}${artwork[2].image_url}`}
+            alt={artwork[2].title}
           />
         </Link>
 
         <figcaption>
-          <h2>{carouselArtwork[randomArtwork].title}</h2>
+          <h2>{artwork[randomArtwork].title}</h2>
           <p>Savoir Plus...</p>
         </figcaption>
       </figure>
@@ -64,7 +64,7 @@ function CarouselHomepage({ carouselArtwork, exhibition, artist }) {
 }
 
 CarouselHomepage.propTypes = {
-  carouselArtwork: PropTypes.arrayOf(
+  artwork: PropTypes.arrayOf(
     PropTypes.shape({
       image_url: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,

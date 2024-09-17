@@ -12,7 +12,7 @@ function Homepage() {
   return (
     <>
       <CarouselHomepage
-        carouselArtwork={artworks}
+        artwork={artworks}
         exhibition={exhibitions}
         artist={artists}
       />
