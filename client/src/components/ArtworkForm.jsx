@@ -50,80 +50,71 @@ function ArtworkForm() {
   };
 
   return (
-    <>
-      <form className="artwork_form" onSubmit={sendArtwork} method="post">
-        <label htmlFor="title" className="visually-hidden">
-          Title:
-        </label>
-        <input
-          type="text"
-          name="title"
-          id="title"
-          placeholder="title"
-          value={dataForm.title}
-          onChange={handleChange}
-        />
-        <label htmlFor="description" className="visually-hidden">
-          Description:
-        </label>
-        <textarea
-          name="description"
-          id="description"
-          rows="4"
-          cols="50"
-          placeholder="Description"
-          value={dataForm.description}
-          onChange={handleChange}
-        />
-        <label htmlFor="image" className="visually-hidden">
-          Image:
-        </label>
-        <input
-          type="file"
-          name="image"
-          id="image"
-          onChange={handleImageChange}
-        />
-        <label htmlFor="technique" className="visually-hidden">
-          Technique:
-        </label>
-        <input
-          type="text"
-          id="technique"
-          name="technique"
-          placeholder="Technique"
-          value={dataForm.technique}
-          onChange={handleChange}
-        />
-        <label htmlFor="measurement" className="visually-hidden">
-          Measurement:
-        </label>
-        <input
-          type="text"
-          id="measurement"
-          name="measurement"
-          placeholder="Measurement"
-          value={dataForm.measurement}
-          onChange={handleChange}
-        />
-        <label htmlFor="artist_id" className="visually-hidden">
-          Artist ID:
-        </label>
-        <input
-          type="text"
-          id="artist_id"
-          name="artistId"
-          placeholder="Artist ID"
-          value={dataForm.artistId}
-          onChange={handleChange}
-        />
-        <button type="submit" className="confirm_artwork">
-          Confirm
-        </button>
-      </form>
-      <p>image</p>
-      <input type="file" onChange />
-    </>
+    <form className="artwork_form" onSubmit={sendArtwork} method="post">
+      <label htmlFor="title" className="visually-hidden">
+        Title:
+      </label>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        placeholder="title"
+        value={dataForm.title}
+        onChange={handleChange}
+      />
+      <label htmlFor="description" className="visually-hidden">
+        Description:
+      </label>
+      <textarea
+        name="description"
+        id="description"
+        rows="4"
+        cols="50"
+        placeholder="Description"
+        value={dataForm.description}
+        onChange={handleChange}
+      />
+      <label htmlFor="image" className="visually-hidden">
+        Image:
+      </label>
+      <input type="file" name="image" id="image" onChange={handleImageChange} />
+      <label htmlFor="technique" className="visually-hidden">
+        Technique:
+      </label>
+      <input
+        type="text"
+        id="technique"
+        name="technique"
+        placeholder="Technique"
+        value={dataForm.technique}
+        onChange={handleChange}
+      />
+      <label htmlFor="measurement" className="visually-hidden">
+        Measurement:
+      </label>
+      <input
+        type="text"
+        id="measurement"
+        name="measurement"
+        placeholder="Measurement"
+        value={dataForm.measurement}
+        onChange={handleChange}
+      />
+      <label htmlFor="artist_id" className="visually-hidden">
+        Artist ID:
+      </label>
+      <input
+        type="text"
+        id="artist_id"
+        name="artistId"
+        placeholder="Artist ID"
+        value={dataForm.artistId}
+        onChange={handleChange}
+      />
+      <button type="submit" className="confirm_artwork">
+        Confirm
+      </button>
+    </form>
   );
 }
 
