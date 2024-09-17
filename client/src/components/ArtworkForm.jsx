@@ -24,7 +24,7 @@ function ArtworkForm() {
     event.preventDefault();
 
     axios
-      .post("http://localhost:3310/api/artworks", formData)
+      .post(`${import.meta.env.VITE_API_URL}/api/artworks`, formData)
       .then((response) => console.info(response))
       .catch((error) => {
         console.error("There was an error!", error.response);

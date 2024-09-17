@@ -113,7 +113,7 @@ VALUES (
 create table artwork (
     id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
     title VARCHAR(100) NOT NULL,
-    image_url VARCHAR(255) NOT NULL,
+    image_url VARCHAR(255) DEFAULT "/default.png",
     description TEXT,
     technique VARCHAR(100),
     measurement VARCHAR(100),
