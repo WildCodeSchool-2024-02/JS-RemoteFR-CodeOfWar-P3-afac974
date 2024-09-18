@@ -44,7 +44,7 @@
 
 .registerpage_password,
 .registerpage_passwordConfirm {
-  background-image: url("../../icons/password-key.svg");
+  background-image: url("../../icons/key.svg");
 }
 
 .registerpage_passwordContainer {

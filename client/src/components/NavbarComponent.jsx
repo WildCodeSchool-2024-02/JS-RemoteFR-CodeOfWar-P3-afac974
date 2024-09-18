@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import IconsComponent from "./IconsComponent";
 
 function Navbar() {
@@ -28,11 +29,18 @@ function Navbar() {
         <li>
           <Link to="/favoris">
             <IconsComponent
-              className="navbarcomponent_menu_icon"
-              alt="burger menu icon"
-              src="menu-burger"
+              className="navbarcomponent_favorite_icon"
+              alt="heart icon for favourites artworks"
+              src="emptyHeart"
             />
           </Link>
+        </li>
+        <li>
+          <IconsComponent
+            className="navbarcomponent_menu_icon"
+            alt="burger menu icon"
+            src="menuburger"
+          />
         </li>
       </ul>
     </nav>
