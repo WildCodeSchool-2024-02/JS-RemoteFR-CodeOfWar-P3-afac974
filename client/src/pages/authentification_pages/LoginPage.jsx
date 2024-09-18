@@ -8,7 +8,7 @@ import BackButtonComponent from "../../components/authentification_components/Ba
 
 function LoginPage() {
   const [email, setEmail] = useState("");
-  const [hashedPassword, setHashedPassword] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const { setAuth } = useAuth();
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ function LoginPage() {
     try {
       const res = await postloginUser({
         email,
-        password: hashedPassword,
+        password,
       });
 
       if (res.status === 200) {
@@ -48,8 +48,8 @@ function LoginPage() {
           <div className="loginpage_passwordContainer">
             <input
               className="loginpage_input"
-              value={hashedPassword}
-              onChange={(event) => setHashedPassword(event.target.value)}
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
               type={showPassword ? "text" : "password"}
               placeholder="Mot de passe"
               required

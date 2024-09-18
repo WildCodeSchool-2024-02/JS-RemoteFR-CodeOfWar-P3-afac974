@@ -140,7 +140,6 @@ function RegisterPage() {
           S'inscrire
         </button>
         <BackButtonComponent to="/authentification" />
-        <BackButtonComponent to="/login" />
       </form>
     </div>
   );
