@@ -24,8 +24,6 @@ function LoginPage() {
       if (res.status === 200) {
         setAuth(res.data);
         navigate("/authentification");
-      } else {
-        console.info(res);
       }
     } catch (err) {
       console.error(err);
