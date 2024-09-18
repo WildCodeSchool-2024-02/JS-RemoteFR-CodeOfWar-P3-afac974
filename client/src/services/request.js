@@ -93,3 +93,13 @@ export function postExhibitionArtwork(exhibitionID, artworkID) {
       return [];
     });
 }
+
+export function deleteExhibition(exhibitionId) {
+  return axios
+    .delete(`${import.meta.env.VITE_API_URL}/api/exhibition/${exhibitionId}`)
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}

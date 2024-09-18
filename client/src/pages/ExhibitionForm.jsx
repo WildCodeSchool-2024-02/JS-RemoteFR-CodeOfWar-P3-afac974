@@ -15,15 +15,25 @@ function ExhibitionForm() {
   };
 
   return (
-    <div>
-      <select value={selectedExhibitionId} onChange={handleSelectChange}>
-        <option value="">Sélectionner une exposition</option>
-        {exhibitions.map((exhibition) => (
-          <option key={exhibition.id} value={exhibition.id}>
-            {exhibition.name}
-          </option>
-        ))}
-      </select>
+    <section>
+      <div className="selectionExhibitionArtwork">
+        <select value={selectedExhibitionId} onChange={handleSelectChange}>
+          <option value="">Sélectionner une exposition</option>
+          {exhibitions.map((exhibition) => (
+            <option key={exhibition.id} value={exhibition.id}>
+              {exhibition.name}
+            </option>
+          ))}
+        </select>
+        {selectedExhibitionId && (
+          <AddArtworkComponent
+            id={selectedExhibitionId}
+            artworks={artworks}
+            exhibitionArtworks={exhibitionArtworks}
+            setExhibitionArtworks={setExhibitionArtworks}
+          />
+        )}
+      </div>
       {selectedExhibitionId && (
         <ExhibitionComponent
           id={selectedExhibitionId}
@@ -31,16 +41,7 @@ function ExhibitionForm() {
           setExhibitionArtworks={setExhibitionArtworks}
         />
       )}
-
-      {selectedExhibitionId && (
-        <AddArtworkComponent
-          id={selectedExhibitionId}
-          artworks={artworks}
-          exhibitionArtworks={exhibitionArtworks}
-          setExhibitionArtworks={setExhibitionArtworks}
-        />
-      )}
-    </div>
+    </section>
   );
 }
 

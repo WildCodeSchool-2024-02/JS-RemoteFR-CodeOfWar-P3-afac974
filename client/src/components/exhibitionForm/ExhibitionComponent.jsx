@@ -2,10 +2,12 @@ import { PropTypes } from "prop-types";
 import { useEffect } from "react";
 import Masonry from "react-masonry-css";
 import "../../assets/styles/exhibitionForm.css";
+import ConfirmButton from "./confirmDelete";
 
 import {
   getExhibitionArtwork,
   deleteExhibitionArtwork,
+  deleteExhibition,
 } from "../../services/request";
 
 function ExhibitionComponent({
@@ -36,29 +38,42 @@ function ExhibitionComponent({
       }
     }
   };
+  const handleDeleteExhibition = async () => {
+    if (id) {
+      try {
+        await deleteExhibition(id);
+      } catch (error) {
+        console.error("Erreur lors de la suppression de l'exposition:", error);
+      }
+    }
+  };
 
   return (
-    <Masonry
-      breakpointCols={breakpointColumnsObj}
-      className="my-masonry-grid"
-      columnClassName="my-masonry-grid_column"
-    >
-      {exhibitionArtworks.map((artwork) => (
-        <div key={artwork.id} className="artwork-container">
-          <img
-            src={`${import.meta.env.VITE_API_URL}${artwork.pictures}`}
-            alt={artwork.nom_de_l_oeuvre}
-          />
-          <button
-            type="button"
-            className="close-button"
-            onClick={() => handleDelete(artwork.id)}
-          >
-            X
-          </button>
-        </div>
-      ))}
-    </Masonry>
+    <>
+      <ConfirmButton onConfirm={handleDeleteExhibition} />
+
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
+        {exhibitionArtworks.map((artwork) => (
+          <div key={artwork.id} className="artwork-container">
+            <img
+              src={`${import.meta.env.VITE_API_URL}${artwork.pictures}`}
+              alt={artwork.nom_de_l_oeuvre}
+            />
+            <button
+              type="button"
+              className="close-button"
+              onClick={() => handleDelete(artwork.id)}
+            >
+              X
+            </button>
+          </div>
+        ))}
+      </Masonry>
+    </>
   );
 }
 
