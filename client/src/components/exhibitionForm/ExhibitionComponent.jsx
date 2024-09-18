@@ -1,5 +1,7 @@
 import { PropTypes } from "prop-types";
 import { useEffect } from "react";
+import Masonry from "react-masonry-css";
+import "../../assets/styles/exhibitionForm.css";
 
 import {
   getExhibitionArtwork,
@@ -11,6 +13,13 @@ function ExhibitionComponent({
   setExhibitionArtworks,
   exhibitionArtworks,
 }) {
+  const breakpointColumnsObj = {
+    default: 4,
+    1100: 3,
+    700: 2,
+    500: 1,
+  };
+
   useEffect(() => {
     getExhibitionArtwork(id).then(setExhibitionArtworks);
   }, [id, setExhibitionArtworks]);
@@ -29,19 +38,27 @@ function ExhibitionComponent({
   };
 
   return (
-    <>
+    <Masonry
+      breakpointCols={breakpointColumnsObj}
+      className="my-masonry-grid"
+      columnClassName="my-masonry-grid_column"
+    >
       {exhibitionArtworks.map((artwork) => (
-        <div key={artwork.id}>
+        <div key={artwork.id} className="artwork-container">
           <img
             src={`${import.meta.env.VITE_API_URL}${artwork.pictures}`}
             alt={artwork.nom_de_l_oeuvre}
           />
-          <button type="button" onClick={() => handleDelete(artwork.id)}>
-            Retirer
+          <button
+            type="button"
+            className="close-button"
+            onClick={() => handleDelete(artwork.id)}
+          >
+            X
           </button>
         </div>
       ))}
-    </>
+    </Masonry>
   );
 }
 
