@@ -22,6 +22,7 @@ import ExhibitionForm from "./pages/ExhibitionForm";
 import UserPage from "./pages/UserPage";
 import ArtworkForm from "./components/ArtworkForm";
 import Favorite from "./pages/Favorite";
+import FavoritesProvider from "./contexts/FavoritesContext";
 
 const router = createBrowserRouter([
   {
@@ -103,6 +104,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <FavoritesProvider>
+      <RouterProvider router={router} />
+    </FavoritesProvider>
   </React.StrictMode>
 );
