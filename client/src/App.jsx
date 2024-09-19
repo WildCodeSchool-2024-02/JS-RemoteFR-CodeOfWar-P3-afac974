@@ -9,16 +9,18 @@ import "./assets/styles/artworkpage.css";
 import "./assets/styles/artistlist.css";
 import "./assets/styles/artworkForm.css";
 import "./assets/styles/exhibition.css";
-import "./assets/styles/userpage.css";
 import "./assets/styles/authentification_styles/authpage.css";
 import "./assets/styles/authentification_styles/loginpage.css";
 import "./assets/styles/authentification_styles/registerpage.css";
 import "./assets/styles/authentification_styles/backbuttoncomponent.css";
+import "./assets/styles/user_connected_styles/personalinformationspage.css";
 
 function App() {
   const location = useLocation();
   const hideNavbar =
-    location.pathname === "/login" || location.pathname === "/register";
+    location.pathname === "/login" ||
+    location.pathname === "/register" ||
+    location.pathname === "/myinformations";
   return (
     <main>
       {!hideNavbar && <Navbar />} <Outlet />

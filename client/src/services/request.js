@@ -68,6 +68,15 @@ export function getExhibitionArtwork(id) {
       return [];
     });
 }
+export function getUserInfo(id) {
+  return axios
+    .get(`${import.meta.env.VITE_API_URL}/api/users/${id}`)
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}
 
 export function deleteExhibitionArtwork(exhibitionId, artworkId) {
   return axios
@@ -112,6 +121,18 @@ export function postloginUser(userData) {
 export function postRegisterUser(userData) {
   return axios
     .post(`${import.meta.env.VITE_API_URL}/api/users`, userData)
+    .then((reponse) => reponse)
+    .catch((error) => {
+      console.error(
+        "Erreur lors de la requête de connexion:",
+        error.response.data
+      );
+      return [];
+    });
+}
+export function updateUserInfo(id) {
+  return axios
+    .put(`${import.meta.env.VITE_API_URL}/api/users/${id}`)
     .then((reponse) => reponse)
     .catch((error) => {
       console.error(

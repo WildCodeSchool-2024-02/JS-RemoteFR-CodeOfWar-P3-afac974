@@ -38,13 +38,13 @@ function AuthPage() {
       <ul>
         {auth == null ? (
           <>
-            <li className="auth_nav">
-              <Link to="/login" className="auth_navLinks">
+            <li className="auth_navOffline">
+              <Link to="/login" className="auth_navLinksOffline">
                 Connexion
               </Link>
             </li>
-            <li className="auth_nav">
-              <Link to="/register" className="auth_navLinks">
+            <li className="auth_navOffline">
+              <Link to="/register" className="auth_navLinksOffline">
                 Inscription
               </Link>
             </li>
@@ -52,15 +52,42 @@ function AuthPage() {
         ) : null}
       </ul>
       {auth && (
-        <li className="auth_nav">
-          <button
-            className="auth_disconnect"
-            type="button"
-            onClick={handleDisconnected}
-          >
-            Déconnexion
-          </button>
-        </li>
+        <div className="auth_navlist">
+          <li className="auth_navOnline">
+            <Link to="/register" className="auth_navLinksOnline">
+              Mon profil
+            </Link>
+          </li>
+          <li className="auth_navOnline">
+            <Link className="auth_navLinksOnline" to="/add">
+              <IconsComponent
+                className="userpage_icon"
+                src="importicon"
+                alt="upload icon"
+              />
+            </Link>
+          </li>
+
+          <li className="auth_navOnline">
+            <Link to="/register" className="auth_navLinksOnline">
+              Mes publications
+            </Link>
+          </li>
+          <li className="auth_navOnline">
+            <Link to="/myinformations" className="auth_navLinksOnline">
+              Mes informations personnel
+            </Link>
+          </li>
+          <li className="auth_navOnline">
+            <button
+              className="auth_navLinksOnline auth_disconnect"
+              type="button"
+              onClick={handleDisconnected}
+            >
+              Déconnexion
+            </button>
+          </li>
+        </div>
       )}
       <li className="auth_nav">
         <BackButtonComponent to="/" />
