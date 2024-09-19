@@ -1,8 +1,9 @@
 import { PropTypes } from "prop-types";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Masonry from "react-masonry-css";
 import "../../assets/styles/exhibitionForm.css";
-import ConfirmButton from "./confirmDelete";
+import ConfirmButton from "./confirmButton";
 
 import {
   getExhibitionArtwork,
@@ -15,6 +16,7 @@ function ExhibitionComponent({
   setExhibitionArtworks,
   exhibitionArtworks,
 }) {
+  const navigate = useNavigate();
   const breakpointColumnsObj = {
     default: 4,
     1100: 3,
@@ -41,9 +43,20 @@ function ExhibitionComponent({
   const handleDeleteExhibition = async () => {
     if (id) {
       try {
+        // Suppression des œuvres d'art associées avant de supprimer l'exposition
+        if (exhibitionArtworks && exhibitionArtworks.length > 0) {
+          await Promise.all(
+            exhibitionArtworks.map((artwork) =>
+              deleteExhibitionArtwork(id, artwork.id)
+            )
+          );
+        }
+        // Suppression de l'exposition après que toutes les œuvres ont été supprimées
         await deleteExhibition(id);
+        console.info("Exposition supprimée avec succès");
+        navigate(0)
       } catch (error) {
-        console.error("Erreur lors de la suppression de l'exposition:", error);
+        console.error("Erreur lors de la suppression de l'exposition ou des œuvres:", error);
       }
     }
   };
