@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { useFavorites } from "../contexts/FavoritesContext";
-import ArtworkComponent from "../components/ArtworkComponent";
+import FavoritesComponent from "../components/exhibitionForm/FavoritesComponent";
 
 import "../assets/styles/favorites.css";
 
 function Favorite() {
   const { favorite, setFavorite } = useFavorites();
-  console.info(favorite);
+  // console.info(favorite);
 
   return (
     <>
@@ -14,7 +14,7 @@ function Favorite() {
         <h3>Mes favoris</h3>
         <div>
           {favorite.map((fav, index) => (
-            <ArtworkComponent
+            <FavoritesComponent
               tools={{ fav, index, favorite, setFavorite }}
               key={fav.artwork_id}
             />

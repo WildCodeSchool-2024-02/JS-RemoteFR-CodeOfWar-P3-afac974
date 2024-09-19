@@ -92,9 +92,6 @@ const router = createBrowserRouter([
       {
         path: "/favoris",
         element: <Favorite />,
-        loader: async ({ params }) => ({
-          artwork: await getArtwork(params.id),
-        }),
       },
     ],
   },
