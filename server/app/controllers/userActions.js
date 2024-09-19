@@ -50,9 +50,20 @@ const edit = async (req, res, next) => {
   }
 };
 
+const destroyAccount = async (req, res, next) => {
+  const user = { ...req.body, id: req.params.id };
+  try {
+    await tables.user.deleteAccount(user);
+    res.sendStatus(204);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   browse,
   read,
   add,
   edit,
+  destroyAccount,
 };

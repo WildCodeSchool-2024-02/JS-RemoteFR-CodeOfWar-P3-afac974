@@ -34,7 +34,9 @@
   background-size: 2rem;
 }
 
-.personalInformationsPage_name {
+.personalInformationsPage_pseudo,
+.personalInformationsPage_firstName,
+.personalInformationsPage_lastName {
   background-image: url("../../icons/tag.svg");
 }
 
@@ -42,66 +44,27 @@
   background-image: url("../../icons/mail.svg");
 }
 
-.personalInformationsPage_password,
-.personalInformationsPage_passwordConfirm {
-  background-image: url("../../icons/key.svg");
-}
-
-.personalInformationsPage_passwordContainer {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.personalInformationsPage_showPassword {
-  margin-left: -3rem;
-  position: absolute;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  right: 1rem;
-  top: 15%;
-}
-.personalInformationsPage_inputId,
-.personalInformationsPage_passwordCondition {
+.personalInformationsPage_inputId {
   margin-bottom: 2rem;
   align-items: center;
 }
-.personalInformationsPage_passwordConfirmCondition,
-.personalInformationsPage_passwordCondition {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0;
-  height: 2rem;
-}
-.personalInformationsPage_passwordConditionIcons {
-  height: 2rem;
+
+.personalInformationsPage_deleteAccountButton {
+  color: var(--background-color);
+  background-color: var(--important-color);
+  border: none;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
-.personalInformationsPage_toggleSwitch {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  padding-top: 1rem;
-}
-.personalInformationsPage_toggleSwitch_respectAll,
-.personalInformationsPage_toggleSwitch_isArtist,
-.personalInformationsPage_toggleSwitch_legalAge,
-.personalInformationsPage_toggleSwitch_respectCondition {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding-bottom: 1.5rem;
-}
-.personalInformationsPage_toggleSwitch_respectAll > p,
-.personalInformationsPage_toggleSwitch_isArtist > p,
-.personalInformationsPage_toggleSwitch_legalAge > p,
-.personalInformationsPage_toggleSwitch_respectCondition > p {
-  padding-left: 2rem;
+.personalInformationsPage_deleteAccountButton:hover {
+  color: var(--text-color);
+  background-color: var(--important-background);
+  border: 1px solid var(--accent-color);
+  border-bottom: 4px solid var(--accent-color);
 }
 
-.personalInformationsPage_submitButton {
+.personalInformationsPage_ConfirmButton {
   color: var(--background-color);
   background-color: var(--text-color);
   border: none;
@@ -109,14 +72,14 @@
   margin-top: 2rem;
 }
 
-.personalInformationsPage_submitButton:hover {
+.personalInformationsPage_ConfirmButton:hover {
   color: var(--text-color);
   background-color: var(--background-color);
   border: 1px solid var(--accent-color);
   border-bottom: 4px solid var(--accent-color);
 }
 
-.personalInformationsPage_submitButton {
+.personalInformationsPage_button {
   width: 16rem;
   height: 4rem;
   padding: 2rem;
@@ -125,8 +88,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.personalInformationsPage_showPassword > img {
-  width: 2rem;
 }

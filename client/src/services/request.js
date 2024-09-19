@@ -124,7 +124,7 @@ export function postRegisterUser(userData) {
     .then((reponse) => reponse)
     .catch((error) => {
       console.error(
-        "Erreur lors de la requête de connexion:",
+        "Erreur lors de la requête d'inscription:",
         error.response.data
       );
       return [];
@@ -136,7 +136,19 @@ export function updateUserInfo(id) {
     .then((reponse) => reponse)
     .catch((error) => {
       console.error(
-        "Erreur lors de la requête de connexion:",
+        "Erreur lors de la requête de mise à jour des informations de l'utilisateur:",
+        error.response.data
+      );
+      return [];
+    });
+}
+export function deleteAccount(id) {
+  return axios
+    .delete(`${import.meta.env.VITE_API_URL}/api/users/${id}/destroy`)
+    .then((reponse) => reponse)
+    .catch((error) => {
+      console.error(
+        "Erreur lors de la requête de suppression du compte utilisateur:",
         error.response.data
       );
       return [];
