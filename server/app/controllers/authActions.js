@@ -24,7 +24,7 @@ const login = async (req, res, next) => {
         }
       );
 
-      res.json({
+      res.cookie("auth", token).json({
         token,
         user,
       });
