@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import "../assets/styles/homepage.css";
 
 function CarouselHomepage({ artwork, exhibition, artist }) {
-  const artistLength = Object.keys(artist).length;
-  const artworkLength = Object.keys(artwork).length;
-  const exhibitionLength = Object.keys(exhibition).length;
+  const artistLength = artist.length;
+  const artworkLength = artwork.length;
+  const exhibitionLength = exhibition.length;
 
   const randomArtist = Math.ceil(Math.random() * artistLength - 1);
   const randomArtwork = Math.ceil(Math.random() * artworkLength - 1);

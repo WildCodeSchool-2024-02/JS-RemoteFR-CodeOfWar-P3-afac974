@@ -31,7 +31,7 @@
 }
 
 .homePage_artwork_container {
-  padding-inline: 1rem;
+  padding-inline: 2rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
@@ -53,23 +53,18 @@
 
 .horizontal_scroll_carousel {
   display: grid;
-  gap: 0.5rem;
+  gap: 2rem;
   grid-auto-flow: column;
   grid-auto-columns: 80vw;
   overflow-x: auto;
   align-items: center;
   scroll-snap-type: x proximity;
-  padding-inline: 10vw;
+  padding-inline: 20vw;
+}
 
-  > * {
-    scroll-margin: 2rem;
-    scroll-snap-align: start;
-  }
-
-  > :nth-child(odd) {
-    background: hsl(0 0% 100% / 0.15);
-    padding: 2rem;
-  }
+.horizontal_scroll_carousel > * {
+  scroll-margin: 3.5rem;
+  scroll-snap-align: start;
 }
 
 .horizontal_scroll_carousel img {
@@ -86,7 +81,7 @@
 .horizontal_scroll_carousel > figure {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 70% 30%;
+  grid-template-rows: 33.33% 33.33% 33.33%;
 }
 
 .horizontal_scroll_carousel > figure > figcaption {
