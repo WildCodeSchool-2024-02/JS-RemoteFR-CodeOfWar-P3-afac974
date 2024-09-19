@@ -114,7 +114,7 @@ export function addFavorite(artworkId, userId) {
     });
 }
 
-export function deleteFavorites(artworkId, userId) {
+export function deleteFavorite(artworkId, userId) {
   return axios
     .delete(`${url}/api/favorite/${artworkId}/${userId}`)
     .then((reponse) => reponse.data)

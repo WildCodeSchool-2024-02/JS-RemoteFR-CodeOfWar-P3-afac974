@@ -1,10 +1,18 @@
 import PropTypes from "prop-types";
-import { createContext, useState, useContext, useMemo } from "react";
+import { createContext, useState, useContext, useMemo, useEffect } from "react";
+import { getFavorites } from "../services/request";
 
 const FavoritesContext = createContext();
 
-function FavoritesProvider({ children }) {
+export default function FavoritesProvider({ children }) {
   const [favorite, setFavorite] = useState([]);
+
+  useEffect(() => {
+    const loadFavorites = async () => {
+      setFavorite(await getFavorites());
+    };
+    loadFavorites();
+  }, []);
 
   const memoFavorite = useMemo(
     () => ({ favorite, setFavorite }),
@@ -22,5 +30,4 @@ FavoritesProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default FavoritesContext;
 export const useFavorites = () => useContext(FavoritesContext);
