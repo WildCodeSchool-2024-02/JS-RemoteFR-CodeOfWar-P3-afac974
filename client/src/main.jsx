@@ -37,6 +37,8 @@ const router = createBrowserRouter([
         element: <Homepage />,
         loader: async () => ({
           artworks: await getArtworks(),
+          exhibitions: await getExhibitions(),
+          artists: await getArtistList(),
         }),
       },
       {
@@ -54,10 +56,12 @@ const router = createBrowserRouter([
         }),
       },
       {
-        path: "/artworkspage",
+        path: "/artworks",
         element: <ArtworksPage />,
         loader: async () => ({
           artworks: await getArtworks(),
+          artists: await getArtistList(),
+          exhibitions: await getExhibitions(),
         }),
       },
       {
