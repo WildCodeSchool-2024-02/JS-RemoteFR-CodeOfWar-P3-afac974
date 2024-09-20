@@ -10,7 +10,7 @@ function Favorite() {
 
   return (
     <>
-      <section>
+      <section className="favorites_artworks">
         <h3>Mes favoris</h3>
         <div>
           {favorite.map((fav, index) => (

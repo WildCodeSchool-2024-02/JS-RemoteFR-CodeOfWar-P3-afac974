@@ -19,22 +19,18 @@ function FavoritesComponent({ tools }) {
   }, [fav.artwork_id]);
 
   return (
-    <>
-      <h1>Coucou eslint</h1>
+    <section>
       {favDetails && favDetails.image_url ? (
-        <section>
-          <h1>Coucou</h1>
-          <Link to={`/artwork/${fav.artwork_id}`}>
-            <img
-              src={`${import.meta.env.VITE_API_URL}${favDetails.image_url}`}
-              alt={favDetails.title}
-            />
-          </Link>
-        </section>
+        <Link to={`/artwork/${fav.artwork_id}`}>
+          <img
+            src={`${import.meta.env.VITE_API_URL}${favDetails.image_url}`}
+            alt={favDetails.title}
+          />
+        </Link>
       ) : (
         "Loading..."
       )}
-    </>
+    </section>
   );
 }
 
