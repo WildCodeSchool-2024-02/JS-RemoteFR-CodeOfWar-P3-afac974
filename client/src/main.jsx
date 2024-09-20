@@ -9,6 +9,7 @@ import {
   getArtwork,
   getExhibitions,
   getArtworksByArtist,
+  getFavorites,
 } from "./services/request";
 
 import App from "./App";
@@ -92,6 +93,9 @@ const router = createBrowserRouter([
       {
         path: "/favoris",
         element: <Favorite />,
+        loader: async () => ({
+          favorites: await getFavorites(),
+        }),
       },
     ],
   },

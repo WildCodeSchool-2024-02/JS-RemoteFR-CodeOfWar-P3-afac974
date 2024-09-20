@@ -65,7 +65,7 @@ const addFavorite = async (req, res, next) => {
     res
       .status(201)
       .send(
-        `Oeuvre ajoutée avec succès à vos Favoris. ID : ${result.insertId}`
+        `Favoris ajouté avec succès à vos Favoris. ID : ${result.insertId}`
       );
   } catch (error) {
     next(error);

@@ -1,23 +1,19 @@
-import { Link } from "react-router-dom";
-import { useFavorites } from "../contexts/FavoritesContext";
+import { Link, useLoaderData } from "react-router-dom";
 import FavoritesComponent from "../components/exhibitionForm/FavoritesComponent";
 
 import "../assets/styles/favorites.css";
 
 function Favorite() {
-  const { favorite, setFavorite } = useFavorites();
+  const { favorites } = useLoaderData();
 
   return (
     <>
       <section className="favorites_artworks">
         <h3>Mes favoris</h3>
         <div>
-          {favorite.length > 0 ? (
-            favorite.map((fav, index) => (
-              <FavoritesComponent
-                tools={{ fav, index, favorite, setFavorite }}
-                key={fav.artwork_id}
-              />
+          {favorites.length > 0 ? (
+            favorites.map((fav) => (
+              <FavoritesComponent fav={fav} key={fav.artwork_id} />
             ))
           ) : (
             <p>Vous n'avez pas d'oeuvres dans les Favoris.</p>

@@ -5,6 +5,8 @@ function ArtworkPage() {
   const { artwork } = useLoaderData();
   const { favorite, addNewFavorite, removeFavorite } = useFavorites();
 
+  console.info(artwork.id);
+
   // ID à changer dès que l'ID du user est dynamique
   const userId = 1;
 

@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { getArtwork } from "../../services/request";
 
-function FavoritesComponent({ tools }) {
-  const { fav } = tools;
+function FavoritesComponent({ fav }) {
   const [favDetails, setFavDetails] = useState();
 
   useEffect(() => {
@@ -35,13 +34,8 @@ function FavoritesComponent({ tools }) {
 }
 
 FavoritesComponent.propTypes = {
-  tools: PropTypes.shape({
-    fav: PropTypes.shape({
-      artwork_id: PropTypes.number.isRequired,
-    }).isRequired,
-    index: PropTypes.number,
-    favorite: PropTypes.shape,
-    setFavorite: PropTypes.func,
+  fav: PropTypes.shape({
+    artwork_id: PropTypes.number.isRequired,
   }).isRequired,
 };
 
