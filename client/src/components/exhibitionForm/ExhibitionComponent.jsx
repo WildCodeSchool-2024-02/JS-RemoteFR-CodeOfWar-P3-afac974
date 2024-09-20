@@ -1,5 +1,5 @@
 import { PropTypes } from "prop-types";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Masonry from "react-masonry-css";
 import "../../assets/styles/exhibitionForm.css";
@@ -9,6 +9,7 @@ import {
   getExhibitionArtwork,
   deleteExhibitionArtwork,
   deleteExhibition,
+  getExhibition
 } from "../../services/request";
 
 function ExhibitionComponent({
@@ -16,6 +17,9 @@ function ExhibitionComponent({
   setExhibitionArtworks,
   exhibitionArtworks,
 }) {
+
+const [exhibition, setExhibition] = useState({})
+
   const navigate = useNavigate();
   const breakpointColumnsObj = {
     default: 4,
@@ -23,6 +27,18 @@ function ExhibitionComponent({
     700: 2,
     500: 1,
   };
+
+  useEffect(() => {
+    const fetchExhibition = async () => {
+      try {
+        const response = await getExhibition(id);
+        setExhibition(response);
+      } catch (error) {
+        console.error("Erreur lors de la récupération de l'exposition :", error);
+      }
+    };
+    fetchExhibition();
+  }, [id]);
 
   useEffect(() => {
     getExhibitionArtwork(id).then(setExhibitionArtworks);
@@ -60,11 +76,25 @@ function ExhibitionComponent({
       }
     }
   };
-
   return (
     <>
       <ConfirmButton onConfirm={handleDeleteExhibition} />
-
+    <div className="exhibitionInformation">
+      <h2>Information</h2>
+      <h3>Titre de l'exposition</h3>
+      <p>{exhibition.name}</p>
+      <h3>Description</h3>
+      <p>{exhibition.description}</p>
+      {exhibition.type === "TEMPORARY" && (
+        <>
+      <h3>Début de l'exposition</h3>
+      <p>{exhibition.date_begin}</p>
+      <h3>Fin de l'exposition</h3>
+      <p>{exhibition.date_end}</p>
+      </>
+      )}
+    </div>
+    <div className="exhibitionArtwork">
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"
@@ -86,6 +116,7 @@ function ExhibitionComponent({
           </div>
         ))}
       </Masonry>
+      </div>
     </>
   );
 }

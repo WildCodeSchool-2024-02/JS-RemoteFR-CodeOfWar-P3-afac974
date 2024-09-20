@@ -12,7 +12,7 @@ class ExhibitionRepository extends AbstractRepository {
 
   async read(id) {
     const [rows] = await this.database.query(
-      `select * from ${this.table} WHERE artwork.id = ? `,
+      `select * from ${this.table} WHERE id = ? `,
       [id]
     );
     return rows[0];

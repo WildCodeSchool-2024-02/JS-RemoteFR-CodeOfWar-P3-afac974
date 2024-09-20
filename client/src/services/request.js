@@ -41,7 +41,17 @@ export function getArtwork(id) {
 
 export function getExhibitions() {
   return axios
-    .get(`${import.meta.env.VITE_API_URL}/api/exhibition`)
+    .get(`${import.meta.env.VITE_API_URL}/api/exhibition/`)
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}
+
+export function getExhibition(id) {
+  return axios
+    .get(`${import.meta.env.VITE_API_URL}/api/exhibition/${id}`)
     .then((reponse) => reponse.data)
     .catch((error) => {
       console.error(error);
