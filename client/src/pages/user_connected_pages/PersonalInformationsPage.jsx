@@ -38,6 +38,7 @@ function PersonalInformationsPage() {
     setIsChanged(event.target.value !== "");
   };
 
+  /* ------------------------------CONFIRMER---------------------------------------- */
   const handleChangeDeleteAccount = () => {
     setShowConfirmDeleteAccount(true);
   };
@@ -46,7 +47,6 @@ function PersonalInformationsPage() {
     setShowConfirmDeleteAccount(false);
   };
 
-  /* ------------------------------CONFIRMER---------------------------------------- */
   const updatePseudo = pseudo !== "" ? pseudo : auth.user.pseudo;
   const updateFirstName = firstName !== "" ? firstName : auth.user.firstname;
   const updatelastName = lastName !== "" ? lastName : auth.user.lastname;
@@ -68,7 +68,10 @@ function PersonalInformationsPage() {
         }, 2000);
       }
     } catch (err) {
-      console.error("Erreur lors de la mise à jour des infos utilisateur", err);
+      console.error(
+        "Erreur lors de la mise à jour des infos utilisateur PersonalInformationsPage",
+        err
+      );
     }
   };
 
