@@ -12,7 +12,7 @@ function FavoritesComponent({ tools }) {
       try {
         setFavDetails(await getArtwork(fav.artwork_id));
       } catch (error) {
-        console.error("Error fetching artwork details:", error);
+        console.error("Error artwork details:", error);
       }
     };
     loadFavoriteDetails();
