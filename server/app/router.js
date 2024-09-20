@@ -53,7 +53,7 @@ const { hashPassword, verifyToken } = require("./services/auth");
 router.get("/users", userActions.browse);
 router.get("/users/:id", userActions.read);
 router.post("/users", hashPassword, userActions.add);
-router.put("/users/:id", hashPassword, userActions.edit);
+router.put("/users/:id", userActions.edit);
 router.delete("/users/:id/destroy", userActions.destroyAccount);
 
 router.post("/login", authActions.login);

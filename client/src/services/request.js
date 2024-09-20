@@ -130,9 +130,9 @@ export function postRegisterUser(userData) {
       return [];
     });
 }
-export function updateUserInfo(id) {
+export function updateUserInfo(id, userData) {
   return axios
-    .put(`${import.meta.env.VITE_API_URL}/api/users/${id}`)
+    .put(`${import.meta.env.VITE_API_URL}/api/users/${id}`, userData)
     .then((reponse) => reponse)
     .catch((error) => {
       console.error(
