@@ -20,4 +20,12 @@ const uploadImg = (req, res, next) => {
   return upload.single("image")(req, res, next);
 };
 
-module.exports = { uploadImg };
+const checkAdminStatus = (req, res, next) => {
+  if (req.user && req.user.isAdmin) {
+    next(); // L'utilisateur est un admin, on continue
+  } else {
+    res.status(403).json({ message: "Accès refusé. Vous devez être administrateur pour supprimer une exposition." });
+  }
+};
+
+module.exports = { uploadImg, checkAdminStatus };

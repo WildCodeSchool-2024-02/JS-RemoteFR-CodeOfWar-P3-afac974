@@ -28,7 +28,7 @@ router.get("/exhibition", exhibition.browse);
 router.get("/exhibition/:id", exhibition.read);
 router.put("/exhibition/:id", exhibition.edit);
 router.post("/exhibition", exhibition.add);
-router.delete("/exhibition/:id", exhibition.destroy);
+router.delete("/exhibition/:id", middleware.checkAdminStatus, exhibition.destroy);
 
 router.get("/exhibition/:id/artworks", exhibition.readArtwork);
 router.post("/exhibition/artworks", exhibition.addArtwork);
