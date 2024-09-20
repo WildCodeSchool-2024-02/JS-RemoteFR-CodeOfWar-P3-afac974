@@ -40,6 +40,23 @@ const [exhibition, setExhibition] = useState({})
     fetchExhibition();
   }, [id]);
 
+  const dateBegin = exhibition.date_begin;
+  const dateStart = new Date(dateBegin)
+  const dayStart = dateStart.getDate();
+  const monthStart = (dateStart.getMonth() + 1);
+  const yearStart = dateStart.getFullYear();
+  
+  const formattedDateStart = `${dayStart}-${monthStart}-${yearStart}`;
+
+  const dateFinish = exhibition.date_end;
+  const dateEnd = new Date(dateFinish)
+  const dayEnd = dateEnd.getDate();
+  const monthEnd = (dateEnd.getMonth() + 1);
+  const yearEnd = dateEnd.getFullYear();
+  
+  const formattedDateEnd = `${dayEnd}-${monthEnd}-${yearEnd}`;
+  
+  
   useEffect(() => {
     getExhibitionArtwork(id).then(setExhibitionArtworks);
   }, [id, setExhibitionArtworks]);
@@ -79,6 +96,7 @@ const [exhibition, setExhibition] = useState({})
   return (
     <>
       <ConfirmButton onConfirm={handleDeleteExhibition} />
+    <section className="exhibition">
     <div className="exhibitionInformation">
       <h2>Information</h2>
       <h3>Titre de l'exposition</h3>
@@ -88,10 +106,11 @@ const [exhibition, setExhibition] = useState({})
       {exhibition.type === "TEMPORARY" && (
         <>
       <h3>Début de l'exposition</h3>
-      <p>{exhibition.date_begin}</p>
+      <p>{formattedDateStart}</p>
       <h3>Fin de l'exposition</h3>
-      <p>{exhibition.date_end}</p>
+      <p>{formattedDateEnd}</p>
       </>
+      
       )}
     </div>
     <div className="exhibitionArtwork">
@@ -117,6 +136,7 @@ const [exhibition, setExhibition] = useState({})
         ))}
       </Masonry>
       </div>
+    </section>
     </>
   );
 }
