@@ -21,7 +21,10 @@ function UserPage() {
           </div>
           <div className="user_options">
             <p>Mes publication</p>
-            <p>Mes Ouvres</p>
+            <p>
+              <Link to="/dashboard/myArtworks">Mes Ouvres</Link>
+            </p>
+
             <p>Mes Activités</p>
             <p>Informations Personnel</p>
             <p>Deconexion</p>

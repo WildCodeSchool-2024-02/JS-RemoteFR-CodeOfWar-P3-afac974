@@ -1,15 +1,14 @@
 .userpage_container {
-  padding: 1rem;
-  display: flex;
+  padding: 1.5rem 3rem;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: flex-start; */
 }
 
 .title_userpage {
   display: flex;
   justify-content: space-between;
-  width: 100%;
   align-items: center;
 }
 
@@ -18,7 +17,8 @@
   padding-inline: 2rem;
 }
 
-.user_options > p {
+.user_options p,
+.user_options a {
   margin-top: 2rem;
   text-align: end;
   font-size: 1.5rem;
