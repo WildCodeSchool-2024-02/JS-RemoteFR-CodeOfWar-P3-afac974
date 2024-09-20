@@ -4,33 +4,50 @@ import { useState } from "react";
 import "../assets/styles/artworkForm.css";
 
 function ArtworkForm() {
-  const [formData, setFormData] = useState({
+  const [dataForm, setFormData] = useState({
     title: "",
     description: "",
-    image: "",
     technique: "",
     measurement: "",
-    date: " ",
+    date: "",
     artistId: "",
   });
+  const [image, setImage] = useState(null);
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
   const sendArtwork = (event) => {
     event.preventDefault();
+    const formData = new FormData();
+
+    formData.append("title", dataForm.title);
+    formData.append("description", dataForm.description);
+    formData.append("technique", dataForm.technique);
+    formData.append("measurement", dataForm.measurement);
+    formData.append("date", dataForm.date);
+    formData.append("artistId", dataForm.artistId);
+    formData.append("image", image);
 
     axios
-      .post(`${import.meta.env.VITE_API_URL}/api/artworks`, formData)
+      .post(`${import.meta.env.VITE_API_URL}/api/artworks`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((response) => console.info(response))
       .catch((error) => {
         console.error("There was an error!", error.response);
       });
   };
-  console.info(formData.date);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...dataForm,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+  };
 
   return (
     <form className="artwork_form" onSubmit={sendArtwork} method="post">
@@ -42,7 +59,7 @@ function ArtworkForm() {
         name="title"
         id="title"
         placeholder="title"
-        value={formData.title}
+        value={dataForm.title}
         onChange={handleChange}
       />
       <label htmlFor="description" className="visually-hidden">
@@ -54,21 +71,13 @@ function ArtworkForm() {
         rows="4"
         cols="50"
         placeholder="Description"
-        value={formData.description}
+        value={dataForm.description}
         onChange={handleChange}
       />
       <label htmlFor="image" className="visually-hidden">
         Image:
       </label>
-      <input
-        type="text"
-        name="image"
-        id="image"
-        placeholder="Image URL"
-        value={formData.image}
-        onChange={handleChange}
-      />
-
+      <input type="file" name="image" id="image" onChange={handleImageChange} />
       <label htmlFor="technique" className="visually-hidden">
         Technique:
       </label>
@@ -77,7 +86,7 @@ function ArtworkForm() {
         id="technique"
         name="technique"
         placeholder="Technique"
-        value={formData.technique}
+        value={dataForm.technique}
         onChange={handleChange}
       />
       <label htmlFor="measurement" className="visually-hidden">
@@ -88,10 +97,9 @@ function ArtworkForm() {
         id="measurement"
         name="measurement"
         placeholder="Measurement"
-        value={formData.measurement}
+        value={dataForm.measurement}
         onChange={handleChange}
       />
-
       <label htmlFor="artist_id" className="visually-hidden">
         Artist ID:
       </label>
@@ -100,7 +108,7 @@ function ArtworkForm() {
         id="artist_id"
         name="artistId"
         placeholder="Artist ID"
-        value={formData.artistId}
+        value={dataForm.artistId}
         onChange={handleChange}
       />
       <button type="submit" className="confirm_artwork">

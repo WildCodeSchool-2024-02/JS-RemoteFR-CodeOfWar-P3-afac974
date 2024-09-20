@@ -1,22 +1,21 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 import ArtworkComponent from "../components/ArtworkComponent";
+import "../assets/styles/homepage.css";
+import CarouselHomepage from "../components/CarouselHomepage";
 
 function Homepage() {
   const { artworks } = useLoaderData();
+  const { exhibitions } = useLoaderData();
+  const { artists } = useLoaderData();
+
   return (
     <>
-      <div className="homePage_nav">
-        <Link to="/artworksPage" className="homePage_navButtons">
-          Oeuvres
-        </Link>
-        <Link to="/artists" className="homePage_navButtons">
-          Artistes
-        </Link>
-        <Link to="/exhibition" className="homePage_navButtons">
-          Expositions
-        </Link>
-      </div>
+      <CarouselHomepage
+        artwork={artworks}
+        exhibition={exhibitions}
+        artist={artists}
+      />
       <h1 className="homePage_temporaryEvent">Evénnements temporaire</h1>
       <p className="homePage_temporaryEvent">Temporairement indisponible</p>
       <h2 className="homePage_discorverArtworks">
