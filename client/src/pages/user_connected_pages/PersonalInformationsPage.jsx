@@ -72,9 +72,6 @@ function PersonalInformationsPage() {
       console.error("Erreur lors de la mise à jour des infos utilisateur", err);
     }
   };
-  console.info(updatePseudo);
-  console.info(handleSubmit);
-
   return (
     <div className="App_sizePage">
       <h2 className="personalInformationsPage_title">

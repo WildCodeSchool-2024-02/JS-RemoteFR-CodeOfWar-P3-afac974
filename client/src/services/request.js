@@ -144,7 +144,7 @@ export function updateUserInfo(id, userData) {
 }
 export function deleteAccount(id) {
   return axios
-    .delete(`${import.meta.env.VITE_API_URL}/api/users/${id}/delete`)
+    .delete(`${import.meta.env.VITE_API_URL}/api/users/${id}/destroy`)
     .then((reponse) => reponse)
     .catch((error) => {
       console.error(

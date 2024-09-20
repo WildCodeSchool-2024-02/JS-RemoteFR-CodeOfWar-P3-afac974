@@ -2,11 +2,13 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteAccount } from "../../services/request";
+import { useAuth } from "../../context/AuthContext";
 
 import IconsComponent from "../IconsComponent";
 
 function ConfirmDeleteComponent({ onClose }) {
   const navigate = useNavigate();
+  const { setAuth } = useAuth();
 
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -18,8 +20,8 @@ function ConfirmDeleteComponent({ onClose }) {
         password,
       });
       console.info(deleteAccount);
-      if (res.status === 200) {
-        // setAuth(res.data);
+      if (res.status === 204) {
+        setAuth("");
         navigate("/");
       }
     } catch (err) {
@@ -43,10 +45,7 @@ function ConfirmDeleteComponent({ onClose }) {
         <b className="confirmDeleteComponent_alert">
           Attention la suppression des données est définitive
         </b>
-        <div
-          className="confirmDeleteComponent_form"
-          onSubmit={handleConfirmClick}
-        >
+        <div className="confirmDeleteComponent_form">
           <input
             className="confirmDeleteComponent_input confirmDeleteComponent_passwordConfirm"
             value={password}
@@ -78,7 +77,8 @@ function ConfirmDeleteComponent({ onClose }) {
 
           <button
             className="confirmDeleteComponent_confirmButton"
-            type="submit"
+            type="button"
+            onClick={handleConfirmClick}
           >
             Confirmer
           </button>
