@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Masonry from "react-masonry-css";
 import "../../assets/styles/exhibitionForm.css";
-import ConfirmButton from "./confirmButton";
+import ConfirmButton from "./ConfirmButton";
 
 import {
   getExhibitionArtwork,

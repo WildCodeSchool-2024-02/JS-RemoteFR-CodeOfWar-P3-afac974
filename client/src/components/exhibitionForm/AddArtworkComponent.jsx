@@ -65,4 +65,5 @@ function AddArtworkComponent({
 AddArtworkComponent.propTypes = {
   id: PropTypes.number,
 }.isRequired;
+
 export default AddArtworkComponent;

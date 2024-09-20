@@ -103,3 +103,25 @@ export function deleteExhibition(exhibitionId) {
       return [];
     });
 }
+
+export function createExhibition( 
+  exhibitionName,
+  exhibitionDescription,
+  exhibitionType,
+  exhibitionDateBegin,
+  exhibitionDateEnd) {
+    return axios
+    .post(`${import.meta.env.VITE_API_URL}/api/exhibition`, 
+      {
+      name : exhibitionName,
+      description : exhibitionDescription,
+      type : exhibitionType,
+      date_begin: exhibitionDateBegin,
+      date_end : exhibitionDateEnd,
+    })
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+  }

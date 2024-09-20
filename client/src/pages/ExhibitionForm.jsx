@@ -3,17 +3,22 @@ import { useState } from "react";
 
 import ExhibitionComponent from "../components/exhibitionForm/ExhibitionComponent";
 import AddArtworkComponent from "../components/exhibitionForm/AddArtworkComponent";
+import CreateExihibition from "../components/exhibitionForm/CreateExihibition";
 
 function ExhibitionForm() {
   const { exhibitions, artworks } = useLoaderData();
   const [selectedExhibitionId, setSelectedExhibitionId] = useState("");
   const [exhibitionArtworks, setExhibitionArtworks] = useState([]);
+  const [showCreateExhibition, setShowCreateExhibition] = useState(false);
 
   const handleSelectChange = async (event) => {
     const exhibitionId = event.target.value;
     setSelectedExhibitionId(exhibitionId);
   };
 
+  const handleCreateExhibitionClick = () => {
+    setShowCreateExhibition(true);
+  }
   return (
     <section>
       <div className="selectionExhibitionArtwork">
@@ -33,6 +38,11 @@ function ExhibitionForm() {
             setExhibitionArtworks={setExhibitionArtworks}
           />
         )}
+        {!selectedExhibitionId && !showCreateExhibition && (
+          <button type="button" onClick={handleCreateExhibitionClick}>
+            Ouvrir une nouvelle exposition
+          </button>
+        )}
       </div>
       {selectedExhibitionId && (
         <ExhibitionComponent
@@ -41,6 +51,7 @@ function ExhibitionForm() {
           setExhibitionArtworks={setExhibitionArtworks}
         />
       )}
+       {showCreateExhibition && <CreateExihibition />}
     </section>
   );
 }
