@@ -1,7 +1,25 @@
 import { useLoaderData, Link } from "react-router-dom";
+import { useFavorites } from "../contexts/FavoritesContext";
 
 function ArtworkPage() {
   const { artwork } = useLoaderData();
+  const { favorite, addNewFavorite, removeFavorite } = useFavorites();
+
+  // ID à changer dès que l'ID du user est dynamique
+  const userId = 1;
+
+  const isFavorite = favorite.some(
+    (favArtwork) => favArtwork.artwork_id === artwork.id
+  );
+
+  const toggleFavorite = () => {
+    if (isFavorite) {
+      removeFavorite(artwork.id, userId);
+    } else {
+      addNewFavorite(artwork.id, userId);
+    }
+  };
+
   return (
     <>
       <div className="artworkPage_pagePosition">
@@ -31,6 +49,7 @@ function ArtworkPage() {
           alt={artwork.title}
         />
       </div>
+
       <div className="artworkPage_nameOeuvre">
         <Link
           to={`/artistpage/${artwork.artist_id}`}
@@ -44,6 +63,9 @@ function ArtworkPage() {
 
       <div className="artworkPage_fav_com">
         <p>Un coup de coeur ? Ajouter la à vos favoris</p>
+        <button className="like_button" type="button" onClick={toggleFavorite}>
+          {isFavorite ? "❤️" : "🤍"}
+        </button>
         <p>Une pensée ? Faites la vivre en commentaire</p>
       </div>
 

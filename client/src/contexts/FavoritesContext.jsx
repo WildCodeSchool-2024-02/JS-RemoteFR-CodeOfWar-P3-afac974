@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { createContext, useState, useContext, useMemo, useEffect } from "react";
-import { getFavorites } from "../services/request";
+import { getFavorites, addFavorite, deleteFavorite } from "../services/request";
 
 const FavoritesContext = createContext();
 
@@ -14,8 +14,18 @@ export default function FavoritesProvider({ children }) {
     loadFavorites();
   }, []);
 
+  const addNewFavorite = async (artworkId, userId) => {
+    await addFavorite(artworkId, userId);
+    setFavorite(await getFavorites());
+  };
+
+  const removeFavorite = async (artworkId, userId) => {
+    await deleteFavorite(artworkId, userId);
+    setFavorite(await getFavorites());
+  };
+
   const memoFavorite = useMemo(
-    () => ({ favorite, setFavorite }),
+    () => ({ favorite, setFavorite, addNewFavorite, removeFavorite }),
     [favorite, setFavorite]
   );
 

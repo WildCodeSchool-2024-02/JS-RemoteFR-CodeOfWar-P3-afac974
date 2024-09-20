@@ -6,25 +6,22 @@ import "../assets/styles/favorites.css";
 
 function Favorite() {
   const { favorite, setFavorite } = useFavorites();
-  // console.info(favorite);
 
   return (
     <>
       <section className="favorites_artworks">
         <h3>Mes favoris</h3>
         <div>
-          {favorite.map((fav, index) => (
-            <FavoritesComponent
-              tools={{ fav, index, favorite, setFavorite }}
-              key={fav.artwork_id}
-            />
-          ))}
-
-          {/* {favorite.length > 0 ? (
-            ""
+          {favorite.length > 0 ? (
+            favorite.map((fav, index) => (
+              <FavoritesComponent
+                tools={{ fav, index, favorite, setFavorite }}
+                key={fav.artwork_id}
+              />
+            ))
           ) : (
             <p>Vous n'avez pas d'oeuvres dans les Favoris.</p>
-          )} */}
+          )}
         </div>
       </section>
 
