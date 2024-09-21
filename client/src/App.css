@@ -34,6 +34,20 @@ html {
 li {
   list-style: none;
 }
+
 .App_sizePage {
   height: 100vh;
+}
+
+img,
+figure {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+p {
+  text-wrap: pretty;
 }

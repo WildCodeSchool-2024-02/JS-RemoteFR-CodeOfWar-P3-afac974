@@ -17,7 +17,7 @@ function CarouselHomepage({ artwork, exhibition, artist }) {
       <figure>
         <Link to="/exhibition">
           <img
-            src={`${import.meta.env.VITE_API_URL}${artwork[0].image_url}`}
+            src={`${import.meta.env.VITE_API_URL}${artwork[randomArtwork].image_url}`}
             alt={artwork[0].title}
           />
         </Link>

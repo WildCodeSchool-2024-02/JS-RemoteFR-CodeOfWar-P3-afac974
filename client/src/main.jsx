@@ -109,15 +109,12 @@ const router = createBrowserRouter([
         element: <UserPage />,
         children: [
           {
-            path: "/dashboard/add",
+            path: "add",
             element: <ArtworkForm />,
           },
           {
-            path: "/dashboard/myArtworks",
+            path: "myArtworks",
             element: <MyArtworks />,
-            loader: async () => ({
-              myArtworks: await getArtworksByArtist(),
-            }),
           },
         ],
       },

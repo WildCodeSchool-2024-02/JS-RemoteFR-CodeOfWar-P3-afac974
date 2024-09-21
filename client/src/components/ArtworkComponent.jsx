@@ -11,6 +11,10 @@ function ArtworkComponent({ artwork }) {
           alt={artwork.title}
         />
       </Link>
+      <div className="figcaption_md vissible hidden">
+        <h2>{artwork.title}</h2>
+        <p>{artwork.description}</p>
+      </div>
     </section>
   );
 }
