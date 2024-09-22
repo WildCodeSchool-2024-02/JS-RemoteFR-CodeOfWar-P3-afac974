@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Masonry from "react-masonry-css";
 import "../../assets/styles/exhibitionForm.css";
-import ConfirmButton from "./ConfirmButton";
+import ConfirmationButton from "./ConfirmationButton";
 
 import {
   getExhibitionArtwork,
@@ -99,7 +99,7 @@ function ExhibitionComponent({
   };
   return (
     <>
-      <ConfirmButton onConfirm={handleDeleteExhibition} />
+      <ConfirmationButton onConfirm={handleDeleteExhibition} />
       <section className="exhibition">
         <div className="exhibitionInformation">
           <h2>Information</h2>
