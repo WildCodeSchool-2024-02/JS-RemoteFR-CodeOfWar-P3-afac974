@@ -10,7 +10,7 @@ function CreateExihibition() {
 
   const handleSubmit = async () => {
     try {
-        const finalExhibitionDateBegin =
+      const finalExhibitionDateBegin =
         exhibitionType === "PERMANENT" ? "9999-12-12" : exhibitionDateBegin;
       const finalExhibitionDateEnd =
         exhibitionType === "PERMANENT" ? "9999-12-12" : exhibitionDateEnd;
@@ -22,7 +22,6 @@ function CreateExihibition() {
         finalExhibitionDateBegin,
         finalExhibitionDateEnd
       );
-
 
       // Réinitialiser les champs du formulaire
       setExhibitionName("");

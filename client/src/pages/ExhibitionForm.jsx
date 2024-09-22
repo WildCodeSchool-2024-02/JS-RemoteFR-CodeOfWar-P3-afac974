@@ -17,7 +17,7 @@ function ExhibitionForm() {
 
   const handleCreateExhibitionClick = () => {
     setShowCreateExhibition(true);
-  }
+  };
   return (
     <section>
       <div className="selectionExhibitionArtwork">
@@ -50,7 +50,7 @@ function ExhibitionForm() {
           setExhibitionArtworks={setExhibitionArtworks}
         />
       )}
-       {showCreateExhibition && <CreateExihibition />}
+      {showCreateExhibition && <CreateExihibition />}
     </section>
   );
 }

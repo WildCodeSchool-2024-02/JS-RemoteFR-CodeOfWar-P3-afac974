@@ -9,7 +9,7 @@ import {
   getExhibitionArtwork,
   deleteExhibitionArtwork,
   deleteExhibition,
-  getExhibition
+  getExhibition,
 } from "../../services/request";
 
 function ExhibitionComponent({
@@ -17,8 +17,7 @@ function ExhibitionComponent({
   setExhibitionArtworks,
   exhibitionArtworks,
 }) {
-
-const [exhibition, setExhibition] = useState({})
+  const [exhibition, setExhibition] = useState({});
 
   const navigate = useNavigate();
   const breakpointColumnsObj = {
@@ -34,29 +33,31 @@ const [exhibition, setExhibition] = useState({})
         const response = await getExhibition(id);
         setExhibition(response);
       } catch (error) {
-        console.error("Erreur lors de la récupération de l'exposition :", error);
+        console.error(
+          "Erreur lors de la récupération de l'exposition :",
+          error
+        );
       }
     };
     fetchExhibition();
   }, [id]);
 
   const dateBegin = exhibition.date_begin;
-  const dateStart = new Date(dateBegin)
+  const dateStart = new Date(dateBegin);
   const dayStart = dateStart.getDate();
-  const monthStart = (dateStart.getMonth() + 1);
+  const monthStart = dateStart.getMonth() + 1;
   const yearStart = dateStart.getFullYear();
-  
+
   const formattedDateStart = `${dayStart}-${monthStart}-${yearStart}`;
 
   const dateFinish = exhibition.date_end;
-  const dateEnd = new Date(dateFinish)
+  const dateEnd = new Date(dateFinish);
   const dayEnd = dateEnd.getDate();
-  const monthEnd = (dateEnd.getMonth() + 1);
+  const monthEnd = dateEnd.getMonth() + 1;
   const yearEnd = dateEnd.getFullYear();
-  
+
   const formattedDateEnd = `${dayEnd}-${monthEnd}-${yearEnd}`;
-  
-  
+
   useEffect(() => {
     getExhibitionArtwork(id).then(setExhibitionArtworks);
   }, [id, setExhibitionArtworks]);
@@ -87,56 +88,58 @@ const [exhibition, setExhibition] = useState({})
         // Suppression de l'exposition après que toutes les œuvres ont été supprimées
         await deleteExhibition(id);
         console.info("Exposition supprimée avec succès");
-        navigate(0)
+        navigate(0);
       } catch (error) {
-        console.error("Erreur lors de la suppression de l'exposition ou des œuvres:", error);
+        console.error(
+          "Erreur lors de la suppression de l'exposition ou des œuvres:",
+          error
+        );
       }
     }
   };
   return (
     <>
       <ConfirmButton onConfirm={handleDeleteExhibition} />
-    <section className="exhibition">
-    <div className="exhibitionInformation">
-      <h2>Information</h2>
-      <h3>Titre de l'exposition</h3>
-      <p>{exhibition.name}</p>
-      <h3>Description</h3>
-      <p>{exhibition.description}</p>
-      {exhibition.type === "TEMPORARY" && (
-        <>
-      <h3>Début de l'exposition</h3>
-      <p>{formattedDateStart}</p>
-      <h3>Fin de l'exposition</h3>
-      <p>{formattedDateEnd}</p>
-      </>
-      
-      )}
-    </div>
-    <div className="exhibitionArtwork">
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {exhibitionArtworks.map((artwork) => (
-          <div key={artwork.id} className="artwork-container">
-            <img
-              src={`${import.meta.env.VITE_API_URL}${artwork.pictures}`}
-              alt={artwork.nom_de_l_oeuvre}
-            />
-            <button
-              type="button"
-              className="close-button"
-              onClick={() => handleDelete(artwork.id)}
-            >
-              X
-            </button>
-          </div>
-        ))}
-      </Masonry>
-      </div>
-    </section>
+      <section className="exhibition">
+        <div className="exhibitionInformation">
+          <h2>Information</h2>
+          <h3>Titre de l'exposition</h3>
+          <p>{exhibition.name}</p>
+          <h3>Description</h3>
+          <p>{exhibition.description}</p>
+          {exhibition.type === "TEMPORARY" && (
+            <>
+              <h3>Début de l'exposition</h3>
+              <p>{formattedDateStart}</p>
+              <h3>Fin de l'exposition</h3>
+              <p>{formattedDateEnd}</p>
+            </>
+          )}
+        </div>
+        <div className="exhibitionArtwork">
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
+            {exhibitionArtworks.map((artwork) => (
+              <div key={artwork.id} className="artwork-container">
+                <img
+                  src={`${import.meta.env.VITE_API_URL}${artwork.pictures}`}
+                  alt={artwork.nom_de_l_oeuvre}
+                />
+                <button
+                  type="button"
+                  className="close-button"
+                  onClick={() => handleDelete(artwork.id)}
+                >
+                  X
+                </button>
+              </div>
+            ))}
+          </Masonry>
+        </div>
+      </section>
     </>
   );
 }

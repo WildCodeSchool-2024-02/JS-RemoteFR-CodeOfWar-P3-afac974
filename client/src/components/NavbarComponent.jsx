@@ -18,12 +18,13 @@ function Navbar() {
         <Link to="/dashboard">
           <p>Dashboard</p>
         </Link>
-{ auth?.user?.is_admin && (
-  <li>
-          <Link to="/exhibitionForm">
-          <p> Exposition</p>
-          </Link>
-        </li>)}
+        {auth?.user?.is_admin && (
+          <li>
+            <Link to="/exhibitionForm">
+              <p> Exposition</p>
+            </Link>
+          </li>
+        )}
         <li>
           <Link to="/authentification" className="navBar_userButton">
             <IconsComponent
