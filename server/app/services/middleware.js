@@ -21,7 +21,8 @@ const uploadImg = (req, res, next) => {
 };
 
 const checkAdminStatus = (req, res, next) => {
-  if (req.user && req.user.isAdmin) {
+  console.info(req.auth)
+  if (req.auth && req.auth.isAdmin) {
     next(); // L'utilisateur est un admin, on continue
   } else {
     res.status(403).json({ message: "Accès refusé. Vous devez être administrateur pour supprimer une exposition." });
