@@ -32,7 +32,6 @@ const verifyToken = (req, res, next) => {
     }
 
     req.auth = jwt.verify(auth, process.env.APP_SECRET);
-    console.info(auth);
     next();
   } catch (err) {
     console.error(err);
