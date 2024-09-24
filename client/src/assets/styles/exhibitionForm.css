@@ -56,3 +56,8 @@
   padding-bottom: 0.5rem;
   border: solid 2px black;
 }
+
+.exhibition {
+  display: flex;
+  flex-direction: row;
+}

@@ -1,6 +1,5 @@
 import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
-
 import ExhibitionComponent from "../components/exhibitionForm/ExhibitionComponent";
 import AddArtworkComponent from "../components/exhibitionForm/AddArtworkComponent";
 import CreateExihibition from "../components/exhibitionForm/CreateExihibition";
@@ -18,7 +17,7 @@ function ExhibitionForm() {
 
   const handleCreateExhibitionClick = () => {
     setShowCreateExhibition(true);
-  }
+  };
   return (
     <section>
       <div className="selectionExhibitionArtwork">
@@ -51,7 +50,7 @@ function ExhibitionForm() {
           setExhibitionArtworks={setExhibitionArtworks}
         />
       )}
-       {showCreateExhibition && <CreateExihibition />}
+      {showCreateExhibition && <CreateExihibition />}
     </section>
   );
 }
