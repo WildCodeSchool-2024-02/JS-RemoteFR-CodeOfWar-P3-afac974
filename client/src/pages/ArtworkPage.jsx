@@ -8,6 +8,7 @@ function ArtworkPage() {
   const [isFavorite, setIsFavorite] = useState();
 
   // ID à changer dès que l'ID du user est dynamique
+  // Utiliser les useparams ?
   const userId = 1;
 
   useEffect(() => {
