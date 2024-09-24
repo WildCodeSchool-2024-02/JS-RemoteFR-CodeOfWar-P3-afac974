@@ -1,24 +1,34 @@
+import { useState, useEffect } from "react";
 import { useLoaderData, Link } from "react-router-dom";
 import { useFavorites } from "../contexts/FavoritesContext";
 
 function ArtworkPage() {
   const { artwork } = useLoaderData();
   const { favorite, addNewFavorite, removeFavorite } = useFavorites();
-
-  console.info(artwork.id);
+  const [isFavorite, setIsFavorite] = useState();
 
   // ID à changer dès que l'ID du user est dynamique
   const userId = 1;
 
-  const isFavorite = favorite.some(
-    (favArtwork) => favArtwork.artwork_id === artwork.id
-  );
+  useEffect(() => {
+    if (favorite) {
+      setIsFavorite(
+        favorite.some((favArtwork) => favArtwork.artwork_id === artwork.id)
+      );
+    }
+  }, [favorite, artwork.id]);
+
+  console.info("artwork id:", artwork.id);
+  console.info("user id:", userId);
+  console.info("is favorite:", isFavorite);
 
   const toggleFavorite = () => {
     if (isFavorite) {
       removeFavorite(artwork.id, userId);
+      setIsFavorite(!isFavorite);
     } else {
       addNewFavorite(artwork.id, userId);
+      setIsFavorite(!isFavorite);
     }
   };
 

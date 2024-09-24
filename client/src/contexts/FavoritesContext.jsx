@@ -9,12 +9,12 @@ export default function FavoritesProvider({ children }) {
 
   const addNewFavorite = async (artworkId, userId) => {
     await addFavorite(artworkId, userId);
-    setFavorite(await getFavorites());
+    setFavorite(await getFavorites(userId));
   };
 
   const removeFavorite = async (artworkId, userId) => {
     await deleteFavorite(artworkId, userId);
-    setFavorite(await getFavorites());
+    setFavorite(await getFavorites(userId));
   };
 
   const memoFavorite = useMemo(

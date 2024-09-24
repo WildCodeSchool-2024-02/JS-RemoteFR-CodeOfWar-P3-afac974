@@ -94,9 +94,9 @@ export function postExhibitionArtwork(exhibitionID, artworkID) {
     });
 }
 
-export function getFavorites() {
+export function getFavorites(id) {
   return axios
-    .get(`${url}/api/favorite`)
+    .get(`${url}/api/favorite/${id}`)
     .then((reponse) => reponse.data)
     .catch((error) => {
       console.error(error);

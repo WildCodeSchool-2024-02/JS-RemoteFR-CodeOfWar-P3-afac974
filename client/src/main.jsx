@@ -91,10 +91,10 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/favoris",
+        path: "/favoris/:id",
         element: <Favorite />,
-        loader: async () => ({
-          favorites: await getFavorites(),
+        loader: async ({ params }) => ({
+          favorites: await getFavorites(params.id),
         }),
       },
     ],

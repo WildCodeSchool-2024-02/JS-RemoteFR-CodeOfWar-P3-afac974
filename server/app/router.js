@@ -39,7 +39,7 @@ router.delete(
 router.get("/artists/:id/artworks", artworks.readArtworksByArtist);
 
 // FAVORITES
-router.get("/favorite", favorite.browse);
+router.get("/favorite/:id", favorite.read);
 router.post("/favorite", favorite.addFavorite);
 router.delete("/favorite/:artworkId/:userId", favorite.destroyFavorite);
 

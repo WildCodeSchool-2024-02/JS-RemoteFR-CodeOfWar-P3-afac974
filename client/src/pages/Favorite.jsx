@@ -1,5 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
-import FavoritesComponent from "../components/exhibitionForm/FavoritesComponent";
+import FavoriteComponent from "../components/FavoriteComponent";
 
 import "../assets/styles/favorites.css";
 
@@ -13,7 +13,7 @@ function Favorite() {
         <div>
           {favorites.length > 0 ? (
             favorites.map((fav) => (
-              <FavoritesComponent fav={fav} key={fav.artwork_id} />
+              <FavoriteComponent fav={fav} key={fav.artwork_id} />
             ))
           ) : (
             <p>Vous n'avez pas d'oeuvres dans les Favoris.</p>
