@@ -43,7 +43,7 @@ function PersonalInformationsPage() {
   const handleCloseDeleteAccount = () => {
     setShowConfirmDeleteAccount(false);
   };
-  /* ------------------------------CONFIRMER---------------------------------------- */
+  /* ------------------------------CONFIRM---------------------------------------- */
 
   const updatePseudo = pseudo !== "" ? pseudo : auth.user.pseudo;
   const updateFirstName = firstName !== "" ? firstName : auth.user.firstname;

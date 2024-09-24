@@ -7,7 +7,7 @@ function Footer() {
   return (
     <footer className="footercomponent_footer">
       <div className="footercomponent_content">
-        <p>©opyright 2024 VirtuArt.</p>
+        <p>© Copyright 2024 VirtuArt.</p>
         <ul className="footercomponent_social_icons">
           <li>
             <a href="https://www.facebook.com" target="_blank" rel="noreferrer">

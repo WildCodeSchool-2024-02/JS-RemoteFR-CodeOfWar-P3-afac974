@@ -54,7 +54,7 @@ function AuthPage() {
       {auth && (
         <div className="auth_navlist">
           <li className="auth_navOnline">
-            <Link to="/" className="auth_navLinksOnline">
+            <Link to="/myprofil" className="auth_navLinksOnline">
               Mon profil
             </Link>
           </li>

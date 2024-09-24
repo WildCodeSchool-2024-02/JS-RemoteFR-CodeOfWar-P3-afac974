@@ -26,6 +26,7 @@ import AuthPage from "./pages/authentification_pages/AuthPage";
 import LoginPage from "./pages/authentification_pages/LoginPage";
 import RegisterPage from "./pages/authentification_pages/RegisterPage";
 import PersonalInformationsPage from "./pages/user_connected_pages/PersonalInformationsPage";
+import MyProfil from "./pages/user_connected_pages/MyProfil";
 import Favorite from "./pages/Favorite";
 
 const router = createBrowserRouter([
@@ -99,12 +100,16 @@ const router = createBrowserRouter([
         element: <RegisterPage />,
       },
       {
-        path: "/myinformations",
-        element: <PersonalInformationsPage />,
+        path: "/myprofil",
+        element: <MyProfil />,
       },
       {
         path: "/add",
         element: <ArtworkForm />,
+      },
+      {
+        path: "/myinformations",
+        element: <PersonalInformationsPage />,
       },
       {
         path: "/favoris",
