@@ -15,7 +15,6 @@ import "./assets/styles/authentification_styles/loginpage.css";
 import "./assets/styles/authentification_styles/registerpage.css";
 import "./assets/styles/authentification_styles/backbuttoncomponent.css";
 import "./assets/styles/user_connected_styles/personalinformationspage.css";
-import "./assets/styles/user_connected_styles/confirmdeletecomponent.css";
 import "./assets/styles/footercomponent.css";
 
 function App() {

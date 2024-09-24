@@ -2,7 +2,6 @@ import { useState } from "react";
 import { updateUserInfo } from "../../services/request";
 import { useAuth } from "../../context/AuthContext";
 
-import ConfirmDelete from "../../components/user_connected_components/ConfirmDeleteComponent";
 import BackButtonComponent from "../../components/authentification_components/BackButtonComponent";
 
 function PersonalInformationsPage() {
@@ -11,9 +10,6 @@ function PersonalInformationsPage() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-
-  const [showConfirmDeleteAccount, setShowConfirmDeleteAccount] =
-    useState(false);
 
   const [isChanged, setIsChanged] = useState(false);
 
@@ -35,14 +31,6 @@ function PersonalInformationsPage() {
     setIsChanged(event.target.value !== "");
   };
 
-  /* ------------------------------DELETE---------------------------------------- */
-  const handleChangeDeleteAccount = () => {
-    setShowConfirmDeleteAccount(true);
-  };
-
-  const handleCloseDeleteAccount = () => {
-    setShowConfirmDeleteAccount(false);
-  };
   /* ------------------------------CONFIRMER---------------------------------------- */
 
   const updatePseudo = pseudo !== "" ? pseudo : auth.user.pseudo;
@@ -123,18 +111,7 @@ function PersonalInformationsPage() {
             Confirmer
           </button>
         )}
-        <div>
-          <button
-            className="personalInformationsPage_button personalInformationsPage_deleteAccountButton"
-            onClick={handleChangeDeleteAccount}
-            type="button"
-          >
-            Supprimer le compte
-          </button>
-          {showConfirmDeleteAccount && (
-            <ConfirmDelete onClose={handleCloseDeleteAccount} />
-          )}
-        </div>
+
         <BackButtonComponent to="/authentification" />
       </form>
     </div>
