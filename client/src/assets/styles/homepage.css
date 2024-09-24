@@ -38,6 +38,8 @@
 }
 
 .artworkcomponent_expo_img {
+  padding: 1em;
+  margin-top: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,11 +53,11 @@
 }
 
 .artworkcomponent_expo_img > .figcaption_md.hidden {
-  display: none;
+  padding: 1em;
 }
 
 .horizontal_scroll_carousel {
-  margin-block: 5em;
+  margin-block: 2em;
   display: grid;
   gap: 2rem;
   grid-auto-flow: column;
@@ -79,24 +81,32 @@
   height: auto;
   object-fit: cover;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px #0000001a;
 }
 
-.horizontal_scroll_carousel > figure {
+.horizontal_scroll_carousel a {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 33.33% 33.33% 33.33%;
 }
 
-.horizontal_scroll_carousel > figure > figcaption {
-  background-color: black;
-  color: rgb(245, 245, 245);
+.horizontal_scroll_carousel figcaption {
+  background-color: var(--text-color);
+  color: var(--background-color);
   text-align: center;
   align-content: center;
   border-radius: 10px;
   grid-column: 1/3;
   grid-row: 2/3;
   opacity: 0.6;
+}
+
+.artworkcomponent_expo_img:nth-child(2n) div {
+  order: -1;
+}
+
+.artworkcomponent_expo_img:nth-child(2n + 1) div {
+  order: 1;
 }
 
 .horizontal_scroll_carousel > figure > Link > img {
@@ -111,14 +121,14 @@
 
 @media (min-width: 992px) {
   .horizontal_scroll_carousel {
-    margin-block: 3rem;
-    grid-auto-columns: 80vw;
+    grid-auto-columns: 70vw;
     grid-auto-flow: row;
     grid-auto-rows: 350px;
     overflow-y: auto;
     overflow-x: hidden;
     padding-inline: 0;
     margin-left: 10rem;
+    padding-bottom: 2rem;
   }
 
   .artworkcomponent_expo_img {
@@ -157,7 +167,7 @@
     padding-inline: 32px;
   }
 
-  .artworkcomponent_expo_img:nth-child(2n) {
+  .artworkcomponent_expo_img:nth-child(2n -1) {
     background-color: var(--primary-color);
   }
 
@@ -168,4 +178,19 @@
   .artworkcomponent_expo_img:nth-child(2n + 1) div {
     order: 1;
   }
+
+  .first_carousel_image {
+    margin: 1.5rem 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .artworkcomponent_expo_img:nth-child(4n-3),
+  .artworkcomponent_expo_img:nth-child(4n-4) {
+    background-color: var(--primary-color);
+  }
+}
+
+.first_carousel_image {
+  margin-top: 1.5rem;
 }
