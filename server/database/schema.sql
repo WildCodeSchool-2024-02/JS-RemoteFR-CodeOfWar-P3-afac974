@@ -544,8 +544,8 @@ VALUES (
         'https://facebook.com',
         'https://linkedin.com',
         CURRENT_TIMESTAMP,
-        '0',
-        '1'
+        '1',
+        '0'
     ),
     (
         'AdminToto',
@@ -563,8 +563,8 @@ VALUES (
         'https://facebook.com',
         'https://linkedin.com',
         CURRENT_TIMESTAMP,
-        '1',
-        '0'
+        '0',
+        '1'
     );
 
 CREATE TABLE favorite (
