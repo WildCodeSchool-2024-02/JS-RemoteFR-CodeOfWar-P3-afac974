@@ -41,7 +41,17 @@ export function getArtwork(id) {
 
 export function getExhibitions() {
   return axios
-    .get(`${import.meta.env.VITE_API_URL}/api/exhibition`)
+    .get(`${import.meta.env.VITE_API_URL}/api/exhibition/`)
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}
+
+export function getExhibition(id) {
+  return axios
+    .get(`${import.meta.env.VITE_API_URL}/api/exhibition/${id}`)
     .then((reponse) => reponse.data)
     .catch((error) => {
       console.error(error);
@@ -121,3 +131,36 @@ export function postRegisterUser(userData) {
       return [];
     });
 }
+
+
+export function deleteExhibition(exhibitionId) {
+  return axios
+    .delete(`${import.meta.env.VITE_API_URL}/api/exhibition/${exhibitionId}`)
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}
+
+export function createExhibition( 
+  exhibitionName,
+  exhibitionDescription,
+  exhibitionType,
+  exhibitionDateBegin,
+  exhibitionDateEnd) {
+    return axios
+    .post(`${import.meta.env.VITE_API_URL}/api/exhibition`, 
+      {
+      name : exhibitionName,
+      description : exhibitionDescription,
+      type : exhibitionType,
+      date_begin: exhibitionDateBegin,
+      date_end : exhibitionDateEnd,
+    })
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+  }
