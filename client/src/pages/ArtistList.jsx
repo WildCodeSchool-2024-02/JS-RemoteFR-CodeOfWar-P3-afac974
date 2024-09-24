@@ -6,10 +6,12 @@ function ArtistList() {
 
   return (
     <>
-      <h1>Nos artistes</h1>
-      {artists.map((artist) => (
-        <ArtistComponent artist={artist} key={artist.id} />
-      ))}
+      <h1 className="artistlist_name">Nos artistes</h1>
+      <div className="artistlist_container">
+        {artists.map((artist) => (
+          <ArtistComponent artist={artist} key={artist.id} />
+        ))}
+      </div>
       <Link to="/" className="homePage_navButtons">
         HomePage
       </Link>
