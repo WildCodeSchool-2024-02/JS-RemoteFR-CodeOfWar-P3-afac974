@@ -66,7 +66,6 @@ function PersonalInformationsPage() {
         setFirstName(userData.firstname);
         setLastName(userData.lastname);
         setEmail(userData.email);
-        console.info(res);
       }
     } catch (err) {
       console.error("Erreur lors de la mise à jour des infos utilisateur", err);

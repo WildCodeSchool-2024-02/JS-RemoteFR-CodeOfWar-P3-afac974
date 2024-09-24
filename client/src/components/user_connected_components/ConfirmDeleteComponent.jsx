@@ -19,7 +19,6 @@ function ConfirmDeleteComponent({ onClose }) {
       const res = await deleteAccount({
         password,
       });
-      console.info(deleteAccount);
       if (res.status === 204) {
         setAuth("");
         navigate("/");
