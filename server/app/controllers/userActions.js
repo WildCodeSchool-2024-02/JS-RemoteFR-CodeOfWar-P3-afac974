@@ -51,7 +51,7 @@ const edit = async (req, res, next) => {
 };
 
 const destroyAccount = async (req, res, next) => {
-  const user = { ...req.body, id: req.params.id };
+  const user = { id: req.params.id };
   try {
     await tables.user.deleteAccount(user);
     res.sendStatus(204);
