@@ -9,6 +9,14 @@ const artworks = require("./controllers/artworkActions");
 const exhibition = require("./controllers/exhibitionActions");
 const favorite = require("./controllers/favoriteActions");
 const middleware = require("./services/middleware");
+const { hashPassword, verifyToken } = require("./services/auth");
+
+// AUTHENTIFICATION
+const userActions = require("./controllers/userActions");
+const authActions = require("./controllers/authActions");
+
+router.post("/login", authActions.login);
+
 
 // ARTIST
 router.get("/artists", artists.browse);
@@ -28,7 +36,7 @@ router.get("/exhibition", exhibition.browse);
 router.get("/exhibition/:id", exhibition.read);
 router.put("/exhibition/:id", exhibition.edit);
 router.post("/exhibition", exhibition.add);
-router.delete("/exhibition/:id", exhibition.destroy);
+
 
 router.get("/exhibition/:id/artworks", exhibition.readArtwork);
 router.post("/exhibition/artworks", exhibition.addArtwork);
@@ -44,19 +52,15 @@ router.get("/favorite", favorite.browse);
 router.post("/favorite", favorite.addFavorite);
 router.delete("/favorite/:artworkId/:userId", favorite.destroyFavorite);
 
-// AUTHENTIFICATION
-const userActions = require("./controllers/userActions");
-const authActions = require("./controllers/authActions");
-
-const { hashPassword, verifyToken } = require("./services/auth");
 
 router.get("/users", userActions.browse);
 router.get("/users/:id", userActions.read);
 router.post("/users", hashPassword, userActions.add);
-
-router.post("/login", authActions.login);
+router.put("/users/:id", userActions.edit);
+router.delete("/users/:id/destroy", userActions.destroyAccount);
 
 // Authentication wall
 router.use(verifyToken);
+router.delete("/exhibition/:id", middleware.checkAdminStatus, exhibition.destroy);
 
 module.exports = router;

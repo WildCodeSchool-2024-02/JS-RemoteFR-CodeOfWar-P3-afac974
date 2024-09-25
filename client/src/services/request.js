@@ -41,7 +41,17 @@ export function getArtwork(id) {
 
 export function getExhibitions() {
   return axios
-    .get(`${import.meta.env.VITE_API_URL}/api/exhibition`)
+    .get(`${import.meta.env.VITE_API_URL}/api/exhibition/`)
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}
+
+export function getExhibition(id) {
+  return axios
+    .get(`${import.meta.env.VITE_API_URL}/api/exhibition/${id}`)
     .then((reponse) => reponse.data)
     .catch((error) => {
       console.error(error);
@@ -62,6 +72,15 @@ export function getArtworksByArtist(artistId) {
 export function getExhibitionArtwork(id) {
   return axios
     .get(`${import.meta.env.VITE_API_URL}/api/exhibition/${id}/artworks`)
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}
+export function getUserInfo(id) {
+  return axios
+    .get(`${import.meta.env.VITE_API_URL}/api/users/${id}`)
     .then((reponse) => reponse.data)
     .catch((error) => {
       console.error(error);
@@ -115,9 +134,63 @@ export function postRegisterUser(userData) {
     .then((reponse) => reponse)
     .catch((error) => {
       console.error(
-        "Erreur lors de la requête de connexion:",
+        "Erreur lors de la requête d'inscription:",
         error.response.data
       );
+      return [];
+    });
+}
+export function updateUserInfo(id, userData) {
+  return axios
+    .put(`${import.meta.env.VITE_API_URL}/api/users/${id}`, userData)
+    .then((reponse) => reponse)
+    .catch((error) => {
+      console.error(
+        "Erreur lors de la requête de mise à jour des informations de l'utilisateur:",
+        error.response.data
+      );
+      return [];
+    });
+}
+export function deleteAccount(id) {
+  return axios
+    .delete(`${import.meta.env.VITE_API_URL}/api/users/${id}/destroy`)
+    .then((reponse) => reponse)
+    .catch((error) => {
+      console.error(
+        "Erreur lors de la requête de suppression du compte utilisateur:",
+        error.response.data
+      );
+      return [];
+    });
+}
+
+export function deleteExhibition(exhibitionId) {
+  return axios
+    .delete(`${import.meta.env.VITE_API_URL}/api/exhibition/${exhibitionId}`, {
+      withCredentials: true,
+    })
+    .then((reponse) => reponse.data);
+}
+
+export function createExhibition(
+  exhibitionName,
+  exhibitionDescription,
+  exhibitionType,
+  exhibitionDateBegin,
+  exhibitionDateEnd
+) {
+  return axios
+    .post(`${import.meta.env.VITE_API_URL}/api/exhibition`, {
+      name: exhibitionName,
+      description: exhibitionDescription,
+      type: exhibitionType,
+      date_begin: exhibitionDateBegin,
+      date_end: exhibitionDateEnd,
+    })
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
       return [];
     });
 }

@@ -26,7 +26,7 @@ function LoginPage() {
         navigate("/dashboard");
       }
     } catch (err) {
-      console.error(err);
+      console.error("Erreur lors de la tentative de connexion LoginPage", err);
     }
   };
 

@@ -452,7 +452,7 @@ VALUES ("1", "1"),
 CREATE TABLE user (
     id INT unsigned primary key auto_increment not null,
     pseudo VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL,
     hashed_password VARCHAR(255) NOT NULL,
     firstname VARCHAR(100),
     lastname VARCHAR(100),
@@ -544,8 +544,8 @@ VALUES (
         'https://facebook.com',
         'https://linkedin.com',
         CURRENT_TIMESTAMP,
-        '0',
-        '1'
+        '1',
+        '0'
     ),
     (
         'AdminToto',
@@ -563,8 +563,8 @@ VALUES (
         'https://facebook.com',
         'https://linkedin.com',
         CURRENT_TIMESTAMP,
-        '1',
-        '0'
+        '0',
+        '1'
     );
 
 CREATE TABLE favorite (

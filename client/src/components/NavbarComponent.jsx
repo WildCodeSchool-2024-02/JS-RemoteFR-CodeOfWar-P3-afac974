@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import IconsComponent from "./IconsComponent";
 
 function Navbar() {
@@ -14,9 +13,6 @@ function Navbar() {
       </Link>
 
       <ul className="navbarcomponent_list">
-        <Link to="/dashboard">
-          <p>Dashboard</p>
-        </Link>
         <li>
           <Link to="/authentification" className="navBar_userButton">
             <IconsComponent
