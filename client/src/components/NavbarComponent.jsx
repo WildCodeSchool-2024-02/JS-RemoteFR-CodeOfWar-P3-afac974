@@ -1,7 +1,18 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import IconsComponent from "./IconsComponent";
+import { getUserId } from "../services/request";
 
 function Navbar() {
+  const [userId, setUserId] = useState();
+
+  useEffect(() => {
+    const fetchUserId = async () => {
+      setUserId(await getUserId());
+    };
+    fetchUserId();
+  }, []);
+
   return (
     <nav className="navbarcomponent_navArea">
       <Link to="/" className="navBar_userButton">
@@ -23,14 +34,25 @@ function Navbar() {
           </Link>
         </li>
         <li>
-          <Link to="/favoris">
-            <IconsComponent
-              className="navbarcomponent_favorite_icon"
-              alt="heart icon for favourites artworks"
-              src="emptyHeart"
-            />
-          </Link>
+          {userId ? (
+            <Link to={`/favoris/${userId}`}>
+              <IconsComponent
+                className="navbarcomponent_favorite_icon"
+                alt="heart icon for favourites artworks"
+                src="emptyHeart"
+              />
+            </Link>
+          ) : (
+            <Link to="/authentification">
+              <IconsComponent
+                className="navbarcomponent_favorite_icon"
+                alt="heart icon for favorites artworks"
+                src="emptyHeart"
+              />
+            </Link>
+          )}
         </li>
+
         <li>
           <IconsComponent
             className="navbarcomponent_menu_icon"

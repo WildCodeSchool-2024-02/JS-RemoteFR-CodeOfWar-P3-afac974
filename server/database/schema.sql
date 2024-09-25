@@ -1,3 +1,4 @@
+-- SQLBook: Code
 create table artist (
     id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
     biography TEXT,
@@ -574,15 +575,7 @@ CREATE TABLE favorite (
     FOREIGN KEY (user_id) REFERENCES user (id)
 );
 
-SELECT favorite.user_id, favorite.artwork_id, artwork.image_url
-FROM favorite
-    INNER JOIN artwork ON favorite.artwork_id = artwork.id
-    INNER JOIN user ON favorite.user_id = user.id
-WHERE
-    user.id = 1;
-
-INSERT INTO
-    favorite (artwork_id, user_id)
+INSERT INTO favorite (artwork_id, user_id)
 VALUES ("1", "1"),
     ("2", "1"),
     ("3", "1");

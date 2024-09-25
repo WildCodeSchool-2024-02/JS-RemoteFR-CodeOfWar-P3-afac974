@@ -1,8 +1,10 @@
 import axios from "axios";
 
+const url = import.meta.env.VITE_API_URL;
+
 export function getArtistList() {
   return axios
-    .get(`${import.meta.env.VITE_API_URL}/api/artists`)
+    .get(`${url}/api/artists`)
     .then((response) => response.data)
     .catch((error) => {
       console.error(error);
@@ -11,7 +13,7 @@ export function getArtistList() {
 }
 export function getArtist(id) {
   return axios
-    .get(`${import.meta.env.VITE_API_URL}/api/artists/${id}`)
+    .get(`${url}/api/artists/${id}`)
     .then((reponse) => reponse.data)
     .catch((error) => {
       console.error(error);
@@ -21,7 +23,7 @@ export function getArtist(id) {
 
 export function getArtworks() {
   return axios
-    .get(`${import.meta.env.VITE_API_URL}/api/artworks`)
+    .get(`${url}/api/artworks`)
     .then((reponse) => reponse.data)
     .catch((error) => {
       console.error(error);
@@ -31,7 +33,7 @@ export function getArtworks() {
 
 export function getArtwork(id) {
   return axios
-    .get(`${import.meta.env.VITE_API_URL}/api/artworks/${id}`)
+    .get(`${url}/api/artworks/${id}`)
     .then((reponse) => reponse.data)
     .catch((error) => {
       console.error(error);
@@ -41,7 +43,7 @@ export function getArtwork(id) {
 
 export function getExhibitions() {
   return axios
-    .get(`${import.meta.env.VITE_API_URL}/api/exhibition/`)
+    .get(`${url}/api/exhibition`)
     .then((reponse) => reponse.data)
     .catch((error) => {
       console.error(error);
@@ -51,7 +53,7 @@ export function getExhibitions() {
 
 export function getExhibition(id) {
   return axios
-    .get(`${import.meta.env.VITE_API_URL}/api/exhibition/${id}`)
+    .get(`${url}/api/exhibition/${id}`)
     .then((reponse) => reponse.data)
     .catch((error) => {
       console.error(error);
@@ -61,7 +63,7 @@ export function getExhibition(id) {
 
 export function getArtworksByArtist(artistId) {
   return axios
-    .get(`${import.meta.env.VITE_API_URL}/api/artists/${artistId}/artworks`)
+    .get(`${url}/api/artists/${artistId}/artworks`)
     .then((response) => response.data)
     .catch((error) => {
       console.error(error);
@@ -71,7 +73,7 @@ export function getArtworksByArtist(artistId) {
 
 export function getExhibitionArtwork(id) {
   return axios
-    .get(`${import.meta.env.VITE_API_URL}/api/exhibition/${id}/artworks`)
+    .get(`${url}/api/exhibition/${id}/artworks`)
     .then((reponse) => reponse.data)
     .catch((error) => {
       console.error(error);
@@ -90,9 +92,7 @@ export function getUserInfo(id) {
 
 export function deleteExhibitionArtwork(exhibitionId, artworkId) {
   return axios
-    .delete(
-      `${import.meta.env.VITE_API_URL}/api/exhibition/${exhibitionId}/artworks/${artworkId}`
-    )
+    .delete(`${url}/api/exhibition/${exhibitionId}/artworks/${artworkId}`)
     .then((reponse) => reponse.data)
     .catch((error) => {
       console.error(error);
@@ -102,10 +102,40 @@ export function deleteExhibitionArtwork(exhibitionId, artworkId) {
 
 export function postExhibitionArtwork(exhibitionID, artworkID) {
   return axios
-    .post(`${import.meta.env.VITE_API_URL}/api/exhibition/artworks`, {
+    .post(`${url}/api/exhibition/artworks`, {
       exhibition_id: exhibitionID,
       artwork_id: artworkID,
     })
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}
+
+export function getFavorites(id) {
+  return axios
+    .get(`${url}/api/favorite/${id}`)
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}
+
+export function addFavorite(artworkId, userId) {
+  return axios
+    .post(`${url}/api/favorite`, { artwork_id: artworkId, user_id: userId })
+    .then((response) => response.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}
+
+export function deleteFavorite(artworkId, userId) {
+  return axios
+    .delete(`${url}/api/favorite/${artworkId}/${userId}`)
     .then((reponse) => reponse.data)
     .catch((error) => {
       console.error(error);
@@ -180,17 +210,21 @@ export function createExhibition(
   exhibitionDateBegin,
   exhibitionDateEnd
 ) {
+  return axios.post(`${import.meta.env.VITE_API_URL}/api/exhibition`, {
+    name: exhibitionName,
+    description: exhibitionDescription,
+    type: exhibitionType,
+    date_begin: exhibitionDateBegin,
+    date_end: exhibitionDateEnd,
+  });
+}
+
+export function getUserId() {
   return axios
-    .post(`${import.meta.env.VITE_API_URL}/api/exhibition`, {
-      name: exhibitionName,
-      description: exhibitionDescription,
-      type: exhibitionType,
-      date_begin: exhibitionDateBegin,
-      date_end: exhibitionDateEnd,
-    })
-    .then((reponse) => reponse.data)
+    .get(`${url}/api/getUserId`, { withCredentials: true })
+    .then((response) => response.data.userId)
     .catch((error) => {
       console.error(error);
-      return [];
+      return null;
     });
 }

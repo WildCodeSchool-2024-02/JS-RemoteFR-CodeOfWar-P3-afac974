@@ -26,19 +26,17 @@ const hashPassword = async (req, res, next) => {
 const verifyToken = (req, res, next) => {
   try {
     const { auth } = req.cookies;
-
-    if (auth == null) {
-      throw new Error("Authorization header is missing");
+    if (!auth) {
+      throw new Error("");
     }
-
     req.auth = jwt.verify(auth, process.env.APP_SECRET);
     next();
   } catch (err) {
-    console.error(err);
-
-    res.sendStatus(401);
+    console.error(err.message);
+    res.status(401).json({ message: "Unauthorized: Invalid or missing token" });
   }
 };
+
 module.exports = {
   hashPassword,
   verifyToken,

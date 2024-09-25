@@ -22,29 +22,6 @@ const read = async (req, res, next) => {
   }
 };
 
-const add = async (req, res, next) => {
-  const favorite = req.body;
-  try {
-    const result = await tables.favorite.create(favorite);
-    res
-      .status(201)
-      .send(
-        `Oeuvre ajoutée avec succès à vos Favoris. ID : ${result.insertId}`
-      );
-  } catch (error) {
-    next(error);
-  }
-};
-
-const destroy = async (req, res, next) => {
-  try {
-    await tables.favorite.delete(req.params.id);
-    res.sendStatus(204);
-  } catch (error) {
-    next(error);
-  }
-};
-
 const readFavorite = async (req, res, next) => {
   try {
     const favorite = await tables.favorite.readFavoriteArtwork(req.params.id);
@@ -59,13 +36,15 @@ const readFavorite = async (req, res, next) => {
 };
 
 const addFavorite = async (req, res, next) => {
-  const { artworkId, userId } = req.body;
+  const userId = req.body.user_id;
+  const artworkId = req.body.artwork_id;
+
   try {
     const result = await tables.favorite.createFavorite(artworkId, userId);
     res
       .status(201)
       .send(
-        `Oeuvre ajoutée avec succès à vos Favoris. ID : ${result.insertId}`
+        `Favoris ajouté avec succès à vos Favoris. ID : ${result.insertId}`
       );
   } catch (error) {
     next(error);
@@ -73,14 +52,16 @@ const addFavorite = async (req, res, next) => {
 };
 
 const destroyFavorite = async (req, res, next) => {
-  const { artworkId, userId } = req.params;
+  const { userId } = req.params;
+  const { artworkId } = req.params;
+
   try {
     const affectedRows = await tables.favorite.deleteFavorite(
       artworkId,
       userId
     );
     if (affectedRows === 0) {
-      return res.status(404).send("Aucune Oeuvre trouvée.");
+      return res.status(404).send("Aucune oeuvre trouvée.");
     }
     return res.sendStatus(204);
   } catch (error) {
@@ -91,8 +72,6 @@ const destroyFavorite = async (req, res, next) => {
 module.exports = {
   browse,
   read,
-  add,
-  destroy,
   readFavorite,
   addFavorite,
   destroyFavorite,

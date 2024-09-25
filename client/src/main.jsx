@@ -9,6 +9,7 @@ import {
   getArtwork,
   getExhibitions,
   getArtworksByArtist,
+  getFavorites,
 } from "./services/request";
 
 import { AuthProvider } from "./context/AuthContext";
@@ -27,6 +28,7 @@ import LoginPage from "./pages/authentification_pages/LoginPage";
 import RegisterPage from "./pages/authentification_pages/RegisterPage";
 import PersonalInformationsPage from "./pages/user_connected_pages/PersonalInformationsPage";
 import Favorite from "./pages/Favorite";
+import FavoritesProvider from "./contexts/FavoritesContext";
 
 const router = createBrowserRouter([
   {
@@ -107,10 +109,10 @@ const router = createBrowserRouter([
         element: <ArtworkForm />,
       },
       {
-        path: "/favoris",
+        path: "/favoris/:id",
         element: <Favorite />,
         loader: async ({ params }) => ({
-          artwork: await getArtwork(params.id),
+          favorites: await getFavorites(params.id),
         }),
       },
     ],
@@ -120,9 +122,11 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <AuthProvider>
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
-  </AuthProvider>
+  <React.StrictMode>
+    <AuthProvider>
+      <FavoritesProvider>
+        <RouterProvider router={router} />
+      </FavoritesProvider>
+    </AuthProvider>
+  </React.StrictMode>
 );

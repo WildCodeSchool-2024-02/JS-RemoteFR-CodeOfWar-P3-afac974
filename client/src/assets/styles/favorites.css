@@ -1,0 +1,8 @@
+.favorites_artworks img {
+  width: 10rem;
+}
+
+.favorites_artworks {
+  display: flex;
+  justify-content: center;
+}
