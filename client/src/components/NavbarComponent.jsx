@@ -11,7 +11,7 @@ function Navbar() {
       setUserId(await getUserId());
     };
     fetchUserId();
-  }, [userId]);
+  }, []);
 
   return (
     <nav className="navbarcomponent_navArea">
@@ -34,14 +34,25 @@ function Navbar() {
           </Link>
         </li>
         <li>
-          <Link to={`/favoris/${userId}`}>
-            <IconsComponent
-              className="navbarcomponent_favorite_icon"
-              alt="heart icon for favourites artworks"
-              src="emptyHeart"
-            />
-          </Link>
+          {userId ? (
+            <Link to={`/favoris/${userId}`}>
+              <IconsComponent
+                className="navbarcomponent_favorite_icon"
+                alt="heart icon for favourites artworks"
+                src="emptyHeart"
+              />
+            </Link>
+          ) : (
+            <Link to="/authentification">
+              <IconsComponent
+                className="navbarcomponent_favorite_icon"
+                alt="heart icon for favorites artworks"
+                src="emptyHeart"
+              />
+            </Link>
+          )}
         </li>
+
         <li>
           <IconsComponent
             className="navbarcomponent_menu_icon"

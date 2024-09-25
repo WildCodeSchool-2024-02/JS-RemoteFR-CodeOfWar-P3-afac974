@@ -225,6 +225,6 @@ export function getUserId() {
     .then((response) => response.data.userId)
     .catch((error) => {
       console.error(error);
-      return [];
+      return null;
     });
 }
