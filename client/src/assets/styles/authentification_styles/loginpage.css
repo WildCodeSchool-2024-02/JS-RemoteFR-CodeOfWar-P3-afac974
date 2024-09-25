@@ -40,7 +40,7 @@
 }
 .loginpage_input[type="password"],
 .loginpage_input[type="text"] {
-  background-image: url("../../icons/password-key.svg");
+  background-image: url("../../icons/key.svg");
 }
 
 .loginpage_passwordContainer {

@@ -51,6 +51,16 @@ export function getExhibitions() {
     });
 }
 
+export function getExhibition(id) {
+  return axios
+    .get(`${url}/api/exhibition/${id}`)
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}
+
 export function getArtworksByArtist(artistId) {
   return axios
     .get(`${url}/api/artists/${artistId}/artworks`)
@@ -122,4 +132,56 @@ export function deleteFavorite(artworkId, userId) {
       console.error(error);
       return [];
     });
+}
+
+export function postloginUser(userData) {
+  return axios
+    .post(`${import.meta.env.VITE_API_URL}/api/login`, userData, {
+      withCredentials: true,
+    })
+    .then((reponse) => reponse)
+    .catch((error) => {
+      console.error(
+        "Erreur lors de la requête de connexion:",
+        error.response.data
+      );
+      return [];
+    });
+}
+
+export function postRegisterUser(userData) {
+  return axios
+    .post(`${import.meta.env.VITE_API_URL}/api/users`, userData)
+    .then((reponse) => reponse)
+    .catch((error) => {
+      console.error(
+        "Erreur lors de la requête de connexion:",
+        error.response.data
+      );
+      return [];
+    });
+}
+
+export function deleteExhibition(exhibitionId) {
+  return axios
+    .delete(`${import.meta.env.VITE_API_URL}/api/exhibition/${exhibitionId}`, {
+      withCredentials: true,
+    })
+    .then((reponse) => reponse.data);
+}
+
+export function createExhibition(
+  exhibitionName,
+  exhibitionDescription,
+  exhibitionType,
+  exhibitionDateBegin,
+  exhibitionDateEnd
+) {
+  return axios.post(`${import.meta.env.VITE_API_URL}/api/exhibition`, {
+    name: exhibitionName,
+    description: exhibitionDescription,
+    type: exhibitionType,
+    date_begin: exhibitionDateBegin,
+    date_end: exhibitionDateEnd,
+  });
 }

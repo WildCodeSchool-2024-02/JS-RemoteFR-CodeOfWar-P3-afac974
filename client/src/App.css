@@ -27,8 +27,17 @@
   text-decoration: none;
 }
 
-html {
+html,
+body {
   scroll-behavior: smooth;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
 }
 
 li {

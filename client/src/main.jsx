@@ -12,6 +12,8 @@ import {
   getFavorites,
 } from "./services/request";
 
+import { AuthProvider } from "./context/AuthContext";
+
 import App from "./App";
 import Homepage from "./pages/Homepage";
 import ArtworkPage from "./pages/ArtworkPage";
@@ -22,6 +24,9 @@ import Exhibition from "./pages/Exhibition";
 import ExhibitionForm from "./pages/ExhibitionForm";
 import UserPage from "./pages/UserPage";
 import ArtworkForm from "./components/ArtworkForm";
+import AuthPage from "./pages/authentification_pages/AuthPage";
+import LoginPage from "./pages/authentification_pages/LoginPage";
+import RegisterPage from "./pages/authentification_pages/RegisterPage";
 import Favorite from "./pages/Favorite";
 import FavoritesProvider from "./contexts/FavoritesContext";
 
@@ -34,6 +39,8 @@ const router = createBrowserRouter([
         element: <Homepage />,
         loader: async () => ({
           artworks: await getArtworks(),
+          exhibitions: await getExhibitions(),
+          artists: await getArtistList(),
         }),
       },
       {
@@ -51,10 +58,12 @@ const router = createBrowserRouter([
         }),
       },
       {
-        path: "/artworkspage",
+        path: "/artworks",
         element: <ArtworksPage />,
         loader: async () => ({
           artworks: await getArtworks(),
+          artists: await getArtistList(),
+          exhibitions: await getExhibitions(),
         }),
       },
       {
@@ -71,6 +80,22 @@ const router = createBrowserRouter([
         loader: async () => ({
           exhibitions: await getExhibitions(),
         }),
+      },
+      {
+        path: "/authentification",
+        element: <AuthPage />,
+      },
+      {
+        path: "login",
+        element: <LoginPage />,
+      },
+      {
+        path: "register",
+        element: <RegisterPage />,
+      },
+      {
+        path: "/user",
+        element: <UserPage />,
       },
       {
         path: "/exhibitionForm",
@@ -105,8 +130,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <FavoritesProvider>
-      <RouterProvider router={router} />
-    </FavoritesProvider>
+    <AuthProvider>
+      <FavoritesProvider>
+        <RouterProvider router={router} />
+      </FavoritesProvider>
+    </AuthProvider>
   </React.StrictMode>
 );
