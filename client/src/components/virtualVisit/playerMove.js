@@ -1,29 +1,30 @@
 import Phaser from "phaser";
 
 export default function playerMove(setMessage) {
-  // Réinitialiser la vélocité à zéro au début de chaque frame
+
+  // Gestion des déplacements
+
   this.player.setVelocity(0);
 
-  // Déplacement à gauche
   if (this.cursors.left.isDown && this.player.x > 20) {
     this.player.setVelocityX(-160);
   }
-  // Déplacement à droite
+
   else if (this.cursors.right.isDown && this.player.x < 780) {
     this.player.setVelocityX(160);
   }
 
-  // Déplacement vers le haut
+
   if (this.cursors.up.isDown && this.player.y > 20) {
     this.player.setVelocityY(-160);
   }
-  // Déplacement vers le bas
+
   else if (this.cursors.down.isDown && this.player.y < 780) {
-    // Ajustez 180 selon la hauteur du jeu
+
     this.player.setVelocityY(160);
   }
 
-  // Si aucune touche n'est pressée, on arrête l'animation
+
   if (
     !this.cursors.left.isDown &&
     !this.cursors.right.isDown &&
@@ -33,7 +34,8 @@ export default function playerMove(setMessage) {
     this.player.setVelocity(0);
   }
 
-  // Réinitialiser le message si le joueur est loin des tableaux
+
+  // Interaction avec la distance du tableau
   const distanceToTableau1 = Phaser.Math.Distance.Between(
     this.player.x,
     this.player.y,

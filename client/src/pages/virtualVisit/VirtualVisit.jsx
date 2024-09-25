@@ -12,6 +12,7 @@ import playerMove from "../../components/virtualVisit/playerMove";
 
 function VirtualVisit() {
     const phaserGame = useRef(null);
+    const messageRef = useRef("");
 
     const [message, setMessage] = useState("");
     const [pictures, setPictures] = useState([])
@@ -40,10 +41,16 @@ function VirtualVisit() {
               preload.call(this);
             },
             create() {
-              create.call(this, setMessage);
+              create.call(this, (newMessage) => {
+                messageRef.current = newMessage;
+                setMessage(newMessage);
+              });
             },
             update() {
-              playerMove.call(this, setMessage, message);
+              playerMove.call(this, (newMessage) => {
+                messageRef.current = newMessage;
+                setMessage(newMessage);
+              }, messageRef.current);
             },
           },
           physics: {
@@ -61,7 +68,7 @@ function VirtualVisit() {
         phaserGame.current.destroy(true);
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, []);
 
 
