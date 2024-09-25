@@ -122,7 +122,7 @@ const router = createBrowserRouter([
         }),
       },
             {
-        path: "/visit",
+        path: "/visit/:id",
         element: <VirtualVisit />,
       },
     ],

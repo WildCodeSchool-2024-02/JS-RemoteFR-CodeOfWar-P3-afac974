@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import Phaser from "phaser"
+import { useParams } from "react-router-dom";
 
 import { getExhibitionArtwork } from "../../services/request";
 
@@ -11,8 +12,11 @@ import playerMove from "../../components/virtualVisit/playerMove";
 
 
 function VirtualVisit() {
+    const {id} = useParams();
     const phaserGame = useRef(null);
     const messageRef = useRef("");
+
+    console.info(id)
 
     const [message, setMessage] = useState("");
     const [pictures, setPictures] = useState([])
@@ -20,14 +24,14 @@ function VirtualVisit() {
     useEffect(() => {
       const fetchPictures = async () => {
         try {
-          const result = await getExhibitionArtwork(1);
+          const result = await getExhibitionArtwork(id);
           setPictures(result);
         } catch (err) {
           err(err.message);
         }
       };
       fetchPictures();
-    }, []); 
+    }, [id]); 
 
     useEffect(() => {
         const config = {
