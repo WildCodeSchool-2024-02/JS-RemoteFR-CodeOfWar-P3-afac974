@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 import IconsComponent from "./IconsComponent";
 import { getUserId } from "../services/request";
 
 function Navbar() {
-  const { auth } = useAuth();
   const [userId, setUserId] = useState();
 
   useEffect(() => {
@@ -26,16 +24,6 @@ function Navbar() {
       </Link>
 
       <ul className="navbarcomponent_list">
-        <Link to="/dashboard">
-          <p>Dashboard</p>
-        </Link>
-        {auth?.user?.is_admin && (
-          <li>
-            <Link to="/exhibitionForm">
-              <p> Exposition</p>
-            </Link>
-          </li>
-        )}
         <li>
           <Link to="/authentification" className="navBar_userButton">
             <IconsComponent

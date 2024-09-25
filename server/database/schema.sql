@@ -453,7 +453,7 @@ VALUES ("1", "1"),
 CREATE TABLE user (
     id INT unsigned primary key auto_increment not null,
     pseudo VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL,
     hashed_password VARCHAR(255) NOT NULL,
     firstname VARCHAR(100),
     lastname VARCHAR(100),

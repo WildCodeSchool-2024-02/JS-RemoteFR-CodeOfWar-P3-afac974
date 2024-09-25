@@ -24,9 +24,10 @@ function LoginPage() {
       if (res.status === 200) {
         setAuth(res.data);
         navigate("/authentification");
+        // A changer avec l'id
       }
     } catch (err) {
-      console.error(err);
+      console.error("Erreur lors de la tentative de connexion LoginPage", err);
     }
   };
 
