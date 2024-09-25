@@ -72,8 +72,6 @@ const destroyFavorite = async (req, res, next) => {
 module.exports = {
   browse,
   read,
-  // add,
-  // destroy,
   readFavorite,
   addFavorite,
   destroyFavorite,
