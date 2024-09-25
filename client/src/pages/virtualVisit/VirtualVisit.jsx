@@ -25,7 +25,7 @@ function VirtualVisit() {
         type: Phaser.AUTO,
         parent: "gameContainer",
         width: 800,
-        height: 800,
+        height: 400,
         backgroundColor: "#179ac5",
         scene: {
           preload() {
@@ -60,7 +60,7 @@ function VirtualVisit() {
     console.info("MESSAGE", message)
 
   return (
-    // <Picture message={message} artwork={artworks[message]} />
+
     <Picture message={message} artwork={artworks[message]} />
 
   )
