@@ -185,3 +185,13 @@ export function createExhibition(
     date_end: exhibitionDateEnd,
   });
 }
+
+export function getUserId() {
+  return axios
+    .get(`${url}/api/getUserId`, { withCredentials: true })
+    .then((response) => response.data.userId)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}

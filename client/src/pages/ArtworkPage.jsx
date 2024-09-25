@@ -1,27 +1,26 @@
 import { useState, useEffect } from "react";
 import { useLoaderData, Link } from "react-router-dom";
 import { useFavorites } from "../contexts/FavoritesContext";
+import { getUserId } from "../services/request";
 
 function ArtworkPage() {
   const { artwork } = useLoaderData();
   const { favorite, addNewFavorite, removeFavorite } = useFavorites();
   const [isFavorite, setIsFavorite] = useState();
-
-  // ID à changer dès que l'ID du user est dynamique
-  // Utiliser les useparams ?
-  const userId = 1;
+  const [userId, setUserId] = useState();
 
   useEffect(() => {
+    const fetchUserId = async () => {
+      setUserId(await getUserId());
+    };
+    fetchUserId();
+
     if (favorite) {
       setIsFavorite(
         favorite.some((favArtwork) => favArtwork.artwork_id === artwork.id)
       );
     }
   }, [favorite, artwork.id]);
-
-  console.info("artwork id:", artwork.id);
-  console.info("user id:", userId);
-  console.info("is favorite:", isFavorite);
 
   const toggleFavorite = () => {
     if (isFavorite) {
@@ -95,7 +94,6 @@ function ArtworkPage() {
             <span>Description :</span> {artwork.description}
           </li>
         </ul>
-        <Link to="/favoris/1">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</Link>
         <Link to="/" className="homePage_navButtons">
           HomePage
         </Link>
