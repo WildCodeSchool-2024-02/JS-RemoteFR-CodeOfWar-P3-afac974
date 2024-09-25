@@ -27,6 +27,7 @@ import AuthPage from "./pages/authentification_pages/AuthPage";
 import LoginPage from "./pages/authentification_pages/LoginPage";
 import RegisterPage from "./pages/authentification_pages/RegisterPage";
 import Favorite from "./pages/Favorite";
+import VirtualVisit from "./pages/virtualVisit/VirtualVisit";
 
 const router = createBrowserRouter([
   {
@@ -119,6 +120,10 @@ const router = createBrowserRouter([
         loader: async ({ params }) => ({
           artwork: await getArtwork(params.id),
         }),
+      },
+            {
+        path: "/visit",
+        element: <VirtualVisit />,
       },
     ],
   },
