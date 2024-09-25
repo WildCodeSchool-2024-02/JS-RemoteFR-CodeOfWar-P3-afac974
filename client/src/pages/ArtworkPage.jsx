@@ -95,6 +95,7 @@ function ArtworkPage() {
             <span>Description :</span> {artwork.description}
           </li>
         </ul>
+        <Link to="/favoris/1">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</Link>
         <Link to="/" className="homePage_navButtons">
           HomePage
         </Link>
