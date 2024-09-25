@@ -16,13 +16,10 @@ function LoginPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const res = await postloginUser({
-        email,
-        password,
-      });
-
+      const res = await postloginUser({ email, password });
       if (res.status === 200) {
-        setAuth(res.data);
+        localStorage.setItem("authToken", res.data.token);
+        setAuth(res.data.user);
         navigate("/dashboard");
       }
     } catch (err) {

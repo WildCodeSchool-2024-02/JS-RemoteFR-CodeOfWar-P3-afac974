@@ -26,6 +26,7 @@ import ArtworkForm from "./components/ArtworkForm";
 import AuthPage from "./pages/authentification_pages/AuthPage";
 import LoginPage from "./pages/authentification_pages/LoginPage";
 import RegisterPage from "./pages/authentification_pages/RegisterPage";
+import DashboardPage from "./pages/user_connected_pages/DashboardPage";
 import PersonalInformationsPage from "./pages/user_connected_pages/PersonalInformationsPage";
 import Favorite from "./pages/Favorite";
 import FavoritesProvider from "./contexts/FavoritesContext";
@@ -99,6 +100,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <RegisterPage />,
+      },
+      {
+        path: "dashboard",
+        element: <DashboardPage />,
       },
       {
         path: "/myinformations",
