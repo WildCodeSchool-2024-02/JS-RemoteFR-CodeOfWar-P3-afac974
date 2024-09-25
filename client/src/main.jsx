@@ -27,7 +27,6 @@ import AuthPage from "./pages/authentification_pages/AuthPage";
 import LoginPage from "./pages/authentification_pages/LoginPage";
 import RegisterPage from "./pages/authentification_pages/RegisterPage";
 import Favorite from "./pages/Favorite";
-import MyArtworks from "./pages/MyArtworks";
 
 const router = createBrowserRouter([
   {
@@ -111,10 +110,6 @@ const router = createBrowserRouter([
           {
             path: "add",
             element: <ArtworkForm />,
-          },
-          {
-            path: "myArtworks",
-            element: <MyArtworks />,
           },
         ],
       },
