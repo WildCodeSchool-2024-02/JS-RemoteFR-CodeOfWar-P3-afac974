@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "../assets/styles/artworkForm.css";
 
@@ -13,6 +14,7 @@ function ArtworkForm() {
     artistId: "",
   });
   const [image, setImage] = useState(null);
+  const navigate = useNavigate();
 
   const sendArtwork = (event) => {
     event.preventDefault();
@@ -32,7 +34,12 @@ function ArtworkForm() {
           "Content-Type": "multipart/form-data",
         },
       })
-      .then((response) => console.info(response))
+      .then((response) => {
+        if (response === 201) {
+          console.info(response);
+          navigate("/dashboard");
+        }
+      })
       .catch((error) => {
         console.error("There was an error!", error.response);
       });

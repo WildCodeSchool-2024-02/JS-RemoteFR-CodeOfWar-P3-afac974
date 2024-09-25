@@ -23,8 +23,7 @@ function LoginPage() {
 
       if (res.status === 200) {
         setAuth(res.data);
-        navigate("/authentification");
-        // A changer avec l'id
+        navigate("/dashboard");
       }
     } catch (err) {
       console.error("Erreur lors de la tentative de connexion LoginPage", err);
