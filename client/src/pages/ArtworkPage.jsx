@@ -75,9 +75,21 @@ function ArtworkPage() {
 
       <div className="artworkPage_fav_com">
         <p>Un coup de coeur ? Ajouter la à vos favoris</p>
-        <button className="like_button" type="button" onClick={toggleFavorite}>
-          {isFavorite ? "❤️" : "🤍"}
-        </button>
+
+        {userId ? (
+          <button
+            className="like_button"
+            type="button"
+            onClick={toggleFavorite}
+          >
+            {isFavorite ? "❤️" : "🤍"}
+          </button>
+        ) : (
+          <Link to="/authentification">
+            <button type="button">🤍</button>
+          </Link>
+        )}
+
         <p>Une pensée ? Faites la vivre en commentaire</p>
       </div>
 
