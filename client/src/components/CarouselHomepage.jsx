@@ -22,8 +22,10 @@ function CarouselHomepage({ artwork, exhibition, artist }) {
             alt={artwork[randomArtwork].title}
           />
 
-          <figcaption>
-            <h2>{exhibition[randomExhibition].name}</h2>
+          <figcaption className="carrouselHomepage_informations">
+            <h2 className="carrouselHomepage_title">
+              {exhibition[randomExhibition].name}
+            </h2>
             <p>
               {exhibition[randomExhibition].date_begin.substring(0, 7)} /{" "}
               {exhibition[randomExhibition].date_end.substring(0, 7)}
@@ -40,8 +42,10 @@ function CarouselHomepage({ artwork, exhibition, artist }) {
             alt={artwork[1].title}
           />
 
-          <figcaption>
-            <h2>{artist[randomArtist].pseudo}</h2>
+          <figcaption className="carrouselHomepage_informations">
+            <h2 className="carrouselHomepage_title">
+              {artist[randomArtist].pseudo}
+            </h2>
             <p>Savoir Plus...</p>
           </figcaption>
         </Link>
@@ -54,8 +58,10 @@ function CarouselHomepage({ artwork, exhibition, artist }) {
             alt={artwork[2].title}
           />
 
-          <figcaption>
-            <h2>{artwork[randomArtwork].title}</h2>
+          <figcaption className="carrouselHomepage_informations">
+            <h2 className="carrouselHomepage_title">
+              {artwork[randomArtwork].title}
+            </h2>
             <p>Savoir Plus...</p>
           </figcaption>
         </Link>

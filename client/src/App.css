@@ -14,7 +14,7 @@
   --validate-color: #1db189;
   --validate-background-color: #2ef9c2;
   --font-family-primary: Montserrat-Regular;
-  --text-opacity: #0000001a;
+  --text-opacity: rgba(0, 0, 0, 0.397);
 }
 
 *,
