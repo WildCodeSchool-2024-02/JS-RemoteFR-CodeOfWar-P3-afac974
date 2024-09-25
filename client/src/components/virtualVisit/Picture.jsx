@@ -5,7 +5,7 @@ function Picture({artwork}) {
   if (!artwork) {
     return null;
   }
-
+console.info("picture",artwork)
   return (
     <>
       <img src={`${import.meta.env.VITE_API_URL}${artwork.pictures}`} alt="Artwork" />

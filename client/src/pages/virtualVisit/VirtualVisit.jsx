@@ -1,8 +1,6 @@
 import { useRef, useState, useEffect } from "react";
+import { useLoaderData } from "react-router-dom";
 import Phaser from "phaser"
-import { useParams } from "react-router-dom";
-
-import { getExhibitionArtwork } from "../../services/request";
 
 import Picture from "../../components/virtualVisit/Picture";
 
@@ -12,72 +10,59 @@ import playerMove from "../../components/virtualVisit/playerMove";
 
 
 function VirtualVisit() {
-    const {id} = useParams();
-    const phaserGame = useRef(null);
-    const messageRef = useRef("");
 
-    console.info(id)
+    const {artworks} = useLoaderData()
+    const phaserGame = useRef(null);
+
 
     const [message, setMessage] = useState("");
-    const [pictures, setPictures] = useState([])
+
+
+   
 
     useEffect(() => {
-      const fetchPictures = async () => {
-        try {
-          const result = await getExhibitionArtwork(id);
-          setPictures(result);
-        } catch (err) {
-          err(err.message);
+      const config = {
+        type: Phaser.AUTO,
+        parent: "gameContainer",
+        width: 800,
+        height: 800,
+        backgroundColor: "#179ac5",
+        scene: {
+          preload() {
+            preload.call(this);
+          },
+          create() {
+            create.call(this, setMessage, artworks);
+          },
+          update() {
+            playerMove.call(this, setMessage, message);
+          },
+        },
+        physics: {
+          default: "arcade",
+          arcade: {
+            gravity: { y: 0 },
+            debug: false,
+          },
+        },
+      };
+  
+      phaserGame.current = new Phaser.Game(config);
+  
+      return () => {
+        if (phaserGame.current) {
+          phaserGame.current.destroy(true);
         }
       };
-      fetchPictures();
-    }, [id]); 
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
-    useEffect(() => {
-        const config = {
-          type: Phaser.AUTO,
-          parent: "gameContainer",
-          width: 800,
-          height: 800,
-          backgroundColor: "#179ac5",
-          scene: {
-            preload() {
-              preload.call(this);
-            },
-            create() {
-              create.call(this, (newMessage) => {
-                messageRef.current = newMessage;
-                setMessage(newMessage);
-              });
-            },
-            update() {
-              playerMove.call(this, (newMessage) => {
-                messageRef.current = newMessage;
-                setMessage(newMessage);
-              }, messageRef.current);
-            },
-          },
-          physics: {
-            default: "arcade",
-            arcade: {
-              gravity: { y: 0 },
-              debug: false,
-            },
-          },
-        };
-    phaserGame.current = new Phaser.Game(config);
-
-    return () => {
-      if (phaserGame.current) {
-        phaserGame.current.destroy(true);
-      }
-    };
-
-  }, []);
-
+    console.info("MESSAGE", message)
 
   return (
-    <Picture message={message} artwork={pictures[message]} />
+    // <Picture message={message} artwork={artworks[message]} />
+    <Picture message={message} artwork={artworks[message]} />
+
   )
 }
 

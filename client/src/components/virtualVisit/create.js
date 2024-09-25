@@ -1,27 +1,37 @@
-export default function create(setMessage) {
-    this.player = this.physics.add.sprite(400, 170, "player");
-  
-    this.tableau1 = this.physics.add.staticGroup();
-    this.tableau1.create(100, 90, "frame");
-  
-    this.physics.add.collider(this.player, this.tableau1, () => {
-      setMessage(0);
-    });
-  
-    this.tableau2 = this.physics.add.staticGroup();
-    this.tableau2.create(300, 90, "frame");
-  
-    this.physics.add.collider(this.player, this.tableau2, () => {
-      setMessage(1);
-    });
-  
-    this.tableau3 = this.physics.add.staticGroup();
-    this.tableau3.create(500, 90, "frame");
-  
-    this.physics.add.collider(this.player, this.tableau3, () => {
-      setMessage(2);
+export default function create(setMessage, artworks) {
+  this.player = this.physics.add.sprite(400, 170, "player");
+
+  // Variables pour définir l'espacement et la grille des tableaux
+  const startX = 100;
+  const startY = 90;
+  const spaceX = 200;
+  const spaceY = 200;
+  let currentRow = 0;
+  let currentCol = 0;
+
+  this.tableauxPositions = [];
+
+  artworks.forEach((artwork, index) => {
+
+    const x = startX + currentCol * spaceX;
+    const y = startY + currentRow * spaceY;
+
+    const group = this.physics.add.staticGroup();
+    group.create(x, y, "frame");
+
+    this.physics.add.collider(this.player, group, () => {
+      setMessage(index);
     });
 
-  
-    this.cursors = this.input.keyboard.createCursorKeys();
-  }
+    this.tableauxPositions.push({ x, y });
+    
+    // Ajuster la colonne et la ligne pour la prochaine itération
+    currentCol+=1;
+    if (currentCol > 3) { 
+      currentCol = 0;
+      currentRow+=1;
+    }
+  });
+
+  this.cursors = this.input.keyboard.createCursorKeys();
+}
