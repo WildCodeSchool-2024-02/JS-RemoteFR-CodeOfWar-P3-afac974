@@ -22,29 +22,6 @@ const read = async (req, res, next) => {
   }
 };
 
-// const add = async (req, res, next) => {
-//   const favorite = req.body;
-//   try {
-//     const result = await tables.favorite.create(favorite);
-//     res
-//       .status(201)
-//       .send(
-//         `Oeuvre ajoutée avec succès à vos Favoris. ID : ${result.insertId}`
-//       );
-//   } catch (error) {
-//     next(error);
-//   }
-// };
-
-// const destroy = async (req, res, next) => {
-//   try {
-//     await tables.favorite.delete(req.params.id);
-//     res.sendStatus(204);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
-
 const readFavorite = async (req, res, next) => {
   try {
     const favorite = await tables.favorite.readFavoriteArtwork(req.params.id);
