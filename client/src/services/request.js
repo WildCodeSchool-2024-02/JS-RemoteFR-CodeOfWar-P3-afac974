@@ -78,6 +78,15 @@ export function getExhibitionArtwork(id) {
       return [];
     });
 }
+export function getUserInfo(id) {
+  return axios
+    .get(`${import.meta.env.VITE_API_URL}/api/users/${id}`)
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}
 
 export function deleteExhibitionArtwork(exhibitionId, artworkId) {
   return axios
@@ -125,7 +134,31 @@ export function postRegisterUser(userData) {
     .then((reponse) => reponse)
     .catch((error) => {
       console.error(
-        "Erreur lors de la requête de connexion:",
+        "Erreur lors de la requête d'inscription:",
+        error.response.data
+      );
+      return [];
+    });
+}
+export function updateUserInfo(id, userData) {
+  return axios
+    .put(`${import.meta.env.VITE_API_URL}/api/users/${id}`, userData)
+    .then((reponse) => reponse)
+    .catch((error) => {
+      console.error(
+        "Erreur lors de la requête de mise à jour des informations de l'utilisateur:",
+        error.response.data
+      );
+      return [];
+    });
+}
+export function deleteAccount(id) {
+  return axios
+    .delete(`${import.meta.env.VITE_API_URL}/api/users/${id}/destroy`)
+    .then((reponse) => reponse)
+    .catch((error) => {
+      console.error(
+        "Erreur lors de la requête de suppression du compte utilisateur:",
         error.response.data
       );
       return [];

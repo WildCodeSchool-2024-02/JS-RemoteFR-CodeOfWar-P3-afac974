@@ -56,6 +56,8 @@ router.delete("/favorite/:artworkId/:userId", favorite.destroyFavorite);
 router.get("/users", userActions.browse);
 router.get("/users/:id", userActions.read);
 router.post("/users", hashPassword, userActions.add);
+router.put("/users/:id", userActions.edit);
+router.delete("/users/:id/destroy", userActions.destroyAccount);
 
 // Authentication wall
 router.use(verifyToken);

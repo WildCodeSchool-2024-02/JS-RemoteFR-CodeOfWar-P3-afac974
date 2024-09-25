@@ -40,19 +40,21 @@ class UserRepository extends AbstractRepository {
     return rows[0];
   }
 
-  // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing user
+  async updateUserInfo(user) {
+    const [result] = await this.database.query(
+      `UPDATE ${this.table} SET pseudo = ?, firstname = ?, lastname = ?, email = ? WHERE id = ?`,
+      [user.pseudo, user.firstname, user.lastname, user.email, user.id]
+    );
+    return result.affectedRows;
+  }
 
-  // async update(user) {
-  //   ...
-  // }
-
-  // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an user by its ID
-
-  // async delete(id) {
-  //   ...
-  // }
+  async deleteAccount(user) {
+    const [result] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id = ?`,
+      [user.id]
+    );
+    return result.affectedRows;
+  }
 }
 
 module.exports = UserRepository;

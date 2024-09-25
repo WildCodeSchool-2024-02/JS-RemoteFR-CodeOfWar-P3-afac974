@@ -21,11 +21,11 @@ import ArtistList from "./pages/ArtistList";
 import ArtistPage from "./pages/ArtistPage";
 import Exhibition from "./pages/Exhibition";
 import ExhibitionForm from "./pages/ExhibitionForm";
-import UserPage from "./pages/UserPage";
 import ArtworkForm from "./components/ArtworkForm";
 import AuthPage from "./pages/authentification_pages/AuthPage";
 import LoginPage from "./pages/authentification_pages/LoginPage";
 import RegisterPage from "./pages/authentification_pages/RegisterPage";
+import PersonalInformationsPage from "./pages/user_connected_pages/PersonalInformationsPage";
 import Favorite from "./pages/Favorite";
 
 const router = createBrowserRouter([
@@ -80,6 +80,13 @@ const router = createBrowserRouter([
         }),
       },
       {
+        path: "/exhibitionForm",
+        element: <ExhibitionForm />,
+        loader: async ({ params }) => ({
+          artwork: await getArtwork(params.id),
+        }),
+      },
+      {
         path: "/authentification",
         element: <AuthPage />,
       },
@@ -92,26 +99,12 @@ const router = createBrowserRouter([
         element: <RegisterPage />,
       },
       {
-        path: "/user",
-        element: <UserPage />,
+        path: "/myinformations",
+        element: <PersonalInformationsPage />,
       },
       {
-        path: "/exhibitionForm",
-        element: <ExhibitionForm />,
-        loader: async () => ({
-          exhibitions: await getExhibitions(),
-          artworks: await getArtworks(),
-        }),
-      },
-      {
-        path: "/dashboard",
-        element: <UserPage />,
-        children: [
-          {
-            path: "/dashboard/add",
-            element: <ArtworkForm />,
-          },
-        ],
+        path: "/add",
+        element: <ArtworkForm />,
       },
       {
         path: "/favoris",

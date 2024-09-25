@@ -1,6 +1,11 @@
+.App_sizePage {
+  background-color: var(--background-color);
+  max-height: 100vh;
+}
+
 .auth_welcome {
   font-size: 24px;
-  margin-top: 2rem;
+  padding-top: 2rem;
 }
 .auth_tagline {
   font-size: 12px;
@@ -36,13 +41,25 @@
   margin-right: 1rem;
 }
 
-.auth_nav {
+.auth_navlist {
   display: flex;
-  justify-content: center;
-  padding: 2rem;
+  flex-direction: column;
 }
 
-.auth_navLinks {
+.auth_nav,
+.auth_navOffline {
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+  margin-bottom: 4rem;
+}
+.auth_navOnline {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+/* OFFLINE */
+.auth_navLinksOffline {
   width: 32rem;
   padding: 2rem;
   font-size: 12px;
@@ -52,29 +69,41 @@
   border: none;
   display: flex;
   justify-content: center;
+  border-bottom: 2px solid transparent;
+  border: 1px solid transparent;
 }
-.auth_navLinks:hover {
+.auth_navLinksOffline:hover {
   color: var(--text-color);
   background-color: var(--background-color);
   border: 1px solid var(--accent-color);
   border-bottom: 4px solid var(--accent-color);
 }
-.auth_disconnect {
-  width: 16rem;
-  height: 4rem;
+/* ONLINE */
+.auth_navLinksOnline {
+  width: 100%;
   padding: 2rem;
   font-size: 12px;
-  color: var(--important-color);
+  color: var(--text-color);
   background-color: var(--background-color);
-  border-radius: 8px;
-  border: 1px solid var(--important-color);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  border: 1px solid transparent;
+  border-bottom: 2px solid var(--text-color);
+}
+.auth_navLinksOnline:hover {
+  color: var(--text-color);
+  background-color: var(--background-color);
+  border: 1px solid var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+}
+.auth_disconnect {
+  cursor: pointer;
+  border: none;
+  border-bottom: 2px solid var(--text-color);
 }
 .auth_disconnect:hover {
-  color: var(--important-color);
-  background-color: var(--accent-color);
+  color: var(--background-color);
+  background-color: var(--important-color);
   border: 1px solid var(--important-color);
-  border-bottom: 4px solid var(--important-color);
+  border-bottom: 2px solid var(--important-color);
 }
