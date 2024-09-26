@@ -62,11 +62,11 @@ class ExhibitionRepository extends AbstractRepository {
       artwork.title AS nom_de_l_oeuvre,
       artwork.image_url AS pictures,
       artwork.description AS description,
-      artist.pseudo AS artiste
+      user.pseudo AS usere
     FROM exhibition
     JOIN artwork_exhibition ON artwork_exhibition.exhibition_id = exhibition.id 
     JOIN artwork ON artwork.id = artwork_exhibition.artwork_id 
-    JOIN artist ON artist.id = artwork.artist_id
+    JOIN user ON user.id = artwork.user_id
     WHERE exhibition.id = ?`,
       [id]
     );
