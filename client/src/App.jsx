@@ -24,9 +24,13 @@ function App() {
     location.pathname === "/register" ||
     location.pathname === "/myinformations";
   return (
-    <main>
-      {!hideNavbar && <Navbar />} <Outlet /> {!hideNavbar && <Footer />}
-    </main>
+    <>
+      {!hideNavbar && <Navbar />}
+      <main>
+        <Outlet />
+      </main>
+      {!hideNavbar && <Footer />}
+    </>
   );
 }
 
