@@ -25,7 +25,23 @@ class UserRepository extends AbstractRepository {
 
   async readAll() {
     const [rows] = await this.database.query(
-      `SELECT id, pseudo, email FROM ${this.table}`
+      `SELECT id,
+        pseudo,
+        email,
+        hashed_password,
+        firstname,
+        lastname,
+        birthday,
+        deathday,
+        nationality,
+        biography,
+        website,
+        instagram,
+        twitter,
+        facebook,
+        linkedin,
+        avatar,
+        created_at FROM ${this.table}`
     );
 
     return rows;
@@ -42,8 +58,32 @@ class UserRepository extends AbstractRepository {
 
   async updateUserInfo(user) {
     const [result] = await this.database.query(
-      `UPDATE ${this.table} SET pseudo = ?, firstname = ?, lastname = ?, email = ? WHERE id = ?`,
-      [user.pseudo, user.firstname, user.lastname, user.email, user.id]
+      `UPDATE ${this.table} 
+       SET pseudo = ?, email = ?, hashed_password = ?, firstname = ?, lastname = ?, 
+           birthday = ?, deathday = ?, nationality = ?, biography = ?, 
+           website = ?, instagram = ?, twitter = ?, facebook = ?, 
+           linkedin = ?, avatar = ?, created_at = ? 
+       WHERE id = ?`,
+      [
+        user.pseudo,
+        user.email,
+        user.hashed_password,
+        user.firstname,
+        user.lastname,
+        user.birthday,
+        user.deathday,
+        user.nationality,
+        user.biography,
+        user.website,
+        user.instagram,
+        user.twitter,
+        user.facebook,
+        user.linkedin,
+        user.avatar,
+        user.created_at,
+        user.is_admin,
+        user.id,
+      ]
     );
     return result.affectedRows;
   }
