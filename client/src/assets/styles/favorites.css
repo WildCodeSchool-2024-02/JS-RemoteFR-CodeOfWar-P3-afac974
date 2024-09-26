@@ -52,15 +52,20 @@
 
   .favorite_card img {
     max-width: 100%;
+    transition: transform 0.3s ease-out;
+  }
+
+  .favorite_card img:hover {
+    transform: scale(1.01);
   }
 
   .favorite_card_button {
     padding-top: 1rem;
     width: 3rem;
-    transition: width 0.15s ease;
+    transition: transform 0.15s ease-in;
   }
 
   .favorite_card_button:hover {
-    width: 4rem;
+    transform: scale(1.25);
   }
 }
