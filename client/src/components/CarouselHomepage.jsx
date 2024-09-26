@@ -17,19 +17,22 @@ function CarouselHomepage({ artwork, exhibition, artist }) {
       <figure>
         <Link to="/exhibition">
           <img
-            src={`${import.meta.env.VITE_API_URL}${artwork[0].image_url}`}
-            alt={artwork[0].title}
+            className="first_carousel_image"
+            src={`${import.meta.env.VITE_API_URL}${artwork[randomArtwork].image_url}`}
+            alt={artwork[randomArtwork].title}
           />
-        </Link>
 
-        <figcaption>
-          <h2>{exhibition[randomExhibition].name}</h2>
-          <p>
-            {exhibition[0].date_begin.substring(0, 7)} /{" "}
-            {exhibition[0].date_end.substring(0, 7)}
-          </p>
-          <p>Savoir Plus...</p>
-        </figcaption>
+          <figcaption className="carrouselHomepage_informations">
+            <h2 className="carrouselHomepage_title">
+              {exhibition[randomExhibition].name}
+            </h2>
+            <p>
+              {exhibition[randomExhibition].date_begin.substring(0, 7)} /{" "}
+              {exhibition[randomExhibition].date_end.substring(0, 7)}
+            </p>
+            <p>Savoir Plus...</p>
+          </figcaption>
+        </Link>
       </figure>
 
       <figure>
@@ -38,12 +41,14 @@ function CarouselHomepage({ artwork, exhibition, artist }) {
             src={`${import.meta.env.VITE_API_URL}${artwork[1].image_url}`}
             alt={artwork[1].title}
           />
-        </Link>
 
-        <figcaption>
-          <h2>{artist[randomArtist].pseudo}</h2>
-          <p>Savoir Plus...</p>
-        </figcaption>
+          <figcaption className="carrouselHomepage_informations">
+            <h2 className="carrouselHomepage_title">
+              {artist[randomArtist].pseudo}
+            </h2>
+            <p>Savoir Plus...</p>
+          </figcaption>
+        </Link>
       </figure>
 
       <figure>
@@ -52,12 +57,14 @@ function CarouselHomepage({ artwork, exhibition, artist }) {
             src={`${import.meta.env.VITE_API_URL}${artwork[2].image_url}`}
             alt={artwork[2].title}
           />
-        </Link>
 
-        <figcaption>
-          <h2>{artwork[randomArtwork].title}</h2>
-          <p>Savoir Plus...</p>
-        </figcaption>
+          <figcaption className="carrouselHomepage_informations">
+            <h2 className="carrouselHomepage_title">
+              {artwork[randomArtwork].title}
+            </h2>
+            <p>Savoir Plus...</p>
+          </figcaption>
+        </Link>
       </figure>
     </div>
   );

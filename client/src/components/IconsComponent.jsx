@@ -14,6 +14,7 @@ import mail from "../assets/icons/mail.svg";
 import rightarrow from "../assets/icons/right-arrow.svg";
 import tag from "../assets/icons/tag.svg";
 import userIcon from "../assets/icons/user.svg";
+import userConnectedIcon from "../assets/icons/user-connected.svg";
 
 // PICTURES
 import artlogo from "../assets/images/artlogo.png";
@@ -36,6 +37,7 @@ const Icons = {
   rightarrow: { src: rightarrow, alt: "rightarrow" },
   tag: { src: tag, alt: "tag" },
   userIcon: { src: userIcon, alt: "User icon" },
+  userConnectedIcon: { src: userConnectedIcon, alt: "User connected icon" },
 
   artlogo: { src: artlogo, alt: "Logo PNG" },
   menuburger: { src: menuburger, alt: "Menu burger icon" },

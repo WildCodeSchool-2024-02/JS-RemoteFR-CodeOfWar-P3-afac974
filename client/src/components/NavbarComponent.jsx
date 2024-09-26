@@ -1,9 +1,27 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { getUserId } from "../services/request";
 import { useAuth } from "../context/AuthContext";
+
 import IconsComponent from "./IconsComponent";
 
 function Navbar() {
   const { auth } = useAuth();
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    const fetchUserId = async () => {
+      if (auth) {
+        const id = await getUserId();
+        setUserId(id);
+      } else {
+        setUserId(null);
+      }
+    };
+
+    fetchUserId();
+  }, [auth]);
+
   return (
     <nav className="navbarcomponent_navArea">
       <Link to="/" className="navBar_userButton">
@@ -15,34 +33,39 @@ function Navbar() {
       </Link>
 
       <ul className="navbarcomponent_list">
-        <Link to="/dashboard">
-          <p>Dashboard</p>
-        </Link>
-        {auth?.user?.is_admin && (
-          <li>
-            <Link to="/exhibitionForm">
-              <p> Exposition</p>
-            </Link>
-          </li>
-        )}
+        {/* ------------------------------AUTHENTIFICATION/DASHBOARD----------------------------------- */}
         <li>
-          <Link to="/authentification" className="navBar_userButton">
+          <Link
+            to={userId ? "/dashboard" : "/authentification"}
+            className="navBar_userButton"
+          >
             <IconsComponent
               className="navbarcomponent_user_icon"
-              alt="user icon"
-              src="userIcon"
+              src={userId ? "userConnectedIcon" : "userIcon"}
             />
           </Link>
         </li>
+        {/* ------------------------------FAVORIS----------------------------------- */}
         <li>
-          <Link to="/favoris">
-            <IconsComponent
-              className="navbarcomponent_favorite_icon"
-              alt="heart icon for favourites artworks"
-              src="emptyHeart"
-            />
-          </Link>
+          {userId ? (
+            <Link to={`/favoris/${userId}`}>
+              <IconsComponent
+                className="navbarcomponent_favorite_icon"
+                alt="heart icon for favourites artworks"
+                src="emptyHeart"
+              />
+            </Link>
+          ) : (
+            <Link to="/authentification">
+              <IconsComponent
+                className="navbarcomponent_favorite_icon"
+                alt="heart icon for favorites artworks"
+                src="emptyHeart"
+              />
+            </Link>
+          )}
         </li>
+        {/* ------------------------------MENU----------------------------------- */}
         <li>
           <IconsComponent
             className="navbarcomponent_menu_icon"

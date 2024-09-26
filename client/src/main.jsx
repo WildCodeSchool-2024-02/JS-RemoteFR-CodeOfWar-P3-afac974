@@ -9,6 +9,7 @@ import {
   getArtwork,
   getExhibitions,
   getArtworksByArtist,
+  getFavorites,
   getExhibitionArtwork,
 } from "./services/request";
 
@@ -22,12 +23,14 @@ import ArtistList from "./pages/ArtistList";
 import ArtistPage from "./pages/ArtistPage";
 import Exhibition from "./pages/Exhibition";
 import ExhibitionForm from "./pages/ExhibitionForm";
-import UserPage from "./pages/UserPage";
 import ArtworkForm from "./components/ArtworkForm";
 import AuthPage from "./pages/authentification_pages/AuthPage";
 import LoginPage from "./pages/authentification_pages/LoginPage";
 import RegisterPage from "./pages/authentification_pages/RegisterPage";
+import DashboardPage from "./pages/user_connected_pages/DashboardPage";
+import PersonalInformationsPage from "./pages/user_connected_pages/PersonalInformationsPage";
 import Favorite from "./pages/Favorite";
+import FavoritesProvider from "./contexts/FavoritesContext";
 import VirtualVisit from "./pages/virtualVisit/VirtualVisit";
 
 const router = createBrowserRouter([
@@ -82,6 +85,13 @@ const router = createBrowserRouter([
         }),
       },
       {
+        path: "/exhibitionForm",
+        element: <ExhibitionForm />,
+        loader: async ({ params }) => ({
+          artwork: await getArtwork(params.id),
+        }),
+      },
+      {
         path: "/authentification",
         element: <AuthPage />,
       },
@@ -94,32 +104,22 @@ const router = createBrowserRouter([
         element: <RegisterPage />,
       },
       {
-        path: "/user",
-        element: <UserPage />,
+        path: "dashboard",
+        element: <DashboardPage />,
       },
       {
-        path: "/exhibitionForm",
-        element: <ExhibitionForm />,
-        loader: async () => ({
-          exhibitions: await getExhibitions(),
-          artworks: await getArtworks(),
-        }),
+        path: "/myinformations",
+        element: <PersonalInformationsPage />,
       },
       {
-        path: "/dashboard",
-        element: <UserPage />,
-        children: [
-          {
-            path: "/dashboard/add",
-            element: <ArtworkForm />,
-          },
-        ],
+        path: "/add",
+        element: <ArtworkForm />,
       },
       {
-        path: "/favoris",
+        path: "/favoris/:id",
         element: <Favorite />,
         loader: async ({ params }) => ({
-          artwork: await getArtwork(params.id),
+          favorites: await getFavorites(params.id),
         }),
       },
       {
@@ -136,9 +136,11 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <AuthProvider>
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
-  </AuthProvider>
+  <React.StrictMode>
+    <AuthProvider>
+      <FavoritesProvider>
+        <RouterProvider router={router} />
+      </FavoritesProvider>
+    </AuthProvider>
+  </React.StrictMode>
 );
