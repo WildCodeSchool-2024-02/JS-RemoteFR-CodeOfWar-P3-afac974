@@ -1,14 +1,11 @@
 .footercomponent_footer {
   background-color: var(--primary-color);
   color: var(--text-color);
-  height: 70px;
+  height: 10svh;
   width: 100%;
-  z-index: 3;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position: fixed;
-  bottom: 0;
 }
 
 .footercomponent_content {
