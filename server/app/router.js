@@ -4,7 +4,6 @@ const router = express.Router();
 
 // Define Your API Routes Here
 /* ************************************************************************* */
-const artists = require("./controllers/artistActions");
 const artworks = require("./controllers/artworkActions");
 const exhibition = require("./controllers/exhibitionActions");
 const favorite = require("./controllers/favoriteActions");
@@ -16,13 +15,6 @@ const userActions = require("./controllers/userActions");
 const authActions = require("./controllers/authActions");
 
 router.post("/login", authActions.login);
-
-// ARTIST
-router.get("/artists", artists.browse);
-router.get("/artists/:id", artists.read);
-router.post("/artists", artists.add);
-router.delete("/artists/:id", artists.destroy);
-router.put("/artists/:id", artists.edit);
 
 // USER ID
 router.get("/getUserId", verifyToken, (req, res) => {
@@ -49,7 +41,7 @@ router.delete(
   exhibition.destroyArtwork
 );
 
-router.get("/artists/:id/artworks", artworks.readArtworksByArtist);
+router.get("/users/:id/artworks", artworks.readArtworksByArtist);
 
 // FAVORITES
 router.get("/favorite/:id", favorite.read);
