@@ -10,6 +10,7 @@
   justify-content: center;
   gap: 1rem;
 }
+
 .favorite_card {
   display: flex;
   flex-direction: column;
@@ -30,9 +31,36 @@
   text-decoration: none;
   width: 3rem;
   padding-top: 0.25rem;
+  background-color: transparent;
 }
 
-/* @media (min-width: 992px) {
+@media (min-width: 992px) {
+  .favorite_title {
+    font-size: 5rem;
+    padding-top: 3rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .favorite_cards {
+    gap: 3rem;
+  }
+
+  .favorite_card {
+    flex: 1 1 400px;
+    max-width: 400px;
+  }
+
+  .favorite_card img {
+    max-width: 100%;
+  }
+
+  .favorite_card_button {
+    padding-top: 1rem;
+    width: 3rem;
+    transition: width 0.15s ease;
+  }
+
   .favorite_card_button:hover {
-mettre un coeur brisé au survol du bouton
-} */
+    width: 4rem;
+  }
+}

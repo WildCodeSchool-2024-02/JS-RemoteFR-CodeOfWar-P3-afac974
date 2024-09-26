@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import FavoriteComponent from "../components/FavoriteComponent";
 
 import "../assets/styles/favorites.css";
@@ -18,10 +18,6 @@ function Favorite() {
           <p>Vous n'avez pas d'oeuvres dans les Favoris.</p>
         )}
       </section>
-
-      <Link to="/" className="homePage_navButtons">
-        HomePage
-      </Link>
     </>
   );
 }
