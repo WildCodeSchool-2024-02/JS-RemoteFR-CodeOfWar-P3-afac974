@@ -4,15 +4,15 @@ export default function playerMove(setMessage, message) {
   // Gestion des déplacements
   this.player.setVelocity(0);
 
-  if (this.cursors.left.isDown && this.player.x > 20) {
+  if (this.cursors.left.isDown && this.player.x > 32) {
     this.player.setVelocityX(-160);
-  } else if (this.cursors.right.isDown && this.player.x < 780) {
+  } else if (this.cursors.right.isDown && this.player.x < 928) {
     this.player.setVelocityX(160);
   }
 
-  if (this.cursors.up.isDown && this.player.y > 20) {
+  if (this.cursors.up.isDown && this.player.y > 48) {
     this.player.setVelocityY(-160);
-  } else if (this.cursors.down.isDown && this.player.y < 780) {
+  } else if (this.cursors.down.isDown && this.player.y < 224) {
     this.player.setVelocityY(160);
   }
 

@@ -17,8 +17,8 @@ function VirtualVisit() {
   useEffect(() => {
     const config = {
       type: Phaser.AUTO,
-      width: 900,
-      height: 400,
+      width: 960,
+      height: 300,
       backgroundColor: "#179ac5",
       scene: {
         preload() {
