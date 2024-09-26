@@ -297,7 +297,7 @@ VALUES (
         'Peinture à l\'huile',
         '50 cm x 70 cm',
         '2023-02-15',
-        2
+        3
     ),
     (
         'Lumière dans l\'obscurité',
@@ -306,7 +306,7 @@ VALUES (
         'Photographie numérique',
         '30 cm x 40 cm',
         '2023-05-10',
-        2
+        3
     ),
     (
         'Odyssée',
@@ -315,7 +315,7 @@ VALUES (
         'Peinture acrylique',
         '80 cm x 100 cm',
         '2023-07-22',
-        2
+        3
     ),
     (
         'Métamorphose',
@@ -324,7 +324,7 @@ VALUES (
         'Sculpture métallique',
         '150 cm x 80 cm x 60 cm',
         '2022-11-03',
-        3
+        4
     ),
     (
         'Fusion',
@@ -333,7 +333,7 @@ VALUES (
         'Art métal',
         '120 cm x 90 cm x 70 cm',
         '2023-03-17',
-        3
+        4
     ),
     (
         'Équilibre',
@@ -342,7 +342,7 @@ VALUES (
         'Sculpture en bois',
         '200 cm x 50 cm x 50 cm',
         '2023-06-25',
-        3
+        4
     ),
     (
         'Vie Urbaine',
@@ -351,7 +351,7 @@ VALUES (
         'Photographie argentique',
         '40 cm x 60 cm',
         '2022-12-01',
-        4
+        5
     ),
     (
         'Passages',
@@ -360,7 +360,7 @@ VALUES (
         'Photographie numérique',
         '50 cm x 70 cm',
         '2023-04-15',
-        4
+        5
     ),
     (
         'Reflets',
@@ -369,7 +369,7 @@ VALUES (
         'Photographie urbaine',
         '60 cm x 80 cm',
         '2023-08-10',
-        4
+        5
     ),
     (
         'Algorithme de Vie',
@@ -378,7 +378,7 @@ VALUES (
         'Art numérique',
         '100 cm x 100 cm',
         '2023-01-20',
-        5
+        6
     ),
     (
         'Fractale',
@@ -387,7 +387,7 @@ VALUES (
         'Art fractal',
         '120 cm x 120 cm',
         '2023-04-30',
-        5
+        6
     ),
     (
         'Chaos Organisé',
@@ -396,7 +396,7 @@ VALUES (
         'Peinture abstraite',
         '90 cm x 90 cm',
         '2023-07-14',
-        5
+        6
     ),
     (
         'Vase Organique',
@@ -405,7 +405,7 @@ VALUES (
         'Céramique',
         '30 cm x 40 cm',
         '2023-02-22',
-        6
+        7
     ),
     (
         'Terre et Mer',
@@ -414,7 +414,7 @@ VALUES (
         'Sculpture céramique',
         '50 cm x 60 cm x 40 cm',
         '2023-05-11',
-        6
+        7
     ),
     (
         'Fusion Minérale',
@@ -423,7 +423,7 @@ VALUES (
         'Céramique',
         '80 cm x 80 cm',
         '2023-08-05',
-        6
+        7
     ),
     (
         'Lumières Réactives',
@@ -432,7 +432,7 @@ VALUES (
         'Installation lumineuse',
         'Variable',
         '2023-03-01',
-        7
+        8
     ),
     (
         'Écho de Lumière',
@@ -441,7 +441,7 @@ VALUES (
         'Installation interactive',
         'Variable',
         '2023-06-07',
-        7
+        8
     ),
     (
         'Connexion',
@@ -450,7 +450,7 @@ VALUES (
         'Art interactif',
         'Variable',
         '2023-09-10',
-        7
+        8
     ),
     (
         'Harmonie',
@@ -459,7 +459,7 @@ VALUES (
         'Art numérique',
         '100 cm x 100 cm',
         '2023-01-05',
-        8
+        9
     ),
     (
         'Esprit Ancien',
@@ -468,7 +468,7 @@ VALUES (
         'Peinture moderne',
         '80 cm x 120 cm',
         '2023-04-14',
-        8
+        9
     ),
     (
         'Nouveau Souffle',
@@ -477,7 +477,7 @@ VALUES (
         'Art contemporain',
         '150 cm x 80 cm',
         '2023-07-29',
-        8
+        9
     ),
     (
         'Révolution Numérique',
@@ -486,7 +486,7 @@ VALUES (
         'Collage numérique',
         '60 cm x 90 cm',
         '2023-02-10',
-        9
+        10
     ),
     (
         'Fragments Urbains',
@@ -495,7 +495,7 @@ VALUES (
         'Assemblage visuel',
         'Variable',
         '2023-05-17',
-        9
+        10
     ),
     (
         'Mémoire Digitale',
@@ -504,7 +504,7 @@ VALUES (
         'Collage artistique',
         '80 cm x 100 cm',
         '2023-08-12',
-        9
+        10
     ),
     (
         'Fleurs de Soie',
@@ -513,7 +513,7 @@ VALUES (
         'Art floral',
         'Variable',
         '2023-03-05',
-        10
+        11
     ),
     (
         'Forêt de Tissus',
@@ -522,7 +522,7 @@ VALUES (
         'Art textile',
         '120 cm x 80 cm',
         '2023-06-15',
-        10
+        11
     ),
     (
         'Ondulations',
@@ -531,7 +531,7 @@ VALUES (
         'Sculpture textile',
         'Variable',
         '2023-09-02',
-        10
+        11
     ),
     (
         'Regards Perdus',
@@ -540,7 +540,7 @@ VALUES (
         'Portrait photographique',
         '50 cm x 70 cm',
         '2023-01-14',
-        11
+        12
     ),
     (
         'Douce Mélancolie',
@@ -549,7 +549,7 @@ VALUES (
         'Portrait peint',
         '40 cm x 50 cm',
         '2023-04-20',
-        11
+        12
     ),
     (
         'Joie Éphémère',
@@ -558,7 +558,7 @@ VALUES (
         'Portrait photographique',
         '30 cm x 40 cm',
         '2023-07-19',
-        11
+        12
     );
 
 CREATE TABLE exhibition (

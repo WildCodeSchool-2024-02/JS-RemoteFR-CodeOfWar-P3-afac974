@@ -1,20 +1,17 @@
 import { useLoaderData } from "react-router-dom";
 
 import ArtworkComponent from "../components/ArtworkComponent";
-import "../assets/styles/homepage.css";
 import CarouselHomepage from "../components/CarouselHomepage";
 
 function Homepage() {
-  const { artworks } = useLoaderData();
-  const { exhibitions } = useLoaderData();
-  const { users } = useLoaderData();
+  const { artworks, exhibitions, users } = useLoaderData();
 
   return (
     <>
       <CarouselHomepage
         artwork={artworks}
         exhibition={exhibitions}
-        user={users}
+        user={users.result}
       />
       <h1 className="homePage_temporaryEvent">Evénnements temporaire</h1>
       <p className="homePage_temporaryEvent">Temporairement indisponible</p>
