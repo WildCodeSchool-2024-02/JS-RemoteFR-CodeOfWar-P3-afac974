@@ -125,8 +125,8 @@ const router = createBrowserRouter([
             {
         path: "/visit/:id",
         element: <VirtualVisit />,
-        loader: async () => ({
-          artworks: await getExhibitionArtwork(1)
+        loader: async ({ params }) => ({
+          artworks: await getExhibitionArtwork( params.id)
         }) 
       },
     ],
