@@ -1,7 +1,7 @@
 export default function create(setMessage, artworks) {
 
   this.map = this.add.image(480, 142, 'map');
-  this.player = this.physics.add.sprite(32, 32, "player");
+  this.player = this.physics.add.sprite(700, 32, "player");
 
   // Variables pour définir l'espacement et la grille des tableaux
   const startX = 48;
@@ -56,5 +56,15 @@ export default function create(setMessage, artworks) {
     totalPlaced += 1;
   }
 
+ // Ajouter un mur (groupe statique) en bas de la carte (invisible)
+ const invisibleWalls = this.physics.add.staticGroup();
+
+ // Exemples de murs invisibles (bordures)
+ invisibleWalls.create(0, 47, null).setSize(1345, 32).setVisible(false); // Mur haut
+ invisibleWalls.create(0, 158, null).setSize(1345, 32).setVisible(false); // Mur bas
+
+ // Collisions entre le joueur et les murs invisibles
+ this.physics.add.collider(this.player, invisibleWalls);
+  
   this.cursors = this.input.keyboard.createCursorKeys();
 }
