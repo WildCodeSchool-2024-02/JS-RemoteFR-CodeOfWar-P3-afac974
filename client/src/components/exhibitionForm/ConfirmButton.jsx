@@ -1,6 +1,6 @@
 import { useState } from "react";
-import PropTypes from 'prop-types';
-import "../../assets/styles/confirmButton.css"
+import PropTypes from "prop-types";
+import "../../assets/styles/confirmButton.css";
 
 function ConfirmButton({ onConfirm }) {
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -12,7 +12,7 @@ function ConfirmButton({ onConfirm }) {
 
   const handleConfirm = () => {
     if (confirmationInput === "CONFIRMER") {
-      onConfirm(); 
+      onConfirm();
       setShowConfirmation(false);
     } else {
       console.error("Le texte saisi est incorrect.");
@@ -39,10 +39,7 @@ function ConfirmButton({ onConfirm }) {
               <button type="button" onClick={handleConfirm}>
                 Confirmer
               </button>
-              <button
-                type="button"
-                onClick={() => setShowConfirmation(false)}
-              >
+              <button type="button" onClick={() => setShowConfirmation(false)}>
                 Annuler
               </button>
             </div>
@@ -57,5 +54,4 @@ export default ConfirmButton;
 
 ConfirmButton.propTypes = {
   onConfirm: PropTypes.func.isRequired,
-
 };

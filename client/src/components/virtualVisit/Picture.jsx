@@ -1,22 +1,29 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-function Picture({artwork}) {
+import "../../assets/styles/Picture.css";
 
+function Picture({ artwork }) {
   if (!artwork) {
-    return null;
+    return (
+      <section className="artworkVisualisation">
+        <p> </p>
+      </section>
+    );
   }
-console.info("picture",artwork)
   return (
-    <>
-      <img src={`${import.meta.env.VITE_API_URL}${artwork.pictures}`} alt="Artwork" />
+    <section className="artworkVisualisation">
+      <img
+        src={`${import.meta.env.VITE_API_URL}${artwork.pictures}`}
+        alt={`${artwork.nom_de_l_oeuvre} de ${artwork.artiste}`}
+      />
       <section className="information">
-        <div>
+        <div className="title">
           <p>{artwork.nom_de_l_oeuvre}</p>
           <p>{artwork.artiste}</p>
         </div>
-        <p>{artwork.description}</p>
+        <p className="description">{artwork.description}</p>
       </section>
-    </>
+    </section>
   );
 }
 
@@ -25,8 +32,8 @@ Picture.propTypes = {
     pictures: PropTypes.string,
     nom_de_l_oeuvre: PropTypes.string,
     artiste: PropTypes.string,
-    description: PropTypes.string
+    description: PropTypes.string,
   }).isRequired,
 };
 
-export default Picture
+export default Picture;

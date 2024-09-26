@@ -9,7 +9,7 @@ import {
   getArtwork,
   getExhibitions,
   getArtworksByArtist,
-  getExhibitionArtwork
+  getExhibitionArtwork,
 } from "./services/request";
 
 import { AuthProvider } from "./context/AuthContext";
@@ -122,12 +122,12 @@ const router = createBrowserRouter([
           artwork: await getArtwork(params.id),
         }),
       },
-            {
+      {
         path: "/visit/:id",
         element: <VirtualVisit />,
         loader: async ({ params }) => ({
-          artworks: await getExhibitionArtwork( params.id)
-        }) 
+          artworks: await getExhibitionArtwork(params.id),
+        }),
       },
     ],
   },
