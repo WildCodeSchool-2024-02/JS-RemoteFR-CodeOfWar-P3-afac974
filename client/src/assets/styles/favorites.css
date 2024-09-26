@@ -1,8 +1,38 @@
-.favorites_artworks img {
-  width: 10rem;
+.favorite_title {
+  padding: 1.5rem 1rem;
+  font-size: 2.5rem;
+  text-align: center;
 }
 
-.favorites_artworks {
+.favorite_cards {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 1rem;
 }
+.favorite_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex: 0 1 45%;
+  max-width: 45%;
+}
+
+.favorite_card img {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.favorite_card_button {
+  font-size: 2rem;
+  border: none;
+  text-decoration: none;
+  width: 3rem;
+  padding-top: 0.25rem;
+}
+
+/* @media (min-width: 992px) {
+  .favorite_card_button:hover {
+mettre un coeur brisé au survol du bouton
+} */

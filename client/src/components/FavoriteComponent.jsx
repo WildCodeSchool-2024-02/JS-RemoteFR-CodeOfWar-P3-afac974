@@ -1,6 +1,7 @@
 import { Link, useParams, useRevalidator } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useFavorites } from "../contexts/FavoritesContext";
+import brokenheart from "../assets/images/brokenheart.svg";
 
 function FavoritesComponent({ fav }) {
   const { removeFavorite } = useFavorites();
@@ -17,7 +18,7 @@ function FavoritesComponent({ fav }) {
   };
 
   return (
-    <section>
+    <div className="favorite_card">
       {fav && fav.image_url ? (
         <>
           <Link to={`/artwork/${fav.artwork_id}`}>
@@ -27,17 +28,17 @@ function FavoritesComponent({ fav }) {
             />
           </Link>
           <button
-            className="like_button"
+            className="favorite_card_button"
             type="button"
             onClick={handleRemoveFavorite}
           >
-            {" Supprimer 💔"}
+            <img src={brokenheart} alt="Remove from favorites" />
           </button>
         </>
       ) : (
         "Loading..."
       )}
-    </section>
+    </div>
   );
 }
 
