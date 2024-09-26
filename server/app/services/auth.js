@@ -33,34 +33,11 @@ const verifyToken = (req, res, next) => {
     next();
   } catch (err) {
     console.error(err.message);
-    res
-      .status(401)
-      .json({ message: "Non autorisé : Le token est invalide ou manquant" });
-  }
-};
-
-const fetchUserId = (req, res) => {
-  const token = req.headers.authorization?.split(" ")[1];
-
-  if (!token) {
-    return res
-      .status(401)
-      .json({ message: "Non autorisé : Aucun token n'a été fourni" });
-  }
-
-  try {
-    const decoded = jwt.verify(token, process.env.APP_SECRET);
-    return res.status(200).json({ userId: decoded.userId });
-  } catch (error) {
-    console.error("Erreur lors de la vérification du token", error);
-    return res
-      .status(401)
-      .json({ message: "Non autorisé : Le token est invalide" });
+    res.status(401).json({ message: "Unauthorized: Invalid or missing token" });
   }
 };
 
 module.exports = {
   hashPassword,
   verifyToken,
-  fetchUserId,
 };

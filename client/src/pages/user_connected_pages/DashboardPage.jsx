@@ -8,10 +8,12 @@ function DashboardPage() {
   const navigate = useNavigate();
 
   const handleDisconnected = () => {
-    localStorage.removeItem("authToken");
+    document.cookie = "auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     setAuth(null);
     navigate("/authentification");
+    window.location.reload();
   };
+
   return (
     <div className="auth_navlist">
       <li className="auth_navOnline">

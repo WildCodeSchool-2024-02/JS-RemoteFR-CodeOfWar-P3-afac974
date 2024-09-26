@@ -1,17 +1,26 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import IconsComponent from "./IconsComponent";
 import { getUserId } from "../services/request";
+import { useAuth } from "../context/AuthContext";
+
+import IconsComponent from "./IconsComponent";
 
 function Navbar() {
-  const [userId, setUserId] = useState();
+  const { auth } = useAuth();
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     const fetchUserId = async () => {
-      setUserId(await getUserId());
+      if (auth) {
+        const id = await getUserId();
+        setUserId(id);
+      } else {
+        setUserId(null);
+      }
     };
+
     fetchUserId();
-  }, []);
+  }, [auth]);
 
   return (
     <nav className="navbarcomponent_navArea">
@@ -24,15 +33,19 @@ function Navbar() {
       </Link>
 
       <ul className="navbarcomponent_list">
+        {/* ------------------------------AUTHENTIFICATION/DASHBOARD----------------------------------- */}
         <li>
-          <Link to="/authentification" className="navBar_userButton">
+          <Link
+            to={userId ? "/dashboard" : "/authentification"}
+            className="navBar_userButton"
+          >
             <IconsComponent
               className="navbarcomponent_user_icon"
-              alt="user icon"
-              src="userIcon"
+              src={userId ? "userConnectedIcon" : "userIcon"}
             />
           </Link>
         </li>
+        {/* ------------------------------FAVORIS----------------------------------- */}
         <li>
           {userId ? (
             <Link to={`/favoris/${userId}`}>
@@ -52,7 +65,7 @@ function Navbar() {
             </Link>
           )}
         </li>
-
+        {/* ------------------------------MENU----------------------------------- */}
         <li>
           <IconsComponent
             className="navbarcomponent_menu_icon"
