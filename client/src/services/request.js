@@ -2,24 +2,51 @@ import axios from "axios";
 
 const url = import.meta.env.VITE_API_URL;
 
-export function getArtistList() {
+// ----------------------GET-----------------------------------------
+
+// GET Table user
+
+export function getUserId() {
   return axios
-    .get(`${url}/api/artists`)
+    .get(`${url}/api/getUserId`, { withCredentials: true })
+    .then((response) => response.data.userId)
+    .catch((error) => {
+      console.error(error);
+      return null;
+    });
+}
+
+export function getUserList() {
+  return axios
+    .get(`${url}/api/users`)
     .then((response) => response.data)
     .catch((error) => {
       console.error(error);
       return [];
     });
 }
-export function getArtist(id) {
+
+export function getUser(id) {
   return axios
-    .get(`${url}/api/artists/${id}`)
+    .get(`${url}/api/users/${id}`)
     .then((reponse) => reponse.data)
     .catch((error) => {
       console.error(error);
       return [];
     });
 }
+
+export function getArtworksByUser(userId) {
+  return axios
+    .get(`${url}/api/users/${userId}/artworks`)
+    .then((response) => response.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}
+
+// GET Table artwork
 
 export function getArtworks() {
   return axios
@@ -41,6 +68,8 @@ export function getArtwork(id) {
     });
 }
 
+// GET Table exhibition
+
 export function getExhibitions() {
   return axios
     .get(`${url}/api/exhibition`)
@@ -61,15 +90,7 @@ export function getExhibition(id) {
     });
 }
 
-export function getArtworksByArtist(artistId) {
-  return axios
-    .get(`${url}/api/artists/${artistId}/artworks`)
-    .then((response) => response.data)
-    .catch((error) => {
-      console.error(error);
-      return [];
-    });
-}
+// GET Table artwork_exhibition
 
 export function getExhibitionArtwork(id) {
   return axios
@@ -80,38 +101,8 @@ export function getExhibitionArtwork(id) {
       return [];
     });
 }
-export function getUserInfo(id) {
-  return axios
-    .get(`${import.meta.env.VITE_API_URL}/api/users/${id}`)
-    .then((reponse) => reponse.data)
-    .catch((error) => {
-      console.error(error);
-      return [];
-    });
-}
 
-export function deleteExhibitionArtwork(exhibitionId, artworkId) {
-  return axios
-    .delete(`${url}/api/exhibition/${exhibitionId}/artworks/${artworkId}`)
-    .then((reponse) => reponse.data)
-    .catch((error) => {
-      console.error(error);
-      return [];
-    });
-}
-
-export function postExhibitionArtwork(exhibitionID, artworkID) {
-  return axios
-    .post(`${url}/api/exhibition/artworks`, {
-      exhibition_id: exhibitionID,
-      artwork_id: artworkID,
-    })
-    .then((reponse) => reponse.data)
-    .catch((error) => {
-      console.error(error);
-      return [];
-    });
-}
+// GET Table favorite
 
 export function getFavorites(id) {
   return axios
@@ -123,29 +114,13 @@ export function getFavorites(id) {
     });
 }
 
-export function addFavorite(artworkId, userId) {
-  return axios
-    .post(`${url}/api/favorite`, { artwork_id: artworkId, user_id: userId })
-    .then((response) => response.data)
-    .catch((error) => {
-      console.error(error);
-      return [];
-    });
-}
+// ----------------------POST-----------------------------------------
 
-export function deleteFavorite(artworkId, userId) {
-  return axios
-    .delete(`${url}/api/favorite/${artworkId}/${userId}`)
-    .then((reponse) => reponse.data)
-    .catch((error) => {
-      console.error(error);
-      return [];
-    });
-}
+// POST Table user
 
 export function postloginUser(userData) {
   return axios
-    .post(`${import.meta.env.VITE_API_URL}/api/login`, userData, {
+    .post(`${url}/api/login`, userData, {
       withCredentials: true,
     })
     .then((reponse) => reponse)
@@ -160,7 +135,7 @@ export function postloginUser(userData) {
 
 export function postRegisterUser(userData) {
   return axios
-    .post(`${import.meta.env.VITE_API_URL}/api/users`, userData)
+    .post(`${url}/api/users`, userData)
     .then((reponse) => reponse)
     .catch((error) => {
       console.error(
@@ -170,9 +145,61 @@ export function postRegisterUser(userData) {
       return [];
     });
 }
+
+// POST Table artwork
+
+// POST Table exhibition
+
+export function createExhibition(
+  exhibitionName,
+  exhibitionDescription,
+  exhibitionType,
+  exhibitionDateBegin,
+  exhibitionDateEnd
+) {
+  return axios.post(`${url}/api/exhibition`, {
+    name: exhibitionName,
+    description: exhibitionDescription,
+    type: exhibitionType,
+    date_begin: exhibitionDateBegin,
+    date_end: exhibitionDateEnd,
+  });
+}
+
+// POST Table artwork_exhibition
+
+export function postExhibitionArtwork(exhibitionID, artworkID) {
+  return axios
+    .post(`${url}/api/exhibition/artworks`, {
+      exhibition_id: exhibitionID,
+      artwork_id: artworkID,
+    })
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}
+
+// POST Table favorite
+
+export function addFavorite(artworkId, userId) {
+  return axios
+    .post(`${url}/api/favorite`, { artwork_id: artworkId, user_id: userId })
+    .then((response) => response.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}
+
+// ----------------------PUT-----------------------------------------
+
+// PUT Table user
+
 export function updateUserInfo(id, userData) {
   return axios
-    .put(`${import.meta.env.VITE_API_URL}/api/users/${id}`, userData)
+    .put(`${url}/api/users/${id}`, userData)
     .then((reponse) => reponse)
     .catch((error) => {
       console.error(
@@ -182,9 +209,22 @@ export function updateUserInfo(id, userData) {
       return [];
     });
 }
+
+// PUT Table artwork
+
+// PUT Table exhibition
+
+// PUT Table artwork_exhibition
+
+// PUT Table favorite
+
+// ----------------------DELETE-----------------------------------------
+
+// DELETE Table user
+
 export function deleteAccount(id) {
   return axios
-    .delete(`${import.meta.env.VITE_API_URL}/api/users/${id}/destroy`)
+    .delete(`${url}/api/users/${id}/destroy`)
     .then((reponse) => reponse)
     .catch((error) => {
       console.error(
@@ -195,36 +235,38 @@ export function deleteAccount(id) {
     });
 }
 
+// DELETE Table artwork
+
+// DELETE Table exhibition
+
 export function deleteExhibition(exhibitionId) {
   return axios
-    .delete(`${import.meta.env.VITE_API_URL}/api/exhibition/${exhibitionId}`, {
+    .delete(`${url}/api/exhibition/${exhibitionId}`, {
       withCredentials: true,
     })
     .then((reponse) => reponse.data);
 }
 
-export function createExhibition(
-  exhibitionName,
-  exhibitionDescription,
-  exhibitionType,
-  exhibitionDateBegin,
-  exhibitionDateEnd
-) {
-  return axios.post(`${import.meta.env.VITE_API_URL}/api/exhibition`, {
-    name: exhibitionName,
-    description: exhibitionDescription,
-    type: exhibitionType,
-    date_begin: exhibitionDateBegin,
-    date_end: exhibitionDateEnd,
-  });
-}
+// DELETE Table artwork_exhibition
 
-export function getUserId() {
+export function deleteExhibitionArtwork(exhibitionId, artworkId) {
   return axios
-    .get(`${url}/api/getUserId`, { withCredentials: true })
-    .then((response) => response.data.userId)
+    .delete(`${url}/api/exhibition/${exhibitionId}/artworks/${artworkId}`)
+    .then((reponse) => reponse.data)
     .catch((error) => {
       console.error(error);
-      return null;
+      return [];
+    });
+}
+
+// DELETE Table favorite
+
+export function deleteFavorite(artworkId, userId) {
+  return axios
+    .delete(`${url}/api/favorite/${artworkId}/${userId}`)
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
     });
 }
