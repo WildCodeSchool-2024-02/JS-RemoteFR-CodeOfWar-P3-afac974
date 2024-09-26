@@ -35,7 +35,7 @@ function VirtualVisit() {
         default: "arcade",
         arcade: {
           gravity: { y: 0 },
-          debug: true,
+          debug: false,
         },
       },
     };
