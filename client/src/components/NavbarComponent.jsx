@@ -67,11 +67,13 @@ function Navbar() {
         </li>
         {/* ------------------------------MENU----------------------------------- */}
         <li>
-          <IconsComponent
-            className="navbarcomponent_menu_icon"
-            alt="burger menu icon"
-            src="menuburger"
-          />
+          {" "}
+          <Link to="/exhibitionForm">
+            <IconsComponent
+              className="navbarcomponent_menu_icon"
+              src="menuburger"
+            />{" "}
+          </Link>
         </li>
       </ul>
     </nav>

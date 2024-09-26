@@ -1,22 +1,20 @@
 import { useLoaderData, Link } from "react-router-dom";
 
 function ArtistPage() {
-  const { artist, artworksbyartist } = useLoaderData();
+  const { user, artworksbyuser } = useLoaderData();
 
   return (
     <>
-      <h1 className="artistPage_name">{artist.pseudo}</h1>
-      <p className="artistPage_nationality">
-        Nationnalité: {artist.nationality}
-      </p>
+      <h1 className="artistPage_name">{user.pseudo}</h1>
+      <p className="artistPage_nationality">Nationnalité: {user.nationality}</p>
       <p className="artistPage_biography">Biographie:</p>
-      <h2 className="artistPage_biography">Biographie: {artist.biography}</h2>
-      <p className="artistPage_birthday">{artist.birthday}</p>
-      <p className="artistPage_deathday">{artist.deathday}</p>
+      <h2 className="artistPage_biography">{user.biography}</h2>
+      <p className="artistPage_birthday">{user.birthday}</p>
+      <p className="artistPage_deathday">{user.deathday}</p>
 
       <p className="artistPage_text">Les œuvres de l'artiste :</p>
       <div className="artistPage_artworksByArtistContainer">
-        {artworksbyartist.map((artwork) => (
+        {artworksbyuser.map((artwork) => (
           <div key={artwork.id}>
             <Link to={`/artwork/${artwork.id}`}>
               <img

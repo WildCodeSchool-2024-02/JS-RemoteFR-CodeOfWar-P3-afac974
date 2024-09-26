@@ -64,10 +64,10 @@ function ArtworkPage() {
 
       <div className="artworkPage_nameOeuvre">
         <Link
-          to={`/artistpage/${artwork.artist_id}`}
+          to={`/artistpage/${artwork.user_id}`}
           className="artworkPage_goToartistpage"
         >
-          <p>{artwork.artist_name}</p>
+          <p>{artwork.user_name}</p>
         </Link>
         <p>{artwork.title}</p>
         <p>{artwork.date}</p>

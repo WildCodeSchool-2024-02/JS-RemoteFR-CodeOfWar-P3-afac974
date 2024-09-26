@@ -16,7 +16,20 @@ class UserRepository extends AbstractRepository {
 
   async read(id) {
     const [rows] = await this.database.query(
-      `SELECT id, pseudo, email FROM ${this.table} WHERE id = ?`,
+      `SELECT id, 
+      pseudo, email,
+      firstname,
+      lastname,        
+      birthday,
+      deathday,
+      nationality,
+      biography,
+      website,
+      instagram,
+      twitter,        
+      facebook,
+      linkedin,
+      avatar FROM ${this.table} WHERE id = ?`,
       [id]
     );
 
@@ -65,6 +78,7 @@ class UserRepository extends AbstractRepository {
            linkedin = ?, avatar = ?, created_at = ? 
        WHERE id = ?`,
       [
+        user.id,
         user.pseudo,
         user.email,
         user.hashed_password,
@@ -81,8 +95,6 @@ class UserRepository extends AbstractRepository {
         user.linkedin,
         user.avatar,
         user.created_at,
-        user.is_admin,
-        user.id,
       ]
     );
     return result.affectedRows;
