@@ -14,11 +14,7 @@ function Homepage() {
         exhibition={exhibitions}
         artist={artists}
       />
-      <h1 className="homePage_temporaryEvent">Evénnements temporaire</h1>
-      <p className="homePage_temporaryEvent">Temporairement indisponible</p>
-      <h2 className="homePage_discorverArtworks">
-        Découvrez les oeuvres de nos artistes
-      </h2>
+
       <div className="homePage_artwork_container">
         {artworks.map((artwork) => (
           <ArtworkComponent artwork={artwork} key={artwork.id} />
