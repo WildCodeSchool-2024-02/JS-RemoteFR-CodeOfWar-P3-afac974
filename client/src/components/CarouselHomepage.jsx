@@ -12,61 +12,69 @@ function CarouselHomepage({ artwork, exhibition, artist }) {
   const randomArtwork = Math.ceil(Math.random() * artworkLength - 1);
   const randomExhibition = Math.ceil(Math.random() * exhibitionLength - 1);
 
+  console.info(artist);
+
   return (
-    <div className="horizontal_scroll_carousel">
-      <figure>
-        <Link to="/exhibition">
-          <img
-            className="first_carousel_image"
-            src={`${import.meta.env.VITE_API_URL}${artwork[randomArtwork].image_url}`}
-            alt={artwork[randomArtwork].title}
-          />
+    <section className="carousel_section">
+      <h1>Virtuart L'Art Pour Tous</h1>
 
-          <figcaption className="carrouselHomepage_informations">
-            <h2 className="carrouselHomepage_title">
-              {exhibition[randomExhibition].name}
-            </h2>
-            <p>
-              {exhibition[randomExhibition].date_begin.substring(0, 7)} /{" "}
-              {exhibition[randomExhibition].date_end.substring(0, 7)}
-            </p>
-            <p>Savoir Plus...</p>
-          </figcaption>
-        </Link>
-      </figure>
+      <div className="horizontal_scroll_carousel">
+        <figure>
+          <p>Explores nos expositions</p>
+          <Link to="/exhibition">
+            <img
+              src={`${import.meta.env.VITE_API_URL}${artwork[randomArtwork].image_url}`}
+              alt={artwork[randomArtwork].title}
+            />
 
-      <figure>
-        <Link to="/artists">
-          <img
-            src={`${import.meta.env.VITE_API_URL}${artwork[1].image_url}`}
-            alt={artwork[1].title}
-          />
+            <figcaption className="carrouselHomepage_informations">
+              <h2 className="carrouselHomepage_title">
+                {exhibition[randomExhibition].name}
+              </h2>
+              <p>
+                {exhibition[randomExhibition].date_begin.substring(0, 7)} /{" "}
+                {exhibition[randomExhibition].date_end.substring(0, 7)}
+              </p>
+              <p>{exhibition[randomExhibition].description}</p>
+            </figcaption>
+          </Link>
+        </figure>
 
-          <figcaption className="carrouselHomepage_informations">
-            <h2 className="carrouselHomepage_title">
-              {artist[randomArtist].pseudo}
-            </h2>
-            <p>Savoir Plus...</p>
-          </figcaption>
-        </Link>
-      </figure>
+        <figure>
+          <p>Decouvres nos artistes</p>
+          <Link to="/artists">
+            <img
+              src={`${import.meta.env.VITE_API_URL}${artwork[1].image_url}`}
+              alt={artwork[1].title}
+            />
 
-      <figure>
-        <Link to="/artworks">
-          <img
-            src={`${import.meta.env.VITE_API_URL}${artwork[2].image_url}`}
-            alt={artwork[2].title}
-          />
+            <figcaption className="carrouselHomepage_informations">
+              <h2 className="carrouselHomepage_title">
+                {artist[randomArtist].pseudo}
+              </h2>
+              <p>{artist[randomArtist].biography}</p>
+            </figcaption>
+          </Link>
+        </figure>
 
-          <figcaption className="carrouselHomepage_informations">
-            <h2 className="carrouselHomepage_title">
-              {artwork[randomArtwork].title}
-            </h2>
-            <p>Savoir Plus...</p>
-          </figcaption>
-        </Link>
-      </figure>
-    </div>
+        <figure>
+          <p>Admires les ouvres</p>
+          <Link to="/artworks">
+            <img
+              src={`${import.meta.env.VITE_API_URL}${artwork[randomArtwork].image_url}`}
+              alt={artwork[randomArtwork].title}
+            />
+
+            <figcaption className="carrouselHomepage_informations">
+              <h2 className="carrouselHomepage_title">
+                {artwork[randomArtwork].title}
+              </h2>
+              <p>{artwork[randomArtwork].description}</p>
+            </figcaption>
+          </Link>
+        </figure>
+      </div>
+    </section>
   );
 }
 
@@ -75,6 +83,7 @@ CarouselHomepage.propTypes = {
     PropTypes.shape({
       image_url: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
     })
   ).isRequired,
   exhibition: PropTypes.arrayOf(
@@ -82,11 +91,13 @@ CarouselHomepage.propTypes = {
       name: PropTypes.string.isRequired,
       date_begin: PropTypes.string.isRequired,
       date_end: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
     })
   ).isRequired,
   artist: PropTypes.arrayOf(
     PropTypes.shape({
       pseudo: PropTypes.string.isRequired,
+      biography: PropTypes.string.isRequired,
     })
   ).isRequired,
 };

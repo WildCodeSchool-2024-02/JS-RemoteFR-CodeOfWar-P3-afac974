@@ -5,9 +5,7 @@ import "../assets/styles/homepage.css";
 import CarouselHomepage from "../components/CarouselHomepage";
 
 function Homepage() {
-  const { artworks } = useLoaderData();
-  const { exhibitions } = useLoaderData();
-  const { artists } = useLoaderData();
+  const { artworks, exhibitions, artists } = useLoaderData();
 
   return (
     <>

@@ -35,10 +35,11 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Homepage />,
-        loader: async () => ({
+        loader: async (params) => ({
           artworks: await getArtworks(),
           exhibitions: await getExhibitions(),
           artists: await getArtistList(),
+          artworksbyArtist: await getArtworksByArtist(params.id),
         }),
       },
       {

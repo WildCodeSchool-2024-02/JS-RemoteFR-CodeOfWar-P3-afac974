@@ -2,7 +2,7 @@ import { useLoaderData, Link } from "react-router-dom";
 
 function ArtistPage() {
   const { artist, artworksbyartist } = useLoaderData();
-
+  console.info(artworksbyartist);
   return (
     <>
       <h1 className="artistPage_name">{artist.pseudo}</h1>
