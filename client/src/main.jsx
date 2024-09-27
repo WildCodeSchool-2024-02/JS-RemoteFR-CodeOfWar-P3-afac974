@@ -10,6 +10,7 @@ import {
   getExhibitions,
   getArtworksByUser,
   getFavorites,
+  checkAdmin,
 } from "./services/request";
 
 import { AuthProvider } from "./context/AuthContext";
@@ -93,7 +94,9 @@ const router = createBrowserRouter([
         loader: async ({ params }) => ({
           exhibitions: await getExhibitions(),
           artworks: await getArtworks(params.id),
+          admin: await checkAdmin(),
         }),
+        errorElement: <LoginPage />,
       },
       {
         path: "/authentification",

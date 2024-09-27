@@ -36,6 +36,14 @@ const login = async (req, res, next) => {
   }
 };
 
+const admin = async (req, res, next) => {
+  try {
+    res.sendStatus(200);
+  } catch (error) {
+    next(error);
+  }
+};
 module.exports = {
   login,
+  admin,
 };

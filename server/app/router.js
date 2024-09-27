@@ -22,6 +22,13 @@ router.get("/getUserId", verifyToken, (req, res) => {
   res.json({ userId });
 });
 
+router.get(
+  "/checkIfAdmin",
+  verifyToken,
+  middleware.checkAdminStatus,
+  authActions.admin
+);
+
 // ARTWORK
 router.get("/artworks", artworks.browse);
 router.get("/artworks/:id", artworks.read);

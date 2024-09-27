@@ -36,6 +36,14 @@ export function getUser(id) {
     });
 }
 
+export function checkAdmin() {
+  return axios
+    .get(`${url}/api/checkIfAdmin`, { withCredentials: true })
+    .then((response) => response)
+    .catch((error) => {
+      throw new Error(error);
+    });
+}
 export function getArtworksByUser(userId) {
   return axios
     .get(`${url}/api/users/${userId}/artworks`)
