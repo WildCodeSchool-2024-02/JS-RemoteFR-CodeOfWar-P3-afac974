@@ -93,8 +93,6 @@
     padding: 0;
     padding-top: 5rem;
     margin-inline: 3rem;
-    /* margin-bottom: 1rem; */
-    /* margin-left: 10rem; */
   }
 
   .horizontal_scroll_carousel figure {
@@ -131,27 +129,6 @@
     opacity: 1;
   }
 
-  /* .horizontal_scroll_carousel a {
-    margin-top: 2em;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-
-  }
-
-
-  .horizontal_scroll_carousel > figure > img {
-    grid-column: 1/2;
-
-  }
-
-  .carrouselHomepage_informations {
-    grid-column: 2 /3;
-    grid-row: auto;
-    background-color: var(--background-color);
-    color: var(--text-color);
-  } */
-
   .horizontal_scroll_carousel > figure > figcaption > p {
     font-size: 1rem;
     font-weight: 400;
@@ -159,7 +136,7 @@
 
   .homePage_artwork_container {
     grid-template-columns: repeat(3, 1fr);
-    padding-inline: 32px;
+    padding-top: 48px;
   }
 
   .artworkcomponent_expo_img:nth-child(2n -1) {

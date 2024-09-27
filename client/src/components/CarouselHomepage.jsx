@@ -12,8 +12,6 @@ function CarouselHomepage({ artwork, exhibition, artist }) {
   const randomArtwork = Math.ceil(Math.random() * artworkLength - 1);
   const randomExhibition = Math.ceil(Math.random() * exhibitionLength - 1);
 
-  console.info(artist);
-
   return (
     <section className="carousel_section">
       <h1>Virtuart L'Art Pour Tous</h1>
