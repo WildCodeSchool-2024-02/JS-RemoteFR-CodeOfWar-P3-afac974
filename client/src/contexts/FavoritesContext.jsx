@@ -8,7 +8,7 @@ export default function FavoritesProvider({ children }) {
   const [favorite, setFavorite] = useState([]);
 
   const addNewFavorite = async (artworkId, userId) => {
-    await addFavorite(artworkId, userId);
+    await addFavorite(artworkId);
     setFavorite(await getFavorites(userId));
   };
 

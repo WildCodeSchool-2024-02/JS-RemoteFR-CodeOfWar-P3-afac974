@@ -27,9 +27,11 @@ const verifyToken = (req, res, next) => {
   try {
     const { auth } = req.cookies;
     if (!auth) {
+      console.info("touto");
       throw new Error("");
     }
     req.auth = jwt.verify(auth, process.env.APP_SECRET);
+    req.body.user_id = req.auth.sub;
     next();
   } catch (err) {
     console.error(err.message);

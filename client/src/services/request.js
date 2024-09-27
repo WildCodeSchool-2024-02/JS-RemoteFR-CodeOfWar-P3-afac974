@@ -106,7 +106,9 @@ export function getExhibitionArtwork(id) {
 
 export function getFavorites(id) {
   return axios
-    .get(`${url}/api/favorite/${id}`)
+    .get(`${url}/api/favorite/${id}`, {
+      withCredentials: true,
+    })
     .then((reponse) => reponse.data)
     .catch((error) => {
       console.error(error);
@@ -183,9 +185,13 @@ export function postExhibitionArtwork(exhibitionID, artworkID) {
 
 // POST Table favorite
 
-export function addFavorite(artworkId, userId) {
+export function addFavorite(artworkId) {
   return axios
-    .post(`${url}/api/favorite`, { artwork_id: artworkId, user_id: userId })
+    .post(
+      `${url}/api/favorite`,
+      { artwork_id: artworkId },
+      { withCredentials: true }
+    )
     .then((response) => response.data)
     .catch((error) => {
       console.error(error);

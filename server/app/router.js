@@ -25,7 +25,7 @@ router.get("/getUserId", verifyToken, (req, res) => {
 // ARTWORK
 router.get("/artworks", artworks.browse);
 router.get("/artworks/:id", artworks.read);
-router.post("/artworks", middleware.uploadImg, artworks.add);
+router.post("/artworks", middleware.uploadImg, verifyToken, artworks.add);
 router.delete("/artworks/:id", artworks.destroy);
 router.put("/artworks/:id", artworks.edit);
 
@@ -43,8 +43,8 @@ router.delete(
 
 // FAVORITES
 
-router.get("/favorite/:id", favorite.read);
-router.post("/favorite", favorite.addFavorite);
+router.get("/favorite/:id", verifyToken, favorite.read);
+router.post("/favorite", verifyToken, favorite.addFavorite);
 router.delete("/favorite/:artworkId/:userId", favorite.destroyFavorite);
 
 // USER

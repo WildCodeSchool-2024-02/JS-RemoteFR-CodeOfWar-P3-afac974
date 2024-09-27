@@ -18,6 +18,7 @@ import App from "./App";
 import Homepage from "./pages/Homepage";
 import ArtworkPage from "./pages/ArtworkPage";
 import ArtworksPage from "./pages/ArtworksPage";
+import ArtworkDashboard from "./pages/ArtworkDashboard";
 import ArtistList from "./pages/ArtistList";
 import ArtistPage from "./pages/ArtistPage";
 import Exhibition from "./pages/Exhibition";
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
           users: await getUserList(),
           exhibitions: await getExhibitions(),
         }),
+      },
+      {
+        path: "/artwork_dashboard",
+        element: <ArtworkDashboard />,
       },
       {
         path: "/artistpage/:id",
