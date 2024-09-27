@@ -7,14 +7,14 @@ import CarouselHomepage from "../components/CarouselHomepage";
 function Homepage() {
   const { artworks } = useLoaderData();
   const { exhibitions } = useLoaderData();
-  const { artists } = useLoaderData();
+  const { users } = useLoaderData();
 
   return (
     <>
       <CarouselHomepage
         artwork={artworks}
         exhibition={exhibitions}
-        artist={artists}
+        user={users}
       />
       <h1 className="homePage_temporaryEvent">Evénnements temporaire</h1>
       <p className="homePage_temporaryEvent">Temporairement indisponible</p>

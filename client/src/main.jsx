@@ -3,12 +3,12 @@ import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
-  getArtistList,
-  getArtist,
+  getUserList,
+  getUser,
   getArtworks,
   getArtwork,
   getExhibitions,
-  getArtworksByArtist,
+  getArtworksByUser,
   getFavorites,
 } from "./services/request";
 
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         loader: async () => ({
           artworks: await getArtworks(),
           exhibitions: await getExhibitions(),
-          artists: await getArtistList(),
+          users: await getUserList(),
         }),
       },
       {
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
         path: "/artists",
         element: <ArtistList />,
         loader: async () => ({
-          artists: await getArtistList(),
+          users: await getUserList(),
         }),
       },
       {
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
         element: <ArtworksPage />,
         loader: async () => ({
           artworks: await getArtworks(),
-          artists: await getArtistList(),
+          users: await getUserList(),
           exhibitions: await getExhibitions(),
         }),
       },
@@ -71,8 +71,8 @@ const router = createBrowserRouter([
         path: "/artistpage/:id",
         element: <ArtistPage />,
         loader: async ({ params }) => ({
-          artworksbyartist: await getArtworksByArtist(params.id),
-          artist: await getArtist(params.id),
+          artworksbyuser: await getArtworksByUser(params.id),
+          user: await getUser(params.id),
         }),
       },
       {
@@ -86,7 +86,8 @@ const router = createBrowserRouter([
         path: "/exhibitionForm",
         element: <ExhibitionForm />,
         loader: async ({ params }) => ({
-          artwork: await getArtwork(params.id),
+          exhibitions: await getExhibitions(),
+          artworks: await getArtworks(params.id),
         }),
       },
       {

@@ -11,7 +11,7 @@ function ArtworkForm() {
     technique: "",
     measurement: "",
     date: "",
-    artistId: "",
+    userId: "",
   });
   const [image, setImage] = useState(null);
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ function ArtworkForm() {
     formData.append("technique", dataForm.technique);
     formData.append("measurement", dataForm.measurement);
     formData.append("date", dataForm.date);
-    formData.append("artistId", dataForm.artistId);
+    formData.append("userId", dataForm.userId);
     formData.append("image", image);
 
     axios
@@ -107,15 +107,15 @@ function ArtworkForm() {
         value={dataForm.measurement}
         onChange={handleChange}
       />
-      <label htmlFor="artist_id" className="visually-hidden">
+      <label htmlFor="user_id" className="visually-hidden">
         Artist ID:
       </label>
       <input
         type="text"
-        id="artist_id"
-        name="artistId"
+        id="user_id"
+        name="userId"
         placeholder="Artist ID"
-        value={dataForm.artistId}
+        value={dataForm.userId}
         onChange={handleChange}
       />
       <button type="submit" className="confirm_artwork">
