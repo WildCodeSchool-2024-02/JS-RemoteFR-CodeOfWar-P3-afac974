@@ -5,7 +5,7 @@ export default function create(setMessage, artworks) {
 
   // Variables pour définir l'espacement et la grille des tableaux
   const startX = 48;
-  const startY = 48;
+  const startY = 32;
   const spaceX = 64;
   const spaceY = 110;
   let currentRow = 0;
@@ -20,7 +20,7 @@ export default function create(setMessage, artworks) {
     const group = this.physics.add.staticGroup();
     group.create(x, y, "frame");
 
-    this.physics.add.collider(this.player, group, () => {
+    this.physics.add.overlap(this.player, group, () => {
       setMessage(index);
     });
 
@@ -40,10 +40,12 @@ export default function create(setMessage, artworks) {
 
   while (totalPlaced < totalElements) {
     const x = startX + currentCol * spaceX;
-    const y = startY + currentRow * spaceY;
+    const y = startY + currentRow * spaceY+15;
 
     const group = this.physics.add.staticGroup();
     group.create(x, y, 'redSquare'); 
+
+    this.physics.add.collider(this.player, group, () => {})
 
     this.tableauxPositions.push({ x, y });
 
@@ -55,13 +57,13 @@ export default function create(setMessage, artworks) {
 
     totalPlaced += 1;
   }
-
+  this.player.setDepth(2);
  // Ajouter un mur (groupe statique) en bas de la carte (invisible)
  const invisibleWalls = this.physics.add.staticGroup();
 
  // Exemples de murs invisibles (bordures)
- invisibleWalls.create(0, 47, null).setSize(1345, 32).setVisible(false); // Mur haut
- invisibleWalls.create(0, 158, null).setSize(1345, 32).setVisible(false); // Mur bas
+ invisibleWalls.create(0, 20, null).setSize(2000, 16).setVisible(false); // Mur haut
+ invisibleWalls.create(0, 125, null).setSize(1345, 30).setVisible(false); // Mur bas
 
  // Collisions entre le joueur et les murs invisibles
  this.physics.add.collider(this.player, invisibleWalls);

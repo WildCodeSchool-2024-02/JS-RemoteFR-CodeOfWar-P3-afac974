@@ -1,6 +1,6 @@
 .artworkVisualisation {
   height: 200px;
-  background-color: #179ac5;
+  background-color: whitesmoke;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -9,18 +9,22 @@
 
 .information {
   margin: 2rem;
-  display: flex;
-  flex-direction: row;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .title {
   margin: auto;
   margin-right: 2rem;
   border: solid 2px black;
+  background-color: gray;
 }
 
 .description {
   margin: auto;
   border: solid 2px black;
+  background-color: gray;
 }

@@ -10,9 +10,9 @@ export default function playerMove(setMessage, message) {
     this.player.setVelocityX(160);
   }
 
-  if (this.cursors.up.isDown && this.player.y > 48) {
+  if (this.cursors.up.isDown && this.player.y > 19) {
     this.player.setVelocityY(-160);
-  } else if (this.cursors.down.isDown && this.player.y < 224) {
+  } else if (this.cursors.down.isDown && this.player.y < 250) {
     this.player.setVelocityY(160);
   }
 
@@ -26,7 +26,7 @@ export default function playerMove(setMessage, message) {
   }
 
   // Interaction avec la distance des tableaux
-  const thresholdDistance = 50; // Distance à laquelle le message doit être réinitialisé
+  const thresholdDistance = 40; // Distance à laquelle le message doit être réinitialisé
   let isNearAnyTableau = false;
 
   this.tableauxPositions.forEach((tableauPos) => {
