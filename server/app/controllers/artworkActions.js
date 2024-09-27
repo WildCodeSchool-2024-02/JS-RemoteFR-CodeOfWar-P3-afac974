@@ -50,9 +50,9 @@ const destroy = async (req, res, next) => {
   }
 };
 
-const readArtworksByArtist = async (req, res, next) => {
+const readArtworksByUser = async (req, res, next) => {
   try {
-    const artwork = await tables.artwork.artworksByArtist(req.params.id);
+    const artwork = await tables.artwork.artworksByUser(req.params.id);
     if (artwork === null) {
       res.sendStatus(404);
     } else {
@@ -63,4 +63,4 @@ const readArtworksByArtist = async (req, res, next) => {
   }
 };
 
-module.exports = { browse, read, add, edit, destroy, readArtworksByArtist };
+module.exports = { browse, read, add, edit, destroy, readArtworksByUser };
