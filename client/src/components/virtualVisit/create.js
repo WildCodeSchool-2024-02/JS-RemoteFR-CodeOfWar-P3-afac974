@@ -1,7 +1,41 @@
 export default function create(setMessage, artworks) {
 
   this.map = this.add.image(480, 142, 'map');
-  this.player = this.physics.add.sprite(700, 32, "player");
+  this.player = this.physics.add.sprite(700, 232, "player");
+  this.player.setScale(1);
+
+   // Créer les animations pour le joueur
+   this.anims.create({
+    key: 'walk_down',
+    frames: this.anims.generateFrameNumbers('player', { start: 0, end: 3 }), // Frames 0 à 3 pour marcher vers le bas
+    frameRate: 10,
+    repeat: -1
+  });
+
+  this.anims.create({
+    key: 'walk_up',
+    frames: this.anims.generateFrameNumbers('player', { start: 4, end: 7 }), // Frames 4 à 7 pour marcher vers le haut
+    frameRate: 10,
+    repeat: -1
+  });
+
+  this.anims.create({
+    key: 'walk_left',
+    frames: this.anims.generateFrameNumbers('player', { start: 8, end: 11 }), // Frames 8 à 11 pour marcher à gauche
+    frameRate: 10,
+    repeat: -1
+  });
+
+  this.anims.create({
+    key: 'walk_right',
+    frames: this.anims.generateFrameNumbers('player', { start: 12, end: 15 }), // Frames 12 à 15 pour marcher à droite
+    frameRate: 10,
+    repeat: -1
+  });
+
+  // Par défaut, faire jouer l'animation "marcher vers le bas"
+  this.player.play('walk_down');
+
 
   // Variables pour définir l'espacement et la grille des tableaux
   const startX = 48;
