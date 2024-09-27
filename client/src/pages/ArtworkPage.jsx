@@ -1,7 +1,37 @@
+import { useState, useEffect } from "react";
 import { useLoaderData, Link } from "react-router-dom";
+import { useFavorites } from "../contexts/FavoritesContext";
+import { getUserId } from "../services/request";
 
 function ArtworkPage() {
   const { artwork } = useLoaderData();
+  const { favorite, addNewFavorite, removeFavorite } = useFavorites();
+  const [isFavorite, setIsFavorite] = useState();
+  const [userId, setUserId] = useState();
+
+  useEffect(() => {
+    const fetchUserId = async () => {
+      setUserId(await getUserId());
+    };
+    fetchUserId();
+
+    if (favorite) {
+      setIsFavorite(
+        favorite.some((favArtwork) => favArtwork.artwork_id === artwork.id)
+      );
+    }
+  }, [favorite, artwork.id]);
+
+  const toggleFavorite = () => {
+    if (isFavorite) {
+      removeFavorite(artwork.id, userId);
+      setIsFavorite(!isFavorite);
+    } else {
+      addNewFavorite(artwork.id, userId);
+      setIsFavorite(!isFavorite);
+    }
+  };
+
   return (
     <>
       <div className="artworkPage_pagePosition">
@@ -31,6 +61,7 @@ function ArtworkPage() {
           alt={artwork.title}
         />
       </div>
+
       <div className="artworkPage_nameOeuvre">
         <Link
           to={`/artistpage/${artwork.artist_id}`}
@@ -44,6 +75,21 @@ function ArtworkPage() {
 
       <div className="artworkPage_fav_com">
         <p>Un coup de coeur ? Ajouter la à vos favoris</p>
+
+        {userId ? (
+          <button
+            className="like_button"
+            type="button"
+            onClick={toggleFavorite}
+          >
+            {isFavorite ? "❤️" : "🤍"}
+          </button>
+        ) : (
+          <Link to="/authentification">
+            <button type="button">🤍</button>
+          </Link>
+        )}
+
         <p>Une pensée ? Faites la vivre en commentaire</p>
       </div>
 
