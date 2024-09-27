@@ -1,5 +1,4 @@
 // Import the repository modules responsible for handling data operations on the tables
-const ArtistRepository = require("./models/ArtistRepository");
 const ArtworkRepository = require("./models/ArtworkRepository");
 const ExhibitionRepository = require("./models/ExhibitionRepository");
 const FavoriteRepository = require("./models/FavoriteRepository");
@@ -13,7 +12,6 @@ const tables = {};
 /* ************************************************************************* */
 
 // Register each repository as data access point for its table
-tables.artist = new ArtistRepository();
 tables.artwork = new ArtworkRepository();
 tables.exhibition = new ExhibitionRepository();
 tables.favorite = new FavoriteRepository();
