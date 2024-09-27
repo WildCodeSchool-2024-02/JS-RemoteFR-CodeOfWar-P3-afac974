@@ -24,8 +24,8 @@ const read = async (req, res, next) => {
 
 const add = async (req, res, next) => {
   try {
-    const result = await tables.artwork.create(req.body);
-    res.status(201).send(`Oeuvre ajoutée avec succès. ID : ${result.insertId}`);
+    await tables.artwork.create(req.body);
+    res.status(201).send(`Oeuvre ajoutée avec succès.`);
   } catch (error) {
     next(error);
   }
