@@ -19,7 +19,7 @@ export function getUserId() {
 export function getUserList() {
   return axios
     .get(`${url}/api/users`)
-    .then((response) => response.data)
+    .then((response) => response.data.result)
     .catch((error) => {
       console.error(error);
       return [];

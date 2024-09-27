@@ -105,7 +105,7 @@ function Navbar() {
                 <li className="navBarComponent_3">Les expositions</li>
               </Link>
               <Link
-                to="/artistpage/:id"
+                to="/artwork_dashboard"
                 className="navBarComponent_navLinks"
                 onClick={showLinks}
               >
