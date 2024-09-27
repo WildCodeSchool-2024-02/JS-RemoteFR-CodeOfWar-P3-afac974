@@ -42,6 +42,9 @@ function ConfirmationButton({ onConfirm }) {
               <button type="button" onClick={() => setShowConfirmation(false)}>
                 Annuler
               </button>
+              {confirmationInput !== "CONFIRMER" ? (
+                <p>Le texte saisi est incorrect.</p>
+              ) : null}
             </div>
           </div>
         </div>
