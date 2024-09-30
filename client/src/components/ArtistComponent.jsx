@@ -4,7 +4,7 @@ export default function ArtistComponent({ user }) {
   return (
     <div className="artistlist_card">
       <img
-        src={user.portrait}
+        src={`${import.meta.env.VITE_API_URL}${user.avatar}`}
         alt={`${user.firstname} ${user.lastname}`}
         className="artistlist_image"
       />
@@ -19,11 +19,12 @@ export default function ArtistComponent({ user }) {
 
 ArtistComponent.propTypes = {
   user: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    firstname: PropTypes.string.isRequired,
-    lastname: PropTypes.string.isRequired,
-    nationality: PropTypes.string.isRequired,
-    biography: PropTypes.string.isRequired,
-    portrait: PropTypes.string.isRequired,
+    id: PropTypes.number,
+    firstname: PropTypes.string,
+    lastname: PropTypes.string,
+    nationality: PropTypes.string,
+    biography: PropTypes.string,
+    portrait: PropTypes.string,
+    avatar: PropTypes.string,
   }).isRequired,
 };

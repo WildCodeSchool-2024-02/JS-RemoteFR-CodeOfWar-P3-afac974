@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import IconsComponent from "../../components/IconsComponent";
 import BackButtonComponent from "../../components/authentification_components/BackButtonComponent";
 

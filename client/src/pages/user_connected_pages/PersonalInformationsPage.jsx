@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { updateUserInfo } from "../../services/request";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 
 import BackButtonComponent from "../../components/authentification_components/BackButtonComponent";
 

@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-import "../assets/styles/homepage.css";
-
 function CarouselHomepage({ artwork, exhibition, user }) {
   const userLength = user.length;
   const artworkLength = artwork.length;

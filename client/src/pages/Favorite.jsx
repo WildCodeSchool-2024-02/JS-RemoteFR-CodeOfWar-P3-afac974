@@ -1,8 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import FavoriteComponent from "../components/FavoriteComponent";
 
-import "../assets/styles/favorites.css";
-
 function Favorite() {
   const { favorites } = useLoaderData();
 

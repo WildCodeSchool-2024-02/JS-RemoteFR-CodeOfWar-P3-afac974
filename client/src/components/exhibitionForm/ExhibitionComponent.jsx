@@ -2,7 +2,6 @@ import { PropTypes } from "prop-types";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Masonry from "react-masonry-css";
-import "../../assets/styles/exhibitionForm.css";
 import ConfirmationButton from "./ConfirmationButton";
 
 import {

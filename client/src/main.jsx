@@ -13,7 +13,8 @@ import {
   checkAdmin,
 } from "./services/request";
 
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider } from "./contexts/AuthContext";
+import FavoritesProvider from "./contexts/FavoritesContext";
 
 import App from "./App";
 import Homepage from "./pages/Homepage";
@@ -31,7 +32,6 @@ import RegisterPage from "./pages/authentification_pages/RegisterPage";
 import DashboardPage from "./pages/user_connected_pages/DashboardPage";
 import PersonalInformationsPage from "./pages/user_connected_pages/PersonalInformationsPage";
 import Favorite from "./pages/Favorite";
-import FavoritesProvider from "./contexts/FavoritesContext";
 
 const router = createBrowserRouter([
   {
