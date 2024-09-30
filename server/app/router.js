@@ -19,7 +19,8 @@ router.post("/login", authActions.login);
 // USER ID
 router.get("/getUserId", verifyToken, (req, res) => {
   const userId = req.auth.sub;
-  res.json({ userId });
+  const isAdmin = req.auth.is_admin;
+  res.json({ userId, isAdmin });
 });
 
 router.get(
