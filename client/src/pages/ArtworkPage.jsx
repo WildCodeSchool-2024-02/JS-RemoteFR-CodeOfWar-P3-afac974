@@ -30,30 +30,12 @@ function ArtworkPage() {
       addNewFavorite(artwork.id, userId);
       setIsFavorite(!isFavorite);
     }
-  };
+  };  
+
+  console.info(artwork)
 
   return (
     <>
-      <div className="artworkPage_pagePosition">
-        <img
-          className="artworkPage_logoPagePosition"
-          src={`${import.meta.env.VITE_API_URL}/assets/images/logo_house.png`}
-          alt="logo_house"
-        />
-        <h1 className="artworkPage_namePagePosition">
-          {" "}
-          {"> Les oeuvres > Nom de l'oeuvre"}
-        </h1>
-      </div>
-
-      <div className="artworkPage_tag">
-        <p>Tags :</p>
-        <ul className="artworkPage_tags">
-          <li>tag 1</li>
-          <li>tag 2</li>
-          <li>tag 3</li>
-        </ul>
-      </div>
       <div className="artworkPage_oneOeuvre">
         <img
           className="artworkPage_oneOeuvrePic"
@@ -70,7 +52,7 @@ function ArtworkPage() {
           <p>{artwork.user_name}</p>
         </Link>
         <p>{artwork.title}</p>
-        <p>{artwork.date}</p>
+        <p>{artwork.formatedDate}</p>
       </div>
 
       <div className="artworkPage_fav_com">
@@ -89,8 +71,6 @@ function ArtworkPage() {
             <button type="button">🤍</button>
           </Link>
         )}
-
-        <p>Une pensée ? Faites la vivre en commentaire</p>
       </div>
 
       <div className="artworkPage_tech_oeuvre">

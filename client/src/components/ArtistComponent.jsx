@@ -4,7 +4,7 @@ export default function ArtistComponent({ user }) {
   return (
     <div className="artistlist_card">
       <img
-        src={`${import.meta.env.VITE_API_URL}${user.avatar}`}
+        src={`${import.meta.env.VITE_API_URL}${user}`}
         alt={`${user.firstname} ${user.lastname}`}
         className="artistlist_image"
       />

@@ -6,13 +6,14 @@ class ExhibitionRepository extends AbstractRepository {
   }
 
   async readAll() {
-    const [rows] = await this.database.query(`select * from ${this.table}`);
+    const [rows] = await this.database.query(
+      `select * ,DATE_FORMAT(date, '%d/%m/%Y') as formatedDate from ${this.table}`);
     return rows;
   }
 
   async read(id) {
     const [rows] = await this.database.query(
-      `select * from ${this.table} WHERE id = ? `,
+      `select *,DATE_FORMAT(date, '%d/%m/%Y') as formatedDate from ${this.table} WHERE id = ? `,
       [id]
     );
     return rows[0];
