@@ -1,6 +1,5 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import "../../assets/styles/confirmButton.css";
 
 function ConfirmationButton({ onConfirm }) {
   const [showConfirmation, setShowConfirmation] = useState(false);

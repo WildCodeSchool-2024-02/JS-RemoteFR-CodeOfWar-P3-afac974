@@ -54,7 +54,7 @@ VALUES (
         'https://twitter.com',
         'https://facebook.com',
         'https://linkedin.com',
-        '',
+        default,
         CURRENT_TIMESTAMP,
         '0'
     ),
@@ -73,7 +73,7 @@ VALUES (
         'https://twitter.com',
         'https://facebook.com',
         'https://linkedin.com',
-        '',
+        default,
         CURRENT_TIMESTAMP,
         '1'
     ),
