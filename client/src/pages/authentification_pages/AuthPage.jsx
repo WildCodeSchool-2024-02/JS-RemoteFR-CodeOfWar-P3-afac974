@@ -69,7 +69,7 @@ function AuthPage() {
           </li>
 
           <li className="auth_navOnline">
-            <Link to="/" className="auth_navLinksOnline">
+            <Link to="/artwork_dashboard" className="auth_navLinksOnline">
               Mes publications
             </Link>
           </li>
