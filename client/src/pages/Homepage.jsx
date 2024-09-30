@@ -8,7 +8,6 @@ function Homepage() {
   const lastArtwork = artworks
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 12);
-  console.info(lastArtwork);
   return (
     <>
       <CarouselHomepage
