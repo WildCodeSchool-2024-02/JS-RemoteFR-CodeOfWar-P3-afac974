@@ -13,7 +13,6 @@ function Navbar() {
     const fetchUserData = async () => {
       if (auth) {
         const data = await getUserId();
-        console.info(data)
         setUserData({ id: data, isAdmin: auth.user.is_admin });
       } else {
         setUserData({ id: null, isAdmin: false });

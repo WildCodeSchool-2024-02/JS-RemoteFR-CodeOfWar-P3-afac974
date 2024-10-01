@@ -46,6 +46,7 @@ const edit = async (req, res, next) => {
     await tables.user.updateUserInfo(user);
     res.sendStatus(204);
   } catch (error) {
+    console.error("Erreur lors de la mise à jour de l'utilisateur:", error);
     next(error);
   }
 };

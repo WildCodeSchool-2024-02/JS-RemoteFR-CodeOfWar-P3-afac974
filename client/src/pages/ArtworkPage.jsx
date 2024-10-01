@@ -30,9 +30,7 @@ function ArtworkPage() {
       addNewFavorite(artwork.id, userId);
       setIsFavorite(!isFavorite);
     }
-  };  
-
-  console.info(artwork)
+  };
 
   return (
     <>
@@ -78,9 +76,6 @@ function ArtworkPage() {
         <ul className="artworkPage_diversTech">
           <li>
             <span>Technique :</span> non renseigné
-          </li>
-          <li>
-            <span>Dimensions :</span> non renseigné
           </li>
           <li>
             <span>Description :</span> {artwork.description}
