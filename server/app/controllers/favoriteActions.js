@@ -36,8 +36,6 @@ const readFavorite = async (req, res, next) => {
 };
 
 const addFavorite = async (req, res, next) => {
-  console.info("coucou");
-
   try {
     const result = await tables.favorite.createFavorite(
       req.body.artwork_id,
@@ -45,7 +43,6 @@ const addFavorite = async (req, res, next) => {
     );
 
     if (result.affectedRows) {
-      console.info("ça a marché");
       res
         .status(201)
         .send(

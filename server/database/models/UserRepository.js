@@ -66,7 +66,6 @@ class UserRepository extends AbstractRepository {
   }
 
   async updateUserInfo(user) {
-    console.info(user);
     const [result] = await this.database.query(
       `UPDATE ${this.table} 
        SET pseudo = ?, email = ?, firstname = ?, lastname = ?, 
