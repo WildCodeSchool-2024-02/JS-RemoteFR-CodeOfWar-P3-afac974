@@ -284,3 +284,15 @@ export function deleteFavorite(artworkId, userId) {
       return [];
     });
 }
+
+// DELETE Table artwork
+
+export function deleteArtwork(artworkId) {
+  return axios
+    .delete(`${url}/api/artworks/${artworkId}`)
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}

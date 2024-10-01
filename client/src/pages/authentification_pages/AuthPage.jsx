@@ -1,36 +1,20 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
-import IconsComponent from "../../components/IconsComponent";
 import BackButtonComponent from "../../components/authentification_components/BackButtonComponent";
 
 function AuthPage() {
-  const { auth, setAuth } = useAuth();
-  const [showPopover, setShowPopover] = useState(false);
-  const [popoverMessage, setPopoverMessage] = useState("");
+  const { auth } = useAuth();
+  const navigate = useNavigate();
+
   useEffect(() => {
-    if (showPopover) {
-      const timer = setTimeout(() => setShowPopover(false), 2000);
-      return () => clearTimeout(timer);
+    if (auth) {
+      navigate("/dashboard");
     }
-    return undefined;
-  }, [showPopover]);
-  const handleDisconnected = () => {
-    setAuth(null);
-    setPopoverMessage("Déconnexion réussie !");
-    setShowPopover(true);
-  };
+  }, [auth, navigate]);
 
   return (
     <div className="App_sizePage">
-      {showPopover && (
-        <div className="auth_popoverDisconnect">
-          <div className="auth_popoverDisconnected">
-            <IconsComponent src="lock" alt="Déconnexion" />
-            {popoverMessage}
-          </div>
-        </div>
-      )}
       <h1 className="auth_welcome">
         Bienvenue{auth ? ` ${auth.user.pseudo}` : ""}
       </h1>
@@ -51,44 +35,6 @@ function AuthPage() {
           </>
         ) : null}
       </ul>
-      {auth && (
-        <div className="auth_navlist">
-          <li className="auth_navOnline">
-            <Link to="/" className="auth_navLinksOnline">
-              Mon profil
-            </Link>
-          </li>
-          <li className="auth_navOnline">
-            <Link className="auth_navLinksOnline" to="/add">
-              <IconsComponent
-                className="userpage_icon"
-                src="importicon"
-                alt="upload icon"
-              />
-            </Link>
-          </li>
-
-          <li className="auth_navOnline">
-            <Link to="/" className="auth_navLinksOnline">
-              Mes publications
-            </Link>
-          </li>
-          <li className="auth_navOnline">
-            <Link to="/myinformations" className="auth_navLinksOnline">
-              Mes informations personnel
-            </Link>
-          </li>
-          <li className="auth_navOnline">
-            <button
-              className="auth_navLinksOnline auth_disconnect"
-              type="button"
-              onClick={handleDisconnected}
-            >
-              Déconnexion
-            </button>
-          </li>
-        </div>
-      )}
       <li className="auth_nav">
         <BackButtonComponent to="/" />
       </li>

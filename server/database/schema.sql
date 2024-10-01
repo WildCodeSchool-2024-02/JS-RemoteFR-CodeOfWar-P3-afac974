@@ -1,3 +1,4 @@
+-- SQLBook: Code
 CREATE TABLE user (
     id INT unsigned PRIMARY KEY AUTO_INCREMENT NOT NULL,
     pseudo VARCHAR(255) NOT NULL,

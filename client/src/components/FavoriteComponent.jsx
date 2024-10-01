@@ -44,9 +44,9 @@ function FavoritesComponent({ fav }) {
 
 FavoritesComponent.propTypes = {
   fav: PropTypes.shape({
-    artwork_id: PropTypes.number.isRequired,
-    image_url: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+    artwork_id: PropTypes.number,
+    image_url: PropTypes.string,
+    title: PropTypes.string,
   }).isRequired,
 };
 

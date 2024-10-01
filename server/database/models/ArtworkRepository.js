@@ -7,14 +7,14 @@ class ArtworkRepository extends AbstractRepository {
 
   async readAll() {
     const [rows] = await this.database.query(
-      `select artwork.*, user.pseudo user_name from ${this.table} INNER JOIN user on artwork.user_id = user.id`
+      `select artwork.*,DATE_FORMAT(date, '%d/%m/%Y') as formatedDate, user.pseudo user_name from ${this.table} INNER JOIN user on artwork.user_id = user.id`
     );
     return rows;
   }
 
   async read(id) {
     const [rows] = await this.database.query(
-      `select artwork.*, user.pseudo user_name from ${this.table}  INNER JOIN user on artwork.user_id = user.id WHERE artwork.id = ? `,
+      `select artwork.*,DATE_FORMAT(date, '%d/%m/%Y') as formatedDate, user.pseudo user_name from ${this.table}  INNER JOIN user on artwork.user_id = user.id WHERE artwork.id = ? `,
       [id]
     );
     return rows[0];
