@@ -10,18 +10,16 @@ class UserRepository extends AbstractRepository {
       `INSERT INTO ${this.table} (pseudo, email, hashed_password, avatar) VALUES (?, ?, ?, default)`,
       [user.pseudo, user.email, user.hashedPassword]
     );
-
     return result.insertId;
   }
 
   async read(id) {
     const [rows] = await this.database.query(
       `SELECT id, 
-      pseudo, email,
+      pseudo, 
+      email,
       firstname,
       lastname,        
-      birthday,
-      deathday,
       nationality,
       biography,
       website,
@@ -41,11 +39,9 @@ class UserRepository extends AbstractRepository {
       `SELECT id,
         pseudo,
         email,
-        hashed_password,
         firstname,
         lastname,
-        birthday,
-        deathday,
+        hashed_password,
         nationality,
         biography,
         website,
@@ -53,8 +49,8 @@ class UserRepository extends AbstractRepository {
         twitter,
         facebook,
         linkedin,
-        avatar,
-        created_at FROM ${this.table}`
+        avatar
+        FROM ${this.table}`
     );
 
     return rows;
@@ -72,20 +68,16 @@ class UserRepository extends AbstractRepository {
   async updateUserInfo(user) {
     const [result] = await this.database.query(
       `UPDATE ${this.table} 
-       SET pseudo = ?, email = ?, hashed_password = ?, firstname = ?, lastname = ?, 
-           birthday = ?, deathday = ?, nationality = ?, biography = ?, 
+       SET pseudo = ?, email = ?, firstname = ?, lastname = ?, 
+           nationality = ?, biography = ?, 
            website = ?, instagram = ?, twitter = ?, facebook = ?, 
-           linkedin = ?, avatar = ?, created_at = ? 
+           linkedin = ?, avatar = ?
        WHERE id = ?`,
       [
-        user.id,
         user.pseudo,
         user.email,
-        user.hashed_password,
         user.firstname,
         user.lastname,
-        user.birthday,
-        user.deathday,
         user.nationality,
         user.biography,
         user.website,
@@ -94,7 +86,7 @@ class UserRepository extends AbstractRepository {
         user.facebook,
         user.linkedin,
         user.avatar,
-        user.created_at,
+        user.id,
       ]
     );
     return result.affectedRows;
