@@ -19,8 +19,6 @@ class FavoriteRepository extends AbstractRepository {
   }
 
   async createFavorite(artworkId, userId) {
-    console.info("repo");
-
     const [result] = await this.database.query(
       `INSERT INTO favorite (artwork_id, user_id) VALUES(?, ?)`,
       [artworkId, userId]
