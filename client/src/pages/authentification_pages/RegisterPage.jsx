@@ -13,6 +13,7 @@ function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
 
   const handlePasswordChange = (event) => sethashedPassword(event.target.value);
@@ -31,10 +32,12 @@ function RegisterPage() {
         if (res && res.status === 201) {
           navigate("/login");
         } else {
-          console.info(res);
+          setIsError(true);
         }
       } catch (err) {
         console.error(err);
+        console.info("coucou");
+        setIsError(true);
       }
     }
   };
@@ -140,6 +143,7 @@ function RegisterPage() {
           S'inscrire
         </button>
         <BackButtonComponent to="/authentification" />
+        {isError === true ? <p>Erreur lors de la création du compte.</p> : null}
       </form>
     </div>
   );

@@ -30,10 +30,10 @@ const read = async (req, res, next) => {
 
 const add = async (req, res, next) => {
   try {
-    const result = await tables.user.create(req.body);
+    const response = await tables.user.create(req.body);
+    console.info(response);
     res.status(201).json({
-      message: `Utilisateur ${result.insertId} ajouté avec succès`,
-      userId: result.insertId,
+      message: `Utilisateur ajouté avec succès`,
     });
   } catch (error) {
     next(error);

@@ -2,7 +2,7 @@
 CREATE TABLE user (
     id INT unsigned PRIMARY KEY AUTO_INCREMENT NOT NULL,
     pseudo VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
     hashed_password VARCHAR(255) NOT NULL,
     firstname VARCHAR(100),
     lastname VARCHAR(100),

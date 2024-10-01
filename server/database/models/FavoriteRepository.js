@@ -23,7 +23,7 @@ class FavoriteRepository extends AbstractRepository {
       `INSERT INTO favorite (artwork_id, user_id) VALUES(?, ?)`,
       [artworkId, userId]
     );
-    console.info("REUSLT MYSSQL", result);
+
     return result;
   }
 
