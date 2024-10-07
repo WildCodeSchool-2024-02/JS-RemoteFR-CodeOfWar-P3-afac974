@@ -26,15 +26,18 @@ function App() {
     location.pathname === "/login" ||
     location.pathname === "/register" ||
     location.pathname === "/myinformations";
+
+    const hideFooter = /^\/visit\/\d+$/.test(location.pathname);
+
   return (
     <>
-      {!hideNavbar && <Navbar />}
-      <main>
-        <Outlet />
-      </main>
-      {!hideNavbar && <Footer />}
-    </>
-  );
+    {!hideNavbar && <Navbar />}
+    <main>
+      <Outlet />
+    </main>
+    {!hideFooter && <Footer />}
+  </>
+);
 }
 
 export default App;
