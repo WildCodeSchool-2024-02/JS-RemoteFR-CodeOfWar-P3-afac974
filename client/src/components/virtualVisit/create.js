@@ -33,7 +33,7 @@ export default function create(setMessage, artworks) {
   this.add.text(
     1060,
     245,
-    "Approché vous des tableaux \n" +
+    "Approchez vous des tableaux \n" +
       "pour admirer et avoir les \n" +
       "informations",
     {
