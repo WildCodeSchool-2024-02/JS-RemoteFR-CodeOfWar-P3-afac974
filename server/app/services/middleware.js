@@ -21,7 +21,7 @@ const uploadImg = (req, res, next) => {
 
 const checkAdminStatus = (req, res, next) => {
   if (req.auth && req.auth.isAdmin) {
-    next(); // L'utilisateur est un admin, on continue
+    next();
   } else {
     res.status(403).json({
       message:
