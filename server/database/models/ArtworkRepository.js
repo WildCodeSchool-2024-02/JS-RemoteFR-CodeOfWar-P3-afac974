@@ -7,14 +7,14 @@ class ArtworkRepository extends AbstractRepository {
 
   async readAll() {
     const [rows] = await this.database.query(
-      `select artwork.*, user.pseudo user_name from ${this.table} INNER JOIN user on artwork.user_id = user.id`
+      `select artwork.*,DATE_FORMAT(date, '%d/%m/%Y') as formatedDate, user.pseudo user_name from ${this.table} INNER JOIN user on artwork.user_id = user.id`
     );
     return rows;
   }
 
   async read(id) {
     const [rows] = await this.database.query(
-      `select artwork.*, user.pseudo user_name from ${this.table}  INNER JOIN user on artwork.user_id = user.id WHERE artwork.id = ? `,
+      `select artwork.*,DATE_FORMAT(date, '%d/%m/%Y') as formatedDate, user.pseudo user_name from ${this.table}  INNER JOIN user on artwork.user_id = user.id WHERE artwork.id = ? `,
       [id]
     );
     return rows[0];
@@ -22,13 +22,12 @@ class ArtworkRepository extends AbstractRepository {
 
   async create(artwork) {
     const [result] = await this.database.query(
-      `INSERT INTO artwork (title,image_url, description, technique, measurement, date, user_id) VALUES(?, ?, ?, ?, ?, CURDATE(), ?)`,
+      `INSERT INTO artwork (title,image_url, description, technique, date, user_id) VALUES(?, ?, ?, ?, CURDATE(), ?)`,
       [
         artwork.title,
         artwork.image_url,
         artwork.description,
         artwork.technique,
-        artwork.measurement,
         artwork.user_id,
       ]
     );
@@ -38,13 +37,12 @@ class ArtworkRepository extends AbstractRepository {
 
   async update(artwork) {
     const [result] = await this.database.query(
-      `UPDATE ${this.table} SET title = ?, image_url = ?, description = ?, technique = ?, measurement = ?, date = ? WHERE id = ?`,
+      `UPDATE ${this.table} SET title = ?, image_url = ?, description = ?, technique = ?, date = ? WHERE id = ?`,
       [
         artwork.title,
         artwork.image_url,
         artwork.description,
         artwork.technique,
-        artwork.measurement,
         artwork.date,
         artwork.id,
       ]

@@ -9,7 +9,6 @@ const storage = multer.diskStorage({
   },
   filename(req, file, cb) {
     const id = uuidv4();
-    console.info(id);
     const pictureName = `${id}${path.extname(file.originalname)}`;
     req.body.image_url = `/assets/images/uploads/${pictureName}`;
     cb(null, pictureName);
@@ -21,9 +20,8 @@ const uploadImg = (req, res, next) => {
 };
 
 const checkAdminStatus = (req, res, next) => {
-  console.info(req.auth);
   if (req.auth && req.auth.isAdmin) {
-    next(); // L'utilisateur est un admin, on continue
+    next();
   } else {
     res.status(403).json({
       message:

@@ -1,5 +1,6 @@
 const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
+const Joi = require("joi");
 
 const hashingOptions = {
   type: argon2.argon2id,
@@ -27,7 +28,6 @@ const verifyToken = (req, res, next) => {
   try {
     const { auth } = req.cookies;
     if (!auth) {
-      console.info("touto");
       throw new Error("");
     }
     req.auth = jwt.verify(auth, process.env.APP_SECRET);
@@ -39,7 +39,24 @@ const verifyToken = (req, res, next) => {
   }
 };
 
+const verifyUserField = (req, res, next) => {
+  const schema = Joi.object({
+    pseudo: Joi.string().required(),
+    email: Joi.string().email().required(),
+    password: Joi.string().min(8).required(),
+    confirmPassword: Joi.ref("password"),
+  });
+
+  const result = schema.validate(req.body);
+  if (result.error) {
+    res.status(400).send(result.error.message);
+  } else {
+    next();
+  }
+};
+
 module.exports = {
   hashPassword,
   verifyToken,
+  verifyUserField,
 };

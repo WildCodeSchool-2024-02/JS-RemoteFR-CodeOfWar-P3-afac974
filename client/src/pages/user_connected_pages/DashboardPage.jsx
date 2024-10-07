@@ -1,10 +1,19 @@
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import IconsComponent from "../../components/IconsComponent";
 
 function DashboardPage() {
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
+
+  const handleDisconnected = () => {
+    setAuth(null);
+    navigate("/authentification");
+  };
+
   return (
     <div className="auth_navlist">
+      <h1>DASHBOARDPAGE</h1>
       <li className="auth_navOnline">
         <Link className="auth_navLinksOnline" to="/add">
           <IconsComponent
@@ -14,6 +23,7 @@ function DashboardPage() {
           />
         </Link>
       </li>
+
       <li className="auth_navOnline">
         <Link to="/artwork_dashboard" className="auth_navLinksOnline">
           Mes publications
@@ -24,8 +34,16 @@ function DashboardPage() {
           Mes informations personnel
         </Link>
       </li>
+      <li className="auth_navOnline">
+        <button
+          className="auth_navLinksOnline auth_disconnect"
+          type="button"
+          onClick={handleDisconnected}
+        >
+          Déconnexion
+        </button>
+      </li>
     </div>
   );
 }
-
 export default DashboardPage;

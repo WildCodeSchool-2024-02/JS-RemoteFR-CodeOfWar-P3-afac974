@@ -13,7 +13,7 @@ function Navbar() {
     const fetchUserData = async () => {
       if (auth) {
         const data = await getUserId();
-        setUserData({ id: data.id, isAdmin: auth.user.is_admin });
+        setUserData({ id: data, isAdmin: auth.user.is_admin });
       } else {
         setUserData({ id: null, isAdmin: false });
       }
@@ -51,7 +51,7 @@ function Navbar() {
         </li>
         {/* ------------------------------FAVORIS----------------------------------- */}
         <li>
-          {userData ? (
+          {userData.id ? (
             <Link to={`/favoris/${userData.id}`}>
               <IconsComponent
                 className="navbarcomponent_favorite_icon"
@@ -86,35 +86,28 @@ function Navbar() {
               <Link
                 to="/artists"
                 className="navBarComponent_navLinks"
-                onClick={showLinks}
+                onClick={handleShowLinks}
               >
                 <li className="navBarComponent_1"> Tous les artistes</li>
               </Link>
               <Link
                 to="/artworks"
                 className="navBarComponent_navLinks"
-                onClick={showLinks}
+                onClick={handleShowLinks}
               >
                 <li className="navBarComponent_2"> Toutes les oeuvres</li>
               </Link>
               <Link
                 to="/exhibition"
                 className="navBarComponent_navLinks "
-                onClick={showLinks}
+                onClick={handleShowLinks}
               >
                 <li className="navBarComponent_3">Les expositions</li>
-              </Link>
-              <Link
-                to="/artwork_dashboard"
-                className="navBarComponent_navLinks"
-                onClick={showLinks}
-              >
-                <li className="navBarComponent_4">Ma galerie</li>
               </Link>
               {userData.isAdmin ? (
                 <Link
                   to="/exhibitionForm"
-                  onClick={showLinks}
+                  onClick={handleShowLinks}
                   className="navBarComponent_navLinks"
                 >
                   <li className="navBarComponent_5">Gestion des expos ADMIN</li>

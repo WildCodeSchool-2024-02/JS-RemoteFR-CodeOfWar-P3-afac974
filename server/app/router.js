@@ -8,7 +8,11 @@ const artworks = require("./controllers/artworkActions");
 const exhibition = require("./controllers/exhibitionActions");
 const favorite = require("./controllers/favoriteActions");
 const middleware = require("./services/middleware");
-const { hashPassword, verifyToken } = require("./services/auth");
+const {
+  hashPassword,
+  verifyToken,
+  verifyUserField,
+} = require("./services/auth");
 
 // AUTHENTIFICATION
 const userActions = require("./controllers/userActions");
@@ -60,7 +64,7 @@ router.delete("/favorite/:artworkId/:userId", favorite.destroyFavorite);
 router.get("/users/:id/artworks", artworks.readArtworksByUser);
 router.get("/users", userActions.browse);
 router.get("/users/:id", userActions.read);
-router.post("/users", hashPassword, userActions.add);
+router.post("/users", verifyUserField, hashPassword, userActions.add);
 router.put("/users/:id", userActions.edit);
 router.delete("/users/:id/destroy", userActions.destroyAccount);
 

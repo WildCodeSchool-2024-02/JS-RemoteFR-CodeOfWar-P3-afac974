@@ -211,17 +211,21 @@ export function addFavorite(artworkId) {
 
 // PUT Table user
 
-export function updateUserInfo(id, userData) {
-  return axios
-    .put(`${url}/api/users/${id}`, userData)
-    .then((reponse) => reponse)
-    .catch((error) => {
-      console.error(
-        "Erreur lors de la requête de mise à jour des informations de l'utilisateur:",
-        error.response.data
-      );
-      return [];
-    });
+export async function updateUserInfo(userData) {
+  try {
+    const response = await axios.put(
+      `${url}/api/users/${userData.id}`,
+      userData,
+      {
+        withCredentials: true,
+      }
+    );
+    console.info(response);
+    return response;
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour des infos utilisateur", error);
+    throw error;
+  }
 }
 
 // PUT Table artwork
@@ -278,6 +282,18 @@ export function deleteExhibitionArtwork(exhibitionId, artworkId) {
 export function deleteFavorite(artworkId, userId) {
   return axios
     .delete(`${url}/api/favorite/${artworkId}/${userId}`)
+    .then((reponse) => reponse.data)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+}
+
+// DELETE Table artwork
+
+export function deleteArtwork(artworkId) {
+  return axios
+    .delete(`${url}/api/artworks/${artworkId}`)
     .then((reponse) => reponse.data)
     .catch((error) => {
       console.error(error);
