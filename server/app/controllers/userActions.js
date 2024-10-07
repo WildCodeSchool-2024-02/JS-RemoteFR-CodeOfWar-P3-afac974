@@ -30,10 +30,10 @@ const read = async (req, res, next) => {
 
 const add = async (req, res, next) => {
   try {
-    const result = await tables.user.create(req.body);
+    const response = await tables.user.create(req.body);
+    console.info(response);
     res.status(201).json({
-      message: `Utilisateur ${result.insertId} ajouté avec succès`,
-      userId: result.insertId,
+      message: `Utilisateur ajouté avec succès`,
     });
   } catch (error) {
     next(error);
@@ -46,6 +46,7 @@ const edit = async (req, res, next) => {
     await tables.user.updateUserInfo(user);
     res.sendStatus(204);
   } catch (error) {
+    console.error("Erreur lors de la mise à jour de l'utilisateur:", error);
     next(error);
   }
 };

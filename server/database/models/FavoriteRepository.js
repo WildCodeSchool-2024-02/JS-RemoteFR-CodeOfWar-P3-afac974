@@ -23,7 +23,8 @@ class FavoriteRepository extends AbstractRepository {
       `INSERT INTO favorite (artwork_id, user_id) VALUES(?, ?)`,
       [artworkId, userId]
     );
-    return result.insertId;
+
+    return result;
   }
 
   async deleteFavorite(artworkId, userId) {

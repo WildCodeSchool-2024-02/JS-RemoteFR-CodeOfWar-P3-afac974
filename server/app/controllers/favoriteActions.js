@@ -11,7 +11,7 @@ const browse = async (req, res, next) => {
 
 const read = async (req, res, next) => {
   try {
-    const favorite = await tables.favorite.read(req.params.id);
+    const favorite = await tables.favorite.read(req.body.user_id);
     if (favorite == null) {
       res.sendStatus(404);
     } else {
@@ -36,16 +36,19 @@ const readFavorite = async (req, res, next) => {
 };
 
 const addFavorite = async (req, res, next) => {
-  const userId = req.body.user_id;
-  const artworkId = req.body.artwork_id;
-
   try {
-    const result = await tables.favorite.createFavorite(artworkId, userId);
-    res
-      .status(201)
-      .send(
-        `Favoris ajouté avec succès à vos Favoris. ID : ${result.insertId}`
-      );
+    const result = await tables.favorite.createFavorite(
+      req.body.artwork_id,
+      req.body.user_id
+    );
+
+    if (result.affectedRows) {
+      res
+        .status(201)
+        .send(
+          `Favoris ajouté avec succès à vos Favoris. ID : ${result.insertId}`
+        );
+    }
   } catch (error) {
     next(error);
   }

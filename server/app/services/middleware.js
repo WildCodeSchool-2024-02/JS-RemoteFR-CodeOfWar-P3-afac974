@@ -5,13 +5,12 @@ const path = require("path");
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
-    cb(null, "./public/assets/images/PicturesTest");
+    cb(null, "./public/assets/images/uploads");
   },
   filename(req, file, cb) {
     const id = uuidv4();
-    console.info(id);
     const pictureName = `${id}${path.extname(file.originalname)}`;
-    req.body.image_url = pictureName;
+    req.body.image_url = `/assets/images/uploads/${pictureName}`;
     cb(null, pictureName);
   },
 });
@@ -21,11 +20,13 @@ const uploadImg = (req, res, next) => {
 };
 
 const checkAdminStatus = (req, res, next) => {
-  console.info(req.auth)
   if (req.auth && req.auth.isAdmin) {
-    next(); // L'utilisateur est un admin, on continue
+    next();
   } else {
-    res.status(403).json({ message: "Accès refusé. Vous devez être administrateur pour supprimer une exposition." });
+    res.status(403).json({
+      message:
+        "Accès refusé. Vous devez être administrateur pour supprimer une exposition.",
+    });
   }
 };
 

@@ -1,29 +1,30 @@
 import PropTypes from "prop-types";
 
-export default function ArtistComponent({ artist }) {
+export default function ArtistComponent({ user }) {
   return (
     <div className="artistlist_card">
       <img
-        src={artist.portrait}
-        alt={`${artist.firstname} ${artist.lastname}`}
+        src={`${import.meta.env.VITE_API_URL}${user.avatar}`}
+        alt={`${user.firstname} ${user.lastname}`}
         className="artistlist_image"
       />
       <div className="artistlist_name">
-        {artist.firstname} {artist.lastname}
+        {user.firstname} {user.lastname}
       </div>
-      <div className="artistlist_info">Nationalité : {artist.nationality}</div>
-      <div className="artistlist_info">Biographie : {artist.biography}</div>
+      <div className="artistlist_info">Nationalité : {user.nationality}</div>
+      <div className="artistlist_info">Biographie : {user.biography}</div>
     </div>
   );
 }
 
 ArtistComponent.propTypes = {
-  artist: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    firstname: PropTypes.string.isRequired,
-    lastname: PropTypes.string.isRequired,
-    nationality: PropTypes.string.isRequired,
-    biography: PropTypes.string.isRequired,
-    portrait: PropTypes.string.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.number,
+    firstname: PropTypes.string,
+    lastname: PropTypes.string,
+    nationality: PropTypes.string,
+    biography: PropTypes.string,
+    portrait: PropTypes.string,
+    avatar: PropTypes.string,
   }).isRequired,
 };

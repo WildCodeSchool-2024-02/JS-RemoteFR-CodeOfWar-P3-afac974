@@ -1,22 +1,25 @@
 import { useLoaderData } from "react-router-dom";
 
 import ArtworkComponent from "../components/ArtworkComponent";
-import "../assets/styles/homepage.css";
 import CarouselHomepage from "../components/CarouselHomepage";
 
 function Homepage() {
-  const { artworks, exhibitions, artists } = useLoaderData();
-
+  const { artworks, exhibitions, users } = useLoaderData();
+  const lastArtwork = artworks
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 12);
   return (
     <>
       <CarouselHomepage
         artwork={artworks}
         exhibition={exhibitions}
-        artist={artists}
+        user={users}
       />
-
+      <h1 className="homePage_discorverArtworks">
+        Découvrez les oeuvres de nos artistes
+      </h1>
       <div className="homePage_artwork_container">
-        {artworks.map((artwork) => (
+        {lastArtwork.map((artwork) => (
           <ArtworkComponent artwork={artwork} key={artwork.id} />
         ))}
       </div>

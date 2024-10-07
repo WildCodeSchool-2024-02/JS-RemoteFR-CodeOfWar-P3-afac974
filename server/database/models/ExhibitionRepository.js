@@ -6,13 +6,14 @@ class ExhibitionRepository extends AbstractRepository {
   }
 
   async readAll() {
-    const [rows] = await this.database.query(`select * from ${this.table}`);
+    const [rows] = await this.database.query(
+      `select * ,DATE_FORMAT(date_begin, '%d/%m/%Y')as formatedBeginDate ,DATE_FORMAT(date_end, '%d/%m/%Y') as formatedEndDate  from ${this.table}`);
     return rows;
   }
 
   async read(id) {
     const [rows] = await this.database.query(
-      `select * from ${this.table} WHERE id = ? `,
+      `select *,DATE_FORMAT(date_begin, '%d/%m/%Y')as formatedBeginDate ,DATE_FORMAT(date_end, '%d/%m/%Y') as formatedEndDate from ${this.table} WHERE id = ? `,
       [id]
     );
     return rows[0];
@@ -62,11 +63,11 @@ class ExhibitionRepository extends AbstractRepository {
       artwork.title AS nom_de_l_oeuvre,
       artwork.image_url AS pictures,
       artwork.description AS description,
-      artist.pseudo AS artiste
+      user.pseudo AS usere
     FROM exhibition
     JOIN artwork_exhibition ON artwork_exhibition.exhibition_id = exhibition.id 
     JOIN artwork ON artwork.id = artwork_exhibition.artwork_id 
-    JOIN artist ON artist.id = artwork.artist_id
+    JOIN user ON user.id = artwork.user_id
     WHERE exhibition.id = ?`,
       [id]
     );
