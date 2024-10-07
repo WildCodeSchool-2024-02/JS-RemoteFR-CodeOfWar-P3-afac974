@@ -11,6 +11,7 @@ import {
   getArtworksByUser,
   getFavorites,
   getExhibitionArtwork,
+  checkAdmin
 } from "./services/request";
 
 import { AuthProvider } from "./contexts/AuthContext";
@@ -90,11 +91,14 @@ const router = createBrowserRouter([
         }),
       },
       {
-        path: "/exhibitionForm",
+        path: "/exhibitionForm/:id",
         element: <ExhibitionForm />,
         loader: async () => ({
-          exhibitions: await getExhibitions(),
-          artworks: await getArtworks(),
+          loader: async ({ params }) => ({
+            exhibitions: await getExhibitions(),
+            artworks: await getArtworks(params.id),
+            admin: await checkAdmin(),
+          })
         }),
         errorElement: <LoginPage />,
       },
