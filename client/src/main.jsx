@@ -11,6 +11,7 @@ import {
   getArtworksByUser,
   getFavorites,
   checkAdmin,
+  getExhibitionArtwork,
 } from "./services/request";
 
 import { AuthProvider } from "./contexts/AuthContext";
@@ -31,6 +32,7 @@ import LoginPage from "./pages/authentification_pages/LoginPage";
 import RegisterPage from "./pages/authentification_pages/RegisterPage";
 import DashboardPage from "./pages/user_connected_pages/DashboardPage";
 import PersonalInformationsPage from "./pages/user_connected_pages/PersonalInformationsPage";
+import VirtualVisit from "./pages/virtualVisit/VirtualVisit";
 import Favorite from "./pages/Favorite";
 
 const router = createBrowserRouter([
@@ -127,6 +129,13 @@ const router = createBrowserRouter([
         element: <Favorite />,
         loader: async ({ params }) => ({
           favorites: await getFavorites(params.id),
+        }),
+      },
+      {
+        path: "/visit/:id",
+        element: <VirtualVisit />,
+        loader: async ({ params }) => ({
+          artworks: await getExhibitionArtwork(params.id),
         }),
       },
     ],
