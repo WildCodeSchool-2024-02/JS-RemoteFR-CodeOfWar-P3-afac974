@@ -10,15 +10,23 @@ import playerMove from "../../components/virtualVisit/playerMove";
 
 function VirtualVisit() {
   const { artworks } = useLoaderData();
+  const gameContainer = useRef(null);  // Référence vers le conteneur
   const phaserGame = useRef(null);
 
   const [message, setMessage] = useState("");
 
+  const easterEggArtwork = {
+    nom_de_l_oeuvre: "Joconde Ratée",
+    artiste: "Artiste Mystère",
+    description: "Une tentative humoristique et ratée de recréer la célèbre Joconde.",
+    pictures: '/assets/images/PicturesTest/jocond.webp',  // Remplace avec le chemin réel vers l'image de la Joconde ratée
+  };
+
   useEffect(() => {
     const config = {
       type: Phaser.AUTO,
-      width: 960,
-      height: 300,
+      width: 1520,   // Ajuste les dimensions du jeu ici si nécessaire
+      height: 450,
       backgroundColor: "#179ac5",
       scene: {
         preload() {
@@ -35,9 +43,10 @@ function VirtualVisit() {
         default: "arcade",
         arcade: {
           gravity: { y: 0 },
-          debug: true,
+          debug: false,
         },
       },
+      parent: gameContainer.current,  // Phaser placera le jeu dans ce conteneur
     };
 
     phaserGame.current = new Phaser.Game(config);
@@ -50,7 +59,14 @@ function VirtualVisit() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <Picture message={message} artwork={artworks[message]} />;
+  const currentArtwork = message === "easterEgg" ? easterEggArtwork : artworks[message];
+
+  return (
+    <div className="virtualVisitContainer">
+      <Picture message={message} artwork={currentArtwork} />
+      <div ref={gameContainer} className="gameContainer"> </div>
+    </div>
+  );
 }
 
 export default VirtualVisit;

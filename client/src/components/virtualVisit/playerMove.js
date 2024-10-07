@@ -4,29 +4,54 @@ export default function playerMove(setMessage, message) {
   // Gestion des déplacements
   this.player.setVelocity(0);
 
-  if (this.cursors.left.isDown && this.player.x > 32) {
+  this.player.setCollideWorldBounds(true);
+
+  let isMoving = false; // Variable pour vérifier si le joueur est en mouvement
+  let lastDirection = "down"; // Stocke la dernière direction du joueur
+
+  // Déplacements horizontaux
+  if (this.cursors.left.isDown) {
     this.player.setVelocityX(-160);
     this.player.anims.play("walk_left", true);
-  } else if (this.cursors.right.isDown && this.player.x < 928) {
+    lastDirection = "left";
+    isMoving = true;
+  } else if (this.cursors.right.isDown) {
     this.player.setVelocityX(160);
     this.player.anims.play("walk_right", true);
+    lastDirection = "right";
+    isMoving = true;
   }
 
-  if (this.cursors.up.isDown && this.player.y > 19) {
+  // Déplacements verticaux
+  if (this.cursors.up.isDown) {
     this.player.setVelocityY(-160);
     this.player.anims.play("walk_up", true);
-  } else if (this.cursors.down.isDown && this.player.y < 250) {
+    lastDirection = "up";
+    isMoving = true;
+  } else if (this.cursors.down.isDown) {
     this.player.setVelocityY(160);
     this.player.anims.play("walk_down", true);
+    lastDirection = "down";
+    isMoving = true;
   }
 
-  if (
-    !this.cursors.left.isDown &&
-    !this.cursors.right.isDown &&
-    !this.cursors.up.isDown &&
-    !this.cursors.down.isDown
-  ) {
-    this.player.setVelocity(0);
+  // Si le joueur ne bouge pas, jouer l'animation idle correspondant à la dernière direction
+  if (!isMoving) {
+    switch (lastDirection) {
+      case "left":
+        this.player.anims.play("idle", true);
+        break;
+      case "right":
+        this.player.anims.play("idle", true);
+        break;
+      case "up":
+        this.player.anims.play("idle", true);
+        break;
+      case "down":
+      default:
+        this.player.anims.play("idle", true);
+        break;
+    }
   }
 
   // Interaction avec la distance des tableaux
