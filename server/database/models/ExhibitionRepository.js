@@ -7,7 +7,8 @@ class ExhibitionRepository extends AbstractRepository {
 
   async readAll() {
     const [rows] = await this.database.query(
-      `select * ,DATE_FORMAT(date_begin, '%d/%m/%Y')as formatedBeginDate ,DATE_FORMAT(date_end, '%d/%m/%Y') as formatedEndDate  from ${this.table}`);
+      `select * ,DATE_FORMAT(date_begin, '%d/%m/%Y')as formatedBeginDate ,DATE_FORMAT(date_end, '%d/%m/%Y') as formatedEndDate  from ${this.table}`
+    );
     return rows;
   }
 
@@ -60,10 +61,10 @@ class ExhibitionRepository extends AbstractRepository {
     const [rows] = await this.database.query(
       `SELECT 
       artwork.id,
-      artwork.title AS nom_de_l_oeuvre,
-      artwork.image_url AS pictures,
-      artwork.description AS description,
-      user.pseudo AS usere
+      artwork.title,
+      artwork.image_url,
+      artwork.description,
+      user.pseudo AS user
     FROM exhibition
     JOIN artwork_exhibition ON artwork_exhibition.exhibition_id = exhibition.id 
     JOIN artwork ON artwork.id = artwork_exhibition.artwork_id 

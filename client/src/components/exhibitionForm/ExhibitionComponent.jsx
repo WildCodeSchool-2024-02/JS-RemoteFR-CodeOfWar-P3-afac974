@@ -124,8 +124,8 @@ function ExhibitionComponent({
             {exhibitionArtworks.map((artwork) => (
               <div key={artwork.id} className="artwork-container">
                 <img
-                  src={`${import.meta.env.VITE_API_URL}${artwork.pictures}`}
-                  alt={artwork.nom_de_l_oeuvre}
+                  src={`${import.meta.env.VITE_API_URL}${artwork.image_url}`}
+                  alt={artwork.title}
                 />
                 <button
                   type="button"
