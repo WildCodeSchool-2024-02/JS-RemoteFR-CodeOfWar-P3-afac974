@@ -7,7 +7,7 @@ class UserRepository extends AbstractRepository {
 
   async create(user) {
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (pseudo, email, hashed_password) VALUES (?, ?, ?)`,
+      `INSERT INTO ${this.table} (pseudo, email, hashed_password, avatar) VALUES (?, ?, ?, default)`,
       [user.pseudo, user.email, user.hashedPassword]
     );
 
@@ -16,7 +16,20 @@ class UserRepository extends AbstractRepository {
 
   async read(id) {
     const [rows] = await this.database.query(
-      `SELECT id, pseudo, email FROM ${this.table} WHERE id = ?`,
+      `SELECT id, 
+      pseudo, email,
+      firstname,
+      lastname,        
+      birthday,
+      deathday,
+      nationality,
+      biography,
+      website,
+      instagram,
+      twitter,        
+      facebook,
+      linkedin,
+      avatar FROM ${this.table} WHERE id = ?`,
       [id]
     );
 
@@ -25,7 +38,23 @@ class UserRepository extends AbstractRepository {
 
   async readAll() {
     const [rows] = await this.database.query(
-      `SELECT id, pseudo, email FROM ${this.table}`
+      `SELECT id,
+        pseudo,
+        email,
+        hashed_password,
+        firstname,
+        lastname,
+        birthday,
+        deathday,
+        nationality,
+        biography,
+        website,
+        instagram,
+        twitter,
+        facebook,
+        linkedin,
+        avatar,
+        created_at FROM ${this.table}`
     );
 
     return rows;
@@ -42,8 +71,31 @@ class UserRepository extends AbstractRepository {
 
   async updateUserInfo(user) {
     const [result] = await this.database.query(
-      `UPDATE ${this.table} SET pseudo = ?, firstname = ?, lastname = ?, email = ? WHERE id = ?`,
-      [user.pseudo, user.firstname, user.lastname, user.email, user.id]
+      `UPDATE ${this.table} 
+       SET pseudo = ?, email = ?, hashed_password = ?, firstname = ?, lastname = ?, 
+           birthday = ?, deathday = ?, nationality = ?, biography = ?, 
+           website = ?, instagram = ?, twitter = ?, facebook = ?, 
+           linkedin = ?, avatar = ?, created_at = ? 
+       WHERE id = ?`,
+      [
+        user.id,
+        user.pseudo,
+        user.email,
+        user.hashed_password,
+        user.firstname,
+        user.lastname,
+        user.birthday,
+        user.deathday,
+        user.nationality,
+        user.biography,
+        user.website,
+        user.instagram,
+        user.twitter,
+        user.facebook,
+        user.linkedin,
+        user.avatar,
+        user.created_at,
+      ]
     );
     return result.affectedRows;
   }

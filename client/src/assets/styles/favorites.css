@@ -1,8 +1,71 @@
-.favorites_artworks img {
-  width: 10rem;
+.favorite_title {
+  padding: 1.5rem 1rem;
+  font-size: 2.5rem;
+  text-align: center;
 }
 
-.favorites_artworks {
+.favorite_cards {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 1rem;
+}
+
+.favorite_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex: 0 1 45%;
+  max-width: 45%;
+}
+
+.favorite_card img {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.favorite_card_button {
+  font-size: 2rem;
+  border: none;
+  text-decoration: none;
+  width: 3rem;
+  padding-top: 0.25rem;
+  background-color: transparent;
+}
+
+@media (min-width: 992px) {
+  .favorite_title {
+    font-size: 5rem;
+    padding-top: 3rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .favorite_cards {
+    gap: 3rem;
+  }
+
+  .favorite_card {
+    flex: 1 1 400px;
+    max-width: 400px;
+  }
+
+  .favorite_card img {
+    max-width: 100%;
+    transition: transform 0.3s ease-out;
+  }
+
+  .favorite_card img:hover {
+    transform: scale(1.01);
+  }
+
+  .favorite_card_button {
+    padding-top: 1rem;
+    width: 3rem;
+    transition: transform 0.15s ease-in;
+  }
+
+  .favorite_card_button:hover {
+    transform: scale(1.25);
+  }
 }

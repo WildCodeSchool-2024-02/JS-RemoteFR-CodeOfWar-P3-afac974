@@ -1,8 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-import "../assets/styles/artworkForm.css";
+import { Link } from "react-router-dom";
 
 function ArtworkForm() {
   const [dataForm, setFormData] = useState({
@@ -11,10 +9,10 @@ function ArtworkForm() {
     technique: "",
     measurement: "",
     date: "",
-    artistId: "",
   });
   const [image, setImage] = useState(null);
-  const navigate = useNavigate();
+
+  const [message, setMessage] = useState("");
 
   const sendArtwork = (event) => {
     event.preventDefault();
@@ -25,7 +23,6 @@ function ArtworkForm() {
     formData.append("technique", dataForm.technique);
     formData.append("measurement", dataForm.measurement);
     formData.append("date", dataForm.date);
-    formData.append("artistId", dataForm.artistId);
     formData.append("image", image);
 
     axios
@@ -33,12 +30,11 @@ function ArtworkForm() {
         headers: {
           "Content-Type": "multipart/form-data",
         },
+        withCredentials: true,
       })
       .then((response) => {
-        if (response === 201) {
-          console.info(response);
-          navigate("/dashboard");
-        }
+        console.info(response);
+        setMessage(response.data);
       })
       .catch((error) => {
         console.error("There was an error!", error.response);
@@ -55,6 +51,15 @@ function ArtworkForm() {
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);
   };
+
+  if (message) {
+    return (
+      <>
+        <h1>{message}</h1>
+        <Link to="/">Retour à l'accueuil</Link>
+      </>
+    );
+  }
 
   return (
     <form className="artwork_form" onSubmit={sendArtwork} method="post">
@@ -107,20 +112,10 @@ function ArtworkForm() {
         value={dataForm.measurement}
         onChange={handleChange}
       />
-      <label htmlFor="artist_id" className="visually-hidden">
-        Artist ID:
-      </label>
-      <input
-        type="text"
-        id="artist_id"
-        name="artistId"
-        placeholder="Artist ID"
-        value={dataForm.artistId}
-        onChange={handleChange}
-      />
       <button type="submit" className="confirm_artwork">
         Confirm
       </button>
+      <h2>{message}</h2>
     </form>
   );
 }
