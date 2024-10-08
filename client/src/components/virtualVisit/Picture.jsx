@@ -13,7 +13,7 @@ function Picture({ artwork }) {
   return (
     <section className="artworkVisualisation">
       <img
-        src={`${import.meta.env.VITE_API_URL}${artwork.pictures}`}
+        src={`${import.meta.env.VITE_API_URL}${artwork.image_url}`}
         alt={`${artwork.nom_de_l_oeuvre} de ${artwork.artiste}`}
       />
       <section className="information">
@@ -29,7 +29,7 @@ function Picture({ artwork }) {
 
 Picture.propTypes = {
   artwork: PropTypes.shape({
-    pictures: PropTypes.string,
+    image_url: PropTypes.string,
     nom_de_l_oeuvre: PropTypes.string,
     artiste: PropTypes.string,
     description: PropTypes.string,
