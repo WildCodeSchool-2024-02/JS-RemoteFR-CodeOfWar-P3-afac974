@@ -47,7 +47,6 @@ function PersonalInformationsPage() {
 
   const revalidateData = useRevalidator();
 
-  /* -------------------------------Condition bouton--------------------------------------- */
   const handlePseudoChange = (event) => {
     setPseudo(event.target.value);
     setIsChanged(event.target.value !== "");
@@ -96,8 +95,6 @@ function PersonalInformationsPage() {
     setAvatar(event.target.value);
     setIsChanged(event.target.value !== "");
   };
-
-  /* ------------------------------CONFIRMER---------------------------------------- */
 
   const updatePseudo = pseudo !== "" ? pseudo : auth.user.pseudo;
   const updateFirstName = firstName !== "" ? firstName : auth.user.firstname;
@@ -271,7 +268,6 @@ function PersonalInformationsPage() {
             placeholder={auth.user.avatar || "Avatar"}
           />
         </div>
-        {/* --------------------------------CONFIRM--------------------------- */}
         {isChanged && (
           <button
             className="personalInformationsPage_button personalInformationsPage_ConfirmButton"

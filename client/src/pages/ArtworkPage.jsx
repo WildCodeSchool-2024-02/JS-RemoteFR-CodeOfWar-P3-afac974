@@ -33,7 +33,7 @@ function ArtworkPage() {
   };
 
   return (
-    <>
+    <div className="artworkPage">
       <div className="artworkPage_oneOeuvre">
         <img
           className="artworkPage_oneOeuvrePic"
@@ -47,7 +47,7 @@ function ArtworkPage() {
           to={`/artistpage/${artwork.user_id}`}
           className="artworkPage_goToartistpage"
         >
-          <p>{artwork.user_name}</p>
+          <h1 className="artworkPage_name">{artwork.user_name}</h1>
         </Link>
         <p>{artwork.title}</p>
         <p>{artwork.formatedDate}</p>
@@ -72,20 +72,10 @@ function ArtworkPage() {
       </div>
 
       <div className="artworkPage_tech_oeuvre">
-        <p>A propos de l'oeuvre</p>
-        <ul className="artworkPage_diversTech">
-          <li>
-            <span>Technique :</span> non renseigné
-          </li>
-          <li>
-            <span>Description :</span> {artwork.description}
-          </li>
-        </ul>
-        <Link to="/" className="homePage_navButtons">
-          HomePage
-        </Link>
+        <h3 className="artworkPage_details">Description :</h3>
+        <p>{artwork.description}</p>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -12,6 +12,7 @@ import "./assets/styles/artworkForm.css";
 import "./assets/styles/exhibition.css";
 import "./assets/styles/exhibitionForm.css";
 import "./assets/styles/favorites.css";
+import "./assets/styles/artistprofile.css";
 import "./assets/styles/authentification_styles/authpage.css";
 import "./assets/styles/authentification_styles/loginpage.css";
 import "./assets/styles/authentification_styles/registerpage.css";
@@ -29,7 +30,7 @@ function App() {
   return (
     <>
       {!hideNavbar && <Navbar />}
-      <main>
+      <main className="app_main">
         <Outlet />
       </main>
       {!hideNavbar && <Footer />}

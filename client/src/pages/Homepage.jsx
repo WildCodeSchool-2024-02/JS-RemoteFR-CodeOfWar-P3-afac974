@@ -15,13 +15,15 @@ function Homepage() {
         exhibition={exhibitions}
         user={users}
       />
-      <h1 className="homePage_discorverArtworks">
-        Découvrez les oeuvres de nos artistes
-      </h1>
-      <div className="homePage_artwork_container">
-        {lastArtwork.map((artwork) => (
-          <ArtworkComponent artwork={artwork} key={artwork.id} />
-        ))}
+      <div className="homePage_discorver">
+        <h1 className="homePage_discorverArtworks">
+          Découvrez les oeuvres de nos artistes
+        </h1>
+        <div className="homePage_artwork_container">
+          {lastArtwork.map((artwork) => (
+            <ArtworkComponent artwork={artwork} key={artwork.id} />
+          ))}
+        </div>
       </div>
     </>
   );

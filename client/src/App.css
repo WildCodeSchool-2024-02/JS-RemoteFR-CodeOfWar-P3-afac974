@@ -26,15 +26,18 @@
   font-family: var(--font-family-primary);
   font-size: 12px;
   text-decoration: none;
+  color: var(--text-color);
 }
 
 html,
 body {
   scroll-behavior: smooth;
+  background-color: var(--background-color);
 }
 
-main {
+.app_main {
   min-height: 79vh;
+  padding-top: 10rem;
 }
 
 li {

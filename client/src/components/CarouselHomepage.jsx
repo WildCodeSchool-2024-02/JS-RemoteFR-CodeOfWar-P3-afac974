@@ -6,12 +6,10 @@ function CarouselHomepage({ artwork, exhibition, user }) {
   const artworkLength = artwork.length;
   const exhibitionLength = exhibition.length;
 
-  // Si les tableaux sont vides, on renvoie un contenu alternatif
   if (!userLength || !artworkLength || !exhibitionLength) {
     return <p>Contenu non disponible pour le moment.</p>;
   }
 
-  // Calcul des index aléatoires, en s'assurant qu'ils sont dans les bornes
   const randomUser = Math.max(0, Math.floor(Math.random() * userLength));
   const randomArtwork = Math.max(0, Math.floor(Math.random() * artworkLength));
   const randomExhibition = Math.max(
@@ -36,7 +34,7 @@ function CarouselHomepage({ artwork, exhibition, user }) {
               <h2 className="carrouselHomepage_title">
                 {exhibition[randomExhibition].name}
               </h2>
-              <p>
+              <p className="carrouselHomepage_content">
                 {exhibition[randomExhibition].date_begin.substring(0, 7)} /{" "}
                 {exhibition[randomExhibition].date_end.substring(0, 7)}
               </p>

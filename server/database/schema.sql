@@ -35,12 +35,12 @@ INSERT INTO
         is_admin
     )
 VALUES (
-        'Toto',
-        'toto@toto.com',
+        'JohnDoe',
+        'johndoe@wildcatschool.com',
         '$argon2id$v=19$m=19456,t=2,p=1$3r0iBd7F1mxXKywG0CBIiA$FZrP4iI3yc9NTMHckUPrBBlIIsMKFLB0e5JLBk0mlBA',
-        'Scarlett',
-        'Johansson',
-        'Américaine',
+        'John',
+        'Doe',
+        'Américain',
         'aussi belle que : Angelina Jolie',
         'https://master_toto.fr',
         'https://instagram.com',
@@ -51,8 +51,8 @@ VALUES (
         '0'
     ),
     (
-        'AdminToto',
-        'admintoto@toto.com',
+        'JohnSmith',
+        'johnsmith@wildcatschool.com',
         '$argon2id$v=19$m=19456,t=2,p=1$c28oEDU32RPXw0OvW+3dxA$zZM+sPdQQ13bIHwsGFjevWiqnOLizGYq0EHcb4skByw',
         'Scarlett',
         'Johansson',
@@ -68,7 +68,7 @@ VALUES (
     ),
     (
         'Alice Dupont',
-        'alicetoto@toto.com',
+        'alicedupont@wildcatschool.com',
         '$argon2id$v=19$m=19456,t=2,p=1$1xhV1Pcqj02Vp4lws9xzjg$MKZtoPYm8pWBKNr3lbBJsTAZ/qluP/RbNATmSVEQlVw',
         'Alice',
         'Dupont',
@@ -84,7 +84,7 @@ VALUES (
     ),
     (
         'Marc Lefèvre',
-        'marctoto@toto.com',
+        'marclefèvre@wildcatschool.com',
         '$argon2id$v=19$m=19456,t=2,p=1$1xhV1Pcqj02Vp4lws9xzjg$MKZtoPYm8pWBKNr3lbBJsTAZ/qluP/RbNATmSVEQlVw',
         'Marc',
         'Lefèvre',
@@ -100,7 +100,7 @@ VALUES (
     ),
     (
         'Sophia Durand',
-        'sophiatoto@toto.com',
+        'sophiadurand@wildcatschool.com',
         '$argon2id$v=19$m=19456,t=2,p=1$1xhV1Pcqj02Vp4lws9xzjg$MKZtoPYm8pWBKNr3lbBJsTAZ/qluP/RbNATmSVEQlVw',
         'Sophia',
         'Durand',
@@ -116,7 +116,7 @@ VALUES (
     ),
     (
         'Olivier Martin',
-        'oliviertoto@toto.com',
+        'oliviermartin@wildcatschool.com',
         '$argon2id$v=19$m=19456,t=2,p=1$1xhV1Pcqj02Vp4lws9xzjg$MKZtoPYm8pWBKNr3lbBJsTAZ/qluP/RbNATmSVEQlVw',
         'Olivier',
         'Martin',
@@ -132,7 +132,7 @@ VALUES (
     ),
     (
         'Emma Léger',
-        'emmatoto@toto.com',
+        'emmaleger@wildcatschool.com',
         '$argon2id$v=19$m=19456,t=2,p=1$1xhV1Pcqj02Vp4lws9xzjg$MKZtoPYm8pWBKNr3lbBJsTAZ/qluP/RbNATmSVEQlVw',
         'Emma',
         'Léger',
@@ -148,7 +148,7 @@ VALUES (
     ),
     (
         'Lucas Dubois',
-        'lucastoto@toto.com',
+        'lucasdubois@wildcatschool.com',
         '$argon2id$v=19$m=19456,t=2,p=1$1xhV1Pcqj02Vp4lws9xzjg$MKZtoPYm8pWBKNr3lbBJsTAZ/qluP/RbNATmSVEQlVw',
         'Lucas',
         'Dubois',
@@ -164,7 +164,7 @@ VALUES (
     ),
     (
         'Maya Nguyen',
-        'mayatoto@toto.com',
+        'mayanguyen@wildcatschool.com',
         '$argon2id$v=19$m=19456,t=2,p=1$1xhV1Pcqj02Vp4lws9xzjg$MKZtoPYm8pWBKNr3lbBJsTAZ/qluP/RbNATmSVEQlVw',
         'Maya',
         'Nguyen',
@@ -180,7 +180,7 @@ VALUES (
     ),
     (
         'David Rodriguez',
-        'davidtoto@toto.com',
+        'davidrodriguez@wildcatschool.com',
         '$argon2id$v=19$m=19456,t=2,p=1$1xhV1Pcqj02Vp4lws9xzjg$MKZtoPYm8pWBKNr3lbBJsTAZ/qluP/RbNATmSVEQlVw',
         'David',
         'Rodriguez',
@@ -196,11 +196,11 @@ VALUES (
     ),
     (
         'Isabelle Morel',
-        'isabelletoto@toto.com',
+        'isabellemorel@wildcatschool.com',
         '$argon2id$v=19$m=19456,t=2,p=1$1xhV1Pcqj02Vp4lws9xzjg$MKZtoPYm8pWBKNr3lbBJsTAZ/qluP/RbNATmSVEQlVw',
         'Isabelle',
         'Morel',
-           'Suisse',
+        'Suisse',
         'Isabelle Morel est une artiste textile suisse qui crée des œuvres en tissu inspirées de la nature.',
         'https://isabellemorel.com',
         'https://instagram.com/isabelle_textile',
@@ -212,7 +212,7 @@ VALUES (
     ),
     (
         'Étienne Laurent',
-        'etiennetoto@toto.com',
+        'etiennelaurent@wildcatschool.com',
         '$argon2id$v=19$m=19456,t=2,p=1$1xhV1Pcqj02Vp4lws9xzjg$MKZtoPYm8pWBKNr3lbBJsTAZ/qluP/RbNATmSVEQlVw',
         'Étienne',
         'Laurent',
