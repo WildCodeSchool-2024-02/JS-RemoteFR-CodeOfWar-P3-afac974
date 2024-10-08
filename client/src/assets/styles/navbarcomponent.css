@@ -23,6 +23,7 @@
   width: 30px;
   margin-right: 2rem;
 }
+
 /* ----------------------------------------------------------- */
 
 .navbarcomponent_burgerMenu {
@@ -53,6 +54,7 @@
   transition: all 0.8s ease-out;
   text-align: center;
 }
+
 .show-nav .navBarComponent_listLinks {
   padding: 2rem;
 }
@@ -70,7 +72,7 @@
 }
 
 .show-nav .navBarComponent_navLinks {
-  padding: 2rem;
+  padding: 1rem;
   opacity: 1;
   transform: translateX(-10%);
   visibility: visible;
@@ -79,6 +81,8 @@
     opacity 0.5s ease-in-out,
     transform 0.5s ease-in-out,
     visibility 0.5s ease-in-out;
+  position: relative;
+  z-index: 10;
 }
 
 .show-nav .navBarComponent_navLinks:hover {
