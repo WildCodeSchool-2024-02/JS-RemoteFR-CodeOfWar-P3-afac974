@@ -5,8 +5,7 @@ import AddArtworkComponent from "../components/exhibitionForm/AddArtworkComponen
 import CreateExihibition from "../components/exhibitionForm/CreateExihibition";
 
 function ExhibitionForm() {
-  const { initialExhibitions, artworks } = useLoaderData();
-  const [exhibitions, setExhibitions] = useState(initialExhibitions);
+  const { exhibitions, artworks } = useLoaderData();
   const [selectedExhibitionId, setSelectedExhibitionId] = useState("");
   const [exhibitionArtworks, setExhibitionArtworks] = useState([]);
   const [showCreateExhibition, setShowCreateExhibition] = useState(false);
@@ -18,12 +17,6 @@ function ExhibitionForm() {
 
   const handleCreateExhibitionClick = () => {
     setShowCreateExhibition(true);
-  };
-
-  const handleExhibitionDeleted = (deletedExhibitionId) => {
-    setExhibitions((prevExhibitions) =>
-      prevExhibitions.filter((exhibition) => exhibition.id !== deletedExhibitionId)
-    );
   };
   return (
     <section>
@@ -51,12 +44,12 @@ function ExhibitionForm() {
         )}
       </div>
       {selectedExhibitionId && (
-  <ExhibitionComponent
-    id={selectedExhibitionId}
-    exhibitionArtworks={exhibitionArtworks}
-    setExhibitionArtworks={setExhibitionArtworks}
-    onExhibitionDeleted={handleExhibitionDeleted}
-  />
+        <ExhibitionComponent
+          id={selectedExhibitionId}
+          exhibitionArtworks={exhibitionArtworks}
+          setExhibitionArtworks={setExhibitionArtworks}
+          setShowCreateExhibition={setShowCreateExhibition}
+        />
       )}
       {showCreateExhibition && <CreateExihibition />}
     </section>

@@ -1,5 +1,6 @@
 import { PropTypes } from "prop-types";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Masonry from "react-masonry-css";
 import ConfirmationButton from "./ConfirmationButton";
 
@@ -14,9 +15,10 @@ function ExhibitionComponent({
   id,
   setExhibitionArtworks,
   exhibitionArtworks,
-  onExhibitionDeleted,
 }) {
   const [exhibition, setExhibition] = useState({});
+
+  const navigate = useNavigate();
 
   const breakpointColumnsObj = {
     default: 4,
@@ -86,8 +88,7 @@ function ExhibitionComponent({
         // Suppression de l'exposition après que toutes les œuvres ont été supprimées
         await deleteExhibition(id);
         console.info("Exposition supprimée avec succès");
-        setExhibitionArtworks([]); // Réinitialise les œuvres de l'exposition
-        onExhibitionDeleted(id); 
+        navigate("/exhibitionForm");
       } catch (error) {
         console.error(
           "Erreur lors de la suppression de l'exposition ou des œuvres:",
