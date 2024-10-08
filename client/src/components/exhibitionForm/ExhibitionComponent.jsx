@@ -15,6 +15,7 @@ function ExhibitionComponent({
   id,
   setExhibitionArtworks,
   exhibitionArtworks,
+  setSelectedExhibitionId
 }) {
   const [exhibition, setExhibition] = useState({});
 
@@ -88,6 +89,7 @@ function ExhibitionComponent({
         // Suppression de l'exposition après que toutes les œuvres ont été supprimées
         await deleteExhibition(id);
         console.info("Exposition supprimée avec succès");
+        setSelectedExhibitionId("")
         navigate("/exhibitionForm");
       } catch (error) {
         console.error(
