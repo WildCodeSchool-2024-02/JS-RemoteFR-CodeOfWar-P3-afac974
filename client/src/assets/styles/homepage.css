@@ -77,11 +77,14 @@
 }
 
 .carrouselHomepage_title {
-  font-size: 1.7rem;
+  font-size: 18px;
   font-weight: 900;
   color: var(--background-color);
 }
 .carrouselHomepage_content {
+  color: var(--background-color);
+}
+.carrouselHomepage_knowMore {
   color: var(--background-color);
 }
 
@@ -91,7 +94,9 @@
   align-items: center;
   padding-bottom: 2rem;
 }
-
+.homePage_titleDiscover {
+  font-size: 22px;
+}
 @media (min-width: 600px) {
   .horizontal_scroll_carousel {
     grid-template-columns: 1fr 1fr 1fr;

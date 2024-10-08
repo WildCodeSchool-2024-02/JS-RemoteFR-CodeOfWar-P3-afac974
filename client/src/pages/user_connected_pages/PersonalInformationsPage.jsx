@@ -278,12 +278,12 @@ function PersonalInformationsPage() {
         )}
         <BackButtonComponent to="/authentification" />
       </form>
-
       {showPopover && (
         <div className="personalInformationsPage_popover">
           Informations mises à jour avec succès !
         </div>
       )}
+      <div className="footerSpace" />
     </div>
   );
 }

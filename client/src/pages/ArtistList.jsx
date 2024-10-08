@@ -12,6 +12,7 @@ function ArtistList() {
           <ArtistComponent user={user} key={user.id} />
         ))}
       </div>
+      <div className="footerSpace" />
     </div>
   );
 }

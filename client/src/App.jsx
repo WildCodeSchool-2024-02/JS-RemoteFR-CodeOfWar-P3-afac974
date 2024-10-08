@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import Navbar from "./components/NavbarComponent";
 import Footer from "./components/FooterComponent";
@@ -22,18 +22,13 @@ import "./assets/styles/footercomponent.css";
 import "./assets/styles/confirmButton.css";
 
 function App() {
-  const location = useLocation();
-  const hideNavbar =
-    location.pathname === "/login" ||
-    location.pathname === "/register" ||
-    location.pathname === "/myinformations";
   return (
     <>
-      {!hideNavbar && <Navbar />}
+      <Navbar />
       <main className="app_main">
         <Outlet />
       </main>
-      {!hideNavbar && <Footer />}
+      <Footer />
     </>
   );
 }

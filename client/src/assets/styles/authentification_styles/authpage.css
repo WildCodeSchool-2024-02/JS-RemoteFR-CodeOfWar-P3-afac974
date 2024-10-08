@@ -1,9 +1,5 @@
 .auth_welcome {
-  font-size: 24px;
   padding-top: 2rem;
-}
-.auth_tagline {
-  font-size: 12px;
 }
 
 .auth_welcome,
@@ -56,7 +52,6 @@
 .auth_navLinksOffline {
   width: 32rem;
   padding: 2rem;
-  font-size: 12px;
   color: var(--background-color);
   background-color: var(--text-color);
   border-radius: 8px;
@@ -75,7 +70,6 @@
 .auth_navLinksOnline {
   width: 100%;
   padding: 2rem;
-  font-size: 12px;
   color: var(--text-color);
   background-color: var(--background-color);
   display: flex;

@@ -24,16 +24,10 @@
 
 .artistlist_name {
   font-weight: bold;
-  font-size: 1.2rem;
   margin-bottom: 1rem;
-}
-
-.artistlist_info {
-  font-size: 1rem;
 }
 
 .artistlist_name {
   text-align: center;
-  font-size: 2rem;
   margin: 1rem 0;
 }

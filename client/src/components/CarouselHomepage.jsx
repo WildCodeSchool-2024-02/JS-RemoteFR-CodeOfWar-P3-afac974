@@ -19,11 +19,11 @@ function CarouselHomepage({ artwork, exhibition, user }) {
 
   return (
     <section className="carousel_section">
-      <h1>Virtuart L'Art Pour Tous</h1>
+      <h1>L'Art Pour Tous</h1>
 
       <div className="horizontal_scroll_carousel">
         <figure>
-          <p>Tous nos expositions</p>
+          <h2>Tous nos expositions</h2>
           <Link to="/exhibition">
             <img
               src={`${import.meta.env.VITE_API_URL}${artwork[randomArtwork].image_url}`}
@@ -43,7 +43,7 @@ function CarouselHomepage({ artwork, exhibition, user }) {
         </figure>
 
         <figure>
-          <p>Decouvres nos artistes</p>
+          <h2>Decouvres nos artistes</h2>
           <Link to="/artists">
             <img
               src={`${import.meta.env.VITE_API_URL}${artwork[1]?.image_url || "default_image_url.jpg"}`}
@@ -53,13 +53,13 @@ function CarouselHomepage({ artwork, exhibition, user }) {
               <h2 className="carrouselHomepage_title">
                 {user[randomUser]?.pseudo || "Artiste"}
               </h2>
-              <p>Savoir Plus...</p>
+              <p className="carrouselHomepage_knowMore">Savoir Plus...</p>
             </figcaption>
           </Link>
         </figure>
 
         <figure>
-          <p>Admires les ouvres</p>
+          <h2>Admires les ouvres</h2>
           <Link to="/artworks">
             <img
               src={`${import.meta.env.VITE_API_URL}${artwork[2]?.image_url || "default_image_url.jpg"}`}
@@ -69,7 +69,7 @@ function CarouselHomepage({ artwork, exhibition, user }) {
               <h2 className="carrouselHomepage_title">
                 {artwork[randomArtwork]?.title || "Titre de l'oeuvre"}
               </h2>
-              <p>Savoir Plus...</p>
+              <p className="carrouselHomepage_knowMore">Savoir Plus...</p>
             </figcaption>
           </Link>
         </figure>

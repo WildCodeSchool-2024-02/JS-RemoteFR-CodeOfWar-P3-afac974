@@ -24,6 +24,7 @@ function Homepage() {
             <ArtworkComponent artwork={artwork} key={artwork.id} />
           ))}
         </div>
+        <div className="footerSpace" />
       </div>
     </>
   );

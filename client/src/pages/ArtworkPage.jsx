@@ -75,6 +75,7 @@ function ArtworkPage() {
         <h3 className="artworkPage_details">Description :</h3>
         <p>{artwork.description}</p>
       </div>
+      <div className="footerSpace" />
     </div>
   );
 }

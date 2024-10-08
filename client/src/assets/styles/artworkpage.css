@@ -42,18 +42,8 @@
   background-color: var(--background-color);
   border-radius: 10px;
 }
-.artworkPage_fav_com > p {
-  font-size: 20px;
-}
 
 .artworkPage_tech_oeuvre {
   margin: 0 1rem;
   padding: 1rem 0;
-}
-.artworkPage_tech_oeuvre_text {
-  font-size: 20px;
-}
-.artworkPage_tech_oeuvre > h3,
-p {
-  font-size: 20px;
 }

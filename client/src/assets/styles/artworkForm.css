@@ -17,7 +17,6 @@ textarea {
   padding: 5px;
   border: 1px solid var(--accent-color);
   border-radius: 5px;
-  font-size: 16px;
 }
 
 .artwork_form > *:focus {
@@ -32,7 +31,6 @@ textarea {
   border-radius: 5px;
   background-color: var(--text-color);
   color: var(--background-color);
-  font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }

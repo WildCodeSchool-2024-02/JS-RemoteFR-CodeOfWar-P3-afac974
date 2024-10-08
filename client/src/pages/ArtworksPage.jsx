@@ -15,6 +15,7 @@ function ArtworksPage() {
       <Link to="/" className="homePage_navButtons">
         HomePage
       </Link>
+      <div className="footerSpace" />
     </div>
   );
 }

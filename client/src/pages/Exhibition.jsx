@@ -17,6 +17,7 @@ function Exhibition() {
       <Link to="/" className="homePage_navButtons">
         HomePage
       </Link>
+      <div className="footerSpace" />
     </>
   );
 }

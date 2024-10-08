@@ -24,12 +24,13 @@ function ArtistPage() {
                   src={`${import.meta.env.VITE_API_URL}${artwork.image_url}`}
                   alt={artwork.title}
                 />
+                <p>{artwork.title}</p>
               </div>
             </Link>
-            <p>{artwork.title}</p>
           </div>
         ))}
       </div>
+      <div className="footerSpace" />
     </div>
   );
 }
