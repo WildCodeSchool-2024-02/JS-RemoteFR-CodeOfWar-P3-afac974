@@ -87,23 +87,20 @@
   color: var(--text-color);
 }
 
-/* Wrapper to blur the content */
 .artworkPage_blur_wrapper {
-  /* HERE I ADDED CODES */
-  filter: blur(5px); /* Apply blur effect */
-  pointer-events: none; /* Prevent interactions with the blurred content */
+  filter: blur(5px);
+  pointer-events: none;
 }
 
-/* Popover styles */
 .favorite_popover {
   position: fixed;
-  top: 50%; /* HERE I ADDED CODES */
-  left: 50%; /* HERE I ADDED CODES */
-  transform: translate(-50%, -50%); /* Center the popover */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: var(--background-color);
   padding: 1rem;
   border-radius: 10px;
-  z-index: 1000; /* Make sure it’s on top of everything */
+  z-index: 1000;
   width: 300px;
   text-align: center;
   border: 1px solid black;

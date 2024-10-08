@@ -113,7 +113,6 @@ function ArtworkPage() {
         </div>
       </div>
 
-      {/* Render the popover outside the main content */}
       {showPopover && <Popover onClose={() => setShowPopover(false)} />}
     </>
   );
