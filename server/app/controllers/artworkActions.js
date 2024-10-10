@@ -48,7 +48,16 @@ const destroy = async (req, res, next) => {
   try {
     const artwork = await tables.artwork.read(req.params.id);
     if (artwork) {
-      const imagePath = path.join(__dirname, "..", "..", "public", "assets", "images", "uploads", path.basename(artwork.image_url));
+      const imagePath = path.join(
+        __dirname,
+        "..",
+        "..",
+        "public",
+        "assets",
+        "images",
+        "uploads",
+        path.basename(artwork.image_url)
+      );
 
       deleteImageFile(imagePath);
       await tables.artwork.delete(req.params.id);

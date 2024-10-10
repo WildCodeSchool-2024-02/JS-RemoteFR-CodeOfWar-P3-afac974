@@ -11,6 +11,7 @@ import "./assets/styles/artistlist.css";
 import "./assets/styles/artworkForm.css";
 import "./assets/styles/exhibition.css";
 import "./assets/styles/exhibitionForm.css";
+import "./assets/styles/exhibitioncomponent.css";
 import "./assets/styles/favorites.css";
 import "./assets/styles/artistprofile.css";
 import "./assets/styles/authentification_styles/authpage.css";

@@ -19,7 +19,7 @@ function VirtualVisit() {
     artiste: "Artiste Mystère",
     description:
       "Une tentative humoristique et ratée de recréer la célèbre Joconde.",
-    pictures: "/assets/images/PicturesTest/jocond.webp", // Remplace avec le chemin réel vers l'image de la Joconde ratée
+    pictures: "/assets/images/PicturesTest/jocond.webp",
   };
 
   useEffect(() => {
