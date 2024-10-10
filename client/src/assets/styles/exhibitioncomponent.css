@@ -1,0 +1,17 @@
+@media (min-width: 641px) {
+  .exhibitionComponent_buttonVisit {
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    margin-bottom: 1rem;
+    width: 15rem;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width: 640px) {
+  .exhibitionComponent_buttonVisit {
+    display: none;
+  }
+}

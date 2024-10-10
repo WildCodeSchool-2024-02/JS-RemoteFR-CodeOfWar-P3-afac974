@@ -1,0 +1,96 @@
+.auth_welcome {
+  padding-top: 2rem;
+}
+
+.auth_welcome,
+.auth_tagline {
+  margin-bottom: 2rem;
+  margin-left: 1rem;
+}
+.auth_popoverDisconnect {
+  display: flex;
+  justify-content: center;
+  top: 15%;
+}
+
+.auth_popoverDisconnected {
+  position: fixed;
+  padding: 4rem 8rem;
+  background-color: var(--important-background-color);
+  color: var(--important-color);
+  border-radius: 8px;
+  z-index: 1000;
+
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+}
+
+.auth_popoverDisconnected > img {
+  width: 2rem;
+  margin-right: 1rem;
+}
+
+.auth_navlist {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth_nav,
+.auth_navOffline {
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+  margin-bottom: 4rem;
+}
+.auth_navOnline {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+.auth_navLinksOffline {
+  width: 32rem;
+  padding: 2rem;
+  color: var(--background-color);
+  background-color: var(--text-color);
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid transparent;
+  border: 1px solid transparent;
+}
+.auth_navLinksOffline:hover {
+  color: var(--text-color);
+  background-color: var(--background-color);
+  border: 1px solid var(--accent-color);
+  border-bottom: 4px solid var(--accent-color);
+}
+.auth_navLinksOnline {
+  width: 100%;
+  padding: 2rem;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: flex-end;
+  border: 1px solid transparent;
+  border-bottom: 2px solid var(--text-color);
+}
+.auth_navLinksOnline:hover {
+  color: var(--text-color);
+  background-color: var(--background-color);
+  border: 1px solid var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+}
+.auth_disconnect {
+  cursor: pointer;
+  border: none;
+  border-bottom: 2px solid var(--text-color);
+}
+.auth_disconnect:hover {
+  color: var(--background-color);
+  background-color: var(--important-color);
+  border: 1px solid var(--important-color);
+  border-bottom: 2px solid var(--important-color);
+}

@@ -1,0 +1,23 @@
+.backButton_Link {
+  width: 16rem;
+  height: 4rem;
+  padding: 2rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.backButton_Link > img {
+  width: 2rem;
+}
+.backButton_Link {
+  color: var(--text-color);
+  background-color: var(--background-color);
+  border: 1px solid var(--text-color);
+}
+.backButton_Link:hover {
+  color: var(--text-color);
+  background-color: var(--accent-color);
+  border: 1px solid var(--text-color);
+  border-bottom: 4px solid var(--text-color);
+}

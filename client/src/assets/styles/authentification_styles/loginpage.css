@@ -1,0 +1,82 @@
+.loginpage_title {
+  width: 100%;
+  height: 5rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+}
+
+.loginpage_form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.loginpage_inputsIcon {
+  position: relative;
+  width: 100%;
+}
+
+.loginpage_input {
+  width: 100%;
+  height: 4rem;
+  padding: 1rem;
+  padding-left: 6rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+  background-repeat: no-repeat;
+  background-position: 1rem center;
+  background-size: 2rem;
+}
+
+.loginpage_input[type="email"] {
+  background-image: url("../../icons/mail.svg");
+}
+.loginpage_input[type="password"],
+.loginpage_input[type="text"] {
+  background-image: url("../../icons/key.svg");
+}
+
+.loginpage_passwordContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.loginpage_showPassword {
+  margin-left: -3rem;
+  margin-top: -1.5rem;
+  cursor: pointer;
+}
+
+.loginpage_submitButton {
+  color: var(--background-color);
+  background-color: var(--text-color);
+  border: none;
+  margin-bottom: 2rem;
+}
+
+.loginpage_submitButton:hover {
+  color: var(--text-color);
+  background-color: var(--background-color);
+  border: 1px solid var(--accent-color);
+  border-bottom: 4px solid var(--accent-color);
+}
+.loginpage_submitButton {
+  width: 16rem;
+  height: 4rem;
+  padding: 2rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginpage_showPassword > img {
+  width: 2rem;
+}

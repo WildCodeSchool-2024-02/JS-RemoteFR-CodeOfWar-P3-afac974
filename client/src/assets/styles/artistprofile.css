@@ -1,0 +1,28 @@
+.artistPage {
+  height: 100%;
+}
+.artistPage_name,
+.artistPage_nationality,
+.artistPage_biography,
+.artistPage_biography,
+.artistPage_artworkTitle {
+  padding: 1rem;
+}
+
+.artistPage_contentArtworks {
+  width: 100%;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-content: center;
+}
+
+.artistPage_artworkslist {
+  width: 15rem;
+  height: 15rem;
+  object-fit: cover;
+}
+
+.artistPage_artworksByArtistContainer {
+  margin: 0.5rem;
+}

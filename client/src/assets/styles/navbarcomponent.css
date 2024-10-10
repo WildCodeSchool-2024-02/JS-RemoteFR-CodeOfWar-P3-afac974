@@ -1,0 +1,198 @@
+.navbarcomponent_navArea {
+  width: 100%;
+  height: 10rem;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 1000;
+}
+
+.navBar_iconsAndBurgerMenu {
+  display: flex;
+  align-items: center;
+}
+.navBar_icons {
+  padding-right: 4rem;
+}
+.navbarcomponent_logo_img {
+  max-width: 8rem;
+}
+
+.navbarcomponent_list {
+  display: flex;
+}
+
+.navbarcomponent_user_icon,
+.navbarcomponent_favorite_icon,
+.navbarcomponent_menu_icon {
+  color: var(--text-color);
+  width: 3rem;
+  margin-right: 2rem;
+}
+
+.navbarcomponent_burgerMenu {
+  height: 0;
+  width: 5rem;
+  display: flex;
+}
+
+.navBarComponent_navContainer {
+  font-family: var(--font-family-primary);
+}
+
+.navBarComponent_listLinks {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin-top: -1rem;
+}
+
+.navBarComponent_navLinks {
+  align-items: center;
+  right: 0;
+  width: 100%;
+  visibility: hidden;
+  transition: all 0.8s ease-out;
+  text-align: center;
+}
+
+.show-nav .navBarComponent_listLinks {
+  padding: 2rem;
+}
+
+.show-nav .navBarComponent_listLinks {
+  background-color: var(--background-color);
+  border-radius: 1rem 0 0 1rem;
+  width: 24rem;
+  transition:
+    opacity 0.5s ease-in-out,
+    transform 0.5s ease-in-out,
+    visibility 0.5s ease-in-out;
+  transform: translateX(-70%);
+  padding: 2rem;
+}
+
+.show-nav .navBarComponent_navLinks {
+  padding: 1rem;
+  opacity: 1;
+  transform: translateX(-10%);
+  visibility: visible;
+  border-radius: 1rem;
+  transition:
+    opacity 0.5s ease-in-out,
+    transform 0.5s ease-in-out,
+    visibility 0.5s ease-in-out;
+  color: var(--text-color);
+}
+
+.show-nav .navBarComponent_navLinks:hover {
+  color: var(--accent-color);
+}
+
+.navBarComponent_menuButton {
+  display: flex;
+  top: 2rem;
+  right: 2rem;
+  padding-bottom: 2rem;
+  width: 60px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.navBarComponent_burgerBars,
+.navBarComponent_burgerBars::before,
+.navBarComponent_burgerBars::after {
+  display: block;
+  width: 40px;
+  height: 3px;
+  position: absolute;
+  border-radius: 3px;
+  background: var(--text-color);
+  transition: all 0.3s ease-in-out;
+}
+
+.navBarComponent_burgerBars::before {
+  content: "";
+  left: 0;
+  top: -10px;
+}
+
+.navBarComponent_burgerBars::after {
+  content: "";
+  left: 0;
+  top: 10px;
+}
+
+.show-nav .navBarComponent_burgerBars {
+  width: 0;
+  background: transparent;
+}
+
+.show-nav .navBarComponent_burgerBars::before {
+  left: -1.2rem;
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.show-nav .navBarComponent_burgerBars::after {
+  left: -1.2rem;
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.navBarComponent_1,
+.navBarComponent_2,
+.navBarComponent_3,
+.navBarComponent_4,
+.navBarComponent_5,
+.navBarComponent_navLinks {
+  opacity: 0;
+  transform: translateX(100%);
+  transition:
+    transform 0.4s ease-out,
+    opacity 0.4s ease-out;
+}
+
+.show-nav .navBarComponent_1 {
+  margin-top: 2rem;
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.3s;
+}
+
+.show-nav .navBarComponent_2 {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.4s;
+}
+
+.show-nav .navBarComponent_3 {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.5s;
+}
+
+.show-nav .navBarComponent_4 {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.6s;
+}
+
+.show-nav .navBarComponent_5 {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.7s;
+}
+
+@media (min-width: 641px) {
+  .navbarcomponent_navArea {
+    height: 8rem;
+  }
+}

@@ -1,0 +1,130 @@
+.registerpage_title {
+  width: 100%;
+  height: 5rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+}
+
+.registerpage_form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.registerpage_inputIcon {
+  position: relative;
+  width: 100%;
+}
+
+.registerpage_input {
+  width: 100%;
+  height: 4rem;
+  padding: 1rem;
+  padding-left: 6rem;
+  border-radius: 8px;
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+  background-repeat: no-repeat;
+  background-position: 1rem center;
+  background-size: 2rem;
+}
+
+.registerpage_name {
+  background-image: url("../../icons/tag.svg");
+}
+
+.registerpage_email {
+  background-image: url("../../icons/mail.svg");
+}
+
+.registerpage_password,
+.registerpage_passwordConfirm {
+  background-image: url("../../icons/key.svg");
+}
+
+.registerpage_passwordContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.registerpage_showPassword {
+  margin-left: -3rem;
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 1rem;
+  top: 15%;
+}
+.registerpage_inputId,
+.registerpage_passwordCondition {
+  margin-bottom: 2rem;
+  align-items: center;
+}
+.registerpage_passwordConfirmCondition,
+.registerpage_passwordCondition {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  height: 2rem;
+}
+.registerpage_passwordConditionIcons {
+  height: 2rem;
+}
+
+.registerPage_toggleSwitch {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+.registerPage_toggleSwitch_respectAll,
+.registerPage_toggleSwitch_isArtist,
+.registerPage_toggleSwitch_legalAge,
+.registerPage_toggleSwitch_respectCondition {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 1.5rem;
+}
+.registerPage_toggleSwitch_respectAll > p,
+.registerPage_toggleSwitch_isArtist > p,
+.registerPage_toggleSwitch_legalAge > p,
+.registerPage_toggleSwitch_respectCondition > p {
+  padding-left: 2rem;
+}
+
+.registerpage_submitButton {
+  color: var(--background-color);
+  background-color: var(--text-color);
+  border: none;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.registerpage_submitButton:hover {
+  color: var(--text-color);
+  background-color: var(--background-color);
+  border: 1px solid var(--accent-color);
+  border-bottom: 4px solid var(--accent-color);
+}
+
+.registerpage_submitButton {
+  width: 16rem;
+  height: 4rem;
+  padding: 2rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.registerpage_showPassword > img {
+  width: 2rem;
+}
