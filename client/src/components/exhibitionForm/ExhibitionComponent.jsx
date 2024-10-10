@@ -15,10 +15,12 @@ function ExhibitionComponent({
   id,
   setExhibitionArtworks,
   exhibitionArtworks,
+  setSelectedExhibitionId
 }) {
   const [exhibition, setExhibition] = useState({});
 
   const navigate = useNavigate();
+
   const breakpointColumnsObj = {
     default: 4,
     1100: 3,
@@ -87,7 +89,8 @@ function ExhibitionComponent({
         // Suppression de l'exposition après que toutes les œuvres ont été supprimées
         await deleteExhibition(id);
         console.info("Exposition supprimée avec succès");
-        navigate(0);
+        setSelectedExhibitionId("")
+        navigate("/exhibitionForm");
       } catch (error) {
         console.error(
           "Erreur lors de la suppression de l'exposition ou des œuvres:",

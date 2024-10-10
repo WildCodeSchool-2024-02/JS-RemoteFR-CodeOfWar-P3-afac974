@@ -40,7 +40,6 @@ function PersonalInformationsPage() {
   const [twitter, setTwitter] = useState("");
   const [facebook, setFacebook] = useState("");
   const [linkedin, setLinkedin] = useState("");
-  const [avatar, setAvatar] = useState("");
 
   const [isChanged, setIsChanged] = useState(false);
   const [showPopover, setShowPopover] = useState(false);
@@ -91,10 +90,6 @@ function PersonalInformationsPage() {
     setLinkedin(event.target.value);
     setIsChanged(event.target.value !== "");
   };
-  const handleAvatarChange = (event) => {
-    setAvatar(event.target.value);
-    setIsChanged(event.target.value !== "");
-  };
 
   const updatePseudo = pseudo !== "" ? pseudo : auth.user.pseudo;
   const updateFirstName = firstName !== "" ? firstName : auth.user.firstname;
@@ -108,7 +103,6 @@ function PersonalInformationsPage() {
   const updateTwitter = twitter !== "" ? twitter : auth.user.twitter;
   const updateFacebook = facebook !== "" ? facebook : auth.user.facebook;
   const updateLinkedin = linkedin !== "" ? linkedin : auth.user.linkedin;
-  const updateAvatar = avatar !== "" ? avatar : auth.user.avatar;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -124,7 +118,6 @@ function PersonalInformationsPage() {
       twitter: updateTwitter,
       facebook: updateFacebook,
       linkedin: updateLinkedin,
-      avatar: updateAvatar,
       id: auth.user.id,
     };
     try {
@@ -142,7 +135,6 @@ function PersonalInformationsPage() {
         setTwitter(userData.twitter);
         setFacebook(userData.facebook);
         setLinkedin(userData.linkedin);
-        setAvatar(userData.avatar);
 
         setShowPopover(true);
 
@@ -257,15 +249,6 @@ function PersonalInformationsPage() {
             onChange={handleLinkedinChange}
             type="text"
             placeholder={auth.user.linkedin || "Linkedin"}
-          />
-        </div>
-        <div className="personalInformationsPage_inputIcon personalInformationsPage_inputId">
-          <input
-            className="personalInformationsPage_input personalInformationsPage_avatar"
-            value={avatar}
-            onChange={handleAvatarChange}
-            type="text"
-            placeholder={auth.user.avatar || "Avatar"}
           />
         </div>
         {isChanged && (

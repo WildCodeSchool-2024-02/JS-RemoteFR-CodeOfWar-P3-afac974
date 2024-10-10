@@ -58,6 +58,7 @@
   transition: all 0.8s ease-out;
   text-align: center;
 }
+
 .show-nav .navBarComponent_listLinks {
   padding: 2rem;
 }
@@ -75,7 +76,7 @@
 }
 
 .show-nav .navBarComponent_navLinks {
-  padding: 2rem;
+  padding: 1rem;
   opacity: 1;
   transform: translateX(-10%);
   visibility: visible;

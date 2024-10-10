@@ -1,3 +1,6 @@
+const path = require("path");
+const { deleteImageFile } = require("../services/middleware");
+
 const tables = require("../../database/tables");
 
 const browse = async (req, res, next) => {
@@ -43,7 +46,13 @@ const edit = async (req, res, next) => {
 
 const destroy = async (req, res, next) => {
   try {
-    await tables.artwork.delete(req.params.id);
+    const artwork = await tables.artwork.read(req.params.id);
+    if (artwork) {
+      const imagePath = path.join(__dirname, "..", "..", "public", "assets", "images", "uploads", path.basename(artwork.image_url));
+
+      deleteImageFile(imagePath);
+      await tables.artwork.delete(req.params.id);
+    }
     res.sendStatus(204);
   } catch (error) {
     next(error);

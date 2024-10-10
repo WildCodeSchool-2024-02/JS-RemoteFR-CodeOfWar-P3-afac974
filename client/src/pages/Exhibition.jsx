@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import ExhibitionComponent from "../components/ExhibitionComponent";
 
 function Exhibition() {
@@ -13,10 +13,6 @@ function Exhibition() {
           ))}
         </div>
       </div>
-
-      <Link to="/" className="homePage_navButtons">
-        HomePage
-      </Link>
       <div className="footerSpace" />
     </>
   );

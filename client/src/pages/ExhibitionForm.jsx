@@ -48,6 +48,7 @@ function ExhibitionForm() {
           id={selectedExhibitionId}
           exhibitionArtworks={exhibitionArtworks}
           setExhibitionArtworks={setExhibitionArtworks}
+          setSelectedExhibitionId={setSelectedExhibitionId}
         />
       )}
       {showCreateExhibition && <CreateExihibition />}
