@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 import ArtworkComponent from "../components/ArtworkComponent";
 
@@ -12,9 +12,6 @@ function ArtworksPage() {
           <ArtworkComponent artwork={artwork} key={artwork.id} />
         ))}
       </div>
-      <Link to="/" className="homePage_navButtons">
-        HomePage
-      </Link>
       <div className="footerSpace" />
     </div>
   );
