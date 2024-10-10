@@ -41,6 +41,7 @@ export default function ArtworkDashboard() {
           </button>
         </div>
       ))}
+      <div className="footerSpace" />
     </div>
   );
 }

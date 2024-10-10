@@ -1,26 +1,28 @@
-.artistPage_nationality {
-  padding: 1rem;
-  font-size: 12px;
-  display: flex;
+.artistPage {
+  height: 100%;
 }
-
 .artistPage_name,
+.artistPage_nationality,
 .artistPage_biography,
-.artistPage_text {
+.artistPage_biography,
+.artistPage_artworkTitle {
   padding: 1rem;
-  font-size: 16px;
 }
 
-.artistPage_artworksByArtistContainer {
+.artistPage_contentArtworks {
   width: 100%;
   padding: 2rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   align-content: center;
 }
 
 .artistPage_artworkslist {
-  width: 150px;
-  height: 150px;
+  width: 15rem;
+  height: 15rem;
   object-fit: cover;
+}
+
+.artistPage_artworksByArtistContainer {
+  margin: 0.5rem;
 }

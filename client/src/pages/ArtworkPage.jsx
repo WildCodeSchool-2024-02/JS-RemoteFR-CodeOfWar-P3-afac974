@@ -26,7 +26,7 @@ function Popover({ onClose }) {
 function ArtworkPage() {
   const { artwork } = useLoaderData();
   const { favorite, addNewFavorite, removeFavorite } = useFavorites();
-  const [isFavorite, setIsFavorite] = useState();
+  const [isFavorite, setIsFavorite] = useState(false);
   const [userId, setUserId] = useState();
   const [showPopover, setShowPopover] = useState(false);
 
@@ -59,60 +59,56 @@ function ArtworkPage() {
 
   return (
     <>
-      <div className={showPopover ? "artworkPage_blur_wrapper" : ""}>
-        <div className="artworkPage_oneOeuvre">
-          <img
-            className="artworkPage_oneOeuvrePic"
-            src={`${import.meta.env.VITE_API_URL}${artwork.image_url}`}
-            alt={artwork.title}
-          />
-        </div>
+      <div className="artworkPage">
+        <div className={showPopover ? "artworkPage_blur_wrapper" : ""}>
+          <div className="artworkPage_oneOeuvre">
+            <img
+              className="artworkPage_oneOeuvrePic"
+              src={`${import.meta.env.VITE_API_URL}${artwork.image_url}`}
+              alt={artwork.title}
+            />
+          </div>
 
-        <div className="artworkPage_nameOeuvre">
-          <Link
-            to={`/artistpage/${artwork.user_id}`}
-            className="artworkPage_goToartistpage"
-          >
-            <p>{artwork.user_name}</p>
-          </Link>
-          <p>{artwork.title}</p>
-          <p>{artwork.formatedDate}</p>
-        </div>
-
-        <div className="artworkPage_fav_com">
-          <p>Un coup de coeur ? Ajouter la à vos favoris</p>
-
-          {userId ? (
-            <button
-              className="like_button"
-              type="button"
-              onClick={toggleFavorite}
+          <div className="artworkPage_nameOeuvre">
+            <Link
+              to={`/artistpage/${artwork.user_id}`}
+              className="artworkPage_goToartistpage"
             >
-              {isFavorite ? "❤️" : "🤍"}
-            </button>
-          ) : (
-            <button type="button" onClick={handleUnconnectedFavoriteClick}>
-              🤍
-            </button>
-          )}
-        </div>
+              <h1 className="artworkPage_name">{artwork.user_name}</h1>
+            </Link>
+            <p>{artwork.title}</p>
+            <p>{artwork.formatedDate}</p>
+          </div>
 
-        <div className="artworkPage_tech_oeuvre">
-          <p>A propos de l'oeuvre</p>
-          <ul className="artworkPage_diversTech">
-            <li>
-              <span>Technique :</span> non renseigné
-            </li>
-            <li>
-              <span>Description :</span> {artwork.description}
-            </li>
-          </ul>
-          <Link to="/" className="homePage_navButtons">
-            HomePage
-          </Link>
+          <div className="artworkPage_fav_com">
+            <p>Un coup de coeur ? Ajouter la à vos favoris</p>
+
+            {userId ? (
+              <button
+                className="like_button"
+                type="button"
+                onClick={toggleFavorite}
+              >
+                {isFavorite ? "❤️" : "🤍"}
+              </button>
+            ) : (
+              <button type="button" onClick={handleUnconnectedFavoriteClick}>
+                🤍
+              </button>
+            )}
+          </div>
+
+          <div className="artworkPage_tech_oeuvre">
+            <p>A propos de l'oeuvre</p>
+            <ul className="artworkPage_diversTech">
+              <li>
+                <span>Description :</span> {artwork.description}
+              </li>
+            </ul>
+          </div>
         </div>
+        <div className="footerSpace" />
       </div>
-
       {showPopover && <Popover onClose={() => setShowPopover(false)} />}
     </>
   );

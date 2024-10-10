@@ -23,7 +23,6 @@ function CreateExihibition() {
         finalExhibitionDateEnd
       );
 
-      // Réinitialiser les champs du formulaire
       setExhibitionName("");
       setExhibitionDescription("");
       setExhibitionType("PERMANENT");
@@ -67,7 +66,6 @@ function CreateExihibition() {
             onChange={(event) => {
               setExhibitionType(event.target.value);
 
-              // Réinitialise les dates si "PERMANENT" est sélectionné
               if (event.target.value === "PERMANENT") {
                 setExhibitionDateBegin("9999-12-12");
                 setExhibitionDateEnd("9999-12-12");
@@ -83,7 +81,6 @@ function CreateExihibition() {
           </select>
         </div>
 
-        {/* Afficher les champs de date uniquement si le type est TEMPORARY */}
         {exhibitionType === "TEMPORARY" && (
           <>
             <div>

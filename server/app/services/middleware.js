@@ -1,7 +1,7 @@
 const multer = require("multer");
 const { v4: uuidv4 } = require("uuid");
 
-const fs = require('fs');
+const fs = require("fs");
 
 const path = require("path");
 
@@ -35,13 +35,11 @@ const checkAdminStatus = (req, res, next) => {
 const deleteImageFile = (imagePath) => {
   fs.unlink(imagePath, (err) => {
     if (err) {
-
       console.info(`Failed to delete image: ${err.message}`);
     } else {
       console.info(`Successfully deleted image: ${imagePath}`);
     }
   });
 };
-
 
 module.exports = { deleteImageFile, uploadImg, checkAdminStatus };

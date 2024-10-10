@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 import Phaser from "phaser";
 
 export default function playerMove(setMessage, message) {

@@ -24,17 +24,19 @@
   margin: 0;
   padding: 0;
   font-family: var(--font-family-primary);
-  font-size: 12px;
   text-decoration: none;
+  color: var(--text-color);
 }
 
 html,
 body {
   scroll-behavior: smooth;
+  background-color: var(--background-color);
 }
 
-main {
+.app_main {
   min-height: 79vh;
+  padding-top: 8rem;
 }
 
 li {
@@ -56,4 +58,24 @@ h2,
 h3,
 p {
   text-wrap: pretty;
+}
+
+.footerSpace {
+  height: 6rem;
+}
+
+@media (max-width: 640px) {
+  *,
+  *::before,
+  *::after {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 641px) {
+  *,
+  *::before,
+  *::after {
+    font-size: 16px;
+  }
 }

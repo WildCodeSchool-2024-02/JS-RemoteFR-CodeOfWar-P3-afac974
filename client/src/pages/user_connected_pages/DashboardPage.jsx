@@ -13,7 +13,6 @@ function DashboardPage() {
 
   return (
     <div className="auth_navlist">
-      <h1>DASHBOARDPAGE</h1>
       <li className="auth_navOnline">
         <Link className="auth_navLinksOnline" to="/add">
           <IconsComponent
@@ -43,6 +42,7 @@ function DashboardPage() {
           Déconnexion
         </button>
       </li>
+      <div className="footerSpace" />
     </div>
   );
 }

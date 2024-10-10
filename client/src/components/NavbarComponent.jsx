@@ -28,48 +28,50 @@ function Navbar() {
 
   return (
     <nav className="navbarcomponent_navArea">
-      <Link to="/" className="navBar_userButton">
-        <IconsComponent
-          className="navbarcomponent_logo_img"
-          alt="VirtuArt logo"
-          src="logo"
-        />
-      </Link>
-
-      <ul className="navbarcomponent_list">
-        {/* ------------------------------AUTHENTIFICATION/DASHBOARD----------------------------------- */}
-        <li>
-          <Link
-            to={userData.id ? "/dashboard" : "/authentification"}
-            className="navBar_userButton"
-          >
-            <IconsComponent
-              className="navbarcomponent_user_icon"
-              src={userData.id ? "userConnectedIcon" : "userIcon"}
-            />
-          </Link>
-        </li>
-        {/* ------------------------------FAVORIS----------------------------------- */}
-        <li>
-          {userData.id ? (
-            <Link to={`/favoris/${userData.id}`}>
-              <IconsComponent
-                className="navbarcomponent_favorite_icon"
-                alt="heart icon for favourites artworks"
-                src="emptyHeart"
-              />
-            </Link>
-          ) : (
-            <Link to="/authentification">
-              <IconsComponent
-                className="navbarcomponent_favorite_icon"
-                alt="heart icon for favorites artworks"
-                src="emptyHeart"
-              />
-            </Link>
-          )}
-        </li>
-        {/* ------------------------------MENU----------------------------------- */}
+      <div>
+        <Link to="/" className="navBar_userButton">
+          <IconsComponent
+            className="navbarcomponent_logo_img"
+            alt="VirtuArt logo"
+            src="logo"
+          />
+        </Link>
+      </div>
+      <div className="navBar_iconsAndBurgerMenu">
+        <div className="navBar_icons">
+          <ul className="navbarcomponent_list">
+            <li>
+              <Link
+                to={userData.id ? "/dashboard" : "/authentification"}
+                className="navBar_userButton"
+              >
+                <IconsComponent
+                  className="navbarcomponent_user_icon"
+                  src={userData.id ? "userConnectedIcon" : "userIcon"}
+                />
+              </Link>
+            </li>
+            <li>
+              {userData.id ? (
+                <Link to={`/favoris/${userData.id}`}>
+                  <IconsComponent
+                    className="navbarcomponent_favorite_icon"
+                    alt="heart icon for favourites artworks"
+                    src="emptyHeart"
+                  />
+                </Link>
+              ) : (
+                <Link to="/authentification">
+                  <IconsComponent
+                    className="navbarcomponent_favorite_icon"
+                    alt="heart icon for favorites artworks"
+                    src="emptyHeart"
+                  />
+                </Link>
+              )}
+            </li>
+          </ul>
+        </div>
         <div className="navbarcomponent_burgerMenu">
           <nav
             className={`navBarComponent_navContainer ${showLinks ? "show-nav" : "hide-nav"}`}
@@ -83,6 +85,13 @@ function Navbar() {
               >
                 <span className="navBarComponent_burgerBars" />
               </button>
+              <Link
+                to="/"
+                className="navBarComponent_navLinks"
+                onClick={handleShowLinks}
+              >
+                <li className="navBarComponent_1"> Accueil</li>
+              </Link>
               <Link
                 to="/artists"
                 className="navBarComponent_navLinks"
@@ -118,7 +127,7 @@ function Navbar() {
             </div>
           </nav>
         </div>
-      </ul>
+      </div>
     </nav>
   );
 }

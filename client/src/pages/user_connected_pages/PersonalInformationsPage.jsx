@@ -40,14 +40,12 @@ function PersonalInformationsPage() {
   const [twitter, setTwitter] = useState("");
   const [facebook, setFacebook] = useState("");
   const [linkedin, setLinkedin] = useState("");
-  const [avatar, setAvatar] = useState("");
 
   const [isChanged, setIsChanged] = useState(false);
   const [showPopover, setShowPopover] = useState(false);
 
   const revalidateData = useRevalidator();
 
-  /* -------------------------------Condition bouton--------------------------------------- */
   const handlePseudoChange = (event) => {
     setPseudo(event.target.value);
     setIsChanged(event.target.value !== "");
@@ -92,12 +90,6 @@ function PersonalInformationsPage() {
     setLinkedin(event.target.value);
     setIsChanged(event.target.value !== "");
   };
-  const handleAvatarChange = (event) => {
-    setAvatar(event.target.value);
-    setIsChanged(event.target.value !== "");
-  };
-
-  /* ------------------------------CONFIRMER---------------------------------------- */
 
   const updatePseudo = pseudo !== "" ? pseudo : auth.user.pseudo;
   const updateFirstName = firstName !== "" ? firstName : auth.user.firstname;
@@ -111,7 +103,6 @@ function PersonalInformationsPage() {
   const updateTwitter = twitter !== "" ? twitter : auth.user.twitter;
   const updateFacebook = facebook !== "" ? facebook : auth.user.facebook;
   const updateLinkedin = linkedin !== "" ? linkedin : auth.user.linkedin;
-  const updateAvatar = avatar !== "" ? avatar : auth.user.avatar;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -127,7 +118,6 @@ function PersonalInformationsPage() {
       twitter: updateTwitter,
       facebook: updateFacebook,
       linkedin: updateLinkedin,
-      avatar: updateAvatar,
       id: auth.user.id,
     };
     try {
@@ -145,7 +135,6 @@ function PersonalInformationsPage() {
         setTwitter(userData.twitter);
         setFacebook(userData.facebook);
         setLinkedin(userData.linkedin);
-        setAvatar(userData.avatar);
 
         setShowPopover(true);
 
@@ -262,16 +251,6 @@ function PersonalInformationsPage() {
             placeholder={auth.user.linkedin || "Linkedin"}
           />
         </div>
-        <div className="personalInformationsPage_inputIcon personalInformationsPage_inputId">
-          <input
-            className="personalInformationsPage_input personalInformationsPage_avatar"
-            value={avatar}
-            onChange={handleAvatarChange}
-            type="text"
-            placeholder={auth.user.avatar || "Avatar"}
-          />
-        </div>
-        {/* --------------------------------CONFIRM--------------------------- */}
         {isChanged && (
           <button
             className="personalInformationsPage_button personalInformationsPage_ConfirmButton"
@@ -282,12 +261,12 @@ function PersonalInformationsPage() {
         )}
         <BackButtonComponent to="/authentification" />
       </form>
-
       {showPopover && (
         <div className="personalInformationsPage_popover">
           Informations mises à jour avec succès !
         </div>
       )}
+      <div className="footerSpace" />
     </div>
   );
 }

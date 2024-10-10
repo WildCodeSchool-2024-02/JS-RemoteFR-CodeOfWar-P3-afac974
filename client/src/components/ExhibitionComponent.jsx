@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { getExhibitionArtwork } from "../services/request";
 import ArtworkComponent from "./ArtworkComponent";
@@ -31,6 +32,12 @@ export default function ExhibitionComponent({ exhibition }) {
         <p>{exhibition.description}</p>
         <p>Date de début : {exhibition.formatedBeginDate}</p>
         <p>Date de fin : {exhibition.formatedEndDate}</p>
+        <Link
+          className="exhibitionComponent_buttonVisit"
+          to={`/visit/${exhibition.id}`}
+        >
+          Visite Virtuel ici
+        </Link>
       </div>
       {actualDate >= exhibitionStartDate ? (
         <div>

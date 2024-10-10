@@ -52,6 +52,7 @@ function ExhibitionForm() {
         />
       )}
       {showCreateExhibition && <CreateExihibition />}
+      <div className="footerSpace" />
     </section>
   );
 }

@@ -38,6 +38,7 @@ function AuthPage() {
       <li className="auth_nav">
         <BackButtonComponent to="/" />
       </li>
+      <div className="footerSpace" />
     </div>
   );
 }

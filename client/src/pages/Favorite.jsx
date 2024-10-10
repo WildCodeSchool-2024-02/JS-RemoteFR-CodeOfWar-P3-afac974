@@ -16,6 +16,7 @@ function Favorite() {
           <p>Vous n'avez pas d'oeuvres dans les Favoris.</p>
         )}
       </section>
+      <div className="footerSpace" />
     </>
   );
 }

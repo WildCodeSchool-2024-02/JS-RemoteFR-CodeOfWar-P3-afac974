@@ -18,9 +18,7 @@ export default function create(setMessage, artworks) {
   this.add.text(
     1050,
     125,
-    "Touches :\n" + 
-    "  Flèches directionnelles :\n" + 
-    " Se déplacer\n",
+    "Touches :\n  Flèches directionnelles :\n Se déplacer\n",
     {
       fontSize: "24px",
       fill: "#ffffff",
@@ -33,9 +31,7 @@ export default function create(setMessage, artworks) {
   this.add.text(
     1060,
     245,
-    "Approchez vous des tableaux \n" +
-      "pour admirer et avoir les \n" +
-      "informations",
+    "Approchez vous des tableaux \npour admirer et avoir les \ninformations",
     {
       fontSize: "24px",
       fill: "#ffffff",

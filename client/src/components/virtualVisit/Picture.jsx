@@ -14,12 +14,12 @@ function Picture({ artwork }) {
     <section className="artworkVisualisation">
       <img
         src={`${import.meta.env.VITE_API_URL}${artwork.image_url}`}
-        alt={`${artwork.nom_de_l_oeuvre} de ${artwork.artiste}`}
+        alt={`${artwork.title} de ${artwork.user}`}
       />
       <section className="information">
         <div className="title">
-          <p>{artwork.nom_de_l_oeuvre}</p>
-          <p>{artwork.artiste}</p>
+          <p>{artwork.title}</p>
+          <p>{artwork.user}</p>
         </div>
         <p className="description">{artwork.description}</p>
       </section>
@@ -30,8 +30,8 @@ function Picture({ artwork }) {
 Picture.propTypes = {
   artwork: PropTypes.shape({
     image_url: PropTypes.string,
-    nom_de_l_oeuvre: PropTypes.string,
-    artiste: PropTypes.string,
+    title: PropTypes.string,
+    user: PropTypes.string,
     description: PropTypes.string,
   }).isRequired,
 };

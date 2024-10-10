@@ -1,13 +1,21 @@
 .navbarcomponent_navArea {
   width: 100%;
-  height: 16svh;
+  height: 10rem;
   padding: 1rem;
   background-color: var(--primary-color);
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  position: fixed;
+  z-index: 1000;
 }
 
+.navBar_iconsAndBurgerMenu {
+  display: flex;
+  align-items: center;
+}
+.navBar_icons {
+  padding-right: 4rem;
+}
 .navbarcomponent_logo_img {
   max-width: 8rem;
 }
@@ -20,21 +28,17 @@
 .navbarcomponent_favorite_icon,
 .navbarcomponent_menu_icon {
   color: var(--text-color);
-  width: 30px;
+  width: 3rem;
   margin-right: 2rem;
 }
 
-/* ----------------------------------------------------------- */
-
 .navbarcomponent_burgerMenu {
-  height: 8rem;
-  width: 100%;
-  text-decoration: none;
-  color: var(--background-color);
+  height: 0;
+  width: 5rem;
+  display: flex;
 }
 
 .navBarComponent_navContainer {
-  font-size: var(--font-size-h1);
   font-family: var(--font-family-primary);
 }
 
@@ -43,7 +47,7 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  margin-top: 6rem;
+  margin-top: -1rem;
 }
 
 .navBarComponent_navLinks {
@@ -62,12 +66,12 @@
 .show-nav .navBarComponent_listLinks {
   background-color: var(--background-color);
   border-radius: 1rem 0 0 1rem;
-  margin: 0;
+  width: 24rem;
   transition:
     opacity 0.5s ease-in-out,
     transform 0.5s ease-in-out,
     visibility 0.5s ease-in-out;
-  transform: translateX(-10%);
+  transform: translateX(-70%);
   padding: 2rem;
 }
 
@@ -81,8 +85,7 @@
     opacity 0.5s ease-in-out,
     transform 0.5s ease-in-out,
     visibility 0.5s ease-in-out;
-  position: relative;
-  z-index: 10;
+  color: var(--text-color);
 }
 
 .show-nav .navBarComponent_navLinks:hover {
@@ -91,7 +94,6 @@
 
 .navBarComponent_menuButton {
   display: flex;
-  position: fixed;
   top: 2rem;
   right: 2rem;
   padding-bottom: 2rem;
@@ -112,7 +114,7 @@
   height: 3px;
   position: absolute;
   border-radius: 3px;
-  background: var(--secondary-color);
+  background: var(--text-color);
   transition: all 0.3s ease-in-out;
 }
 
@@ -145,8 +147,6 @@
   transform: rotate(-45deg);
 }
 
-/* ------------Animation des liens------------- */
-
 .navBarComponent_1,
 .navBarComponent_2,
 .navBarComponent_3,
@@ -158,7 +158,6 @@
   transition:
     transform 0.4s ease-out,
     opacity 0.4s ease-out;
-  font-size: 150%;
 }
 
 .show-nav .navBarComponent_1 {
@@ -190,4 +189,10 @@
   opacity: 1;
   transform: translateX(0);
   transition-delay: 0.7s;
+}
+
+@media (min-width: 641px) {
+  .navbarcomponent_navArea {
+    height: 8rem;
+  }
 }

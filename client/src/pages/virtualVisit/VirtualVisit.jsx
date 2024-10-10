@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
-// eslint-disable-next-line
 import Phaser from "phaser";
 import "../../assets/styles/Picture.css";
 import Picture from "../../components/virtualVisit/Picture";
@@ -20,7 +19,7 @@ function VirtualVisit() {
     artiste: "Artiste Mystère",
     description:
       "Une tentative humoristique et ratée de recréer la célèbre Joconde.",
-    pictures: "/assets/images/PicturesTest/jocond.webp", // Remplace avec le chemin réel vers l'image de la Joconde ratée
+    pictures: "/assets/images/PicturesTest/jocond.webp",
   };
 
   useEffect(() => {
@@ -57,7 +56,6 @@ function VirtualVisit() {
         phaserGame.current.destroy(true);
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const currentArtwork =

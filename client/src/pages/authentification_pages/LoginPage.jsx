@@ -77,6 +77,7 @@ function LoginPage() {
         </button>
         <BackButtonComponent to="/authentification" />
       </form>
+      <div className="footerSpace" />
     </div>
   );
 }
